@@ -12,13 +12,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class ContainerInfo {
     private String id;
@@ -31,14 +30,14 @@ public class ContainerInfo {
     private List<Port> ports;
     private String state;
     private String status;
-    private Map<String,Object> hostConfig;
+    private Map<String, Object> hostConfig;
     private List<Network> networkSettings;
     private List<Mount> mounts;
 
-    private Map<String,Object> labels;
+    private Map<String, Object> labels;
 
     public ContainerInfo() {
-        labels = new HashMap<String,Object>();
+        labels = new HashMap<String, Object>();
     }
 
     public String getId() {
@@ -149,23 +148,23 @@ public class ContainerInfo {
         List<ContainerInfo> containerInfos = new ArrayList<ContainerInfo>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        for(int i=0; i<jsonPath.value("/",List.class).size();i++){
+        for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
             ContainerInfo containerInfo = new ContainerInfo();
-            containerInfo.setId(jsonPath.value("/["+i+"]/Id",String.class));
-            containerInfo.setNames(jsonPath.value("/["+i+"]/Names",List.class));
-            containerInfo.setImage(jsonPath.value("/["+i+"]/Image",String.class));
-            containerInfo.setImageID(jsonPath.value("/["+i+"]/ImageID",String.class));
-            containerInfo.setCommand(jsonPath.value("/["+i+"]/Command",String.class));
-            containerInfo.setCreated(jsonPath.value("/["+i+"]/Created",int.class,-1));
-            containerInfo.setPorts(jsonPath.listObject("/["+i+"]/Ports",Port.class));
-            containerInfo.setState(jsonPath.value("/["+i+"]/State",String.class));
-            containerInfo.setStatus(jsonPath.value("/["+i+"]/Status",String.class));
-            containerInfo.setHostConfig(jsonPath.value("/["+i+"]/HostConfig",Map.class));
-            containerInfo.setMounts(jsonPath.listObject("/["+i+"]/Mounts",Mount.class));
+            containerInfo.setId(jsonPath.value("/[" + i + "]/Id", String.class));
+            containerInfo.setNames(jsonPath.value("/[" + i + "]/Names", List.class));
+            containerInfo.setImage(jsonPath.value("/[" + i + "]/Image", String.class));
+            containerInfo.setImageID(jsonPath.value("/[" + i + "]/ImageID", String.class));
+            containerInfo.setCommand(jsonPath.value("/[" + i + "]/Command", String.class));
+            containerInfo.setCreated(jsonPath.value("/[" + i + "]/Created", int.class, -1));
+            containerInfo.setPorts(jsonPath.listObject("/[" + i + "]/Ports", Port.class));
+            containerInfo.setState(jsonPath.value("/[" + i + "]/State", String.class));
+            containerInfo.setStatus(jsonPath.value("/[" + i + "]/Status", String.class));
+            containerInfo.setHostConfig(jsonPath.value("/[" + i + "]/HostConfig", Map.class));
+            containerInfo.setMounts(jsonPath.listObject("/[" + i + "]/Mounts", Mount.class));
 
 
-            containerInfo.setNetworkSettings(jsonPath.mapToListObject("/["+i+"]/NetworkSettings/Networks","Name",Network.class));
-            containerInfo.setLabels((Map<String,Object>)jsonPath.value("/["+i+"]/Labels",Map.class));
+            containerInfo.setNetworkSettings(jsonPath.mapToListObject("/[" + i + "]/NetworkSettings/Networks", "Name", Network.class));
+            containerInfo.setLabels((Map<String, Object>) jsonPath.value("/[" + i + "]/Labels", Map.class));
             containerInfos.add(containerInfo);
         }
         return containerInfos;

@@ -10,13 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class ServiceInfo {
     private String id;
@@ -94,9 +93,9 @@ public class ServiceInfo {
     /**
      * 通过 Docker 的接口返回的结果 生成 ServiceInfo 对象
      *
-     * @param jsonStr   Docker 的接口返回的结果
+     * @param jsonStr Docker 的接口返回的结果
      * @return 解析的 ServiceInfo 对象
-     * @throws ParseException   解析异常
+     * @throws ParseException               解析异常
      * @throws ReflectiveOperationException 反射异常
      */
     public static List<ServiceInfo> load(String jsonStr) throws ParseException, ReflectiveOperationException {
@@ -136,7 +135,7 @@ public class ServiceInfo {
             info.getEndpoint().setPorts(jsonPath.listObject("/[" + i + "]/Endpoint/Ports", Port.class));
             info.getEndpoint().setVirtualIPs(jsonPath.listObject("/[" + i + "]/Endpoint/VirtualIPs", VirtualIP.class));
 
-            spec.setLabels((Map<String,Object>)jsonPath.value("/[" + i + "]/Spec/Labels"));
+            spec.setLabels((Map<String, Object>) jsonPath.value("/[" + i + "]/Spec/Labels"));
 
             serviceInfos.add(info);
         }

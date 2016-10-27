@@ -8,13 +8,12 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class ImageHistory {
     private String id;
@@ -76,14 +75,14 @@ public class ImageHistory {
         List<ImageHistory> imageHistories = new ArrayList<ImageHistory>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        for(int i=0;i<jsonPath.value("/",List.class).size();i++){
+        for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
             ImageHistory imageHistory = new ImageHistory();
-            imageHistory.setId(jsonPath.value("/["+i+"]/Id",String.class));
-            imageHistory.setCreated(jsonPath.value("/["+i+"]/Created",int.class));
-            imageHistory.setCreatedBy(jsonPath.value("/["+i+"]/CreatedBy",String.class));
-            imageHistory.setTags(jsonPath.value("/["+i+"]/Tags",List.class));
-            imageHistory.setSize(jsonPath.value("/["+i+"]/Size",int.class));
-            imageHistory.setComment(jsonPath.value("/["+i+"]/Comment",String.class));
+            imageHistory.setId(jsonPath.value("/[" + i + "]/Id", String.class));
+            imageHistory.setCreated(jsonPath.value("/[" + i + "]/Created", int.class));
+            imageHistory.setCreatedBy(jsonPath.value("/[" + i + "]/CreatedBy", String.class));
+            imageHistory.setTags(jsonPath.value("/[" + i + "]/Tags", List.class));
+            imageHistory.setSize(jsonPath.value("/[" + i + "]/Size", int.class));
+            imageHistory.setComment(jsonPath.value("/[" + i + "]/Comment", String.class));
             imageHistories.add(imageHistory);
         }
 

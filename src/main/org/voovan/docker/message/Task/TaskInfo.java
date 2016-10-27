@@ -1,6 +1,5 @@
 package org.voovan.docker.message.Task;
 
-import org.voovan.docker.message.Node.NodeInfo;
 import org.voovan.docker.message.Task.atom.Status;
 import org.voovan.tools.json.JSONPath;
 
@@ -9,13 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class TaskInfo {
     private String id;
@@ -99,7 +97,7 @@ public class TaskInfo {
         List<TaskInfo> taskInfos = new ArrayList<TaskInfo>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
         for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
-            TaskInfo taskInfo  = jsonPath.value("/["+i+"]",TaskInfo.class);
+            TaskInfo taskInfo = jsonPath.value("/[" + i + "]", TaskInfo.class);
             taskInfos.add(taskInfo);
         }
         return taskInfos;

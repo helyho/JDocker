@@ -1,20 +1,18 @@
 package org.voovan.docker.test.message;
 
 import org.voovan.docker.message.Volume.Volume;
-import org.voovan.docker.message.container.ContainerInfo;
 import org.voovan.tools.log.Logger;
 
 import java.text.ParseException;
 import java.util.List;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class VolumeTest {
 

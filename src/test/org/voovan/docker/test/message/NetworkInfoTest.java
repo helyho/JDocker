@@ -1,7 +1,5 @@
 package org.voovan.docker.test.message;
 
-import org.voovan.docker.message.container.ContainerChange;
-import org.voovan.docker.message.container.atom.ChangeItem;
 import org.voovan.docker.message.network.NetworkInfo;
 import org.voovan.tools.log.Logger;
 
@@ -10,13 +8,12 @@ import java.util.List;
 
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class NetworkInfoTest {
 
@@ -174,7 +171,7 @@ public class NetworkInfoTest {
             "    \"Labels\": {\n" +
             "      \"Author\": \"helyho\"\n" +
             "    }\n" +
-            "  },"+
+            "  }," +
             "  {\n" +
             "    \"Name\": \"docker_gwbridge\",\n" +
             "    \"Id\": \"e96af0a01963ae331daefc419a40b85e44e0fb4def714fb4c48b81b662608bdd\",\n" +
@@ -218,7 +215,7 @@ public class NetworkInfoTest {
             "]";
 
     public static void main(String[] args) throws ParseException, ReflectiveOperationException {
-        List<NetworkInfo> lists =  NetworkInfo.load(tmp);
+        List<NetworkInfo> lists = NetworkInfo.load(tmp);
 
         Logger.simple("adfadf");
     }

@@ -1,6 +1,5 @@
 package org.voovan.docker.message.Volume;
 
-import org.voovan.docker.message.network.NetworkInfo;
 import org.voovan.tools.json.JSONPath;
 
 import java.text.ParseException;
@@ -10,23 +9,22 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class Volume {
     private String name;
     private String driver;
     private String mountpoint;
-    private Map<String,Object> labels;
+    private Map<String, Object> labels;
     private String scope;
 
     public Volume() {
-        labels = new HashMap<String,Object>();
+        labels = new HashMap<String, Object>();
     }
 
     public String getName() {
@@ -74,12 +72,12 @@ public class Volume {
         List<Volume> volumes = new ArrayList<Volume>();
         for (int i = 0; i < jsonPath.value("/Volumes", List.class).size(); i++) {
             Volume volume = new Volume();
-            volume.setName(jsonPath.value("/Volumes["+i+"]/Name",String.class));
-            volume.setDriver(jsonPath.value("/Volumes["+i+"]/Driver",String.class));
-            volume.setMountpoint(jsonPath.value("/Volumes["+i+"]/Mountpoint",String.class));
-            volume.setScope(jsonPath.value("/Volumes["+i+"]/Scope",String.class));
-            Map<String,Object> labelsNode = jsonPath.value("/Volumes["+i+"]/Labels",Map.class);
-            if(labelsNode!=null) {
+            volume.setName(jsonPath.value("/Volumes[" + i + "]/Name", String.class));
+            volume.setDriver(jsonPath.value("/Volumes[" + i + "]/Driver", String.class));
+            volume.setMountpoint(jsonPath.value("/Volumes[" + i + "]/Mountpoint", String.class));
+            volume.setScope(jsonPath.value("/Volumes[" + i + "]/Scope", String.class));
+            Map<String, Object> labelsNode = jsonPath.value("/Volumes[" + i + "]/Labels", Map.class);
+            if (labelsNode != null) {
                 volume.getLabels().putAll(labelsNode);
             }
             volumes.add(volume);

@@ -9,13 +9,12 @@ import java.util.List;
 
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class ContainerChangeTest {
 
@@ -55,7 +54,7 @@ public class ContainerChangeTest {
             "]";
 
     public static void main(String[] args) throws ParseException, ReflectiveOperationException {
-        List<ChangeItem> lists =  ContainerChange.load(tmp);
+        List<ChangeItem> lists = ContainerChange.load(tmp);
 
         Logger.simple("adfadf");
     }

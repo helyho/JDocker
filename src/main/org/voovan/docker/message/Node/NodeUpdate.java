@@ -7,24 +7,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class NodeUpdate {
     private String availability;
     private String name;
     private String role;
-    private Map<String,Object> labels;
+    private Map<String, Object> labels;
 
     public NodeUpdate() {
-        labels = new HashMap<String,Object>();
-        availability= "active";
-        role= "manager";
+        labels = new HashMap<String, Object>();
+        availability = "active";
+        role = "manager";
     }
 
     public String getAvailability() {

@@ -10,13 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class NetworkInfo extends NetworkCreate {
     private String id;
@@ -66,21 +65,21 @@ public class NetworkInfo extends NetworkCreate {
         List<NetworkInfo> networkInfos = new ArrayList<NetworkInfo>();
         for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
             NetworkInfo networkInfo = new NetworkInfo();
-            networkInfo.setId(jsonPath.value("/["+i+"]/Id",String.class));
-            networkInfo.setName(jsonPath.value("/["+i+"]/Name",String.class));
-            networkInfo.setScope(jsonPath.value("/["+i+"]/Scope",String.class));
-            networkInfo.setDriver(jsonPath.value("/["+i+"]/Driver",String.class));
-            networkInfo.setEnableIPv6(jsonPath.value("/["+i+"]/EnableIPv6",boolean.class));
-            networkInfo.setInternal(jsonPath.value("/["+i+"]/Internal",boolean.class));
+            networkInfo.setId(jsonPath.value("/[" + i + "]/Id", String.class));
+            networkInfo.setName(jsonPath.value("/[" + i + "]/Name", String.class));
+            networkInfo.setScope(jsonPath.value("/[" + i + "]/Scope", String.class));
+            networkInfo.setDriver(jsonPath.value("/[" + i + "]/Driver", String.class));
+            networkInfo.setEnableIPv6(jsonPath.value("/[" + i + "]/EnableIPv6", boolean.class));
+            networkInfo.setInternal(jsonPath.value("/[" + i + "]/Internal", boolean.class));
 
-            networkInfo.getIpam().setDriver(jsonPath.value("/["+i+"]/IPAM/Driver",String.class));
-            Map optionsNode = jsonPath.value("/["+i+"]/IPAM/Options",Map.class);
-            if(optionsNode!=null) {
+            networkInfo.getIpam().setDriver(jsonPath.value("/[" + i + "]/IPAM/Driver", String.class));
+            Map optionsNode = jsonPath.value("/[" + i + "]/IPAM/Options", Map.class);
+            if (optionsNode != null) {
                 networkInfo.getIpam().getOptions().putAll(optionsNode);
             }
-            networkInfo.getIpam().getConfig().addAll(jsonPath.listObject("/["+i+"]/IPAM/Config",IPAMConfig.class));
-            List<Container> containersNode = jsonPath.mapToListObject("/["+i+"]/Containers","containerId",Container.class);
-            if(containersNode!=null) {
+            networkInfo.getIpam().getConfig().addAll(jsonPath.listObject("/[" + i + "]/IPAM/Config", IPAMConfig.class));
+            List<Container> containersNode = jsonPath.mapToListObject("/[" + i + "]/Containers", "containerId", Container.class);
+            if (containersNode != null) {
                 networkInfo.getContainers().addAll(containersNode);
             }
             networkInfos.add(networkInfo);

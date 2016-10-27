@@ -8,13 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class HostConfig {
     private int blkioWeight;
@@ -32,14 +31,14 @@ public class HostConfig {
     private List<String> binds;
     private List<String> links;
     private List<Device> devices;
-    private Map<String,List<Map<String,String>>> portBindings;
+    private Map<String, List<Map<String, String>>> portBindings;
 
-    public HostConfig(){
+    public HostConfig() {
         dns = new ArrayList<String>();
         binds = new ArrayList<String>();
         links = new ArrayList<String>();
         devices = new ArrayList<Device>();
-        portBindings = new HashMap<String,List<Map<String,String>>>();
+        portBindings = new HashMap<String, List<Map<String, String>>>();
     }
 
     public int getBlkioWeight() {
@@ -162,11 +161,11 @@ public class HostConfig {
         this.devices = devices;
     }
 
-    public Map<String,List<Map<String,String>>>getPortBindings() {
+    public Map<String, List<Map<String, String>>> getPortBindings() {
         return portBindings;
     }
 
-    public void setPortBindings(Map<String,List<Map<String,String>>> portBindings) {
+    public void setPortBindings(Map<String, List<Map<String, String>>> portBindings) {
         this.portBindings = portBindings;
     }
 }

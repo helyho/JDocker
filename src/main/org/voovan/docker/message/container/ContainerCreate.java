@@ -11,18 +11,17 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite = https =//github.com/helyho/DockerFly
- *         Licence = Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class ContainerCreate {
     private String image;
     private List<String> cmd;
-    private Map<String,Object>labels;
+    private Map<String, Object> labels;
     private boolean attachStdin;
     private boolean attachStdout;
     private boolean attachStderr;
@@ -30,7 +29,7 @@ public class ContainerCreate {
     private boolean openStdin;
     private boolean stdinOnce;
     private List<String> env;
-    private Map<String,Map<String,String>> exposedPorts;
+    private Map<String, Map<String, String>> exposedPorts;
     private HostConfig hostConfig;
 
     public ContainerCreate() {
@@ -42,8 +41,8 @@ public class ContainerCreate {
         stdinOnce = false;
         cmd = new ArrayList<String>();
         env = new ArrayList<String>();
-        labels = new HashMap<String,Object>();
-        exposedPorts = new HashMap<String,Map<String,String>>();
+        labels = new HashMap<String, Object>();
+        exposedPorts = new HashMap<String, Map<String, String>>();
         hostConfig = new HostConfig();
     }
 
@@ -145,30 +144,31 @@ public class ContainerCreate {
 
     /**
      * 增加端口绑定
-     * @param containerPort  容器端口
-     * @param protocol       协议
-     * @param hostPortStrs      主机端口 127.0.0.1:3000
+     *
+     * @param containerPort 容器端口
+     * @param protocol      协议
+     * @param hostPortStrs  主机端口 127.0.0.1:3000
      */
-    public void addPortBind(int containerPort,String protocol,String ... hostPortStrs){
-        String containerPortAndProtcol = containerPort+"/"+protocol;
+    public void addPortBind(int containerPort, String protocol, String... hostPortStrs) {
+        String containerPortAndProtcol = containerPort + "/" + protocol;
 
-        exposedPorts.put(containerPortAndProtcol,new HashMap<String,String>());
-        List<Map<String,String>> hostPortList = new ArrayList<Map<String,String>>();
+        exposedPorts.put(containerPortAndProtcol, new HashMap<String, String>());
+        List<Map<String, String>> hostPortList = new ArrayList<Map<String, String>>();
 
-        for(String hostPortStr : hostPortStrs) {
+        for (String hostPortStr : hostPortStrs) {
             String[] hostPortArr = hostPortStr.split(":");
             String hostIP = "0.0.0.0";
             String hostPort = null;
-            if(hostPortArr.length==2){
+            if (hostPortArr.length == 2) {
                 hostIP = hostPortArr[0];
                 hostPort = hostPortArr[1];
-            }else{
+            } else {
                 hostPort = hostPortStr;
             }
 
-            Map<String,String> hostPortMaps = new HashMap<String,String>();
-            hostPortMaps.put("HostIp",hostIP);
-            hostPortMaps.put("HostPort",hostPort);
+            Map<String, String> hostPortMaps = new HashMap<String, String>();
+            hostPortMaps.put("HostIp", hostIP);
+            hostPortMaps.put("HostPort", hostPort);
             hostPortList.add(hostPortMaps);
         }
 
@@ -182,7 +182,7 @@ public class ContainerCreate {
         containerCreate.setImage("alpine");
 
         //指令
-        containerCreate.cmd.addAll(TObject.newList("ping","www.baidu.com"));
+        containerCreate.cmd.addAll(TObject.newList("ping", "www.baidu.com"));
 
         //环境变量
         containerCreate.env.add("test=helyho");
@@ -201,7 +201,7 @@ public class ContainerCreate {
         containerCreate.getHostConfig().getLinks().add("test1:test1");
 
         //端口映射
-        containerCreate.addPortBind(5000,"tcp","127.0.0.1:8500","52001");
+        containerCreate.addPortBind(5000, "tcp", "127.0.0.1:8500", "52001");
 
         Logger.simple(JSON.formatJson(JSON.toJSON(containerCreate)));
     }

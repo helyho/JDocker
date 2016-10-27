@@ -5,13 +5,12 @@ import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class SwarmInit {
     private String listenAddr;
@@ -19,7 +18,7 @@ public class SwarmInit {
     private boolean forceNewCluster;
     private Spec spec;
 
-    public SwarmInit(){
+    public SwarmInit() {
         listenAddr = "0.0.0.0:2377";
         forceNewCluster = false;
         spec = new Spec();

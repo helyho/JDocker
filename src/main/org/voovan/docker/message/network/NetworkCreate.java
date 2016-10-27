@@ -8,23 +8,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class NetworkCreate {
     private String name;
     private String driver;
     private boolean enableIPv6;
     private IPAM ipam;
-    private Map<String,Object> labels;
+    private Map<String, Object> labels;
 
     public NetworkCreate() {
-        labels = new HashMap<String,Object>();
+        labels = new HashMap<String, Object>();
         ipam = new IPAM();
         enableIPv6 = false;
     }
@@ -73,7 +72,7 @@ public class NetworkCreate {
         NetworkCreate networkCreate = new NetworkCreate();
         networkCreate.setName("prog_test");
         networkCreate.setDriver("bridge");
-        networkCreate.getLabels().put("test","dafdasdf");
+        networkCreate.getLabels().put("test", "dafdasdf");
 
         Logger.simple(JSON.formatJson(JSON.toJSON(networkCreate)));
     }

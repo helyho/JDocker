@@ -6,22 +6,21 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class IPAM {
     private String driver;
-    private Map<String,Object> options;
+    private Map<String, Object> options;
     private List<IPAMConfig> config;
 
     public IPAM() {
         driver = "default";
-        options = new HashMap<String,Object>();
+        options = new HashMap<String, Object>();
         config = new ArrayList<IPAMConfig>();
     }
 

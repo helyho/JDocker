@@ -6,13 +6,12 @@ import java.text.ParseException;
 import java.util.*;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class ImageInfo {
     private String id;
@@ -22,10 +21,10 @@ public class ImageInfo {
     private long created;
     private long Size;
     private long virtualSize;
-    private Map<String,Object> labels;
+    private Map<String, Object> labels;
 
     public ImageInfo() {
-        labels = new HashMap<String,Object>();
+        labels = new HashMap<String, Object>();
     }
 
     public String getId() {
@@ -61,7 +60,7 @@ public class ImageInfo {
     }
 
     public Date getCreated() {
-        return new Date(created*1000);
+        return new Date(created * 1000);
     }
 
     public void setCreated(long created) {
@@ -97,16 +96,16 @@ public class ImageInfo {
         List<ImageInfo> imageInfos = new ArrayList<ImageInfo>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        for(int i=0;i<jsonPath.value("/",List.class).size();i++){
+        for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
             ImageInfo imageInfo = new ImageInfo();
-            imageInfo.setId(jsonPath.value("/["+i+"]/Id",String.class));
-            imageInfo.setParentId(jsonPath.value("/["+i+"]/ParentId",String.class));
-            imageInfo.setRepoTags(jsonPath.value("/["+i+"]/RepoTags",List.class));
-            imageInfo.setRepoDigests(jsonPath.value("/["+i+"]/RepoDigests",List.class));
-            imageInfo.setCreated(jsonPath.value("/["+i+"]/Created",int.class));
-            imageInfo.setSize(jsonPath.value("/["+i+"]/Size",int.class));
-            imageInfo.setVirtualSize(jsonPath.value("/["+i+"]/VirtualSize",int.class));
-            imageInfo.setLabels(jsonPath.value("/["+i+"]/Labels",Map.class));
+            imageInfo.setId(jsonPath.value("/[" + i + "]/Id", String.class));
+            imageInfo.setParentId(jsonPath.value("/[" + i + "]/ParentId", String.class));
+            imageInfo.setRepoTags(jsonPath.value("/[" + i + "]/RepoTags", List.class));
+            imageInfo.setRepoDigests(jsonPath.value("/[" + i + "]/RepoDigests", List.class));
+            imageInfo.setCreated(jsonPath.value("/[" + i + "]/Created", int.class));
+            imageInfo.setSize(jsonPath.value("/[" + i + "]/Size", int.class));
+            imageInfo.setVirtualSize(jsonPath.value("/[" + i + "]/VirtualSize", int.class));
+            imageInfo.setLabels(jsonPath.value("/[" + i + "]/Labels", Map.class));
             imageInfos.add(imageInfo);
         }
 

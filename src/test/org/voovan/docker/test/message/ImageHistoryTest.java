@@ -9,16 +9,15 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class ImageHistoryTest {
-    public static String tmp="[\n" +
+    public static String tmp = "[\n" +
             "  {\n" +
             "    \"Id\": \"sha256:561f511a30a8b5e94574c9005cc1a6fb91e773e7c28987c3a7e47fbad647a839\",\n" +
             "    \"Created\": 1476870324,\n" +
@@ -73,7 +72,7 @@ public class ImageHistoryTest {
 
     public static void main(String[] args) throws ParseException, ReflectiveOperationException {
         List<ImageHistory> imageHistories = ImageHistory.load(tmp);
-        Date d = new  Date(1476870324*1000L);
-        Logger.simple("--------------"+ TDateTime.format(d, TDateTime.STANDER_DATETIME_TEMPLATE));
+        Date d = new Date(1476870324 * 1000L);
+        Logger.simple("--------------" + TDateTime.format(d, TDateTime.STANDER_DATETIME_TEMPLATE));
     }
 }

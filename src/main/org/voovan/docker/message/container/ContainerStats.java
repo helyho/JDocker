@@ -8,13 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class ContainerStats {
     private long cpuTotal;
@@ -38,7 +37,7 @@ public class ContainerStats {
     private long netTxErros;
     private long netTxDrops;
 
-    public ContainerStats(){
+    public ContainerStats() {
         perCpuUsage = new ArrayList<Long>();
     }
 
@@ -208,15 +207,15 @@ public class ContainerStats {
         containerStats.setCpuTotal(new Long(jsonPath.value("/cpu_stats/system_cpu_usage").toString()));
         containerStats.setCpuUsage(new Long(jsonPath.value("/cpu_stats/cpu_usage/total_usage").toString()));
 
-        List<Object> perCpuInfos = jsonPath.value("/cpu_stats/cpu_usage/percpu_usage",List.class);
-        for(Object perCpuInfo : perCpuInfos){
+        List<Object> perCpuInfos = jsonPath.value("/cpu_stats/cpu_usage/percpu_usage", List.class);
+        for (Object perCpuInfo : perCpuInfos) {
             containerStats.perCpuUsage.add(new Long(perCpuInfo.toString()));
         }
 
         containerStats.setMemoryUsage(new Long(jsonPath.value("/memory_stats/usage").toString()));
         containerStats.setMemoryMasUsage(new Long(jsonPath.value("/memory_stats/max_usage").toString()));
         containerStats.setMemoryMasLimit(new Long(jsonPath.value("/memory_stats/limit").toString()));
-        containerStats.setMemoryFailCnt(jsonPath.value("/memory_stats/failcnt",int.class));
+        containerStats.setMemoryFailCnt(jsonPath.value("/memory_stats/failcnt", int.class));
 
 
         containerStats.setNetRxBytes(new Long(jsonPath.value("/networks/eth0/rx_bytes").toString()));
@@ -229,25 +228,25 @@ public class ContainerStats {
         containerStats.setNetTxErros(new Long(jsonPath.value("/networks/eth0/tx_errors").toString()));
         containerStats.setNetTxDrops(new Long(jsonPath.value("/networks/eth0/tx_dropped").toString()));
 
-        List<Map<String,Object>> ioInfos = jsonPath.value("/blkio_stats/io_service_bytes_recursive",List.class);
-        for(Map<String,Object> ioInfo : ioInfos){
-            if(ioInfo.get("op").equals("Read")){
+        List<Map<String, Object>> ioInfos = jsonPath.value("/blkio_stats/io_service_bytes_recursive", List.class);
+        for (Map<String, Object> ioInfo : ioInfos) {
+            if (ioInfo.get("op").equals("Read")) {
                 containerStats.setIoRead(new Long(ioInfo.get("value").toString()));
             }
 
-            if(ioInfo.get("op").equals("Write")){
+            if (ioInfo.get("op").equals("Write")) {
 
                 containerStats.setIoWrite(new Long(ioInfo.get("value").toString()));
             }
-            if(ioInfo.get("op").equals("Sync")){
+            if (ioInfo.get("op").equals("Sync")) {
 
                 containerStats.setIoSync(new Long(ioInfo.get("value").toString()));
             }
-            if(ioInfo.get("op").equals("Async")){
+            if (ioInfo.get("op").equals("Async")) {
 
                 containerStats.setIoAsync(new Long(ioInfo.get("value").toString()));
             }
-            if(ioInfo.get("op").equals("Total")){
+            if (ioInfo.get("op").equals("Total")) {
 
                 containerStats.setIoTotal(new Long(ioInfo.get("value").toString()));
             }

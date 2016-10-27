@@ -10,13 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class ServiceSpec {
     private String name;
@@ -25,15 +24,15 @@ public class ServiceSpec {
     private UpdateConfig updateConfig;
     private List<Network> networks;
     private Endpoint endpointSpec;
-    private Map<String,Object> labels;
+    private Map<String, Object> labels;
 
-    public ServiceSpec(){
+    public ServiceSpec() {
         taskTemplate = new TaskTemplate();
         mode = new Mode();
         updateConfig = new UpdateConfig();
         endpointSpec = new Endpoint();
         networks = new ArrayList<Network>();
-        labels = new HashMap<String,Object>();
+        labels = new HashMap<String, Object>();
     }
 
     public String getName() {

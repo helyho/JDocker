@@ -7,13 +7,12 @@ import java.text.ParseException;
 import java.util.List;
 
 /**
- * 类文字命名
  *
  * @author helyho
- *         <p>
- *         DockerFly Framework.
- *         WebSite: https://github.com/helyho/DockerFly
- *         Licence: Apache v2 License
+ * <p>
+ * DockerFly Framework.
+ * WebSite: https://git.oschina.net/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class ImageInfoTest {
 
@@ -47,8 +46,8 @@ public class ImageInfoTest {
     public static void main(String[] args) throws ParseException, ReflectiveOperationException {
         List<ImageInfo> infos = ImageInfo.load(tmp);
 
-        Logger.simple("CreateDate:"+infos.get(0).getCreated());
-        Logger.simple("Size:"+infos.get(0).getSize());
-        Logger.simple("VirtualSize:"+infos.get(0).getVirtualSize());
+        Logger.simple("CreateDate:" + infos.get(0).getCreated());
+        Logger.simple("Size:" + infos.get(0).getSize());
+        Logger.simple("VirtualSize:" + infos.get(0).getVirtualSize());
     }
 }
