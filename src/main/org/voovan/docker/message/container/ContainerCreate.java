@@ -152,9 +152,12 @@ public class ContainerCreate {
     public void addPortBind(int containerPort, String protocol, String... hostPortStrs) {
         String containerPortAndProtcol = containerPort + "/" + protocol;
 
+        //端口绑定需要设置两个节点,并且要对应
+        //1.设置 ExposedPorts 节点
         exposedPorts.put(containerPortAndProtcol, new HashMap<String, String>());
-        List<Map<String, String>> hostPortList = new ArrayList<Map<String, String>>();
 
+        //2.设置HostConfig.PortBindings 节点
+        List<Map<String, String>> hostPortList = new ArrayList<Map<String, String>>();
         for (String hostPortStr : hostPortStrs) {
             String[] hostPortArr = hostPortStr.split(":");
             String hostIP = "0.0.0.0";

@@ -1,4 +1,4 @@
-package org.voovan.docker.client.comm;
+package org.voovan.docker.client.network;
 
 import org.voovan.http.message.Response;
 
@@ -12,10 +12,12 @@ import org.voovan.http.message.Response;
  */
 public class Result {
     private int status;
+    private String statusCode;
     private String message;
 
-    public Result(int status, String message) {
+    public Result(int status, String statusCode, String message) {
         this.status = status;
+        this.statusCode = statusCode;
         this.message = message;
     }
 
@@ -27,6 +29,14 @@ public class Result {
         this.status = status;
     }
 
+    public String getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(String statusCode) {
+        this.statusCode = statusCode;
+    }
+
     public String getMessage() {
         return message;
     }
@@ -36,6 +46,7 @@ public class Result {
     }
 
     public static Result newInstance(Response response) {
-        return new Result(response.protocol().getStatus(), response.body().getBodyString());
+        return new Result(response.protocol().getStatus(), response.protocol().getStatusCode(), response.body().getBodyString());
     }
+
 }

@@ -1,17 +1,15 @@
-package org.voovan.docker.client.comm;
+package org.voovan.docker.client.network;
 
-import org.voovan.docker.message.Volume.Volume;
 import org.voovan.http.client.HttpClient;
 import org.voovan.http.message.Response;
 import org.voovan.network.exception.ReadMessageException;
 import org.voovan.network.exception.SendMessageException;
 import org.voovan.tools.json.JSON;
-import org.voovan.tools.log.Logger;
 
 import java.util.Map;
 
 /**
- *
+ * Docker Http客户端访问工具类
  * @author helyho
  * <p>
  * DockerFly Framework.
@@ -43,6 +41,16 @@ public class DockerHttpClient {
         return post(url, queryString, data);
     }
 
+    public Result post(String url, Map<String, Object> queryParams, Object data) throws SendMessageException, ReadMessageException {
+        String queryString = HttpClient.buildQueryString(queryParams, charset);
+        if(data.getClass().getName().startsWith("java")){
+            return post(url, queryString, data.toString());
+        }else{
+            return post(url, queryString, JSON.toJSON(data));
+        }
+
+    }
+
     public Result get(String url, String queryString) throws SendMessageException, ReadMessageException {
         if (queryString != null && !queryString.isEmpty()) {
             url = url + "?" + queryString;
@@ -72,19 +80,6 @@ public class DockerHttpClient {
     }
 
     public void close() {
-        httpClient.close();
-    }
-
-    public static void main(String[] args) throws SendMessageException, ReadMessageException {
-        DockerHttpClient httpClient = new DockerHttpClient("http://127.0.0.1:2735", "UTF-8", 500);
-        Logger.info(httpClient.get("/images/json", "all=0").getMessage());
-        Logger.info(httpClient.get("/images/dockerfly/history", "").getMessage());
-        Logger.info(httpClient.delete("/containers/sleepy_austin", "").getMessage());
-
-        Volume volume = new Volume();
-        volume.setDriver("local");
-        volume.setName("v_tx");
-        Logger.info(httpClient.post("/volumes/create", "", JSON.toJSON(volume)).getMessage());
         httpClient.close();
     }
 
