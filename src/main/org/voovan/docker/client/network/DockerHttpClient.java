@@ -8,6 +8,8 @@ import org.voovan.network.exception.SendMessageException;
 import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
 
+import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.Map;
 
 /**
@@ -26,9 +28,21 @@ public class DockerHttpClient {
     public DockerHttpClient(String rootURL, String charset, int timeOut) {
         this.charset = charset;
         httpClient = new HttpClient(rootURL, charset, timeOut);
+        httpClient.getHeader().remove("Connection");
         if(Global.DEBUG){
             Logger.simple("[DEBUG INFO] RootURL: "+rootURL+", Charset: "+charset+", TimeOut: "+timeOut);
         }
+    }
+
+    public void beginLoadStream(){
+        httpClient.beginLoadStream();
+    }
+
+    public ByteBuffer loadSteam( ) throws IOException {
+        return httpClient.loadStream();
+    }
+    public void endLoadStream(){
+        httpClient.endLoadStream();
     }
 
 
@@ -44,6 +58,7 @@ public class DockerHttpClient {
         } catch (SendMessageException|ReadMessageException e) {
             httpClient.close();
         }
+
         return Result.newInstance(response);
     }
 

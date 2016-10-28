@@ -5,6 +5,7 @@ import org.voovan.docker.client.network.DockerHttpClient;
 import org.voovan.network.exception.ReadMessageException;
 import org.voovan.network.exception.SendMessageException;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,6 +43,19 @@ public abstract class Cmd {
 
     public void close(){
         dockerHttpClient.close();
+    }
+
+
+    public void beginLoadStream(){
+        getDockerHttpClient().beginLoadStream();
+    }
+
+    public byte[] loadStream() throws IOException {
+        return getDockerHttpClient().loadSteam().array();
+    }
+
+    public void endLoadStream(){
+        getDockerHttpClient().endLoadStream();
     }
 
     public abstract  <T> T send() throws Exception;
