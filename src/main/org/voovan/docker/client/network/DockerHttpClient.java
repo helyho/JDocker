@@ -1,10 +1,12 @@
 package org.voovan.docker.client.network;
 
+import org.voovan.docker.client.Global;
 import org.voovan.http.client.HttpClient;
 import org.voovan.http.message.Response;
 import org.voovan.network.exception.ReadMessageException;
 import org.voovan.network.exception.SendMessageException;
 import org.voovan.tools.json.JSON;
+import org.voovan.tools.log.Logger;
 
 import java.util.Map;
 
@@ -24,6 +26,9 @@ public class DockerHttpClient {
     public DockerHttpClient(String rootURL, String charset, int timeOut) {
         this.charset = charset;
         httpClient = new HttpClient(rootURL, charset, timeOut);
+        if(Global.DEBUG){
+            Logger.simple("[DEBUG INFO] RootURL: "+rootURL+", Charset: "+charset+", TimeOut: "+timeOut);
+        }
     }
 
 
@@ -34,6 +39,7 @@ public class DockerHttpClient {
         httpClient.getHeader().put("Content-Type", "application/json");
         Response response = null;
         try {
+            Logger.simple("[DEBUG INFO] SubURL: "+url+", Method:POST, Data: "+data);
             response = httpClient.setMethod("POST").setData(data).send(url);
         } catch (SendMessageException|ReadMessageException e) {
             httpClient.close();
@@ -63,6 +69,7 @@ public class DockerHttpClient {
         httpClient.getHeader().put("Content-Type", "application/json");
         Response response = null;
         try {
+            Logger.simple("[DEBUG INFO] SubURL: "+url+", Method: GET");
             response = httpClient.setMethod("GET").send(url);
         } catch (SendMessageException|ReadMessageException e) {
             httpClient.close();
@@ -82,6 +89,7 @@ public class DockerHttpClient {
         httpClient.getHeader().put("Content-Type", "application/json");
         Response response = null;
         try {
+            Logger.simple("[DEBUG INFO] SubURL: "+url+", Method: DELETE");
             response = httpClient.setMethod("DELETE").send(url);
         } catch (SendMessageException|ReadMessageException e) {
             httpClient.close();
@@ -91,7 +99,7 @@ public class DockerHttpClient {
 
     public Result delete(String url, Map<String, Object> queryParams)  {
         String queryString = HttpClient.buildQueryString(queryParams, charset);
-        return get(url, queryString);
+        return delete(url, queryString);
     }
 
     public void close() {

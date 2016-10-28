@@ -1,12 +1,9 @@
-package org.voovan.docker.client.Command.Contianer;
+package org.voovan.docker.client.Command.Container;
 
 import org.voovan.docker.client.Command.Cmd;
+import org.voovan.docker.client.network.DockerClientException;
 import org.voovan.docker.client.network.Result;
-import org.voovan.docker.message.container.ContainerCreate;
 import org.voovan.docker.message.container.atom.ContainerUpdate;
-import org.voovan.docker.message.container.atom.Device;
-
-import java.util.Arrays;
 
 /**
  * 类文字命名
@@ -19,11 +16,11 @@ import java.util.Arrays;
  */
 public class CmdContainerUpdate extends Cmd{
     private ContainerUpdate containerUpdate;
-    private String nameOrID;
+    private String nameOrId;
 
-    public CmdContainerUpdate(String nameOrID) {
+    public CmdContainerUpdate(String nameOrId) {
         super();
-        this.nameOrID = nameOrID;
+        this.nameOrId = nameOrId;
         containerUpdate = new ContainerUpdate();
     }
 
@@ -43,13 +40,18 @@ public class CmdContainerUpdate extends Cmd{
         return this;
     }
 
-    public static CmdContainerUpdate newInstance(String nameOrID){
-        return new CmdContainerUpdate(nameOrID);
+    public static CmdContainerUpdate newInstance(String nameOrId){
+        return new CmdContainerUpdate(nameOrId);
     }
 
     @Override
     public Result send() throws Exception {
-        return getDockerHttpClient().post("/containers/"+nameOrID+"/update", getParameters(), containerUpdate);
+        Result result = getDockerHttpClient().post("/containers/"+nameOrId+"/update", getParameters(), containerUpdate);
+        if(result.getStatus()>=300){
+            throw new DockerClientException(result);
+        }else{
+            return result;
+        }
     }
 
 }

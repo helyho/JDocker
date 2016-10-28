@@ -1,11 +1,10 @@
-package org.voovan.docker.client.Command.Contianer;
+package org.voovan.docker.client.Command.Container;
 
 import org.voovan.docker.client.Command.Cmd;
+import org.voovan.docker.client.network.DockerClientException;
 import org.voovan.docker.client.network.Result;
 import org.voovan.docker.message.container.ContainerCreate;
 import org.voovan.docker.message.container.atom.Device;
-import org.voovan.network.exception.ReadMessageException;
-import org.voovan.network.exception.SendMessageException;
 
 import java.util.Arrays;
 
@@ -101,7 +100,12 @@ public class CmdContainerCreate extends Cmd{
 
     @Override
     public Result send() throws Exception {
-        return getDockerHttpClient().post("/containers/create", getParameters(), containerCreate);
+        Result result = getDockerHttpClient().post("/containers/create", getParameters(), containerCreate);
+        if(result.getStatus()>=300){
+            throw new DockerClientException(result);
+        }else{
+            return result;
+        }
     }
 
 }

@@ -51,7 +51,7 @@ public class Result {
 
     @Override
     public String toString(){
-        return "Status:"+getStatus() + ", StatusCode:" + getStatusCode() + ", Message:" + getMessage();
+        return "[Status: "+getStatus() + ", StatusCode: " + getStatusCode() + ", Message: " + getMessage()+"]";
     }
 
 }

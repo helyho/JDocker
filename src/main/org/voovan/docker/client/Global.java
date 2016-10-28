@@ -15,5 +15,6 @@ public class Global {
     public static int DOCKER_REST_PORT = 2735;
     public static String DOCKER_REST_CHARSET = "UTF-8";
     public static int DOCKER_REST_TIMEOUT = 5;
+    public static boolean DEBUG = false;
 
 }
