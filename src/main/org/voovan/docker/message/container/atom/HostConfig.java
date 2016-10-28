@@ -16,15 +16,15 @@ import java.util.Map;
  * Licence: Apache v2 License
  */
 public class HostConfig {
-    private int blkioWeight;
-    private int cpuShares;
-    private int cpuPeriod;
-    private int cpuQuota;
+    private Integer blkioWeight;
+    private Integer cpuShares;
+    private Integer cpuPeriod;
+    private Integer cpuQuota;
     private String cpusetCpus;
-    private long memory;
-    private int memorySwap;
-    private int memoryReservation;
-    private int kernelMemory;
+    private Long memory;
+    private Integer memorySwap;
+    private Integer memoryReservation;
+    private Integer kernelMemory;
     private RestartPolicy restartPolicy;
     private String networkMode;
     private List<String> dns;
@@ -42,35 +42,35 @@ public class HostConfig {
         portBindings = new HashMap<String, List<Map<String, String>>>();
     }
 
-    public int getBlkioWeight() {
+    public Integer getBlkioWeight() {
         return blkioWeight;
     }
 
-    public void setBlkioWeight(int blkioWeight) {
+    public void setBlkioWeight(Integer blkioWeight) {
         this.blkioWeight = blkioWeight;
     }
 
-    public int getCpuShares() {
+    public Integer getCpuShares() {
         return cpuShares;
     }
 
-    public void setCpuShares(int cpuShares) {
+    public void setCpuShares(Integer cpuShares) {
         this.cpuShares = cpuShares;
     }
 
-    public int getCpuPeriod() {
+    public Integer getCpuPeriod() {
         return cpuPeriod;
     }
 
-    public void setCpuPeriod(int cpuPeriod) {
+    public void setCpuPeriod(Integer cpuPeriod) {
         this.cpuPeriod = cpuPeriod;
     }
 
-    public int getCpuQuota() {
+    public Integer getCpuQuota() {
         return cpuQuota;
     }
 
-    public void setCpuQuota(int cpuQuota) {
+    public void setCpuQuota(Integer cpuQuota) {
         this.cpuQuota = cpuQuota;
     }
 
@@ -82,35 +82,35 @@ public class HostConfig {
         this.cpusetCpus = cpusetCpus;
     }
 
-    public long getMemory() {
+    public Long getMemory() {
         return memory;
     }
 
-    public void setMemory(long memory) {
+    public void setMemory(Long memory) {
         this.memory = memory;
     }
 
-    public int getMemorySwap() {
+    public Integer getMemorySwap() {
         return memorySwap;
     }
 
-    public void setMemorySwap(int memorySwap) {
+    public void setMemorySwap(Integer memorySwap) {
         this.memorySwap = memorySwap;
     }
 
-    public int getMemoryReservation() {
+    public Integer getMemoryReservation() {
         return memoryReservation;
     }
 
-    public void setMemoryReservation(int memoryReservation) {
+    public void setMemoryReservation(Integer memoryReservation) {
         this.memoryReservation = memoryReservation;
     }
 
-    public int getKernelMemory() {
+    public Integer getKernelMemory() {
         return kernelMemory;
     }
 
-    public void setKernelMemory(int kernelMemory) {
+    public void setKernelMemory(Integer kernelMemory) {
         this.kernelMemory = kernelMemory;
     }
 

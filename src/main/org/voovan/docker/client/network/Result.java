@@ -49,4 +49,9 @@ public class Result {
         return new Result(response.protocol().getStatus(), response.protocol().getStatusCode(), response.body().getBodyString());
     }
 
+    @Override
+    public String toString(){
+        return "Status:"+getStatus() + ", StatusCode:" + getStatusCode() + ", Message:" + getMessage();
+    }
+
 }

@@ -27,54 +27,69 @@ public class DockerHttpClient {
     }
 
 
-    public Result post(String url, String queryString, String data) throws SendMessageException, ReadMessageException {
+    public Result post(String url, String queryString, String data)  {
         if (queryString != null && !queryString.isEmpty()) {
             url = url + "?" + queryString;
         }
         httpClient.getHeader().put("Content-Type", "application/json");
-        Response response = httpClient.setMethod("POST").setData(data).send(url);
+        Response response = null;
+        try {
+            response = httpClient.setMethod("POST").setData(data).send(url);
+        } catch (SendMessageException|ReadMessageException e) {
+            httpClient.close();
+        }
         return Result.newInstance(response);
     }
 
-    public Result post(String url, Map<String, Object> queryParams, String data) throws SendMessageException, ReadMessageException {
+    public Result post(String url, Map<String, Object> queryParams, String data)  {
         String queryString = HttpClient.buildQueryString(queryParams, charset);
         return post(url, queryString, data);
     }
 
-    public Result post(String url, Map<String, Object> queryParams, Object data) throws SendMessageException, ReadMessageException {
+    public Result post(String url, Map<String, Object> queryParams, Object data)  {
         String queryString = HttpClient.buildQueryString(queryParams, charset);
         if(data.getClass().getName().startsWith("java")){
             return post(url, queryString, data.toString());
         }else{
-            return post(url, queryString, JSON.toJSON(data));
+            return post(url, queryString, JSON.removeNullNode(JSON.toJSON(data)));
         }
 
     }
 
-    public Result get(String url, String queryString) throws SendMessageException, ReadMessageException {
+    public Result get(String url, String queryString)  {
         if (queryString != null && !queryString.isEmpty()) {
             url = url + "?" + queryString;
         }
         httpClient.getHeader().put("Content-Type", "application/json");
-        Response response = httpClient.setMethod("GET").send(url);
+        Response response = null;
+        try {
+            response = httpClient.setMethod("GET").send(url);
+        } catch (SendMessageException|ReadMessageException e) {
+            httpClient.close();
+        }
         return Result.newInstance(response);
     }
 
-    public Result get(String url, Map<String, Object> queryParams) throws SendMessageException, ReadMessageException {
+    public Result get(String url, Map<String, Object> queryParams)  {
         String queryString = HttpClient.buildQueryString(queryParams, charset);
         return get(url, queryString);
     }
 
-    public Result delete(String url, String queryString) throws SendMessageException, ReadMessageException {
+    public Result delete(String url, String queryString)  {
         if (queryString != null && !queryString.isEmpty()) {
             url = url + "?" + queryString;
         }
         httpClient.getHeader().put("Content-Type", "application/json");
-        Response response = httpClient.setMethod("DELETE").send(url);
+        Response response = null;
+        try {
+            response = httpClient.setMethod("DELETE").send(url);
+        } catch (SendMessageException|ReadMessageException e) {
+            httpClient.close();
+        }
         return Result.newInstance(response);
     }
 
-    public Result delete(String url, Map<String, Object> queryParams) throws SendMessageException, ReadMessageException {
+    public Result delete(String url, Map<String, Object> queryParams)  {
         String queryString = HttpClient.buildQueryString(queryParams, charset);
         return get(url, queryString);
     }

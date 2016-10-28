@@ -22,8 +22,9 @@ public abstract class Cmd {
     private Map<String,Object> parameters;
 
     public Cmd() {
-        String rootURL = "network://"+ Global.DOCKER_REST_HOST+":"+Global.DOCKER_REST_PORT;
+        String rootURL = "http://"+ Global.DOCKER_REST_HOST+":"+Global.DOCKER_REST_PORT;
         dockerHttpClient = new DockerHttpClient(rootURL, Global.DOCKER_REST_CHARSET, Global.DOCKER_REST_TIMEOUT);
+
         parameters = new HashMap<String,Object>();
     }
 
@@ -43,6 +44,6 @@ public abstract class Cmd {
         dockerHttpClient.close();
     }
 
-    public abstract  <T> T send() throws SendMessageException, ReadMessageException;
+    public abstract  <T> T send() throws Exception;
 
 }

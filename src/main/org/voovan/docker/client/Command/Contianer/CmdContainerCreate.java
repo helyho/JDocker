@@ -20,15 +20,12 @@ import java.util.Arrays;
  */
 public class CmdContainerCreate extends Cmd{
     private ContainerCreate containerCreate;
+    private String name;
 
-    public CmdContainerCreate() {
+    public CmdContainerCreate(String name) {
         super();
-        containerCreate = new ContainerCreate();
-    }
-
-    public CmdContainerCreate setName(String name) {
         addParameter("name",name);
-        return this;
+        containerCreate = new ContainerCreate();
     }
 
     public CmdContainerCreate image(String image){
@@ -44,7 +41,7 @@ public class CmdContainerCreate extends Cmd{
 
 
     public CmdContainerCreate env(String ... envs){
-        containerCreate.getCmd().addAll(Arrays.asList(envs));
+        containerCreate.getEnv().addAll(Arrays.asList(envs));
         return this;
     }
 
@@ -59,7 +56,7 @@ public class CmdContainerCreate extends Cmd{
     }
 
     public CmdContainerCreate memory(int memory){
-        containerCreate.getHostConfig().setMemory(memory*1024*1024);
+        containerCreate.getHostConfig().setMemory(memory*1024L*1024L);
         return this;
     }
 
@@ -98,8 +95,12 @@ public class CmdContainerCreate extends Cmd{
         return this;
     }
 
+    public static CmdContainerCreate newInstance(String name){
+        return new CmdContainerCreate(name);
+    }
+
     @Override
-    public Result send() throws SendMessageException, ReadMessageException {
+    public Result send() throws Exception {
         return getDockerHttpClient().post("/containers/create", getParameters(), containerCreate);
     }
 

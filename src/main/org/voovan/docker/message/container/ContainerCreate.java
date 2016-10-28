@@ -192,7 +192,7 @@ public class ContainerCreate {
 
         containerCreate.getHostConfig().setCpuQuota(50000);
         containerCreate.getHostConfig().setCpuPeriod(100000);
-        containerCreate.getHostConfig().setMemory(314572800);
+        containerCreate.getHostConfig().setMemory((long) 314572800);
 
         //网络设置
         containerCreate.getHostConfig().setNetworkMode("locbridge");
