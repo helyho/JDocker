@@ -77,12 +77,12 @@ public class ImageHistory {
 
         for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
             ImageHistory imageHistory = new ImageHistory();
-            imageHistory.setId(jsonPath.value("/[" + i + "]/Id", String.class));
-            imageHistory.setCreated(jsonPath.value("/[" + i + "]/Created", int.class));
-            imageHistory.setCreatedBy(jsonPath.value("/[" + i + "]/CreatedBy", String.class));
-            imageHistory.setTags(jsonPath.value("/[" + i + "]/Tags", List.class));
-            imageHistory.setSize(jsonPath.value("/[" + i + "]/Size", int.class));
-            imageHistory.setComment(jsonPath.value("/[" + i + "]/Comment", String.class));
+            imageHistory.setId(jsonPath.value("/[" + i + "]/Id", String.class,""));
+            imageHistory.setCreated(jsonPath.value("/[" + i + "]/Created", int.class, -1));
+            imageHistory.setCreatedBy(jsonPath.value("/[" + i + "]/CreatedBy", String.class, ""));
+            imageHistory.setTags(jsonPath.value("/[" + i + "]/Tags", List.class, new ArrayList<String>()));
+            imageHistory.setSize(jsonPath.value("/[" + i + "]/Size", int.class,-1));
+            imageHistory.setComment(jsonPath.value("/[" + i + "]/Comment", String.class,""));
             imageHistories.add(imageHistory);
         }
 

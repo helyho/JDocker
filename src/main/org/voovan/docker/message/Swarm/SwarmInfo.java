@@ -80,7 +80,7 @@ public class SwarmInfo {
 
     public static SwarmInfo load(String jsonStr) throws ParseException, ReflectiveOperationException {
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
-        SwarmInfo swarmInfo = jsonPath.value("/", SwarmInfo.class);
+        SwarmInfo swarmInfo = jsonPath.value("/", SwarmInfo.class, new SwarmInfo());
         return swarmInfo;
     }
 }

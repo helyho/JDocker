@@ -4,6 +4,7 @@ import org.voovan.docker.message.container.atom.ChangeItem;
 import org.voovan.tools.json.JSONPath;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class ContainerChange {
     public static List<ChangeItem> load(String jsonStr) throws ParseException, ReflectiveOperationException {
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        return jsonPath.listObject("/", ChangeItem.class);
+        return jsonPath.listObject("/", ChangeItem.class, new ArrayList<ChangeItem>());
     }
 
 }

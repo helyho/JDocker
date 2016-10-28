@@ -22,10 +22,10 @@ public class ContainerProcess {
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
         for (int i = 0; i < jsonPath.value("/Processes", List.class).size(); i++) {
             Process process = new Process();
-            process.setPid(jsonPath.value("/Processes[" + i + "][0]", String.class));
-            process.setUser(jsonPath.value("/Processes[" + i + "][1]", String.class));
-            process.setTime(jsonPath.value("/Processes[" + i + "][2]", String.class));
-            process.setCommand(jsonPath.value("/Processes[" + i + "][3]", String.class));
+            process.setPid(jsonPath.value("/Processes[" + i + "][0]", String.class,""));
+            process.setUser(jsonPath.value("/Processes[" + i + "][1]", String.class,""));
+            process.setTime(jsonPath.value("/Processes[" + i + "][2]", String.class,""));
+            process.setCommand(jsonPath.value("/Processes[" + i + "][3]", String.class,""));
             processes.add(process);
         }
         return processes;

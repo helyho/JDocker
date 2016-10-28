@@ -66,7 +66,7 @@ public class HubImageInfo {
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
         List<HubImageInfo> hubImages = new ArrayList<HubImageInfo>();
         for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
-            hubImages.add(jsonPath.value("/[" + i + "]", HubImageInfo.class));
+            hubImages.add(jsonPath.value("/[" + i + "]", HubImageInfo.class,new HubImageInfo()));
         }
 
         return hubImages;

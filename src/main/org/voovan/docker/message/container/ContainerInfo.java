@@ -23,6 +23,7 @@ public class ContainerInfo {
     private String id;
     private List<String> names;
     private String image;
+    private long sizeRootFs;
 
     private String imageID;
     private String command;
@@ -62,6 +63,14 @@ public class ContainerInfo {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public long getSizeRootFs() {
+        return sizeRootFs;
+    }
+
+    public void setSizeRootFs(long sizeRootFs) {
+        this.sizeRootFs = sizeRootFs;
     }
 
     public String getImageID() {
@@ -150,17 +159,18 @@ public class ContainerInfo {
 
         for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
             ContainerInfo containerInfo = new ContainerInfo();
-            containerInfo.setId(jsonPath.value("/[" + i + "]/Id", String.class));
-            containerInfo.setNames(jsonPath.value("/[" + i + "]/Names", List.class));
-            containerInfo.setImage(jsonPath.value("/[" + i + "]/Image", String.class));
-            containerInfo.setImageID(jsonPath.value("/[" + i + "]/ImageID", String.class));
-            containerInfo.setCommand(jsonPath.value("/[" + i + "]/Command", String.class));
+            containerInfo.setId(jsonPath.value("/[" + i + "]/Id", String.class,""));
+            containerInfo.setNames(jsonPath.value("/[" + i + "]/Names", List.class, new ArrayList<String>()));
+            containerInfo.setImage(jsonPath.value("/[" + i + "]/Image", String.class,""));
+            containerInfo.setImageID(jsonPath.value("/[" + i + "]/ImageID", String.class,""));
+            containerInfo.setSizeRootFs(new Long(jsonPath.value("/[" + i + "]/SizeRootFs",String.class,"-1")));
+            containerInfo.setCommand(jsonPath.value("/[" + i + "]/Command", String.class,""));
             containerInfo.setCreated(jsonPath.value("/[" + i + "]/Created", int.class, -1));
-            containerInfo.setPorts(jsonPath.listObject("/[" + i + "]/Ports", Port.class));
-            containerInfo.setState(jsonPath.value("/[" + i + "]/State", String.class));
-            containerInfo.setStatus(jsonPath.value("/[" + i + "]/Status", String.class));
-            containerInfo.setHostConfig(jsonPath.value("/[" + i + "]/HostConfig", Map.class));
-            containerInfo.setMounts(jsonPath.listObject("/[" + i + "]/Mounts", Mount.class));
+            containerInfo.setPorts(jsonPath.listObject("/[" + i + "]/Ports", Port.class, new ArrayList<Port>()));
+            containerInfo.setState(jsonPath.value("/[" + i + "]/State", String.class,""));
+            containerInfo.setStatus(jsonPath.value("/[" + i + "]/Status", String.class,""));
+            containerInfo.setHostConfig(jsonPath.value("/[" + i + "]/HostConfig", Map.class, new HashMap<String,Object>()));
+            containerInfo.setMounts(jsonPath.listObject("/[" + i + "]/Mounts", Mount.class, new ArrayList<Mount>()));
 
 
             containerInfo.setNetworkSettings(jsonPath.mapToListObject("/[" + i + "]/NetworkSettings/Networks", "Name", Network.class));

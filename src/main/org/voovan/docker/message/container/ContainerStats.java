@@ -204,29 +204,29 @@ public class ContainerStats {
     public static ContainerStats load(String jsonStr) throws ParseException, ReflectiveOperationException {
         ContainerStats containerStats = new ContainerStats();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
-        containerStats.setCpuTotal(new Long(jsonPath.value("/cpu_stats/system_cpu_usage").toString()));
-        containerStats.setCpuUsage(new Long(jsonPath.value("/cpu_stats/cpu_usage/total_usage").toString()));
+        containerStats.setCpuTotal(new Long(jsonPath.value("/cpu_stats/system_cpu_usage", "-1").toString()));
+        containerStats.setCpuUsage(new Long(jsonPath.value("/cpu_stats/cpu_usage/total_usage", "-1").toString()));
 
-        List<Object> perCpuInfos = jsonPath.value("/cpu_stats/cpu_usage/percpu_usage", List.class);
+        List<Object> perCpuInfos = jsonPath.value("/cpu_stats/cpu_usage/percpu_usage", List.class,new ArrayList<Object>());
         for (Object perCpuInfo : perCpuInfos) {
             containerStats.perCpuUsage.add(new Long(perCpuInfo.toString()));
         }
 
-        containerStats.setMemoryUsage(new Long(jsonPath.value("/memory_stats/usage").toString()));
-        containerStats.setMemoryMasUsage(new Long(jsonPath.value("/memory_stats/max_usage").toString()));
-        containerStats.setMemoryMasLimit(new Long(jsonPath.value("/memory_stats/limit").toString()));
-        containerStats.setMemoryFailCnt(jsonPath.value("/memory_stats/failcnt", int.class));
+        containerStats.setMemoryUsage(new Long(jsonPath.value("/memory_stats/usage", "-1").toString()));
+        containerStats.setMemoryMasUsage(new Long(jsonPath.value("/memory_stats/max_usage", "-1").toString()));
+        containerStats.setMemoryMasLimit(new Long(jsonPath.value("/memory_stats/limit", "-1").toString()));
+        containerStats.setMemoryFailCnt(jsonPath.value("/memory_stats/failcnt", int.class,-1));
 
 
-        containerStats.setNetRxBytes(new Long(jsonPath.value("/networks/eth0/rx_bytes").toString()));
-        containerStats.setNetRxPackets(new Long(jsonPath.value("/networks/eth0/rx_packets").toString()));
-        containerStats.setNetRxErros(new Long(jsonPath.value("/networks/eth0/rx_errors").toString()));
-        containerStats.setNetRxDrops(new Long(jsonPath.value("/networks/eth0/rx_dropped").toString()));
+        containerStats.setNetRxBytes(new Long(jsonPath.value("/networks/eth0/rx_bytes", "-1").toString()));
+        containerStats.setNetRxPackets(new Long(jsonPath.value("/networks/eth0/rx_packets", "-1").toString()));
+        containerStats.setNetRxErros(new Long(jsonPath.value("/networks/eth0/rx_errors", "-1").toString()));
+        containerStats.setNetRxDrops(new Long(jsonPath.value("/networks/eth0/rx_dropped", "-1").toString()));
 
-        containerStats.setNetTxBytes(new Long(jsonPath.value("/networks/eth0/tx_bytes").toString()));
-        containerStats.setNetTxPackets(new Long(jsonPath.value("/networks/eth0/tx_packets").toString()));
-        containerStats.setNetTxErros(new Long(jsonPath.value("/networks/eth0/tx_errors").toString()));
-        containerStats.setNetTxDrops(new Long(jsonPath.value("/networks/eth0/tx_dropped").toString()));
+        containerStats.setNetTxBytes(new Long(jsonPath.value("/networks/eth0/tx_bytes", "-1").toString()));
+        containerStats.setNetTxPackets(new Long(jsonPath.value("/networks/eth0/tx_packets", "-1").toString()));
+        containerStats.setNetTxErros(new Long(jsonPath.value("/networks/eth0/tx_errors", "-1").toString()));
+        containerStats.setNetTxDrops(new Long(jsonPath.value("/networks/eth0/tx_dropped", "-1").toString()));
 
         List<Map<String, Object>> ioInfos = jsonPath.value("/blkio_stats/io_service_bytes_recursive", List.class);
         for (Map<String, Object> ioInfo : ioInfos) {

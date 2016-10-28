@@ -6,6 +6,7 @@ import org.voovan.tools.json.JSONPath;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -107,35 +108,35 @@ public class ServiceInfo {
             Container container = spec.getTaskTemplate().getContainer();
             TaskTemplate taskTemplate = spec.getTaskTemplate();
 
-            info.setId(jsonPath.value("/[" + i + "]/ID", String.class));
-            info.setVersion(jsonPath.value("/[" + i + "]/Version", Version.class));
-            info.setCreatedAt(jsonPath.value("/[" + i + "]/CreatedAt", String.class));
-            info.setUpdatedAt(jsonPath.value("/[" + i + "]/UpdatedAt", String.class));
-            spec.setName(jsonPath.value("/[" + i + "]/Spec/Name", String.class));
+            info.setId(jsonPath.value("/[" + i + "]/ID", String.class,""));
+            info.setVersion(jsonPath.value("/[" + i + "]/Version", Version.class, new Version()));
+            info.setCreatedAt(jsonPath.value("/[" + i + "]/CreatedAt", String.class, ""));
+            info.setUpdatedAt(jsonPath.value("/[" + i + "]/UpdatedAt", String.class, ""));
+            spec.setName(jsonPath.value("/[" + i + "]/Spec/Name", String.class, ""));
 
-            container.setImage(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Image", String.class));
-            container.setArgs(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Args", List.class));
-            container.setCommand(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Command", List.class, TObject.newList()));
-            container.setMounts(jsonPath.listObject("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Mounts", Mount.class));
-            container.setStopGracePeriod(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/StopGracePeriod", int.class));
-            taskTemplate.setResource(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/Resources", Resource.class));
-            taskTemplate.setRestartPolicy(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/RestartPolicy", RestartPolicy.class));
+            container.setImage(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Image", String.class, ""));
+            container.setArgs(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Args", List.class, new ArrayList<String>()));
+            container.setCommand(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Command", List.class, new ArrayList<String>()));
+            container.setMounts(jsonPath.listObject("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Mounts", Mount.class, new ArrayList<Mount>()));
+            container.setStopGracePeriod(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/StopGracePeriod", int.class, -1));
+            taskTemplate.setResource(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/Resources", Resource.class, new Resource()));
+            taskTemplate.setRestartPolicy(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/RestartPolicy", RestartPolicy.class, new RestartPolicy()));
 
-            spec.setMode(jsonPath.value("/[" + i + "]/Spec/Mode", Mode.class));
-            spec.setUpdateConfig(jsonPath.value("/[" + i + "]/Spec/UpdateConfig", UpdateConfig.class));
+            spec.setMode(jsonPath.value("/[" + i + "]/Spec/Mode", Mode.class, new Mode()));
+            spec.setUpdateConfig(jsonPath.value("/[" + i + "]/Spec/UpdateConfig", UpdateConfig.class, new UpdateConfig()));
 
-            spec.setNetworks(jsonPath.listObject("/[" + i + "]/Spec/Networks", Network.class));
+            spec.setNetworks(jsonPath.listObject("/[" + i + "]/Spec/Networks", Network.class, new ArrayList<Network>()));
 
-            spec.getEndpoint().setMode(jsonPath.value("/[" + i + "]/Spec/EndpointSpec/Mode", String.class));
-            spec.getEndpoint().setPorts(jsonPath.listObject("/[" + i + "]/Spec/EndpointSpec/Ports", Port.class));
+            spec.getEndpoint().setMode(jsonPath.value("/[" + i + "]/Spec/EndpointSpec/Mode", String.class, ""));
+            spec.getEndpoint().setPorts(jsonPath.listObject("/[" + i + "]/Spec/EndpointSpec/Ports", Port.class, new ArrayList<Port>()));
 
-            info.setUpdateStatus(jsonPath.value("/[" + i + "]/UpdateStatus", UpdateStatus.class));
+            info.setUpdateStatus(jsonPath.value("/[" + i + "]/UpdateStatus", UpdateStatus.class,new UpdateStatus()));
 
-            info.getEndpoint().setMode(jsonPath.value("/[" + i + "]/Endpoint/Spec/Mode", String.class));
-            info.getEndpoint().setPorts(jsonPath.listObject("/[" + i + "]/Endpoint/Ports", Port.class));
-            info.getEndpoint().setVirtualIPs(jsonPath.listObject("/[" + i + "]/Endpoint/VirtualIPs", VirtualIP.class));
+            info.getEndpoint().setMode(jsonPath.value("/[" + i + "]/Endpoint/Spec/Mode", String.class, ""));
+            info.getEndpoint().setPorts(jsonPath.listObject("/[" + i + "]/Endpoint/Ports", Port.class,new ArrayList<Port>()));
+            info.getEndpoint().setVirtualIPs(jsonPath.listObject("/[" + i + "]/Endpoint/VirtualIPs", VirtualIP.class, new ArrayList<VirtualIP>()));
 
-            spec.setLabels((Map<String, Object>) jsonPath.value("/[" + i + "]/Spec/Labels"));
+            spec.setLabels((Map<String, Object>) jsonPath.value("/[" + i + "]/Spec/Labels", Map.class, new HashMap<String,Object>()));
 
             serviceInfos.add(info);
         }
