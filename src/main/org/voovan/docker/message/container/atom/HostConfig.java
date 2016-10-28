@@ -29,6 +29,7 @@ public class HostConfig {
     private String networkMode;
     private List<String> dns;
     private List<String> binds;
+    private List<String> volumesFrom;
     private List<String> links;
     private List<Device> devices;
     private Map<String, List<Map<String, String>>> portBindings;
@@ -143,6 +144,14 @@ public class HostConfig {
 
     public void setBinds(List<String> binds) {
         this.binds = binds;
+    }
+
+    public List<String> getVolumesFrom() {
+        return volumesFrom;
+    }
+
+    public void setVolumesFrom(List<String> volumesFrom) {
+        this.volumesFrom = volumesFrom;
     }
 
     public List<String> getLinks() {

@@ -3,6 +3,7 @@ package org.voovan.docker.client.Command.Contianer;
 import org.voovan.docker.client.Command.Cmd;
 import org.voovan.docker.client.network.Result;
 import org.voovan.docker.message.container.ContainerCreate;
+import org.voovan.docker.message.container.atom.Device;
 import org.voovan.network.exception.ReadMessageException;
 import org.voovan.network.exception.SendMessageException;
 
@@ -67,8 +68,23 @@ public class CmdContainerCreate extends Cmd{
         return this;
     }
 
+    public CmdContainerCreate dns(String dnses){
+        containerCreate.getHostConfig().getDns().addAll(Arrays.asList(dnses));
+        return this;
+    }
+
+    public CmdContainerCreate device(String pathOnHost,String pathInContainer,String cgroupPermissions){
+        containerCreate.getHostConfig().getDevices().add(new Device(pathOnHost,pathInContainer,cgroupPermissions));
+        return this;
+    }
+
     public CmdContainerCreate volume(String ... bind){
         containerCreate.getHostConfig().getBinds().addAll(Arrays.asList(bind));
+        return this;
+    }
+
+    public CmdContainerCreate volumeFrom(String ... volumeFroms){
+        containerCreate.getHostConfig().getVolumesFrom().addAll(Arrays.asList(volumeFroms));
         return this;
     }
 

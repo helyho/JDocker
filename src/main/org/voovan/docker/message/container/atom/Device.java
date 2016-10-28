@@ -9,31 +9,41 @@ package org.voovan.docker.message.container.atom;
  * Licence: Apache v2 License
  */
 public class Device {
-    private String PathOnHost;
-    private String PathInContainer;
-    private String CgroupPermissions;
+    private String pathOnHost;
+    private String pathInContainer;
+    private String cgroupPermissions;
+
+    public Device(){
+
+    }
+
+    public Device(String pathOnHost, String pathInContainer, String cgroupPermissions) {
+        this.pathOnHost = pathOnHost;
+        this.pathInContainer = pathInContainer;
+        this.cgroupPermissions = cgroupPermissions;
+    }
 
     public String getPathOnHost() {
-        return PathOnHost;
+        return pathOnHost;
     }
 
     public void setPathOnHost(String pathOnHost) {
-        PathOnHost = pathOnHost;
+        this.pathOnHost = pathOnHost;
     }
 
     public String getPathInContainer() {
-        return PathInContainer;
+        return pathInContainer;
     }
 
     public void setPathInContainer(String pathInContainer) {
-        PathInContainer = pathInContainer;
+        this.pathInContainer = pathInContainer;
     }
 
     public String getCgroupPermissions() {
-        return CgroupPermissions;
+        return cgroupPermissions;
     }
 
     public void setCgroupPermissions(String cgroupPermissions) {
-        CgroupPermissions = cgroupPermissions;
+        this.cgroupPermissions = cgroupPermissions;
     }
 }
