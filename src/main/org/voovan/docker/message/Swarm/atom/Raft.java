@@ -9,47 +9,47 @@ package org.voovan.docker.message.Swarm.atom;
  * Licence: Apache v2 License
  */
 public class Raft {
-    private int snapshotInterval;
-    private int logEntriesForSlowFollowers;
-    private int heartbeatTick;
-    private int electionTick;
+    private Integer snapshotIntegererval;
+    private Integer logEntriesForSlowFollowers;
+    private Integer heartbeatTick;
+    private Integer electionTick;
 
     public Raft() {
-        snapshotInterval = 10000;
+        snapshotIntegererval = 10000;
         logEntriesForSlowFollowers = 500;
         heartbeatTick = 1;
         electionTick = 3;
     }
 
-    public int getSnapshotInterval() {
-        return snapshotInterval;
+    public Integer getSnapshotIntegererval() {
+        return snapshotIntegererval;
     }
 
-    public void setSnapshotInterval(int snapshotInterval) {
-        this.snapshotInterval = snapshotInterval;
+    public void setSnapshotIntegererval(Integer snapshotIntegererval) {
+        this.snapshotIntegererval = snapshotIntegererval;
     }
 
-    public int getLogEntriesForSlowFollowers() {
+    public Integer getLogEntriesForSlowFollowers() {
         return logEntriesForSlowFollowers;
     }
 
-    public void setLogEntriesForSlowFollowers(int logEntriesForSlowFollowers) {
+    public void setLogEntriesForSlowFollowers(Integer logEntriesForSlowFollowers) {
         this.logEntriesForSlowFollowers = logEntriesForSlowFollowers;
     }
 
-    public int getHeartbeatTick() {
+    public Integer getHeartbeatTick() {
         return heartbeatTick;
     }
 
-    public void setHeartbeatTick(int heartbeatTick) {
+    public void setHeartbeatTick(Integer heartbeatTick) {
         this.heartbeatTick = heartbeatTick;
     }
 
-    public int getElectionTick() {
+    public Integer getElectionTick() {
         return electionTick;
     }
 
-    public void setElectionTick(int electionTick) {
+    public void setElectionTick(Integer electionTick) {
         this.electionTick = electionTick;
     }
 }

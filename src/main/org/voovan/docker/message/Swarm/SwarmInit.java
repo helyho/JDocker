@@ -15,7 +15,7 @@ import org.voovan.tools.log.Logger;
 public class SwarmInit {
     private String listenAddr;
     private String advertiseAddr;
-    private boolean forceNewCluster;
+    private Boolean forceNewCluster;
     private Spec spec;
 
     public SwarmInit() {
@@ -40,11 +40,11 @@ public class SwarmInit {
         this.advertiseAddr = advertiseAddr;
     }
 
-    public boolean isForceNewCluster() {
+    public Boolean isForceNewCluster() {
         return forceNewCluster;
     }
 
-    public void setForceNewCluster(boolean forceNewCluster) {
+    public void setForceNewCluster(Boolean forceNewCluster) {
         this.forceNewCluster = forceNewCluster;
     }
 

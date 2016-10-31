@@ -9,17 +9,17 @@ package org.voovan.docker.message.service.atom;
  * Licence: Apache v2 License
  */
 public class Replicated {
-    private int replicas;
+    private Integer replicas;
 
     public Replicated() {
         replicas = 1;
     }
 
-    public int getReplicas() {
+    public Integer getReplicas() {
         return replicas;
     }
 
-    public void setReplicas(int replicas) {
+    public void setReplicas(Integer replicas) {
         this.replicas = replicas;
     }
 }

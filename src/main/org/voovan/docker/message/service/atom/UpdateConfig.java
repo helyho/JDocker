@@ -9,31 +9,31 @@ package org.voovan.docker.message.service.atom;
  * Licence: Apache v2 License
  */
 public class UpdateConfig {
-    private int parallelism;
+    private Integer parallelism;
 
-    private long delay;
+    private Long delay;
 
     private String failureAction; // continue/pause
 
     public UpdateConfig() {
         parallelism = 2;
         failureAction = "pause";
-        delay = 0;
+        delay = 0L;
     }
 
-    public void setParallelism(int parallelism) {
+    public void setParallelism(Integer parallelism) {
         this.parallelism = parallelism;
     }
 
-    public int getParallelism() {
+    public Integer getParallelism() {
         return this.parallelism;
     }
 
-    public void setDelay(long delay) {
+    public void setDelay(Long delay) {
         this.delay = delay;
     }
 
-    public long getDelay() {
+    public Long getDelay() {
         return this.delay;
     }
 

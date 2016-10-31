@@ -14,7 +14,7 @@ public class Mount {
     private String destination;
     private String driver;
     private String mode;
-    private boolean rw;
+    private Boolean rw;
     private String propagation;
 
 
@@ -58,11 +58,11 @@ public class Mount {
         this.mode = mode;
     }
 
-    public boolean isRw() {
+    public Boolean isRw() {
         return rw;
     }
 
-    public void setRw(boolean rw) {
+    public void setRw(Boolean rw) {
         this.rw = rw;
     }
 

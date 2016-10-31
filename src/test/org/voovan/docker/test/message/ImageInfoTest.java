@@ -1,6 +1,6 @@
 package org.voovan.docker.test.message;
 
-import org.voovan.docker.message.Image.ImageInfo;
+import org.voovan.docker.message.Image.ImageListInfo;
 import org.voovan.tools.log.Logger;
 
 import java.text.ParseException;
@@ -44,7 +44,7 @@ public class ImageInfoTest {
             "]";
 
     public static void main(String[] args) throws ParseException, ReflectiveOperationException {
-        List<ImageInfo> infos = ImageInfo.load(tmp);
+        List<ImageListInfo> infos = ImageListInfo.load(tmp);
 
         Logger.simple("CreateDate:" + infos.get(0).getCreated());
         Logger.simple("Size:" + infos.get(0).getSize());

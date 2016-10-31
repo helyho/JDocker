@@ -18,7 +18,7 @@ import java.util.Map;
 public class NetworkCreate {
     private String name;
     private String driver;
-    private boolean enableIPv6;
+    private Boolean enableIPv6;
     private IPAM ipam;
     private Map<String, Object> labels;
 
@@ -44,11 +44,11 @@ public class NetworkCreate {
         driver = driver;
     }
 
-    public boolean isEnableIPv6() {
+    public Boolean isEnableIPv6() {
         return enableIPv6;
     }
 
-    public void setEnableIPv6(boolean enableIPv6) {
+    public void setEnableIPv6(Boolean enableIPv6) {
         enableIPv6 = enableIPv6;
     }
 

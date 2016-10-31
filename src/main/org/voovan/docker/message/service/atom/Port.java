@@ -10,8 +10,8 @@ package org.voovan.docker.message.service.atom;
  */
 public class Port {
     private String protocol;
-    private int targetPort;
-    private int publishedPort;
+    private Integer targetPort;
+    private Integer publishedPort;
 
     public Port() {
         protocol = "tcp";
@@ -25,19 +25,19 @@ public class Port {
         this.protocol = protocol;
     }
 
-    public int getTargetPort() {
+    public Integer getTargetPort() {
         return targetPort;
     }
 
-    public void setTargetPort(int targetPort) {
+    public void setTargetPort(Integer targetPort) {
         this.targetPort = targetPort;
     }
 
-    public int getPublishedPort() {
+    public Integer getPublishedPort() {
         return publishedPort;
     }
 
-    public void setPublishedPort(int publishedPort) {
+    public void setPublishedPort(Integer publishedPort) {
         this.publishedPort = publishedPort;
     }
 }

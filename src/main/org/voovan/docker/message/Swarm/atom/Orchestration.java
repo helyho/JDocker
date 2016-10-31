@@ -9,17 +9,17 @@ package org.voovan.docker.message.Swarm.atom;
  * Licence: Apache v2 License
  */
 public class Orchestration {
-    private int taskHistoryRetentionLimit;
+    private Integer taskHistoryRetentionLimit;
 
     public Orchestration() {
         taskHistoryRetentionLimit = 5;
     }
 
-    public int getTaskHistoryRetentionLimit() {
+    public Integer getTaskHistoryRetentionLimit() {
         return taskHistoryRetentionLimit;
     }
 
-    public void setTaskHistoryRetentionLimit(int taskHistoryRetentionLimit) {
+    public void setTaskHistoryRetentionLimit(Integer taskHistoryRetentionLimit) {
         this.taskHistoryRetentionLimit = taskHistoryRetentionLimit;
     }
 }

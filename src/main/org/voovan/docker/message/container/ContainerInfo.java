@@ -23,11 +23,11 @@ public class ContainerInfo {
     private String id;
     private List<String> names;
     private String image;
-    private long sizeRootFs;
+    private Long sizeRootFs;
 
     private String imageID;
     private String command;
-    private long created;
+    private Long created;
     private List<Port> ports;
     private String state;
     private String status;
@@ -65,11 +65,11 @@ public class ContainerInfo {
         this.image = image;
     }
 
-    public long getSizeRootFs() {
+    public Long getSizeRootFs() {
         return sizeRootFs;
     }
 
-    public void setSizeRootFs(long sizeRootFs) {
+    public void setSizeRootFs(Long sizeRootFs) {
         this.sizeRootFs = sizeRootFs;
     }
 
@@ -89,11 +89,11 @@ public class ContainerInfo {
         this.command = command;
     }
 
-    public long getCreated() {
+    public Long getCreated() {
         return created;
     }
 
-    public void setCreated(long created) {
+    public void setCreated(Long created) {
         this.created = created;
     }
 
@@ -165,7 +165,7 @@ public class ContainerInfo {
             containerInfo.setImageID(jsonPath.value("/[" + i + "]/ImageID", String.class,""));
             containerInfo.setSizeRootFs(new Long(jsonPath.value("/[" + i + "]/SizeRootFs",String.class,"-1")));
             containerInfo.setCommand(jsonPath.value("/[" + i + "]/Command", String.class,""));
-            containerInfo.setCreated(jsonPath.value("/[" + i + "]/Created", int.class, -1));
+            containerInfo.setCreated(new Long(jsonPath.value("/[" + i + "]/Created", "-1").toString()));
             containerInfo.setPorts(jsonPath.listObject("/[" + i + "]/Ports", Port.class, new ArrayList<Port>()));
             containerInfo.setState(jsonPath.value("/[" + i + "]/State", String.class,""));
             containerInfo.setStatus(jsonPath.value("/[" + i + "]/Status", String.class,""));

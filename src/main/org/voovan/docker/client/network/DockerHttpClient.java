@@ -56,6 +56,12 @@ public class DockerHttpClient {
             Logger.simple("[DEBUG INFO] SubURL: "+url+", Method:POST, Data: "+data);
             response = httpClient.setMethod("POST").setData(data).send(url);
         } catch (SendMessageException|ReadMessageException e) {
+            if(response==null){
+                response = new Response();
+            }
+            response.protocol().setStatus(555);
+            response.protocol().setStatusCode("Exception");
+            response.body().write(e.getMessage());
             httpClient.close();
         }
 
@@ -87,6 +93,12 @@ public class DockerHttpClient {
             Logger.simple("[DEBUG INFO] SubURL: "+url+", Method: GET");
             response = httpClient.setMethod("GET").send(url);
         } catch (SendMessageException|ReadMessageException e) {
+            if(response==null){
+                response = new Response();
+            }
+            response.protocol().setStatus(555);
+            response.protocol().setStatusCode("Exception");
+            response.body().write(e.getMessage());
             httpClient.close();
         }
         return Result.newInstance(response);
@@ -107,6 +119,12 @@ public class DockerHttpClient {
             Logger.simple("[DEBUG INFO] SubURL: "+url+", Method: DELETE");
             response = httpClient.setMethod("DELETE").send(url);
         } catch (SendMessageException|ReadMessageException e) {
+            if(response==null){
+                response = new Response();
+            }
+            response.protocol().setStatus(555);
+            response.protocol().setStatusCode("Exception");
+            response.body().write(e.getMessage());
             httpClient.close();
         }
         return Result.newInstance(response);

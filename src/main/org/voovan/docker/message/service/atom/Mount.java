@@ -10,7 +10,7 @@ package org.voovan.docker.message.service.atom;
  */
 public class Mount {
 
-    private boolean readOnly;
+    private Boolean readOnly;
 
     private String source;
 
@@ -23,11 +23,11 @@ public class Mount {
         type = "volume";
     }
 
-    public void setReadOnly(boolean readOnly) {
+    public void setReadOnly(Boolean readOnly) {
         this.readOnly = readOnly;
     }
 
-    public boolean getReadOnly() {
+    public Boolean getReadOnly() {
         return this.readOnly;
     }
 

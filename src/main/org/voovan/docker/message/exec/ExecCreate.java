@@ -16,11 +16,11 @@ import java.util.List;
  * Licence: Apache v2 License
  */
 public class ExecCreate {
-    private boolean attachStdin;
-    private boolean attachStdout;
-    private boolean attachStderr;
+    private Boolean attachStdin;
+    private Boolean attachStdout;
+    private Boolean attachStderr;
     private String detachKeys;
-    private boolean tty;
+    private Boolean tty;
     private List<String> cmd;
 
     public ExecCreate() {
@@ -32,27 +32,27 @@ public class ExecCreate {
         cmd = new ArrayList<String>();
     }
 
-    public boolean isAttachStdin() {
+    public Boolean isAttachStdin() {
         return attachStdin;
     }
 
-    public void setAttachStdin(boolean attachStdin) {
+    public void setAttachStdin(Boolean attachStdin) {
         this.attachStdin = attachStdin;
     }
 
-    public boolean isAttachStdout() {
+    public Boolean isAttachStdout() {
         return attachStdout;
     }
 
-    public void setAttachStdout(boolean attachStdout) {
+    public void setAttachStdout(Boolean attachStdout) {
         this.attachStdout = attachStdout;
     }
 
-    public boolean isAttachStderr() {
+    public Boolean isAttachStderr() {
         return attachStderr;
     }
 
-    public void setAttachStderr(boolean attachStderr) {
+    public void setAttachStderr(Boolean attachStderr) {
         this.attachStderr = attachStderr;
     }
 
@@ -64,11 +64,11 @@ public class ExecCreate {
         this.detachKeys = detachKeys;
     }
 
-    public boolean isTty() {
+    public Boolean isTty() {
         return tty;
     }
 
-    public void setTty(boolean tty) {
+    public void setTty(Boolean tty) {
         this.tty = tty;
     }
 

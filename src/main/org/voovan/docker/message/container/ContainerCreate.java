@@ -22,12 +22,12 @@ public class ContainerCreate {
     private String image;
     private List<String> cmd;
     private Map<String, Object> labels;
-    private boolean attachStdin;
-    private boolean attachStdout;
-    private boolean attachStderr;
-    private boolean tty;
-    private boolean openStdin;
-    private boolean stdinOnce;
+    private Boolean attachStdin;
+    private Boolean attachStdout;
+    private Boolean attachStderr;
+    private Boolean tty;
+    private Boolean openStdin;
+    private Boolean stdinOnce;
     private List<String> env;
     private Map<String, Map<String, String>> exposedPorts;
     private HostConfig hostConfig;
@@ -70,51 +70,51 @@ public class ContainerCreate {
         this.labels = labels;
     }
 
-    public boolean isAttachStdin() {
+    public Boolean isAttachStdin() {
         return attachStdin;
     }
 
-    public void setAttachStdin(boolean attachStdin) {
+    public void setAttachStdin(Boolean attachStdin) {
         this.attachStdin = attachStdin;
     }
 
-    public boolean isAttachStdout() {
+    public Boolean isAttachStdout() {
         return attachStdout;
     }
 
-    public void setAttachStdout(boolean attachStdout) {
+    public void setAttachStdout(Boolean attachStdout) {
         this.attachStdout = attachStdout;
     }
 
-    public boolean isAttachStderr() {
+    public Boolean isAttachStderr() {
         return attachStderr;
     }
 
-    public void setAttachStderr(boolean attachStderr) {
+    public void setAttachStderr(Boolean attachStderr) {
         this.attachStderr = attachStderr;
     }
 
-    public boolean isTty() {
+    public Boolean isTty() {
         return tty;
     }
 
-    public void setTty(boolean tty) {
+    public void setTty(Boolean tty) {
         this.tty = tty;
     }
 
-    public boolean isOpenStdin() {
+    public Boolean isOpenStdin() {
         return openStdin;
     }
 
-    public void setOpenStdin(boolean openStdin) {
+    public void setOpenStdin(Boolean openStdin) {
         this.openStdin = openStdin;
     }
 
-    public boolean isStdinOnce() {
+    public Boolean isStdinOnce() {
         return stdinOnce;
     }
 
-    public void setStdinOnce(boolean stdinOnce) {
+    public void setStdinOnce(Boolean stdinOnce) {
         this.stdinOnce = stdinOnce;
     }
 

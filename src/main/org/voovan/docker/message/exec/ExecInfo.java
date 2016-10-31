@@ -19,12 +19,12 @@ import java.util.List;
  */
 public class ExecInfo {
     private String id;
-    private boolean running;
-    private int exitCode;
-    private boolean openStdin;
-    private boolean openStderr;
-    private boolean openStdout;
-    private boolean canRemove;
+    private Boolean running;
+    private Integer exitCode;
+    private Boolean openStdin;
+    private Boolean openStderr;
+    private Boolean openStdout;
+    private Boolean canRemove;
     private String containerID;
     private String detachKeys;
     private ProcessConfig processConfig;
@@ -41,51 +41,51 @@ public class ExecInfo {
         this.id = id;
     }
 
-    public boolean isRunning() {
+    public Boolean isRunning() {
         return running;
     }
 
-    public void setRunning(boolean running) {
+    public void setRunning(Boolean running) {
         this.running = running;
     }
 
-    public int getExitCode() {
+    public Integer getExitCode() {
         return exitCode;
     }
 
-    public void setExitCode(int exitCode) {
+    public void setExitCode(Integer exitCode) {
         this.exitCode = exitCode;
     }
 
-    public boolean isOpenStdin() {
+    public Boolean isOpenStdin() {
         return openStdin;
     }
 
-    public void setOpenStdin(boolean openStdin) {
+    public void setOpenStdin(Boolean openStdin) {
         this.openStdin = openStdin;
     }
 
-    public boolean isOpenStderr() {
+    public Boolean isOpenStderr() {
         return openStderr;
     }
 
-    public void setOpenStderr(boolean openStderr) {
+    public void setOpenStderr(Boolean openStderr) {
         this.openStderr = openStderr;
     }
 
-    public boolean isOpenStdout() {
+    public Boolean isOpenStdout() {
         return openStdout;
     }
 
-    public void setOpenStdout(boolean openStdout) {
+    public void setOpenStdout(Boolean openStdout) {
         this.openStdout = openStdout;
     }
 
-    public boolean isCanRemove() {
+    public Boolean isCanRemove() {
         return canRemove;
     }
 
-    public void setCanRemove(boolean canRemove) {
+    public void setCanRemove(Boolean canRemove) {
         this.canRemove = canRemove;
     }
 
@@ -128,7 +128,7 @@ public class ExecInfo {
 
 
         ProcessConfig processConfig = execInfo.getProcessConfig();
-        processConfig.setEntrypoint(jsonPath.value("/ProcessConfig/entrypoint",String.class,""));
+        processConfig.setEntrypoint(jsonPath.value("/ProcessConfig/entrypoInteger",String.class,""));
         processConfig.setTty(jsonPath.value("/ProcessConfig/tty",Boolean.class,false));
         processConfig.setPrivileged(jsonPath.value("/ProcessConfig/privileged",Boolean.class,false));
         processConfig.getArguments().addAll(jsonPath.value("/ProcessConfig/arguments",

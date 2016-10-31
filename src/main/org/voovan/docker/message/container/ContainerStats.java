@@ -16,44 +16,44 @@ import java.util.Map;
  * Licence: Apache v2 License
  */
 public class ContainerStats {
-    private long cpuTotal;
-    private long cpuUsage;
+    private Long cpuTotal;
+    private Long cpuUsage;
     private List<Long> perCpuUsage;
-    private long memoryUsage;
-    private long memoryMasUsage;
-    private long memoryMasLimit;
-    private int memoryFailCnt;
-    private long ioRead;
-    private long ioWrite;
-    private long ioSync;
-    private long ioAsync;
-    private long ioTotal;
-    private long netRxBytes;
-    private long netRxPackets;
-    private long netRxErros;
-    private long netRxDrops;
-    private long netTxBytes;
-    private long netTxPackets;
-    private long netTxErros;
-    private long netTxDrops;
+    private Long memoryUsage;
+    private Long memoryMasUsage;
+    private Long memoryMasLimit;
+    private Integer memoryFailCnt;
+    private Long ioRead;
+    private Long ioWrite;
+    private Long ioSync;
+    private Long ioAsync;
+    private Long ioTotal;
+    private Long netRxBytes;
+    private Long netRxPackets;
+    private Long netRxErros;
+    private Long netRxDrops;
+    private Long netTxBytes;
+    private Long netTxPackets;
+    private Long netTxErros;
+    private Long netTxDrops;
 
     public ContainerStats() {
         perCpuUsage = new ArrayList<Long>();
     }
 
-    public long getCpuTotal() {
+    public Long getCpuTotal() {
         return cpuTotal;
     }
 
-    public void setCpuTotal(long cpuTotal) {
+    public void setCpuTotal(Long cpuTotal) {
         this.cpuTotal = cpuTotal;
     }
 
-    public long getCpuUsage() {
+    public Long getCpuUsage() {
         return cpuUsage;
     }
 
-    public void setCpuUsage(long cpuUsage) {
+    public void setCpuUsage(Long cpuUsage) {
         this.cpuUsage = cpuUsage;
     }
 
@@ -65,139 +65,139 @@ public class ContainerStats {
         this.perCpuUsage = perCpuUsage;
     }
 
-    public long getMemoryUsage() {
+    public Long getMemoryUsage() {
         return memoryUsage;
     }
 
-    public void setMemoryUsage(long memoryUsage) {
+    public void setMemoryUsage(Long memoryUsage) {
         this.memoryUsage = memoryUsage;
     }
 
-    public long getMemoryMasUsage() {
+    public Long getMemoryMasUsage() {
         return memoryMasUsage;
     }
 
-    public void setMemoryMasUsage(long memoryMasUsage) {
+    public void setMemoryMasUsage(Long memoryMasUsage) {
         this.memoryMasUsage = memoryMasUsage;
     }
 
-    public long getMemoryMasLimit() {
+    public Long getMemoryMasLimit() {
         return memoryMasLimit;
     }
 
-    public void setMemoryMasLimit(long memoryMasLimit) {
+    public void setMemoryMasLimit(Long memoryMasLimit) {
         this.memoryMasLimit = memoryMasLimit;
     }
 
-    public int getMemoryFailCnt() {
+    public Integer getMemoryFailCnt() {
         return memoryFailCnt;
     }
 
-    public void setMemoryFailCnt(int memoryFailCnt) {
+    public void setMemoryFailCnt(Integer memoryFailCnt) {
         this.memoryFailCnt = memoryFailCnt;
     }
 
-    public long getIoRead() {
+    public Long getIoRead() {
         return ioRead;
     }
 
-    public void setIoRead(long ioRead) {
+    public void setIoRead(Long ioRead) {
         this.ioRead = ioRead;
     }
 
-    public long getIoWrite() {
+    public Long getIoWrite() {
         return ioWrite;
     }
 
-    public void setIoWrite(long ioWrite) {
+    public void setIoWrite(Long ioWrite) {
         this.ioWrite = ioWrite;
     }
 
-    public long getIoSync() {
+    public Long getIoSync() {
         return ioSync;
     }
 
-    public void setIoSync(long ioSync) {
+    public void setIoSync(Long ioSync) {
         this.ioSync = ioSync;
     }
 
-    public long getIoAsync() {
+    public Long getIoAsync() {
         return ioAsync;
     }
 
-    public void setIoAsync(long ioAsync) {
+    public void setIoAsync(Long ioAsync) {
         this.ioAsync = ioAsync;
     }
 
-    public long getIoTotal() {
+    public Long getIoTotal() {
         return ioTotal;
     }
 
-    public void setIoTotal(long ioTotal) {
+    public void setIoTotal(Long ioTotal) {
         this.ioTotal = ioTotal;
     }
 
-    public long getNetRxBytes() {
+    public Long getNetRxBytes() {
         return netRxBytes;
     }
 
-    public void setNetRxBytes(long netRxBytes) {
+    public void setNetRxBytes(Long netRxBytes) {
         this.netRxBytes = netRxBytes;
     }
 
-    public long getNetRxPackets() {
+    public Long getNetRxPackets() {
         return netRxPackets;
     }
 
-    public void setNetRxPackets(long netRxPackets) {
+    public void setNetRxPackets(Long netRxPackets) {
         this.netRxPackets = netRxPackets;
     }
 
-    public long getNetRxErros() {
+    public Long getNetRxErros() {
         return netRxErros;
     }
 
-    public void setNetRxErros(long netRxErros) {
+    public void setNetRxErros(Long netRxErros) {
         this.netRxErros = netRxErros;
     }
 
-    public long getNetRxDrops() {
+    public Long getNetRxDrops() {
         return netRxDrops;
     }
 
-    public void setNetRxDrops(long netRxDrops) {
+    public void setNetRxDrops(Long netRxDrops) {
         this.netRxDrops = netRxDrops;
     }
 
-    public long getNetTxBytes() {
+    public Long getNetTxBytes() {
         return netTxBytes;
     }
 
-    public void setNetTxBytes(long netTxBytes) {
+    public void setNetTxBytes(Long netTxBytes) {
         this.netTxBytes = netTxBytes;
     }
 
-    public long getNetTxPackets() {
+    public Long getNetTxPackets() {
         return netTxPackets;
     }
 
-    public void setNetTxPackets(long netTxPackets) {
+    public void setNetTxPackets(Long netTxPackets) {
         this.netTxPackets = netTxPackets;
     }
 
-    public long getNetTxErros() {
+    public Long getNetTxErros() {
         return netTxErros;
     }
 
-    public void setNetTxErros(long netTxErros) {
+    public void setNetTxErros(Long netTxErros) {
         this.netTxErros = netTxErros;
     }
 
-    public long getNetTxDrops() {
+    public Long getNetTxDrops() {
         return netTxDrops;
     }
 
-    public void setNetTxDrops(long netTxDrops) {
+    public void setNetTxDrops(Long netTxDrops) {
         this.netTxDrops = netTxDrops;
     }
 

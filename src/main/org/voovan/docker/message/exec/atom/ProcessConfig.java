@@ -13,7 +13,7 @@ import java.util.List;
  *         Licence: Apache v2 License
  */
 public class ProcessConfig {
-    private boolean tty;
+    private Boolean tty;
     private String entrypoint;
     private List<String> arguments;
     private boolean privileged;
@@ -46,11 +46,11 @@ public class ProcessConfig {
         this.arguments = arguments;
     }
 
-    public boolean isPrivileged() {
+    public Boolean isPrivileged() {
         return privileged;
     }
 
-    public void setPrivileged(boolean privileged) {
+    public void setPrivileged(Boolean privileged) {
         this.privileged = privileged;
     }
 }

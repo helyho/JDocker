@@ -118,7 +118,7 @@ public class ServiceInfo {
             container.setArgs(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Args", List.class, new ArrayList<String>()));
             container.setCommand(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Command", List.class, new ArrayList<String>()));
             container.setMounts(jsonPath.listObject("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Mounts", Mount.class, new ArrayList<Mount>()));
-            container.setStopGracePeriod(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/StopGracePeriod", int.class, -1));
+            container.setStopGracePeriod(new Long(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/StopGracePeriod", "-1").toString()));
             taskTemplate.setResource(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/Resources", Resource.class, new Resource()));
             taskTemplate.setRestartPolicy(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/RestartPolicy", RestartPolicy.class, new RestartPolicy()));
 

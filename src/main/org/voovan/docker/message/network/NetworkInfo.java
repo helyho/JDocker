@@ -21,7 +21,7 @@ import java.util.Map;
 public class NetworkInfo extends NetworkCreate {
     private String id;
     private String scope;
-    private boolean internal;
+    private Boolean internal;
     private List<Container> containers;
 
     public NetworkInfo() {
@@ -45,11 +45,11 @@ public class NetworkInfo extends NetworkCreate {
         this.scope = scope;
     }
 
-    public boolean getInternal() {
+    public Boolean getInternal() {
         return internal;
     }
 
-    public void setInternal(boolean internal) {
+    public void setInternal(Boolean internal) {
         this.internal = internal;
     }
 
@@ -70,8 +70,8 @@ public class NetworkInfo extends NetworkCreate {
             networkInfo.setName(jsonPath.value("/[" + i + "]/Name", String.class, ""));
             networkInfo.setScope(jsonPath.value("/[" + i + "]/Scope", String.class, ""));
             networkInfo.setDriver(jsonPath.value("/[" + i + "]/Driver", String.class, ""));
-            networkInfo.setEnableIPv6(jsonPath.value("/[" + i + "]/EnableIPv6", boolean.class, false));
-            networkInfo.setInternal(jsonPath.value("/[" + i + "]/Internal", boolean.class,false));
+            networkInfo.setEnableIPv6(jsonPath.value("/[" + i + "]/EnableIPv6", Boolean.class, false));
+            networkInfo.setInternal(jsonPath.value("/[" + i + "]/Internal", Boolean.class,false));
 
             networkInfo.getIpam().setDriver(jsonPath.value("/[" + i + "]/IPAM/Driver", String.class, ""));
             networkInfo.getIpam().getOptions().putAll(jsonPath.value("/[" + i + "]/IPAM/Options", Map.class, new HashMap<String,Object>()));

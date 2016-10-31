@@ -26,6 +26,7 @@ public class ExecUtil extends TestCase {
         Global.DOCKER_REST_PORT = 2735;
         Global.DEBUG = true;
     }
+
     public String formatJSON(Object obj){
         return JSON.formatJson(JSON.toJSON(obj));
     }
@@ -45,7 +46,6 @@ public class ExecUtil extends TestCase {
         System.out.println("------");
         for(tmp = cmdExecStart.loadStream(); tmp!=null ; tmp = cmdExecStart.loadStream()){
             System.out.print(new String(tmp));
-            System.out.println("------");
             TEnv.sleep(1000);//测试这个需要使用 ping 命令来测试
         }
         cmdExecStart.endLoadStream();

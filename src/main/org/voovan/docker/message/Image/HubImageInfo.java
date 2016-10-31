@@ -17,10 +17,10 @@ import java.util.List;
 public class HubImageInfo {
 
     private String name;
-    private boolean is_official;
-    private boolean is_automated;
+    private Boolean is_official;
+    private Boolean is_automated;
     private String description;
-    private int star_count;
+    private Integer star_count;
 
     public String getName() {
         return name;
@@ -30,19 +30,19 @@ public class HubImageInfo {
         this.name = name;
     }
 
-    public boolean is_official() {
+    public Boolean is_official() {
         return is_official;
     }
 
-    public void setIs_official(boolean is_official) {
+    public void setIs_official(Boolean is_official) {
         this.is_official = is_official;
     }
 
-    public boolean is_automated() {
+    public Boolean is_automated() {
         return is_automated;
     }
 
-    public void setIs_automated(boolean is_automated) {
+    public void setIs_automated(Boolean is_automated) {
         this.is_automated = is_automated;
     }
 
@@ -54,18 +54,18 @@ public class HubImageInfo {
         this.description = description;
     }
 
-    public int getStar_count() {
+    public Integer getStar_count() {
         return star_count;
     }
 
-    public void setStar_count(int star_count) {
+    public void setStar_count(Integer star_count) {
         this.star_count = star_count;
     }
 
     public static List<HubImageInfo> load(String jsonStr) throws ParseException, ReflectiveOperationException {
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
         List<HubImageInfo> hubImages = new ArrayList<HubImageInfo>();
-        for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
+        for (Integer i = 0; i < jsonPath.value("/", List.class).size(); i++) {
             hubImages.add(jsonPath.value("/[" + i + "]", HubImageInfo.class,new HubImageInfo()));
         }
 

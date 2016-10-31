@@ -114,10 +114,10 @@ public class ServiceSpec {
 
         //resourxe
         create.getTaskTemplate().getResource().getLimits().setNanoCPUs(0);
-        create.getTaskTemplate().getResource().getLimits().setMemoryBytes(0);
+        create.getTaskTemplate().getResource().getLimits().setMemoryBytes(0L);
 
         create.getTaskTemplate().getResource().getReservations().setNanoCPUs(0);
-        create.getTaskTemplate().getResource().getReservations().setMemoryBytes(0);
+        create.getTaskTemplate().getResource().getReservations().setMemoryBytes(0L);
 
         //network
         Network network = new Network();

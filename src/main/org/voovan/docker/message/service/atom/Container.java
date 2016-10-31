@@ -17,7 +17,7 @@ public class Container {
     private List<String> args;
     private List<String> env;
     private List<Mount> mounts;
-    private long stopGracePeriod;
+    private Long stopGracePeriod;
 
 
     public Container() {
@@ -25,7 +25,7 @@ public class Container {
         args = new ArrayList<String>();
         env = new ArrayList<String>();
         mounts = new ArrayList<Mount>();
-        stopGracePeriod = 0;
+        stopGracePeriod = 0L;
 
     }
 
@@ -69,11 +69,11 @@ public class Container {
         this.mounts = mounts;
     }
 
-    public long getStopGracePeriod() {
+    public Long getStopGracePeriod() {
         return stopGracePeriod;
     }
 
-    public void setStopGracePeriod(long stopGracePeriod) {
+    public void setStopGracePeriod(Long stopGracePeriod) {
         this.stopGracePeriod = stopGracePeriod;
     }
 

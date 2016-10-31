@@ -9,13 +9,13 @@ package org.voovan.docker.message.Swarm.atom;
  * Licence: Apache v2 License
  */
 public class CAConfig {
-    private long nodeCertExpiry;
+    private Long nodeCertExpiry;
 
-    public long getNodeCertExpiry() {
+    public Long getNodeCertExpiry() {
         return nodeCertExpiry;
     }
 
-    public void setNodeCertExpiry(long nodeCertExpiry) {
+    public void setNodeCertExpiry(Long nodeCertExpiry) {
         this.nodeCertExpiry = nodeCertExpiry;
     }
 }

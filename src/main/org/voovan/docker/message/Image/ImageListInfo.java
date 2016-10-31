@@ -13,17 +13,17 @@ import java.util.*;
  * WebSite: https://git.oschina.net/helyho/JDocker
  * Licence: Apache v2 License
  */
-public class ImageInfo {
+public class ImageListInfo {
     private String id;
     private String parentId;
     private List<String> repoTags;
     private List<String> repoDigests;
-    private long created;
-    private long Size;
-    private long virtualSize;
+    private Long created;
+    private Long Size;
+    private Long virtualSize;
     private Map<String, Object> labels;
 
-    public ImageInfo() {
+    public ImageListInfo() {
         labels = new HashMap<String, Object>();
     }
 
@@ -63,23 +63,23 @@ public class ImageInfo {
         return new Date(created * 1000);
     }
 
-    public void setCreated(long created) {
+    public void setCreated(Long created) {
         this.created = created;
     }
 
-    public long getSize() {
+    public Long getSize() {
         return Size;
     }
 
-    public void setSize(long size) {
+    public void setSize(Long size) {
         Size = size;
     }
 
-    public long getVirtualSize() {
+    public Long getVirtualSize() {
         return virtualSize;
     }
 
-    public void setVirtualSize(long virtualSize) {
+    public void setVirtualSize(Long virtualSize) {
         this.virtualSize = virtualSize;
     }
 
@@ -91,22 +91,22 @@ public class ImageInfo {
         this.labels = labels;
     }
 
-    public static List<ImageInfo> load(String jsonStr) throws ParseException, ReflectiveOperationException {
+    public static List<ImageListInfo> load(String jsonStr) throws ParseException, ReflectiveOperationException {
 
-        List<ImageInfo> imageInfos = new ArrayList<ImageInfo>();
+        List<ImageListInfo> imageInfos = new ArrayList<ImageListInfo>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
         for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
-            ImageInfo imageInfo = new ImageInfo();
-            imageInfo.setId(jsonPath.value("/[" + i + "]/Id", String.class,""));
-            imageInfo.setParentId(jsonPath.value("/[" + i + "]/ParentId", String.class,""));
-            imageInfo.setRepoTags(jsonPath.value("/[" + i + "]/RepoTags", List.class, new ArrayList<String>()));
-            imageInfo.setRepoDigests(jsonPath.value("/[" + i + "]/RepoDigests", List.class, new ArrayList<String>()));
-            imageInfo.setCreated(jsonPath.value("/[" + i + "]/Created", int.class, -1));
-            imageInfo.setSize(jsonPath.value("/[" + i + "]/Size", int.class, -1));
-            imageInfo.setVirtualSize(jsonPath.value("/[" + i + "]/VirtualSize", int.class, -1));
-            imageInfo.setLabels(jsonPath.value("/[" + i + "]/Labels", Map.class, new HashMap<String,Object>()));
-            imageInfos.add(imageInfo);
+            ImageListInfo imageListInfo = new ImageListInfo();
+            imageListInfo.setId(jsonPath.value("/[" + i + "]/Id", String.class,""));
+            imageListInfo.setParentId(jsonPath.value("/[" + i + "]/ParentId", String.class,""));
+            imageListInfo.setRepoTags(jsonPath.value("/[" + i + "]/RepoTags", List.class, new ArrayList<String>()));
+            imageListInfo.setRepoDigests(jsonPath.value("/[" + i + "]/RepoDigests", List.class, new ArrayList<String>()));
+            imageListInfo.setCreated(new Long(jsonPath.value("/[" + i + "]/Created", "-1").toString()));
+            imageListInfo.setSize(new Long(jsonPath.value("/[" + i + "]/Size",  "-1").toString()));
+            imageListInfo.setVirtualSize(new Long(jsonPath.value("/[" + i + "]/VirtualSize", "-1").toString()));
+            imageListInfo.setLabels(jsonPath.value("/[" + i + "]/Labels", Map.class, new HashMap<String,Object>()));
+            imageInfos.add(imageListInfo);
         }
 
         return imageInfos;

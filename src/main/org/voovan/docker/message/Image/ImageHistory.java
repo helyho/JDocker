@@ -17,10 +17,10 @@ import java.util.List;
  */
 public class ImageHistory {
     private String id;
-    private long created;
+    private Long created;
     private String createdBy;
     private List<String> tags;
-    private long size;
+    private Long size;
     private String comment;
 
     public String getId() {
@@ -35,7 +35,7 @@ public class ImageHistory {
         return new Date(created);
     }
 
-    public void setCreated(long created) {
+    public void setCreated(Long created) {
         this.created = created;
     }
 
@@ -55,11 +55,11 @@ public class ImageHistory {
         this.tags = tags;
     }
 
-    public long getSize() {
+    public Long getSize() {
         return size;
     }
 
-    public void setSize(long size) {
+    public void setSize(Long size) {
         this.size = size;
     }
 
@@ -78,10 +78,10 @@ public class ImageHistory {
         for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
             ImageHistory imageHistory = new ImageHistory();
             imageHistory.setId(jsonPath.value("/[" + i + "]/Id", String.class,""));
-            imageHistory.setCreated(jsonPath.value("/[" + i + "]/Created", int.class, -1));
+            imageHistory.setCreated(new Long(jsonPath.value("/[" + i + "]/Created", "-1").toString()));
             imageHistory.setCreatedBy(jsonPath.value("/[" + i + "]/CreatedBy", String.class, ""));
             imageHistory.setTags(jsonPath.value("/[" + i + "]/Tags", List.class, new ArrayList<String>()));
-            imageHistory.setSize(jsonPath.value("/[" + i + "]/Size", int.class,-1));
+            imageHistory.setSize(new Long(jsonPath.value("/[" + i + "]/Size", "-1").toString()));
             imageHistory.setComment(jsonPath.value("/[" + i + "]/Comment", String.class,""));
             imageHistories.add(imageHistory);
         }

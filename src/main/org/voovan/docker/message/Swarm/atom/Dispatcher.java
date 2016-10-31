@@ -9,17 +9,17 @@ package org.voovan.docker.message.Swarm.atom;
  * Licence: Apache v2 License
  */
 public class Dispatcher {
-    private long heartbeatPeriod;
+    private Long heartbeatPeriod;
 
     public Dispatcher() {
         heartbeatPeriod = 5000000000L;
     }
 
-    public long getHeartbeatPeriod() {
+    public Long getHeartbeatPeriod() {
         return heartbeatPeriod;
     }
 
-    public void setHeartbeatPeriod(long heartbeatPeriod) {
+    public void setHeartbeatPeriod(Long heartbeatPeriod) {
         this.heartbeatPeriod = heartbeatPeriod;
     }
 }
