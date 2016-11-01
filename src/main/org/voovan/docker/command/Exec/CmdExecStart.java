@@ -32,7 +32,7 @@ public class CmdExecStart extends Cmd{
 
     @Override
     public Result send() throws Exception {
-        Result result = getDockerHttpClient().post("/Exec/"+execId+"/start", getParameters(), execStart);
+        Result result = getDockerHttpClient().post("/exec/"+execId+"/start", getParameters(), execStart);
         if(result.getStatus()>=300){
             throw new DockerClientException(result);
         }else{

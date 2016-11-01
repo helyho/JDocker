@@ -11,8 +11,11 @@ package org.voovan.docker.network;
  */
 public class DockerClientException extends Exception {
 
+    private Result result;
+
     public DockerClientException(Result result) {
         super(result.toString());
+        this.result = result;
     }
 
     public DockerClientException(String message){
@@ -21,5 +24,13 @@ public class DockerClientException extends Exception {
 
     public DockerClientException(Exception e){
         this.setStackTrace(e.getStackTrace());
+    }
+
+    public Result getResult() {
+        return result;
+    }
+
+    public void setResult(Result result) {
+        this.result = result;
     }
 }

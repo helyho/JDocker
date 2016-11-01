@@ -32,13 +32,15 @@ public class ExecUtil extends TestCase {
 
     public void testExecCreate() throws Exception {
         CmdExecCreate cmdExecCreate = CmdExecCreate.newInstance("d_test");
-        Object data = cmdExecCreate.cmd("echo","asdfadfadf").send();
+        Object data = cmdExecCreate.cmd("ping","127.0.0.1").send();
         cmdExecCreate.close();
         Logger.info(formatJSON(data));
     }
 
     public void testExecStart() throws Exception {
-        CmdExecStart cmdExecStart = CmdExecStart.newInstance("21ee94ad91d2574cabc8c5bbd2b2e83e6f874a89e12f947c469c7fcd99dfb155");
+        Global.DOCKER_REST_TIMEOUT = 60;
+        CmdExecStart cmdExecStart = CmdExecStart
+                .newInstance("7a6e1b7b47ed662d8c4fc4bc08c1bf2e2261a7b650adf04e54193accdb8d4e5a");
         Object data = cmdExecStart.send();
         byte[] tmp = null;
         cmdExecStart.beginLoadStream();

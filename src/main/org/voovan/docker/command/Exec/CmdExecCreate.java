@@ -38,7 +38,7 @@ public class CmdExecCreate extends Cmd{
 
     @Override
     public Result send() throws Exception {
-        Result result = getDockerHttpClient().post("/containers/"+nameOrId+"/Exec", getParameters(), execCreate);
+        Result result = getDockerHttpClient().post("/containers/"+nameOrId+"/exec", getParameters(), execCreate);
         if(result.getStatus()>=300){
             throw new DockerClientException(result);
         }else{

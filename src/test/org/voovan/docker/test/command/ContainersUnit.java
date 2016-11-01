@@ -33,7 +33,7 @@ public class ContainersUnit extends TestCase {
 
     public void testCreate() throws Exception {
         CmdContainerCreate createCmd =  CmdContainerCreate.newInstance("d_test");
-        Object data = createCmd.image("alpine").network("HostNetwork")
+        Object data = createCmd.image("alpine").network("bridge")
                 .volume("v_tx:/v_tx").link("dockerfly:dockerfly")
                 .cmd("ping","127.0.0.1").env("author=helyho")
                 .exposePort(22,"tcp","2222").send();
