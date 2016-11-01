@@ -1,6 +1,6 @@
 package org.voovan.docker.test.message;
 
-import org.voovan.docker.message.Swarm.SwarmInfo;
+import org.voovan.docker.message.swarm.SwarmInfo;
 import org.voovan.tools.log.Logger;
 
 import java.text.ParseException;

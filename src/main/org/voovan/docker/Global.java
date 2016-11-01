@@ -1,5 +1,7 @@
 package org.voovan.docker;
 
+import org.voovan.docker.message.auth.AuthResult;
+
 /**
  * 类文字命名
  *
@@ -16,5 +18,7 @@ public class Global {
     public static String DOCKER_REST_CHARSET = "UTF-8";
     public static int DOCKER_REST_TIMEOUT = 5;
     public static boolean DEBUG = false;
+
+    public static AuthResult DOCKER_AUTH_RESULT = null;
 
 }

@@ -1,6 +1,6 @@
 package org.voovan.docker.test.message;
 
-import org.voovan.docker.message.Task.TaskInfo;
+import org.voovan.docker.message.task.TaskInfo;
 import org.voovan.tools.log.Logger;
 
 import java.text.ParseException;

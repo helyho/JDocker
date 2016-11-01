@@ -28,6 +28,11 @@ public class CmdContainerLogs extends Cmd {
         return this;
     }
 
+    public CmdContainerLogs since(long since){
+        addParameter("since",since);
+        return this;
+    }
+
     public CmdContainerLogs tail(int tail){
         addParameter("tail",tail);
         return this;

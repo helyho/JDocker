@@ -48,6 +48,13 @@ public class ContainersUnit extends TestCase {
         Logger.info(formatJSON(data));
     }
 
+    public void testRename() throws Exception {
+        CmdContainerRename cmdContainerRename = CmdContainerRename.newInstance("31f0c56b79419a6349c7a368951e733dfc92f71966ec40628780f12e9628cf73");
+        Object data = cmdContainerRename.newName("dockfly_1").send();
+        cmdContainerRename.close();
+        Logger.info(formatJSON(data));
+    }
+
     public void testUpdate() throws Exception {
         CmdContainerUpdate updateCmd =  CmdContainerUpdate.newInstance("d_test");
         Object data = updateCmd.cpuPeriod(1000000).memory(250).send();

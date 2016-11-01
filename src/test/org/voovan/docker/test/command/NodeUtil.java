@@ -39,7 +39,7 @@ public class NodeUtil extends TestCase {
 
     public void testCmdNodeList() throws Exception {
         CmdNodeList cmdNodeList = CmdNodeList.newInstance();
-        Object data = cmdNodeList.send();
+        Object data = cmdNodeList.id("71zei032twfrgy5053wfzmtz3").send();
         cmdNodeList.close();
         Logger.info(formatJSON(data));
     }
@@ -52,7 +52,7 @@ public class NodeUtil extends TestCase {
     }
 
     public void testCmdNodeUpdate() throws Exception {
-        CmdNodeUpdate cmdNodeUpdate = CmdNodeUpdate.newInstance("3vyegqfzjfhdmmclc0hluhnpi");
+        CmdNodeUpdate cmdNodeUpdate = CmdNodeUpdate.newInstance("71zei032twfrgy5053wfzmtz3",10);
         Object data = cmdNodeUpdate.name("helyho_kkkk").role("manager").label("adfadf","ppppp").send();
         cmdNodeUpdate.close();
         Logger.info(formatJSON(data));

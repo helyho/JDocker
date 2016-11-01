@@ -46,7 +46,7 @@ public class ServiceUtil extends TestCase {
     }
 
     public void testServiceUpdate() throws Exception {
-        CmdServiceUpdate cmdServiceUpdate = new CmdServiceUpdate("3jfu6sx9wc1dqngiv4oqzvgdj","42");
+        CmdServiceUpdate cmdServiceUpdate = new CmdServiceUpdate("3jfu6sx9wc1dqngiv4oqzvgdj",42);
         Object data = cmdServiceUpdate.name("helyho1111").image("alpine").cmd("ping","127.0.0.1")
                 .network("voovan_p").mountReadWrite("v_tx","/v_tx").replicate(1).portTcp(223,22233).send();
         cmdServiceUpdate.close();

@@ -1,10 +1,9 @@
 package org.voovan.docker.command.Swarm;
 
 import org.voovan.docker.command.Cmd;
-import org.voovan.docker.message.Swarm.SwarmInfo;
-import org.voovan.docker.message.Swarm.SwarmInit;
-import org.voovan.docker.message.Swarm.atom.ExternalCA;
-import org.voovan.docker.message.Swarm.atom.Raft;
+import org.voovan.docker.message.swarm.SwarmInit;
+import org.voovan.docker.message.swarm.atom.ExternalCA;
+import org.voovan.docker.message.swarm.atom.Raft;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
 
@@ -77,12 +76,12 @@ public class CmdSwarmInit extends Cmd {
     }
 
     @Override
-    public SwarmInfo send() throws Exception {
+    public Result send() throws Exception {
         Result result = getDockerHttpClient().post("/swarm/init",getParameters(),swarmInit);
         if(result.getStatus()>=300){
             throw new DockerClientException(result);
         }else{
-            return SwarmInfo.load(result.getMessage());
+            return result;
         }
 
     }

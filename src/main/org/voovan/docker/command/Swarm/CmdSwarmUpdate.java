@@ -1,11 +1,9 @@
 package org.voovan.docker.command.Swarm;
 
 import org.voovan.docker.command.Cmd;
-import org.voovan.docker.message.Swarm.SwarmInfo;
-import org.voovan.docker.message.Swarm.SwarmInit;
-import org.voovan.docker.message.Swarm.SwarmUpdate;
-import org.voovan.docker.message.Swarm.atom.ExternalCA;
-import org.voovan.docker.message.Swarm.atom.Raft;
+import org.voovan.docker.message.swarm.SwarmUpdate;
+import org.voovan.docker.message.swarm.atom.ExternalCA;
+import org.voovan.docker.message.swarm.atom.Raft;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
 
@@ -28,10 +26,23 @@ public class CmdSwarmUpdate extends Cmd {
         swarmUpdate = new SwarmUpdate();
     }
 
+    public CmdSwarmUpdate rotateWorkerToken(boolean rotateWorkerToken){
+        addParameter("rotateWorkerToken",rotateWorkerToken);
+        return this;
+    }
 
+    public CmdSwarmUpdate rotateManagerToken(boolean rotateManagerToken){
+        addParameter("rotateManagerToken",rotateManagerToken);
+        return this;
+    }
 
     public CmdSwarmUpdate name(String name){
         swarmUpdate.setName(name);
+        return this;
+    }
+
+    public CmdSwarmUpdate version(int version){
+        addParameter("version",version);
         return this;
     }
 
@@ -65,12 +76,12 @@ public class CmdSwarmUpdate extends Cmd {
     }
 
     @Override
-    public SwarmInfo send() throws Exception {
+    public Result send() throws Exception {
         Result result = getDockerHttpClient().post("/swarm/update",getParameters(),swarmUpdate);
         if(result.getStatus()>=300){
             throw new DockerClientException(result);
         }else{
-            return SwarmInfo.load(result.getMessage());
+            return result;
         }
 
     }

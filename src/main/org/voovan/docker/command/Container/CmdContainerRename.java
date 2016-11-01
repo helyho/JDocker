@@ -1,4 +1,4 @@
-package org.voovan.docker.command.Swarm;
+package org.voovan.docker.command.Container;
 
 import org.voovan.docker.command.Cmd;
 import org.voovan.docker.network.DockerClientException;
@@ -13,24 +13,29 @@ import org.voovan.docker.network.Result;
  *         WebSite: https://github.com/helyho/JDocker
  *         Licence: Apache v2 License
  */
-public class CmdSwarmLeave extends Cmd {
+public class CmdContainerRename extends Cmd {
+    private String nameOrId;
 
-    public CmdSwarmLeave() {
+    public CmdContainerRename(String nameOrId) {
+        this.nameOrId = nameOrId;
     }
 
-    public static CmdSwarmLeave newInstance(){
-        return new CmdSwarmLeave();
+    public CmdContainerRename newName(String name){
+        addParameter("name",name);
+        return this;
+    }
+
+    public static CmdContainerRename newInstance(String nameOrId){
+        return new CmdContainerRename(nameOrId);
     }
 
     @Override
     public Result send() throws Exception {
-        Result result = getDockerHttpClient().post("/swarm/leave",getParameters(),null);
+        Result result = getDockerHttpClient().post("/containers/"+nameOrId+"/rename", getParameters(),null);
         if(result.getStatus()>=300){
             throw new DockerClientException(result);
         }else{
             return result;
         }
-
     }
-
 }

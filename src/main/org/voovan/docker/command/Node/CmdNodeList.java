@@ -1,12 +1,15 @@
 package org.voovan.docker.command.Node;
 
 import org.voovan.docker.command.Cmd;
-import org.voovan.docker.message.Node.NodeInfo;
-import org.voovan.docker.message.Task.TaskInfo;
+import org.voovan.docker.message.node.NodeInfo;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
+import org.voovan.tools.TObject;
+import org.voovan.tools.json.JSON;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 类文字命名
@@ -19,24 +22,43 @@ import java.util.List;
  */
 public class CmdNodeList extends Cmd {
 
-    private String nameOrId;
+    private Map<String,List<String>> filters;
 
-    public CmdNodeList(String nameOrId) {
-        this.nameOrId = nameOrId;
+    public CmdNodeList() {
+        filters = new HashMap<String,List<String>>();
     }
 
 
-    public static CmdNodeList newInstance(String nameOrId){
-        return new CmdNodeList(nameOrId);
+    public CmdNodeList id(String id){
+       filters.put("id", TObject.newList(id));
+        return this;
+    }
+
+
+    public CmdNodeList name(String name){
+        filters.put("name", TObject.newList(name));
+        return this;
+    }
+
+    public CmdNodeList membership(String ... membership){
+        filters.put("membership", TObject.newList(membership));
+        return this;
+    }
+
+    public CmdNodeList role(String role){
+        filters.put("role", TObject.newList(role));
+        return this;
     }
 
     public static CmdNodeList newInstance(){
-        return new CmdNodeList("");
+        return new CmdNodeList();
     }
+
 
     @Override
     public List<NodeInfo> send() throws Exception {
-        Result result = getDockerHttpClient().get("/nodes/"+nameOrId,getParameters());
+        addParameter("filters", JSON.toJSON(filters));
+        Result result = getDockerHttpClient().get("/nodes/",getParameters());
         if(result.getStatus()>=300){
             throw new DockerClientException(result);
         }else{

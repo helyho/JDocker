@@ -1,7 +1,7 @@
 package org.voovan.docker.command.Node;
 
 import org.voovan.docker.command.Cmd;
-import org.voovan.docker.message.Task.TaskInfo;
+import org.voovan.docker.message.task.TaskInfo;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
 

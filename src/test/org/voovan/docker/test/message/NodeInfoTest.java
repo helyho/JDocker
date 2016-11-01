@@ -1,6 +1,6 @@
 package org.voovan.docker.test.message;
 
-import org.voovan.docker.message.Node.NodeInfo;
+import org.voovan.docker.message.node.NodeInfo;
 import org.voovan.tools.log.Logger;
 
 import java.text.ParseException;

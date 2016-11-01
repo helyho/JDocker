@@ -23,7 +23,7 @@ public class CmdServiceUpdate extends Cmd {
     private ServiceSpec serviceSpec;
     private String nameOrId ;
 
-    public CmdServiceUpdate(String nameOrId, String version) {
+    public CmdServiceUpdate(String nameOrId, int version) {
         this.nameOrId = nameOrId;
         addParameter("version",version);
         serviceSpec = new ServiceSpec();
@@ -142,7 +142,7 @@ public class CmdServiceUpdate extends Cmd {
     }
 
 
-    public static CmdServiceUpdate newInstance(String nameOrId, String version){
+    public static CmdServiceUpdate newInstance(String nameOrId, int version){
         return new CmdServiceUpdate(nameOrId, version);
     }
 

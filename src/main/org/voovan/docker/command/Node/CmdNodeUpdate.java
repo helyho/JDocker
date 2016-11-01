@@ -1,9 +1,8 @@
 package org.voovan.docker.command.Node;
 
 import org.voovan.docker.command.Cmd;
-import org.voovan.docker.message.Node.NodeInfo;
-import org.voovan.docker.message.Node.NodeUpdate;
-import org.voovan.docker.message.Task.TaskInfo;
+import org.voovan.docker.message.node.NodeUpdate;
+import org.voovan.docker.message.task.TaskInfo;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
 
@@ -23,8 +22,9 @@ public class CmdNodeUpdate extends Cmd {
     private String id;
     private NodeUpdate nodeUpdate;
 
-    public CmdNodeUpdate(String id) {
+    public CmdNodeUpdate(String id,int version) {
         this.id = id;
+        addParameter("version",version);
         this.nodeUpdate = new NodeUpdate();
     }
 
@@ -49,8 +49,8 @@ public class CmdNodeUpdate extends Cmd {
     }
 
 
-    public static CmdNodeUpdate newInstance(String id){
-        return new CmdNodeUpdate(id);
+    public static CmdNodeUpdate newInstance(String id, int version){
+        return new CmdNodeUpdate(id,version);
     }
 
     @Override

@@ -63,7 +63,7 @@ public class SwarmUtil extends TestCase {
 
     public void testCmdSwarmUpdate() throws Exception {
         CmdSwarmUpdate cmdSwarmUpdate = CmdSwarmUpdate.newInstance();
-        Object data = cmdSwarmUpdate.name("teaaaaa").send();
+        Object data = cmdSwarmUpdate.version(15).name("teaaaaa").rotateManagerToken(true).rotateWorkerToken(true).send();
         cmdSwarmUpdate.close();
         Logger.info(formatJSON(data));
     }
