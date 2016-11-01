@@ -5,8 +5,10 @@ import org.voovan.docker.command.Exec.CmdExecCreate;
 import org.voovan.docker.command.Exec.CmdExecInfo;
 import org.voovan.docker.command.Exec.CmdExecStart;
 import org.voovan.docker.Global;
+import org.voovan.docker.network.Result;
 import org.voovan.tools.TEnv;
 import org.voovan.tools.json.JSON;
+import org.voovan.tools.json.JSONPath;
 import org.voovan.tools.log.Logger;
 
 /**
@@ -32,26 +34,35 @@ public class ExecUtil extends TestCase {
 
     public void testExecCreate() throws Exception {
         CmdExecCreate cmdExecCreate = CmdExecCreate.newInstance("d_test");
-        Object data = cmdExecCreate.cmd("ping","127.0.0.1").send();
+        Object data = cmdExecCreate.cmd("echo","127.0.0.1").send();
         cmdExecCreate.close();
         Logger.info(formatJSON(data));
     }
 
     public void testExecStart() throws Exception {
-        Global.DOCKER_REST_TIMEOUT = 60;
+        Global.DOCKER_REST_TIMEOUT = 15;
+        CmdExecCreate cmdExecCreate = CmdExecCreate.newInstance("d_test");
+        Result idata = cmdExecCreate.cmd("ifconfig","-a").send();
+        JSONPath jsonpath = new JSONPath(idata.getMessage());
+        String id = jsonpath.value("/Id").toString();
+
+
         CmdExecStart cmdExecStart = CmdExecStart
-                .newInstance("7a6e1b7b47ed662d8c4fc4bc08c1bf2e2261a7b650adf04e54193accdb8d4e5a");
+                .newInstance(id);
         Object data = cmdExecStart.send();
+        Logger.info(formatJSON(data));
+
         byte[] tmp = null;
         cmdExecStart.beginLoadStream();
         System.out.println("------");
         for(tmp = cmdExecStart.loadStream(); tmp!=null ; tmp = cmdExecStart.loadStream()){
-            System.out.print(new String(tmp));
+            System.out.print(new String(tmp).trim());
+            System.out.println("------");
             TEnv.sleep(1000);//测试这个需要使用 ping 命令来测试
         }
         cmdExecStart.endLoadStream();
         cmdExecStart.close();
-        Logger.info(formatJSON(data));
+
     }
 
     public void testExecInfo() throws Exception {

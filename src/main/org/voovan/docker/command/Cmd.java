@@ -4,6 +4,7 @@ import org.voovan.docker.Global;
 import org.voovan.docker.network.DockerHttpClient;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,7 +50,8 @@ public abstract class Cmd {
     }
 
     public byte[] loadStream() throws IOException {
-        return getDockerHttpClient().loadSteam().array();
+        ByteBuffer byteBuffer = getDockerHttpClient().loadSteam();
+        return byteBuffer==null ? null : byteBuffer.array();
     }
 
     public void endLoadStream(){
