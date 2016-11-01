@@ -62,6 +62,11 @@ public class NetworkInfo extends NetworkCreate {
     }
 
     public static List<NetworkInfo> load(String jsonStr) throws ParseException, ReflectiveOperationException {
+
+        if(!jsonStr.trim().startsWith("[")){
+            jsonStr = "["+jsonStr+"]";
+        }
+
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
         List<NetworkInfo> networkInfos = new ArrayList<NetworkInfo>();
         for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {

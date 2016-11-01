@@ -100,6 +100,10 @@ public class ServiceInfo {
      * @throws ReflectiveOperationException 反射异常
      */
     public static List<ServiceInfo> load(String jsonStr) throws ParseException, ReflectiveOperationException {
+        if(!jsonStr.trim().startsWith("[")){
+            jsonStr = "["+jsonStr+"]";
+        }
+
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
         List<ServiceInfo> serviceInfos = new ArrayList<ServiceInfo>();
         for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {

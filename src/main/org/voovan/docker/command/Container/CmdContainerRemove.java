@@ -20,6 +20,16 @@ public class CmdContainerRemove extends Cmd{
         this.nameOrId = nameOrId;
     }
 
+    public CmdContainerRemove force(boolean force){
+        addParameter("force",force);
+        return this;
+    }
+
+    public CmdContainerRemove volume(boolean volume){
+        addParameter("volume",volume);
+        return this;
+    }
+
     public static CmdContainerRemove newInstance(String nameOrId){
         return new CmdContainerRemove(nameOrId);
     }

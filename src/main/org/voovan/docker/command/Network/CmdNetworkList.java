@@ -21,7 +21,8 @@ import java.util.Map;
  *         Licence: Apache v2 License
  */
 public class CmdNetworkList extends Cmd{
-    Map<String,List<String>> filters;
+    private Map<String,List<String>> filters;
+
     public CmdNetworkList() {
         filters = new HashMap<String,List<String>>();
     }

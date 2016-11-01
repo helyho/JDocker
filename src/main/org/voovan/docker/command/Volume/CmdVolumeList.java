@@ -22,9 +22,28 @@ import java.util.Map;
  *         Licence: Apache v2 License
  */
 public class CmdVolumeList extends Cmd{
+
+    private Map<String,List<String>> filters;
+
     public CmdVolumeList() {
+        filters = new HashMap<String,List<String>>();
     }
 
+
+    public CmdVolumeList name(String name){
+        filters.put("name", TObject.newList(name));
+        return this;
+    }
+
+    public CmdVolumeList dangling(boolean dangling){
+        filters.put("dangling", TObject.newList(dangling));
+        return this;
+    }
+
+    public CmdVolumeList driver(String driver){
+        filters.put("driver", TObject.newList(driver));
+        return this;
+    }
 
     public static CmdVolumeList newInstance(){
         return new CmdVolumeList();
@@ -32,6 +51,8 @@ public class CmdVolumeList extends Cmd{
 
     @Override
     public List<Volume> send() throws Exception {
+        addParameter("filters", JSON.toJSON(filters));
+
         Result result = getDockerHttpClient().get("/volumes",getParameters());
         if(result.getStatus()>=300){
             throw new DockerClientException(result);

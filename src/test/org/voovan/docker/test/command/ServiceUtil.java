@@ -33,7 +33,7 @@ public class ServiceUtil extends TestCase {
     public void testServiceCreate() throws Exception {
         CmdServiceCreate cmdServiceCreate = CmdServiceCreate.newInstance();
         Object data = cmdServiceCreate.name("helyho").image("alpine").cmd("ping","127.0.0.1")
-                .network("voovan").mountReadWrite("v_t1","/v_t1").replicate(4).portTcp(223,22233).send();
+                .network("voovan_p").mountReadWrite("v_t1","/v_t1").replicate(4).portTcp(223,22233).send();
         cmdServiceCreate.close();
         Logger.info(formatJSON(data));
     }
@@ -47,14 +47,14 @@ public class ServiceUtil extends TestCase {
 
     public void testServiceUpdate() throws Exception {
         CmdServiceUpdate cmdServiceUpdate = new CmdServiceUpdate("3jfu6sx9wc1dqngiv4oqzvgdj","42");
-        Object data = cmdServiceUpdate.name("helyho1111").image("alpine").cmd("ping","10.0.0.1")
-                .network("voovan").mountReadWrite("v_tx","/v_tx").replicate(1).portTcp(223,22233).send();
+        Object data = cmdServiceUpdate.name("helyho1111").image("alpine").cmd("ping","127.0.0.1")
+                .network("voovan_p").mountReadWrite("v_tx","/v_tx").replicate(1).portTcp(223,22233).send();
         cmdServiceUpdate.close();
         Logger.info(formatJSON(data));
     }
 
     public void testServiceRemove() throws Exception {
-        CmdServiceRemove cmdServiceRemove = new CmdServiceRemove("8gppgw4hxnzle9vbm16wfpcti");
+        CmdServiceRemove cmdServiceRemove = new CmdServiceRemove("75tlqcvv56l2fitoqtdc169dv");
         Object data = cmdServiceRemove.send();
         cmdServiceRemove.close();
         Logger.info(formatJSON(data));

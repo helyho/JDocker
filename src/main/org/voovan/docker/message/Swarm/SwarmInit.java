@@ -19,7 +19,7 @@ public class SwarmInit {
     private Spec spec;
 
     public SwarmInit() {
-        listenAddr = "0.0.0.0:2377";
+        listenAddr = "0.0.0.0:2737";
         forceNewCluster = false;
         spec = new Spec();
     }

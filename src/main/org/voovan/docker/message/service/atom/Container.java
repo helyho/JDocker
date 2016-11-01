@@ -25,7 +25,6 @@ public class Container {
         args = new ArrayList<String>();
         env = new ArrayList<String>();
         mounts = new ArrayList<Mount>();
-        stopGracePeriod = 0L;
 
     }
 

@@ -94,6 +94,10 @@ public class TaskInfo {
     }
 
     public static List<TaskInfo> load(String jsonStr) throws ParseException, ReflectiveOperationException {
+        if(!jsonStr.trim().startsWith("[")){
+            jsonStr = "["+jsonStr+"]";
+        }
+
         List<TaskInfo> taskInfos = new ArrayList<TaskInfo>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
         for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {

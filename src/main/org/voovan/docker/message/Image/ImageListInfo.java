@@ -93,6 +93,10 @@ public class ImageListInfo {
 
     public static List<ImageListInfo> load(String jsonStr) throws ParseException, ReflectiveOperationException {
 
+        if(!jsonStr.trim().startsWith("[")){
+            jsonStr = "["+jsonStr+"]";
+        }
+
         List<ImageListInfo> imageInfos = new ArrayList<ImageListInfo>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 

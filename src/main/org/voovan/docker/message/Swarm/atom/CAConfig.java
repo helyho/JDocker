@@ -10,6 +10,11 @@ package org.voovan.docker.message.Swarm.atom;
  */
 public class CAConfig {
     private Long nodeCertExpiry;
+    private ExternalCA externalCA;
+
+    public CAConfig() {
+        externalCA = new ExternalCA();
+    }
 
     public Long getNodeCertExpiry() {
         return nodeCertExpiry;
@@ -17,5 +22,13 @@ public class CAConfig {
 
     public void setNodeCertExpiry(Long nodeCertExpiry) {
         this.nodeCertExpiry = nodeCertExpiry;
+    }
+
+    public ExternalCA getExternalCA() {
+        return externalCA;
+    }
+
+    public void setExternalCA(ExternalCA externalCA) {
+        this.externalCA = externalCA;
     }
 }

@@ -68,6 +68,11 @@ public class Volume {
     }
 
     public static List<Volume> load(String jsonStr) throws ParseException, ReflectiveOperationException {
+
+        if(!jsonStr.trim().startsWith("[")){
+            jsonStr = "["+jsonStr+"]";
+        }
+
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
         List<Volume> volumes = new ArrayList<Volume>();
         for (int i = 0; i < jsonPath.value("/Volumes", List.class).size(); i++) {

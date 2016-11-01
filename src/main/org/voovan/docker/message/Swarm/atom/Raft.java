@@ -18,7 +18,14 @@ public class Raft {
         snapshotIntegererval = 10000;
         logEntriesForSlowFollowers = 500;
         heartbeatTick = 1;
-        electionTick = 3;
+        electionTick = 10;
+    }
+
+    public Raft(Integer snapshotIntegererval, Integer logEntriesForSlowFollowers, Integer heartbeatTick, Integer electionTick) {
+        this.snapshotIntegererval = snapshotIntegererval;
+        this.logEntriesForSlowFollowers = logEntriesForSlowFollowers;
+        this.heartbeatTick = heartbeatTick;
+        this.electionTick = electionTick;
     }
 
     public Integer getSnapshotIntegererval() {

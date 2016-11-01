@@ -21,13 +21,13 @@ public class CmdImageRemove extends Cmd {
         this.nameOrId = nameOrId;
     }
 
-    public CmdImageRemove repo(String repo){
-        addParameter("repo",repo);
+    public CmdImageRemove force(boolean force){
+        addParameter("force",force);
         return this;
     }
 
-    public CmdImageRemove tag(String tag){
-        addParameter("tag",tag);
+    public CmdImageRemove noprune(boolean noprune){
+        addParameter("noprune",noprune);
         return this;
     }
 

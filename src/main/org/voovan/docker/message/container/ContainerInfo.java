@@ -154,6 +154,11 @@ public class ContainerInfo {
     }
 
     public static List<ContainerInfo> load(String jsonStr) throws ParseException, ReflectiveOperationException {
+
+        if(!jsonStr.trim().startsWith("[")){
+            jsonStr = "["+jsonStr+"]";
+        }
+
         List<ContainerInfo> containerInfos = new ArrayList<ContainerInfo>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 

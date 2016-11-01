@@ -101,6 +101,11 @@ public class NodeInfo {
     }
 
     public static List<NodeInfo> load(String jsonStr) throws ParseException, ReflectiveOperationException {
+
+        if(!jsonStr.trim().startsWith("[")){
+            jsonStr = "["+jsonStr+"]";
+        }
+
         List<NodeInfo> nodeInfos = new ArrayList<NodeInfo>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
         for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
