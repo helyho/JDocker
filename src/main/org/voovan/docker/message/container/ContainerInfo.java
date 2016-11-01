@@ -164,7 +164,7 @@ public class ContainerInfo {
             containerInfo.setImage(jsonPath.value("/[" + i + "]/Image", String.class,""));
             containerInfo.setImageID(jsonPath.value("/[" + i + "]/ImageID", String.class,""));
             containerInfo.setSizeRootFs(new Long(jsonPath.value("/[" + i + "]/SizeRootFs",String.class,"-1")));
-            containerInfo.setCommand(jsonPath.value("/[" + i + "]/Command", String.class,""));
+            containerInfo.setCommand(jsonPath.value("/[" + i + "]/command", String.class,""));
             containerInfo.setCreated(new Long(jsonPath.value("/[" + i + "]/Created", "-1").toString()));
             containerInfo.setPorts(jsonPath.listObject("/[" + i + "]/Ports", Port.class, new ArrayList<Port>()));
             containerInfo.setState(jsonPath.value("/[" + i + "]/State", String.class,""));

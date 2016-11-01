@@ -116,7 +116,7 @@ public class ServiceInfo {
 
             container.setImage(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Image", String.class, ""));
             container.setArgs(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Args", List.class, new ArrayList<String>()));
-            container.setCommand(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Command", List.class, new ArrayList<String>()));
+            container.setCommand(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/command", List.class, new ArrayList<String>()));
             container.setMounts(jsonPath.listObject("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/Mounts", Mount.class, new ArrayList<Mount>()));
             container.setStopGracePeriod(new Long(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/ContainerSpec/StopGracePeriod", "-1").toString()));
             taskTemplate.setResource(jsonPath.value("/[" + i + "]/Spec/TaskTemplate/Resources", Resource.class, new Resource()));

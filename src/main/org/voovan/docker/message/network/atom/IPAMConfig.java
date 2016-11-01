@@ -20,6 +20,12 @@ public class IPAMConfig {
 
     }
 
+    public IPAMConfig(String subnet, String ipRange, String gateway){
+        this.subnet = subnet;
+        this.ipRange = ipRange;
+        this.gateway = gateway;
+    }
+
     public String getSubnet() {
         return subnet;
     }

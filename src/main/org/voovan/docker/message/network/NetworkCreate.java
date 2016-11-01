@@ -18,14 +18,20 @@ import java.util.Map;
 public class NetworkCreate {
     private String name;
     private String driver;
+    private Boolean checkDuplicate;
     private Boolean enableIPv6;
+    private Boolean internal;
     private IPAM ipam;
+    private Map<String, Object> options;
     private Map<String, Object> labels;
 
     public NetworkCreate() {
+        options = new HashMap<String, Object>();
         labels = new HashMap<String, Object>();
         ipam = new IPAM();
         enableIPv6 = false;
+        internal = true;
+        checkDuplicate = false;
     }
 
     public String getName() {
@@ -41,15 +47,39 @@ public class NetworkCreate {
     }
 
     public void setDriver(String driver) {
-        driver = driver;
+        this.driver = driver;
     }
 
-    public Boolean isEnableIPv6() {
+    public Boolean getCheckDuplicate() {
+        return checkDuplicate;
+    }
+
+    public void setCheckDuplicate(Boolean checkDuplicate) {
+        this.checkDuplicate = checkDuplicate;
+    }
+
+    public Boolean getEnableIPv6() {
         return enableIPv6;
     }
 
     public void setEnableIPv6(Boolean enableIPv6) {
-        enableIPv6 = enableIPv6;
+        this.enableIPv6 = enableIPv6;
+    }
+
+    public Boolean getInternal() {
+        return internal;
+    }
+
+    public void setInternal(Boolean internal) {
+        this.internal = internal;
+    }
+
+    public Map<String, Object> getOptions() {
+        return options;
+    }
+
+    public void setOptions(Map<String, Object> options) {
+        this.options = options;
     }
 
     public IPAM getIpam() {

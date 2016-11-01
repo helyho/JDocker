@@ -26,7 +26,7 @@ public class ExecInfoTest {
             "    \"tty\": true,\n" +
             "    \"entrypoint\": \"echo\",\n" +
             "    \"arguments\": [\n" +
-            "      \"exec test message\"\n" +
+            "      \"Exec test message\"\n" +
             "    ],\n" +
             "    \"privileged\": false\n" +
             "  },\n" +

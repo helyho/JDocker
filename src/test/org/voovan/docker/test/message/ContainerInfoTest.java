@@ -24,7 +24,7 @@ public class ContainerInfoTest {
             "    ],\n" +
             "    \"Image\": \"alpine\",\n" +
             "    \"ImageID\": \"sha256:baa5d63471ead618ff91ddfacf1e2c81bf0612bfeb1daf00eb0843a41fbfade3\",\n" +
-            "    \"Command\": \"nc -l 3000\",\n" +
+            "    \"command\": \"nc -l 3000\",\n" +
             "    \"Created\": 1477063966,\n" +
             "    \"Ports\": [],\n" +
             "    \"Labels\": {},\n" +
@@ -70,7 +70,7 @@ public class ContainerInfoTest {
             "    ],\n" +
             "    \"Image\": \"alpine\",\n" +
             "    \"ImageID\": \"sha256:baa5d63471ead618ff91ddfacf1e2c81bf0612bfeb1daf00eb0843a41fbfade3\",\n" +
-            "    \"Command\": \"sh\",\n" +
+            "    \"command\": \"sh\",\n" +
             "    \"Created\": 1477045036,\n" +
             "    \"Ports\": [],\n" +
             "    \"Labels\": {},\n" +
@@ -106,7 +106,7 @@ public class ContainerInfoTest {
             "    ],\n" +
             "    \"Image\": \"dockerfly\",\n" +
             "    \"ImageID\": \"sha256:561f511a30a8b5e94574c9005cc1a6fb91e773e7c28987c3a7e47fbad647a839\",\n" +
-            "    \"Command\": \"/bin/sh -c \\\"/root/dockertunnel\\\"\",\n" +
+            "    \"command\": \"/bin/sh -c \\\"/root/dockertunnel\\\"\",\n" +
             "    \"Created\": 1476886257,\n" +
             "    \"Ports\": [\n" +
             "      {\n" +

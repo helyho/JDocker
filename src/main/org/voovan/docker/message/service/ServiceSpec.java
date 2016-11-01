@@ -124,7 +124,7 @@ public class ServiceSpec {
         network.setTarget("voovan");
         create.getNetworks().add(network);
 
-        //volume
+        //Volume
         Mount mount = new Mount();
         mount.setSource("v_t1");
         mount.setTarget("/v_t1");
