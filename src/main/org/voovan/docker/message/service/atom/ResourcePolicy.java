@@ -14,8 +14,7 @@ public class ResourcePolicy {
     private Long memoryBytes;
 
     public ResourcePolicy() {
-        nanoCPUs = 0;
-        memoryBytes = 0L;//134217728;
+
     }
 
     public void setNanoCPUs(Integer nanoCPUs) {

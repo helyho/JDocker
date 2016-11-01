@@ -17,6 +17,18 @@ public class Port {
         protocol = "tcp";
     }
 
+    public Port(int targetPort, int publishedPort) {
+        protocol = "tcp";
+        this.targetPort = targetPort;
+        this.publishedPort = publishedPort;
+    }
+
+    public Port(String protocol, int targetPort, int publishedPort) {
+        protocol = protocol;
+        this.targetPort = targetPort;
+        this.publishedPort = publishedPort;
+    }
+
     public String getProtocol() {
         return protocol;
     }

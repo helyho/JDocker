@@ -42,7 +42,7 @@ public class ContainersUnit extends TestCase {
     }
 
     public void testInfo() throws Exception {
-        CmdContainersList cmdContainersList = CmdContainersList.newInstance();
+        CmdContainerList cmdContainersList = CmdContainerList.newInstance();
         Object data = cmdContainersList.send();
         cmdContainersList.close();
         Logger.info(formatJSON(data));

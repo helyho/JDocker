@@ -15,6 +15,10 @@ public class Replicated {
         replicas = 1;
     }
 
+    public Replicated(int replicas) {
+        this.replicas = replicas;
+    }
+
     public Integer getReplicas() {
         return replicas;
     }

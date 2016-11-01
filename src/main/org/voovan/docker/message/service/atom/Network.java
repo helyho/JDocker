@@ -15,6 +15,10 @@ public class Network {
         target = "ingress";
     }
 
+    public Network(String networkName) {
+        target = networkName;
+    }
+
     public String getTarget() {
         return target;
     }
