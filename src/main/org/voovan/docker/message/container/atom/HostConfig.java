@@ -27,6 +27,8 @@ public class HostConfig {
     private Integer kernelMemory;
     private RestartPolicy restartPolicy;
     private String networkMode;
+    private Boolean publishAllPorts;
+    private Boolean privileged;
     private List<String> dns;
     private List<String> binds;
     private List<String> volumesFrom;
@@ -128,6 +130,22 @@ public class HostConfig {
 
     public void setNetworkMode(String networkMode) {
         this.networkMode = networkMode;
+    }
+
+    public Boolean isPublishAllPorts() {
+        return publishAllPorts;
+    }
+
+    public void setPublishAllPorts(Boolean publishAllPorts) {
+        this.publishAllPorts = publishAllPorts;
+    }
+
+    public Boolean isPrivileged() {
+        return privileged;
+    }
+
+    public void setPrivileged(Boolean privileged) {
+        this.privileged = privileged;
     }
 
     public List<String> getDns() {

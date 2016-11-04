@@ -27,6 +27,31 @@ public class CmdContainerCreate extends Cmd{
         containerCreate = new ContainerCreate();
     }
 
+    public CmdContainerCreate hostName(String hostName){
+        containerCreate.setHostName(hostName);
+        return this;
+    }
+
+    public CmdContainerCreate domainName(String domainName){
+        containerCreate.setDomainName(domainName);
+        return this;
+    }
+
+    public CmdContainerCreate publishAllPorts(boolean publishAllPorts){
+        containerCreate.getHostConfig().setPublishAllPorts(publishAllPorts);
+        return this;
+    }
+
+    public CmdContainerCreate privileged(boolean privileged){
+        containerCreate.getHostConfig().setPrivileged(privileged);
+        return this;
+    }
+
+    public CmdContainerCreate user(String user){
+        containerCreate.setUser(user);
+        return this;
+    }
+
     public CmdContainerCreate image(String image){
         containerCreate.setImage(image);
         return this;

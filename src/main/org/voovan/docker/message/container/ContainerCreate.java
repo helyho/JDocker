@@ -19,6 +19,10 @@ import java.util.Map;
  * Licence: Apache v2 License
  */
 public class ContainerCreate {
+
+    private String hostName;
+    private String domainName;
+    private String user;
     private String image;
     private List<String> cmd;
     private Map<String, Object> labels;
@@ -44,6 +48,30 @@ public class ContainerCreate {
         labels = new HashMap<String, Object>();
         exposedPorts = new HashMap<String, Map<String, String>>();
         hostConfig = new HostConfig();
+    }
+
+    public String getHostName() {
+        return hostName;
+    }
+
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
+    }
+
+    public String getDomainName() {
+        return domainName;
+    }
+
+    public void setDomainName(String domainName) {
+        this.domainName = domainName;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getImage() {
