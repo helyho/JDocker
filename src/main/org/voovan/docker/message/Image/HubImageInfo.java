@@ -65,7 +65,7 @@ public class HubImageInfo {
     public static List<HubImageInfo> load(String jsonStr) throws ParseException, ReflectiveOperationException {
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        List<HubImageInfo> hubImages = jsonPath.listObject("/", HubImageInfo.class, new ArrayList<HubImageInfo>());
+        List<HubImageInfo> hubImages = jsonPath.value("/", List.class, new ArrayList<HubImageInfo>());
 
         return hubImages;
     }

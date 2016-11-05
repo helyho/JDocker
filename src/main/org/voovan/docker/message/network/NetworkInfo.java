@@ -68,7 +68,7 @@ public class NetworkInfo extends NetworkCreate {
         }
 
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
-        List<NetworkInfo> networkInfos =jsonPath.listObject("/",NetworkInfo.class, new ArrayList<NetworkInfo>());
+        List<NetworkInfo> networkInfos =jsonPath.value("/",List.class, new ArrayList<NetworkInfo>());
         return networkInfos;
     }
 }

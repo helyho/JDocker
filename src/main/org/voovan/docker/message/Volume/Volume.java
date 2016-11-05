@@ -70,7 +70,7 @@ public class Volume {
     public static List<Volume> load(String jsonStr) throws ParseException, ReflectiveOperationException {
 
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
-        List<Volume> volumes = jsonPath.listObject("/Volumes", Volume.class, new ArrayList<Volume>());
+        List<Volume> volumes = jsonPath.value("/Volumes", List.class, new ArrayList<Volume>());
 
         return volumes;
     }

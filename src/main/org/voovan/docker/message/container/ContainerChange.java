@@ -20,7 +20,8 @@ public class ContainerChange {
     public static List<ChangeItem> load(String jsonStr) throws ParseException, ReflectiveOperationException {
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        return jsonPath.listObject("/", ChangeItem.class, new ArrayList<ChangeItem>());
+        List<ChangeItem> changeItems = jsonPath.value("/", List.class, new ArrayList<ChangeItem>());
+        return changeItems;
     }
 
 }

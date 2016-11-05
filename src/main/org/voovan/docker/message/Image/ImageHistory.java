@@ -74,7 +74,7 @@ public class ImageHistory {
     public static List<ImageHistory> load(String jsonStr) throws ParseException, ReflectiveOperationException {
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        List<ImageHistory> imageHistories = jsonPath.listObject("/",ImageHistory.class,new ArrayList<ImageHistory>());
+        List<ImageHistory> imageHistories = jsonPath.value("/",List.class,new ArrayList<ImageHistory>());
 
         return imageHistories;
     }

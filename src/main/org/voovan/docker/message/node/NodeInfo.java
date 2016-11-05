@@ -107,7 +107,7 @@ public class NodeInfo {
         }
 
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
-        List<NodeInfo> nodeInfos = jsonPath.listObject("/",NodeInfo.class,new ArrayList<NodeInfo>());
+        List<NodeInfo> nodeInfos = jsonPath.value("/",List.class,new ArrayList<NodeInfo>());
         return nodeInfos;
     }
 }
