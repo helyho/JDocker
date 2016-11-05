@@ -72,19 +72,9 @@ public class ImageHistory {
     }
 
     public static List<ImageHistory> load(String jsonStr) throws ParseException, ReflectiveOperationException {
-        List<ImageHistory> imageHistories = new ArrayList<ImageHistory>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
-            ImageHistory imageHistory = new ImageHistory();
-            imageHistory.setId(jsonPath.value("/[" + i + "]/Id", String.class,""));
-            imageHistory.setCreated(new Long(jsonPath.value("/[" + i + "]/Created", "-1").toString()));
-            imageHistory.setCreatedBy(jsonPath.value("/[" + i + "]/CreatedBy", String.class, ""));
-            imageHistory.setTags(jsonPath.value("/[" + i + "]/Tags", List.class, new ArrayList<String>()));
-            imageHistory.setSize(new Long(jsonPath.value("/[" + i + "]/Size", "-1").toString()));
-            imageHistory.setComment(jsonPath.value("/[" + i + "]/Comment", String.class,""));
-            imageHistories.add(imageHistory);
-        }
+        List<ImageHistory> imageHistories = jsonPath.listObject("/",ImageHistory.class,new ArrayList<ImageHistory>());
 
         return imageHistories;
     }

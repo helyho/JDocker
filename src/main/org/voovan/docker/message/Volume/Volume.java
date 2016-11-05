@@ -69,21 +69,8 @@ public class Volume {
 
     public static List<Volume> load(String jsonStr) throws ParseException, ReflectiveOperationException {
 
-        if(!jsonStr.trim().startsWith("[")){
-            jsonStr = "["+jsonStr+"]";
-        }
-
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
-        List<Volume> volumes = new ArrayList<Volume>();
-        for (int i = 0; i < jsonPath.value("/Volumes", List.class).size(); i++) {
-            Volume volume = new Volume();
-            volume.setName(jsonPath.value("/Volumes[" + i + "]/Name", String.class,""));
-            volume.setDriver(jsonPath.value("/Volumes[" + i + "]/Driver", String.class,""));
-            volume.setMountpoint(jsonPath.value("/Volumes[" + i + "]/Mountpoint", String.class,""));
-            volume.setScope(jsonPath.value("/Volumes[" + i + "]/Scope", String.class,""));
-            volume.getLabels().putAll(jsonPath.value("/Volumes[" + i + "]/Labels", Map.class, new HashMap<String,Object>()));
-            volumes.add(volume);
-        }
+        List<Volume> volumes = jsonPath.listObject("/Volumes", Volume.class, new ArrayList<Volume>());
 
         return volumes;
     }

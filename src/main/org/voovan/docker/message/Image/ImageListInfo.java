@@ -97,21 +97,9 @@ public class ImageListInfo {
             jsonStr = "["+jsonStr+"]";
         }
 
-        List<ImageListInfo> imageInfos = new ArrayList<ImageListInfo>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
-            ImageListInfo imageListInfo = new ImageListInfo();
-            imageListInfo.setId(jsonPath.value("/[" + i + "]/Id", String.class,""));
-            imageListInfo.setParentId(jsonPath.value("/[" + i + "]/ParentId", String.class,""));
-            imageListInfo.setRepoTags(jsonPath.value("/[" + i + "]/RepoTags", List.class, new ArrayList<String>()));
-            imageListInfo.setRepoDigests(jsonPath.value("/[" + i + "]/RepoDigests", List.class, new ArrayList<String>()));
-            imageListInfo.setCreated(new Long(jsonPath.value("/[" + i + "]/Created", "-1").toString()));
-            imageListInfo.setSize(new Long(jsonPath.value("/[" + i + "]/Size",  "-1").toString()));
-            imageListInfo.setVirtualSize(new Long(jsonPath.value("/[" + i + "]/VirtualSize", "-1").toString()));
-            imageListInfo.setLabels(jsonPath.value("/[" + i + "]/Labels", Map.class, new HashMap<String,Object>()));
-            imageInfos.add(imageListInfo);
-        }
+        List<ImageListInfo> imageInfos = jsonPath.listObject("/", ImageListInfo.class, new ArrayList<ImageListInfo>());
 
         return imageInfos;
     }

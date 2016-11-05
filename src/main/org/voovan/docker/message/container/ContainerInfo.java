@@ -1,8 +1,6 @@
 package org.voovan.docker.message.container;
 
-import org.voovan.docker.message.container.atom.Mount;
-import org.voovan.docker.message.container.atom.Network;
-import org.voovan.docker.message.container.atom.Port;
+import org.voovan.docker.message.container.atom.*;
 import org.voovan.tools.json.JSONPath;
 
 import java.text.ParseException;
@@ -31,8 +29,8 @@ public class ContainerInfo {
     private List<Port> ports;
     private String state;
     private String status;
-    private Map<String, Object> hostConfig;
-    private List<Network> networkSettings;
+    private HostConfig hostConfig;
+    private NetworkSettings networkSettings;
     private List<Mount> mounts;
 
     private Map<String, Object> labels;
@@ -129,19 +127,19 @@ public class ContainerInfo {
         this.status = status;
     }
 
-    public Map<String, Object> getHostConfig() {
+    public HostConfig getHostConfig() {
         return hostConfig;
     }
 
-    public void setHostConfig(Map<String, Object> hostConfig) {
+    public void setHostConfig(HostConfig hostConfig) {
         this.hostConfig = hostConfig;
     }
 
-    public List<Network> getNetworkSettings() {
+    public NetworkSettings getNetworkSettings() {
         return networkSettings;
     }
 
-    public void setNetworkSettings(List<Network> networkSettings) {
+    public void setNetworkSettings(NetworkSettings networkSettings) {
         this.networkSettings = networkSettings;
     }
 
@@ -159,29 +157,9 @@ public class ContainerInfo {
             jsonStr = "["+jsonStr+"]";
         }
 
-        List<ContainerInfo> containerInfos = new ArrayList<ContainerInfo>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
-            ContainerInfo containerInfo = new ContainerInfo();
-            containerInfo.setId(jsonPath.value("/[" + i + "]/Id", String.class,""));
-            containerInfo.setNames(jsonPath.value("/[" + i + "]/Names", List.class, new ArrayList<String>()));
-            containerInfo.setImage(jsonPath.value("/[" + i + "]/Image", String.class,""));
-            containerInfo.setImageID(jsonPath.value("/[" + i + "]/ImageID", String.class,""));
-            containerInfo.setSizeRootFs(new Long(jsonPath.value("/[" + i + "]/SizeRootFs",String.class,"-1")));
-            containerInfo.setCommand(jsonPath.value("/[" + i + "]/command", String.class,""));
-            containerInfo.setCreated(new Long(jsonPath.value("/[" + i + "]/Created", "-1").toString()));
-            containerInfo.setPorts(jsonPath.listObject("/[" + i + "]/Ports", Port.class, new ArrayList<Port>()));
-            containerInfo.setState(jsonPath.value("/[" + i + "]/State", String.class,""));
-            containerInfo.setStatus(jsonPath.value("/[" + i + "]/Status", String.class,""));
-            containerInfo.setHostConfig(jsonPath.value("/[" + i + "]/HostConfig", Map.class, new HashMap<String,Object>()));
-            containerInfo.setMounts(jsonPath.listObject("/[" + i + "]/Mounts", Mount.class, new ArrayList<Mount>()));
-
-
-            containerInfo.setNetworkSettings(jsonPath.mapToListObject("/[" + i + "]/NetworkSettings/Networks", "Name", Network.class));
-            containerInfo.setLabels((Map<String, Object>) jsonPath.value("/[" + i + "]/Labels", Map.class));
-            containerInfos.add(containerInfo);
-        }
+        List<ContainerInfo> containerInfos = jsonPath.listObject("/",ContainerInfo.class,new ArrayList<ContainerInfo>());
         return containerInfos;
     }
 }

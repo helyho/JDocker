@@ -115,24 +115,7 @@ public class ExecInfo {
 
     public static ExecInfo load(String jsonStr) throws ParseException, ReflectiveOperationException {
         JSONPath jsonPath = new JSONPath(jsonStr);
-        ExecInfo execInfo = new ExecInfo();
-        execInfo.setId(jsonPath.value("/ID",String.class,""));
-        execInfo.setRunning(jsonPath.value("/Running",Boolean.class,false));
-        execInfo.setExitCode(jsonPath.value("/ExitCode",Integer.class,-1));
-        execInfo.setOpenStdin(jsonPath.value("/OpenStdin",Boolean.class,false));
-        execInfo.setOpenStderr(jsonPath.value("/OpenStderr",Boolean.class,false));
-        execInfo.setOpenStdout(jsonPath.value("/OpenStdout",Boolean.class,false));
-        execInfo.setCanRemove(jsonPath.value("/CanRemove",Boolean.class,false));
-        execInfo.setContainerID(jsonPath.value("/ContainerID",String.class,""));
-        execInfo.setDetachKeys(jsonPath.value("/DetachKeys",String.class,""));
-
-
-        ProcessConfig processConfig = execInfo.getProcessConfig();
-        processConfig.setEntrypoint(jsonPath.value("/ProcessConfig/entrypoInteger",String.class,""));
-        processConfig.setTty(jsonPath.value("/ProcessConfig/tty",Boolean.class,false));
-        processConfig.setPrivileged(jsonPath.value("/ProcessConfig/privileged",Boolean.class,false));
-        processConfig.getArguments().addAll(jsonPath.value("/ProcessConfig/arguments",
-                                                            List.class,new ArrayList<String>()));
+        ExecInfo execInfo = jsonPath.value("/",ExecInfo.class);
 
         return execInfo;
     }

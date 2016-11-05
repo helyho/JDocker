@@ -22,11 +22,11 @@ public class NetworkInfo extends NetworkCreate {
     private String id;
     private String scope;
     private Boolean internal;
-    private List<Container> containers;
+    private HashMap<String,Container> containers;
 
     public NetworkInfo() {
         super();
-        containers = new ArrayList<Container>();
+        containers = new HashMap<String,Container>();
     }
 
     public String getId() {
@@ -53,11 +53,11 @@ public class NetworkInfo extends NetworkCreate {
         this.internal = internal;
     }
 
-    public List<Container> getContainers() {
+    public HashMap<String,Container> getContainers() {
         return containers;
     }
 
-    public void setContainers(List<Container> containers) {
+    public void setContainers(HashMap<String,Container> containers) {
         this.containers = containers;
     }
 
@@ -68,23 +68,7 @@ public class NetworkInfo extends NetworkCreate {
         }
 
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
-        List<NetworkInfo> networkInfos = new ArrayList<NetworkInfo>();
-        for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
-            NetworkInfo networkInfo = new NetworkInfo();
-            networkInfo.setId(jsonPath.value("/[" + i + "]/Id", String.class, ""));
-            networkInfo.setName(jsonPath.value("/[" + i + "]/Name", String.class, ""));
-            networkInfo.setScope(jsonPath.value("/[" + i + "]/Scope", String.class, ""));
-            networkInfo.setDriver(jsonPath.value("/[" + i + "]/Driver", String.class, ""));
-            networkInfo.setEnableIPv6(jsonPath.value("/[" + i + "]/EnableIPv6", Boolean.class, false));
-            networkInfo.setInternal(jsonPath.value("/[" + i + "]/Internal", Boolean.class,false));
-
-            networkInfo.getIpam().setDriver(jsonPath.value("/[" + i + "]/IPAM/Driver", String.class, ""));
-            networkInfo.getIpam().getOptions().putAll(jsonPath.value("/[" + i + "]/IPAM/Options", Map.class, new HashMap<String,Object>()));
-            networkInfo.getIpam().getConfig().addAll(jsonPath.listObject("/[" + i + "]/IPAM/Config", IPAMConfig.class, new ArrayList<IPAMConfig>()));
-            networkInfo.getContainers().addAll(jsonPath.mapToListObject("/[" + i + "]/Containers", "containerId", Container.class, new ArrayList<Container>()));
-            networkInfos.add(networkInfo);
-        }
-
+        List<NetworkInfo> networkInfos =jsonPath.listObject("/",NetworkInfo.class, new ArrayList<NetworkInfo>());
         return networkInfos;
     }
 }

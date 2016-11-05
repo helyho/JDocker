@@ -43,7 +43,7 @@ public class ContainersUnit extends TestCase {
 
     public void testInfo() throws Exception {
         CmdContainerList cmdContainersList = CmdContainerList.newInstance();
-        Object data = cmdContainersList.send();
+        Object data = cmdContainersList.name("d_test").all(true).send();
         cmdContainersList.close();
         Logger.info(formatJSON(data));
     }

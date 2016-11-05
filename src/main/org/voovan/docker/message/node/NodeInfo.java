@@ -106,38 +106,8 @@ public class NodeInfo {
             jsonStr = "["+jsonStr+"]";
         }
 
-        List<NodeInfo> nodeInfos = new ArrayList<NodeInfo>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
-        for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
-            NodeInfo nodeInfo = new NodeInfo();
-            nodeInfo.setId(jsonPath.value("/[" + i + "]/ID", String.class, ""));
-            nodeInfo.setVersion(jsonPath.value("/[" + i + "]/Version", Version.class, new Version()));
-            nodeInfo.setCreatedAt(jsonPath.value("/[" + i + "]/CreatedAt", String.class, ""));
-            nodeInfo.setUpdatedAt(jsonPath.value("/[" + i + "]/UpdatedAt", String.class, ""));
-
-            Spec spec = nodeInfo.getSpec();
-
-            spec.setName(jsonPath.value("/[" + i + "]/Spec/Name", String.class, ""));
-            spec.setRole(jsonPath.value("/[" + i + "]/Spec/Role", String.class, ""));
-            spec.setAvailability(jsonPath.value("/[" + i + "]/Spec/Availability", String.class, ""));
-            Map labels = jsonPath.value("/[" + i + "]/Spec/Labels", Map.class, new HashMap<String,Object>());
-            if (labels != null) {
-                spec.getLabels().putAll(labels);
-            }
-
-            Description description = nodeInfo.getDescription();
-            description.setHostname(jsonPath.value("/[" + i + "]/Description/Hostname", String.class, ""));
-            description.setPlatform(jsonPath.value("/[" + i + "]/Description/Platform", Platform.class, new Platform()));
-            description.setResources(jsonPath.value("/[" + i + "]/Description/Resources", Resources.class, new Resources()));
-
-            Engine engine = description.getEngine();
-            engine.setEngineVersion(jsonPath.value("/[" + i + "]/Description/Engine/EngineVersion", String.class, ""));
-            engine.getPlugins().addAll(jsonPath.listObject("/[" + i + "]/Description/Engine/Plugins", Plugin.class, new ArrayList<Plugin>()));
-
-            nodeInfo.setStatus(jsonPath.value("/[" + i + "]/Status", Status.class, new Status()));
-            nodeInfo.setManagerStatus(jsonPath.value("/[" + i + "]/ManagerStatus", ManagerStatus.class, new ManagerStatus()));
-            nodeInfos.add(nodeInfo);
-        }
+        List<NodeInfo> nodeInfos = jsonPath.listObject("/",NodeInfo.class,new ArrayList<NodeInfo>());
         return nodeInfos;
     }
 }

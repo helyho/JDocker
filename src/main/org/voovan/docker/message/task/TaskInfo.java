@@ -98,12 +98,9 @@ public class TaskInfo {
             jsonStr = "["+jsonStr+"]";
         }
 
-        List<TaskInfo> taskInfos = new ArrayList<TaskInfo>();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
-        for (int i = 0; i < jsonPath.value("/", List.class).size(); i++) {
-            TaskInfo taskInfo = jsonPath.value("/[" + i + "]", TaskInfo.class, new TaskInfo());
-            taskInfos.add(taskInfo);
-        }
+
+        List<TaskInfo> taskInfos = jsonPath.listObject("/", TaskInfo.class, new ArrayList<TaskInfo>());
         return taskInfos;
     }
 
