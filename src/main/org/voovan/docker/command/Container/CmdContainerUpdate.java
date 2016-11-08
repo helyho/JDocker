@@ -1,9 +1,9 @@
 package org.voovan.docker.command.Container;
 
 import org.voovan.docker.command.Cmd;
+import org.voovan.docker.message.container.atom.HostConfig;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
-import org.voovan.docker.message.container.atom.ContainerUpdate;
 
 /**
  * 类文字命名
@@ -15,28 +15,28 @@ import org.voovan.docker.message.container.atom.ContainerUpdate;
  *         Licence: Apache v2 License
  */
 public class CmdContainerUpdate extends Cmd{
-    private ContainerUpdate containerUpdate;
+    private HostConfig hostConfig;
     private String nameOrId;
 
     public CmdContainerUpdate(String nameOrId) {
         super();
         this.nameOrId = nameOrId;
-        containerUpdate = new ContainerUpdate();
+        hostConfig = new HostConfig();
     }
 
 
     public CmdContainerUpdate cpuQuota(int cpuQuota){
-        containerUpdate.setCpuQuota(cpuQuota);
+        hostConfig.setCpuQuota(cpuQuota);
         return this;
     }
 
     public CmdContainerUpdate cpuPeriod(int cpuPeriod){
-        containerUpdate.setCpuPeriod(cpuPeriod);
+        hostConfig.setCpuPeriod(cpuPeriod);
         return this;
     }
 
     public CmdContainerUpdate memory(int memory){
-        containerUpdate.setMemory(memory*1024L*1024L);
+        hostConfig.setMemory(memory*1024L*1024L);
         return this;
     }
 
@@ -46,7 +46,7 @@ public class CmdContainerUpdate extends Cmd{
 
     @Override
     public Result send() throws Exception {
-        Result result = getDockerHttpClient().post("/containers/"+nameOrId+"/update", getParameters(), containerUpdate);
+        Result result = getDockerHttpClient().post("/containers/"+nameOrId+"/update", getParameters(), hostConfig);
         if(result.getStatus()>=300){
             throw new DockerClientException(result);
         }else{
