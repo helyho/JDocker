@@ -6,10 +6,10 @@ import org.voovan.docker.message.auth.AuthResult;
  * 类文字命名
  *
  * @author helyho
- *         <p>
- *         JDocker Framework.
- *         WebSite: https://github.com/helyho/JDocker
- *         Licence: Apache v2 License
+ *<p>
+ * JDocker Framework.
+ * WebSite: https://github.com/helyho/JDocker
+ * Licence: Apache v2 License
  */
 public class Global {
 
