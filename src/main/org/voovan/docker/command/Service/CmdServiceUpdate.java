@@ -141,14 +141,17 @@ public class CmdServiceUpdate extends Cmd {
         return this;
     }
 
-
-    public static CmdServiceUpdate newInstance(String nameOrId, int version){
-        return new CmdServiceUpdate(nameOrId, version);
-    }
-
     public CmdServiceUpdate label(String key, Object value) {
         serviceSpec.getLabels().put(key, value);
         return this;
+    }
+
+    public ServiceSpec getEntity(){
+        return serviceSpec;
+    }
+
+    public static CmdServiceUpdate newInstance(String nameOrId, int version){
+        return new CmdServiceUpdate(nameOrId, version);
     }
 
     @Override

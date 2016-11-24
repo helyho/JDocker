@@ -71,6 +71,11 @@ public class CmdSwarmUpdate extends Cmd {
         return this;
     }
 
+
+    public SwarmUpdate getEntity(){
+        return swarmUpdate;
+    }
+
     public static CmdSwarmUpdate newInstance(){
         return new CmdSwarmUpdate();
     }

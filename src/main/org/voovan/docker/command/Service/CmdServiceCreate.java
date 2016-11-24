@@ -142,6 +142,9 @@ public class CmdServiceCreate extends Cmd {
         return this;
     }
 
+    public ServiceSpec getEntity(){
+        return serviceSpec;
+    }
 
     public static CmdServiceCreate newInstance(){
         return new CmdServiceCreate();

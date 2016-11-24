@@ -38,6 +38,10 @@ public class CmdVolumeCreate extends Cmd{
     }
 
 
+    public Volume getEntity(){
+        return volume;
+    }
+
     public static CmdVolumeCreate newInstance(){
         return new CmdVolumeCreate();
     }

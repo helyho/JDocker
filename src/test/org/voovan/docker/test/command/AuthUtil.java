@@ -34,7 +34,7 @@ public class AuthUtil extends TestCase {
 
     public void testAuth() throws Exception {
         CmdAuth cmdAuth = CmdAuth.newInstance();
-        Object data = cmdAuth.username("helyho").password("Ht543500").send();
+        Object data = cmdAuth.username("helyho").password("12345").send();
         cmdAuth.close();
         Logger.info(formatJSON(data));
     }

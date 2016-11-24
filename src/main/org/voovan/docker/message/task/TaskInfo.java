@@ -100,7 +100,7 @@ public class TaskInfo {
 
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        List<TaskInfo> taskInfos = jsonPath.value("/", List.class, new ArrayList<TaskInfo>());
+        List<TaskInfo> taskInfos = jsonPath.listObject("/", TaskInfo.class, new ArrayList<TaskInfo>());
         return taskInfos;
     }
 

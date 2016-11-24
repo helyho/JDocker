@@ -44,6 +44,10 @@ public class CmdAuth extends Cmd{
         return new CmdAuth();
     }
 
+    public AuthRequest getEntity(){
+        return authRequest;
+    }
+
     @Override
     public AuthResult send() throws Exception {
         Result result = getDockerHttpClient().post("/auth", getParameters(),authRequest);

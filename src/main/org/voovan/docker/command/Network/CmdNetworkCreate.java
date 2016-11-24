@@ -1,6 +1,7 @@
 package org.voovan.docker.command.Network;
 
 import org.voovan.docker.command.Cmd;
+import org.voovan.docker.message.exec.ExecCreate;
 import org.voovan.docker.message.network.NetworkCreate;
 import org.voovan.docker.message.network.atom.IPAMConfig;
 import org.voovan.docker.network.DockerClientException;
@@ -71,6 +72,10 @@ public class CmdNetworkCreate extends Cmd{
     public CmdNetworkCreate IPAMConfig(String subnet, String ipRange, String gateway){
         networkCreate.getIpam().getConfig().add(new IPAMConfig(subnet, ipRange, gateway));
         return this;
+    }
+
+    public NetworkCreate getEntity(){
+        return networkCreate;
     }
 
     public static CmdNetworkCreate newInstance(){

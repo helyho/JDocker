@@ -48,6 +48,9 @@ public class CmdNodeUpdate extends Cmd {
         return this;
     }
 
+    public NodeUpdate getEntity(){
+        return nodeUpdate;
+    }
 
     public static CmdNodeUpdate newInstance(String id, int version){
         return new CmdNodeUpdate(id,version);

@@ -30,7 +30,7 @@ public class CmdExecInfo extends Cmd{
 
     @Override
     public ExecInfo send() throws Exception {
-        Result result = getDockerHttpClient().get("/Exec/"+execId+"/json", getParameters());
+        Result result = getDockerHttpClient().get("/exec/"+execId+"/json", getParameters());
         if(result.getStatus()>=300){
             throw new DockerClientException(result);
         }else{

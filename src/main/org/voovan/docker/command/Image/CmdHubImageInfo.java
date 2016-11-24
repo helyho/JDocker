@@ -48,7 +48,6 @@ public class CmdHubImageInfo extends Cmd {
         return this;
     }
 
-
     public static CmdHubImageInfo newInstance() {
         return new CmdHubImageInfo();
     }

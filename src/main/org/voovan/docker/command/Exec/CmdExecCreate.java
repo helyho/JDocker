@@ -1,6 +1,7 @@
 package org.voovan.docker.command.Exec;
 
 import org.voovan.docker.command.Cmd;
+import org.voovan.docker.message.container.atom.HostConfig;
 import org.voovan.docker.message.exec.ExecCreate;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
@@ -30,6 +31,10 @@ public class CmdExecCreate extends Cmd{
     public CmdExecCreate cmd(String ... cmd){
         execCreate.getCmd().addAll(Arrays.asList(cmd));
         return this;
+    }
+
+    public ExecCreate getEntity(){
+        return execCreate;
     }
 
     public static CmdExecCreate newInstance(String nameOrId){

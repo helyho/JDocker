@@ -99,7 +99,7 @@ public class ImageListInfo {
 
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        List<ImageListInfo> imageInfos = jsonPath.value("/", List.class, new ArrayList<ImageListInfo>());
+        List<ImageListInfo> imageInfos = jsonPath.listObject("/", ImageListInfo.class, new ArrayList<ImageListInfo>());
 
         return imageInfos;
     }

@@ -71,6 +71,10 @@ public class CmdSwarmInit extends Cmd {
         return this;
     }
 
+    public SwarmInit getEntity(){
+        return swarmInit;
+    }
+
     public static CmdSwarmInit newInstance(){
         return new CmdSwarmInit();
     }

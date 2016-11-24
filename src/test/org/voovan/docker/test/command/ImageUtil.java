@@ -65,7 +65,7 @@ public class ImageUtil extends TestCase {
     public void testImageCreate() throws Exception {
         Global.DOCKER_REST_TIMEOUT = 60;
         CmdImageCreate cmdImageCreate = CmdImageCreate.newInstance();
-        Object data = cmdImageCreate.fromImage("nginx:1.10-alpine").send();
+        Object data = cmdImageCreate.fromImage("alpine:3.2").send();
         cmdImageCreate.close();
         Logger.info(formatJSON(data));
     }

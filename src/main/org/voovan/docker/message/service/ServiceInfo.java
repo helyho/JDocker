@@ -104,7 +104,7 @@ public class ServiceInfo {
         }
 
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
-        List<ServiceInfo> serviceInfos = jsonPath.value("/", List.class, new ArrayList<ServiceInfo>());
+        List<ServiceInfo> serviceInfos = jsonPath.listObject("/", ServiceInfo.class, new ArrayList<ServiceInfo>());
 
         return serviceInfos;
     }

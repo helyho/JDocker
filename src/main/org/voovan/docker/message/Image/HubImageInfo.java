@@ -1,5 +1,6 @@
 package org.voovan.docker.message.Image;
 
+import org.voovan.tools.TObject;
 import org.voovan.tools.json.JSONPath;
 
 import java.text.ParseException;
@@ -65,7 +66,7 @@ public class HubImageInfo {
     public static List<HubImageInfo> load(String jsonStr) throws ParseException, ReflectiveOperationException {
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        List<HubImageInfo> hubImages = jsonPath.value("/", List.class, new ArrayList<HubImageInfo>());
+        List<HubImageInfo> hubImages = jsonPath.listObject("/", HubImageInfo.class, new ArrayList<HubImageInfo>());
 
         return hubImages;
     }

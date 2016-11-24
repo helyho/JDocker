@@ -1,6 +1,7 @@
 package org.voovan.docker.command.Exec;
 
 import org.voovan.docker.command.Cmd;
+import org.voovan.docker.message.exec.ExecCreate;
 import org.voovan.docker.message.exec.ExecStart;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
@@ -24,7 +25,9 @@ public class CmdExecStart extends Cmd{
         execStart = new ExecStart();
     }
 
-
+    public ExecStart getEntity(){
+        return execStart;
+    }
 
     public static CmdExecStart newInstance(String nameOrId){
         return new CmdExecStart(nameOrId);

@@ -43,6 +43,9 @@ public class CmdSwarmJoin extends Cmd {
         return this;
     }
 
+    public SwarmJoin getEntity(){
+        return swarmJoin;
+    }
 
     public static CmdSwarmJoin newInstance(){
         return new CmdSwarmJoin();

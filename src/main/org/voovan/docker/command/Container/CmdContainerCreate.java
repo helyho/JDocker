@@ -1,6 +1,7 @@
 package org.voovan.docker.command.Container;
 
 import org.voovan.docker.command.Cmd;
+import org.voovan.docker.message.auth.AuthRequest;
 import org.voovan.docker.message.container.ContainerCreate;
 import org.voovan.docker.message.container.atom.Device;
 import org.voovan.docker.network.DockerClientException;
@@ -122,6 +123,10 @@ public class CmdContainerCreate extends Cmd{
     public CmdContainerCreate exposePort(int containerPort, String protocol, String... hostPortStrs){
         containerCreate.addPortBind(containerPort,protocol,hostPortStrs);
         return this;
+    }
+
+    public ContainerCreate getEntity(){
+        return containerCreate;
     }
 
     public static CmdContainerCreate newInstance(String name){

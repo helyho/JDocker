@@ -162,7 +162,7 @@ public class ContainerInfo {
 
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        List<ContainerInfo> containerInfos = jsonPath.value("/",List.class,new ArrayList<ContainerInfo>());
+        List<ContainerInfo> containerInfos = jsonPath.listObject("/",ContainerInfo.class,new ArrayList<ContainerInfo>());
         return containerInfos;
     }
 }

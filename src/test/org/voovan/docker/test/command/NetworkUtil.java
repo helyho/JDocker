@@ -35,7 +35,7 @@ public class NetworkUtil extends TestCase {
 
     public void testNetworkList() throws Exception {
         CmdNetworkList cmdNetworkList = CmdNetworkList.newInstance();
-        Object data = cmdNetworkList.name("voovan").send();
+        Object data = cmdNetworkList.name("bridge").send();
         cmdNetworkList.close();
         Logger.info(formatJSON(data));
     }

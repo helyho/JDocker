@@ -66,7 +66,7 @@ public class ExecUtil extends TestCase {
     }
 
     public void testExecInfo() throws Exception {
-        CmdExecInfo cmdExecInfo = CmdExecInfo.newInstance("21ee94ad91d2574cabc8c5bbd2b2e83e6f874a89e12f947c469c7fcd99dfb155");
+        CmdExecInfo cmdExecInfo = CmdExecInfo.newInstance("3842c2559fadd60a7426d4744ee3f81765a07ccdb6a6d63125ee9b5ce3ae5f17");
         Object data = cmdExecInfo.send();
         cmdExecInfo.close();
         Logger.info(formatJSON(data));
