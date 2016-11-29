@@ -13,7 +13,7 @@ import org.voovan.docker.message.auth.AuthResult;
  */
 public class DockerGlobal {
 
-    public static String DOCKER_REST_HOST = "";
+    public static String DOCKER_REST_HOST = "127.0.0.1";
     public static int DOCKER_REST_PORT = 2735;
     public static String DOCKER_REST_CHARSET = "UTF-8";
     public static int DOCKER_REST_TIMEOUT = 5;
