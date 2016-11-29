@@ -41,6 +41,7 @@ public class HostConfig {
         binds = new ArrayList<String>();
         links = new ArrayList<String>();
         devices = new ArrayList<Device>();
+        volumesFrom =  new ArrayList<String>();
         portBindings = new HashMap<String, List<Map<String, String>>>();
     }
 
