@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 import org.voovan.docker.command.Exec.CmdExecCreate;
 import org.voovan.docker.command.Exec.CmdExecInfo;
 import org.voovan.docker.command.Exec.CmdExecStart;
-import org.voovan.docker.Global;
+import org.voovan.docker.DockerGlobal;
 import org.voovan.docker.network.Result;
 import org.voovan.tools.TEnv;
 import org.voovan.tools.json.JSON;
@@ -23,9 +23,9 @@ import org.voovan.tools.log.Logger;
 public class ExecUtil extends TestCase {
 
     public void setUp(){
-        Global.DOCKER_REST_HOST = "127.0.0.1";
-        Global.DOCKER_REST_PORT = 2735;
-        Global.DEBUG = true;
+        DockerGlobal.DOCKER_REST_HOST = "127.0.0.1";
+        DockerGlobal.DOCKER_REST_PORT = 2735;
+        DockerGlobal.DEBUG = true;
     }
 
     public String formatJSON(Object obj){
@@ -40,7 +40,7 @@ public class ExecUtil extends TestCase {
     }
 
     public void testExecStart() throws Exception {
-        Global.DOCKER_REST_TIMEOUT = 15;
+        DockerGlobal.DOCKER_REST_TIMEOUT = 15;
         CmdExecCreate cmdExecCreate = CmdExecCreate.newInstance("d_test");
         Result idata = cmdExecCreate.cmd("ifconfig","-a").send();
         JSONPath jsonpath = new JSONPath(idata.getMessage());

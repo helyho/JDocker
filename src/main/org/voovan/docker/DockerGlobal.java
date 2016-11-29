@@ -11,7 +11,7 @@ import org.voovan.docker.message.auth.AuthResult;
  * WebSite: https://github.com/helyho/JDocker
  * Licence: Apache v2 License
  */
-public class Global {
+public class DockerGlobal {
 
     public static String DOCKER_REST_HOST = "";
     public static int DOCKER_REST_PORT = 2735;

@@ -1,6 +1,6 @@
 package org.voovan.docker.network;
 
-import org.voovan.docker.Global;
+import org.voovan.docker.DockerGlobal;
 import org.voovan.http.client.HttpClient;
 import org.voovan.http.message.Response;
 import org.voovan.network.exception.ReadMessageException;
@@ -29,7 +29,7 @@ public class DockerHttpClient {
         this.charset = charset;
         httpClient = new HttpClient(rootURL, charset, timeOut);
         httpClient.getHeader().remove("Connection");
-        if(Global.DEBUG){
+        if(DockerGlobal.DEBUG){
             Logger.simple("[DEBUG INFO] RootURL: "+rootURL+", Charset: "+charset+", TimeOut: "+timeOut);
         }
     }

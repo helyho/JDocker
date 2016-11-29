@@ -5,7 +5,7 @@ import org.voovan.docker.command.Service.CmdServiceCreate;
 import org.voovan.docker.command.Service.CmdServiceList;
 import org.voovan.docker.command.Service.CmdServiceRemove;
 import org.voovan.docker.command.Service.CmdServiceUpdate;
-import org.voovan.docker.Global;
+import org.voovan.docker.DockerGlobal;
 import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
 
@@ -21,9 +21,9 @@ import org.voovan.tools.log.Logger;
 public class ServiceUtil extends TestCase {
 
     public void setUp(){
-        Global.DOCKER_REST_HOST = "127.0.0.1";
-        Global.DOCKER_REST_PORT = 2735;
-        Global.DEBUG = true;
+        DockerGlobal.DOCKER_REST_HOST = "127.0.0.1";
+        DockerGlobal.DOCKER_REST_PORT = 2735;
+        DockerGlobal.DEBUG = true;
     }
 
     public String formatJSON(Object obj){

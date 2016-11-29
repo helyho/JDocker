@@ -1,6 +1,6 @@
 package org.voovan.docker.command;
 
-import org.voovan.docker.Global;
+import org.voovan.docker.DockerGlobal;
 import org.voovan.docker.network.DockerHttpClient;
 
 import java.io.IOException;
@@ -22,8 +22,8 @@ public abstract class Cmd {
     private Map<String,Object> parameters;
 
     public Cmd() {
-        String rootURL = "http://"+ Global.DOCKER_REST_HOST+":"+Global.DOCKER_REST_PORT;
-        dockerHttpClient = new DockerHttpClient(rootURL, Global.DOCKER_REST_CHARSET, Global.DOCKER_REST_TIMEOUT);
+        String rootURL = "http://"+ DockerGlobal.DOCKER_REST_HOST+":"+ DockerGlobal.DOCKER_REST_PORT;
+        dockerHttpClient = new DockerHttpClient(rootURL, DockerGlobal.DOCKER_REST_CHARSET, DockerGlobal.DOCKER_REST_TIMEOUT);
 
         parameters = new HashMap<String,Object>();
     }

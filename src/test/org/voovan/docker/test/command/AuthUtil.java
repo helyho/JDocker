@@ -1,12 +1,8 @@
 package org.voovan.docker.test.command;
 
 import junit.framework.TestCase;
-import org.voovan.docker.Global;
+import org.voovan.docker.DockerGlobal;
 import org.voovan.docker.command.Auth.CmdAuth;
-import org.voovan.docker.command.Exec.CmdExecCreate;
-import org.voovan.docker.command.Exec.CmdExecInfo;
-import org.voovan.docker.command.Exec.CmdExecStart;
-import org.voovan.tools.TEnv;
 import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
 
@@ -22,10 +18,10 @@ import org.voovan.tools.log.Logger;
 public class AuthUtil extends TestCase {
 
     public void setUp(){
-        Global.DOCKER_REST_HOST = "127.0.0.1";
-        Global.DOCKER_REST_PORT = 2735;
-        Global.DOCKER_REST_TIMEOUT = 20;
-        Global.DEBUG = true;
+        DockerGlobal.DOCKER_REST_HOST = "127.0.0.1";
+        DockerGlobal.DOCKER_REST_PORT = 2735;
+        DockerGlobal.DOCKER_REST_TIMEOUT = 20;
+        DockerGlobal.DEBUG = true;
     }
 
     public String formatJSON(Object obj){

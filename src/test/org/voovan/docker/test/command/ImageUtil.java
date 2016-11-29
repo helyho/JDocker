@@ -2,7 +2,7 @@ package org.voovan.docker.test.command;
 
 import junit.framework.TestCase;
 import org.voovan.docker.command.Image.*;
-import org.voovan.docker.Global;
+import org.voovan.docker.DockerGlobal;
 import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
 
@@ -18,9 +18,9 @@ import org.voovan.tools.log.Logger;
 public class ImageUtil extends TestCase {
 
     public void setUp(){
-        Global.DOCKER_REST_HOST = "127.0.0.1";
-        Global.DOCKER_REST_PORT = 2735;
-        Global.DEBUG = true;
+        DockerGlobal.DOCKER_REST_HOST = "127.0.0.1";
+        DockerGlobal.DOCKER_REST_PORT = 2735;
+        DockerGlobal.DEBUG = true;
     }
 
     public String formatJSON(Object obj){
@@ -63,7 +63,7 @@ public class ImageUtil extends TestCase {
     }
 
     public void testImageCreate() throws Exception {
-        Global.DOCKER_REST_TIMEOUT = 60;
+        DockerGlobal.DOCKER_REST_TIMEOUT = 60;
         CmdImageCreate cmdImageCreate = CmdImageCreate.newInstance();
         Object data = cmdImageCreate.fromImage("alpine:3.2").send();
         cmdImageCreate.close();

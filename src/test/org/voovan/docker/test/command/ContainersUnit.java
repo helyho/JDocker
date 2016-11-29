@@ -2,7 +2,7 @@ package org.voovan.docker.test.command;
 
 import junit.framework.TestCase;
 import org.voovan.docker.command.Container.*;
-import org.voovan.docker.Global;
+import org.voovan.docker.DockerGlobal;
 import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
 
@@ -26,9 +26,9 @@ public class ContainersUnit extends TestCase {
     }
 
     public void setUp(){
-        Global.DOCKER_REST_HOST = "127.0.0.1";
-        Global.DOCKER_REST_PORT = 2735;
-        Global.DEBUG = true;
+        DockerGlobal.DOCKER_REST_HOST = "127.0.0.1";
+        DockerGlobal.DOCKER_REST_PORT = 2735;
+        DockerGlobal.DEBUG = true;
     }
 
     public void testCreate() throws Exception {

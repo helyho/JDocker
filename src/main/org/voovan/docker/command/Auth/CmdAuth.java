@@ -1,6 +1,6 @@
 package org.voovan.docker.command.Auth;
 
-import org.voovan.docker.Global;
+import org.voovan.docker.DockerGlobal;
 import org.voovan.docker.command.Cmd;
 import org.voovan.docker.message.auth.AuthRequest;
 import org.voovan.docker.message.auth.AuthResult;
@@ -54,8 +54,8 @@ public class CmdAuth extends Cmd{
         if(result.getStatus()>=300){
             throw new DockerClientException(result);
         }else{
-            Global.DOCKER_AUTH_RESULT = AuthResult.load(result.getMessage());
-            return Global.DOCKER_AUTH_RESULT;
+            DockerGlobal.DOCKER_AUTH_RESULT = AuthResult.load(result.getMessage());
+            return DockerGlobal.DOCKER_AUTH_RESULT;
         }
     }
 
