@@ -2,6 +2,7 @@ package org.voovan.docker.command;
 
 import org.voovan.docker.DockerGlobal;
 import org.voovan.docker.network.DockerHttpClient;
+import org.voovan.tools.json.annotation.NotJSON;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -18,7 +19,11 @@ import java.util.Map;
  *         Licence: Apache v2 License
  */
 public abstract class Cmd {
+
+    @NotJSON
     private DockerHttpClient dockerHttpClient;
+
+    @NotJSON
     private Map<String,Object> parameters;
 
     public Cmd() {
