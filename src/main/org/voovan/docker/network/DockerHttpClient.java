@@ -60,10 +60,11 @@ public class DockerHttpClient {
                 response = new Response();
             }
             response.protocol().setStatus(555);
-            response.protocol().setStatusCode("Exception");
+            response.protocol().setStatusCode("EXCEPTION");
             response.body().write(e.getMessage());
-            httpClient.close();
             e.printStackTrace();
+        } finally {
+            httpClient.close();
         }
 
         return Result.newInstance(response);
@@ -98,10 +99,11 @@ public class DockerHttpClient {
                 response = new Response();
             }
             response.protocol().setStatus(555);
-            response.protocol().setStatusCode("Exception");
+            response.protocol().setStatusCode("EXCEPTION");
             response.body().write(e.getMessage());
-            httpClient.close();
             e.printStackTrace();
+        } finally {
+            httpClient.close();
         }
         return Result.newInstance(response);
     }
@@ -125,10 +127,11 @@ public class DockerHttpClient {
                 response = new Response();
             }
             response.protocol().setStatus(555);
-            response.protocol().setStatusCode("Exception");
+            response.protocol().setStatusCode("EXCEPTION");
             response.body().write(e.getMessage());
-            httpClient.close();
             e.printStackTrace();
+        } finally {
+            httpClient.close();
         }
         return Result.newInstance(response);
     }
