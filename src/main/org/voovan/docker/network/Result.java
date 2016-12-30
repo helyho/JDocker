@@ -1,6 +1,9 @@
 package org.voovan.docker.network;
 
 import org.voovan.http.message.Response;
+import org.voovan.tools.json.JSON;
+
+import java.util.Map;
 
 /**
  *
@@ -18,7 +21,14 @@ public class Result {
     public Result(int status, String statusCode, String message) {
         this.status = status;
         this.statusCode = statusCode;
-        this.message = message;
+
+        Map<String,String> dockerErrMsg = JSON.toObject(message, Map.class);
+        if(dockerErrMsg!=null && dockerErrMsg.containsKey("message")){
+            this.message = dockerErrMsg.get("message");
+        }else{
+            this.message = message;
+        }
+
     }
 
     public int getStatus() {
@@ -51,7 +61,7 @@ public class Result {
 
     @Override
     public String toString(){
-        return "[Status: "+getStatus() + ", StatusCode: " + getStatusCode() + ", Message: " + getMessage()+"]";
+        return message;
     }
 
 }
