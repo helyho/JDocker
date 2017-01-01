@@ -62,7 +62,7 @@ public class CmdImageListInfo extends Cmd {
         addParameter("filters", JSON.toJSON(filters));
         Result result = getDockerHttpClient().get("/images/json",getParameters());
         if(result.getStatus()>=300){
-            throw new DockerClientException(result);
+            throw new DockerClientException(result.getMessage());
         }else{
             return ImageListInfo.load(result.getMessage());
         }

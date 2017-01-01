@@ -63,7 +63,7 @@ public class CmdTaskList extends Cmd {
         addParameter("filters", JSON.toJSON(filters));
         Result result = getDockerHttpClient().get("/tasks",getParameters());
         if(result.getStatus()>=300){
-            throw new DockerClientException(result);
+            throw new DockerClientException(result.getMessage());
         }else{
             return TaskInfo.load(result.getMessage());
         }

@@ -52,7 +52,7 @@ public class CmdAuth extends Cmd{
     public AuthResult send() throws Exception {
         Result result = getDockerHttpClient().post("/auth", getParameters(),authRequest);
         if(result.getStatus()>=300){
-            throw new DockerClientException(result);
+            throw new DockerClientException(result.getMessage());
         }else{
             DockerGlobal.DOCKER_AUTH_RESULT = AuthResult.load(result.getMessage());
             return DockerGlobal.DOCKER_AUTH_RESULT;

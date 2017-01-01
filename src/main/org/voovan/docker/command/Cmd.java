@@ -54,9 +54,9 @@ public abstract class Cmd {
         getDockerHttpClient().beginLoadStream();
     }
 
-    public byte[] loadStream() throws IOException {
+    public String loadStream() throws IOException {
         ByteBuffer byteBuffer = getDockerHttpClient().loadSteam();
-        return byteBuffer==null ? null : byteBuffer.array();
+        return byteBuffer==null ? null : new String(byteBuffer.array());
     }
 
     public void endLoadStream(){

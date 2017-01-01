@@ -42,8 +42,8 @@ public class ExecUtil extends TestCase {
     public void testExecStart() throws Exception {
         DockerGlobal.DOCKER_REST_TIMEOUT = 15;
         CmdExecCreate cmdExecCreate = CmdExecCreate.newInstance("dockerfly");
-        Result idata = cmdExecCreate.cmd("ping","127.0.0.1").send();
-        JSONPath jsonpath = new JSONPath(idata.getMessage());
+        String idata = cmdExecCreate.cmd("ping","127.0.0.1").send();
+        JSONPath jsonpath = new JSONPath(idata);
         String id = jsonpath.value("/Id").toString();
 
 
@@ -52,11 +52,11 @@ public class ExecUtil extends TestCase {
         Object data = cmdExecStart.send();
         Logger.info(formatJSON(data));
 
-        byte[] tmp = null;
+        String tmp = null;
         cmdExecStart.beginLoadStream();
         System.out.println("------");
         for(tmp = cmdExecStart.loadStream(); tmp!=null ; tmp = cmdExecStart.loadStream()){
-            System.out.print(new String(tmp).trim());
+            System.out.print(tmp.trim());
             System.out.println("------");
             TEnv.sleep(1000);//测试这个需要使用 ping 命令来测试
         }

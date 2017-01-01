@@ -26,12 +26,12 @@ public class CmdVolumeRemove extends Cmd{
     }
 
     @Override
-    public Result send() throws Exception {
+    public String send() throws Exception {
         Result result = getDockerHttpClient().delete("/volumes/"+nameOrId,getParameters());
         if(result.getStatus()>=300){
-            throw new DockerClientException(result);
+            throw new DockerClientException(result.getMessage());
         }else{
-            return result;
+            return result.getMessage();
         }
 
     }

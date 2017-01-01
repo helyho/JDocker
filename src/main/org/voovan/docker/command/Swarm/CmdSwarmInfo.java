@@ -27,7 +27,7 @@ public class CmdSwarmInfo extends Cmd {
     public SwarmInfo send() throws Exception {
         Result result = getDockerHttpClient().get("/swarm",getParameters());
         if(result.getStatus()>=300){
-            throw new DockerClientException(result);
+            throw new DockerClientException(result.getMessage());
         }else{
             return SwarmInfo.load(result.getMessage());
         }

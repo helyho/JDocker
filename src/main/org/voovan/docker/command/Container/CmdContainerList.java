@@ -102,7 +102,7 @@ public class CmdContainerList extends Cmd {
 
         Result result = getDockerHttpClient().get("/containers/json", getParameters());
         if(result.getStatus()>=300){
-            throw new DockerClientException(result);
+            throw new DockerClientException(result.getMessage());
         }else{
             return ContainerInfo.load(result.getMessage());
         }

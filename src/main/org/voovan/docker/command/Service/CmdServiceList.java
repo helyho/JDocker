@@ -46,7 +46,7 @@ public class CmdServiceList extends Cmd {
         addParameter("filters", JSON.toJSON(filters));
         Result result = getDockerHttpClient().get("/services",getParameters());
         if(result.getStatus()>=300){
-            throw new DockerClientException(result);
+            throw new DockerClientException(result.getMessage());
         }else{
             return ServiceInfo.load(result.getMessage());
         }

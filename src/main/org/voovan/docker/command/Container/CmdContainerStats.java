@@ -31,7 +31,7 @@ public class CmdContainerStats extends Cmd {
     public ContainerStats send() throws Exception {
         Result result = getDockerHttpClient().get("/containers/"+nameOrId+"/stats", getParameters());
         if(result.getStatus()>=300){
-            throw new DockerClientException(result);
+            throw new DockerClientException(result.getMessage());
         }else{
             return ContainerStats.load(result.getMessage());
         }
