@@ -22,7 +22,12 @@ public class Result {
         this.status = status;
         this.statusCode = statusCode;
 
-        Map<String,String> dockerErrMsg = JSON.toObject(message, Map.class);
+        Map<String, String> dockerErrMsg = null;
+        try {
+            dockerErrMsg = JSON.toObject(message, Map.class);
+        }catch(Exception e){
+            dockerErrMsg = null;
+        }
         if(dockerErrMsg!=null && dockerErrMsg.containsKey("message")){
             this.message = dockerErrMsg.get("message");
         }else{

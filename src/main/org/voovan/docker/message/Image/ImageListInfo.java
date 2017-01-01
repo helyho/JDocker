@@ -19,7 +19,7 @@ public class ImageListInfo {
     private List<String> repoTags;
     private List<String> repoDigests;
     private Long created;
-    private Long Size;
+    private Long size;
     private Long virtualSize;
     private Map<String, Object> labels;
 
@@ -68,11 +68,11 @@ public class ImageListInfo {
     }
 
     public Long getSize() {
-        return Size;
+        return size;
     }
 
     public void setSize(Long size) {
-        Size = size;
+        size = size;
     }
 
     public Long getVirtualSize() {
