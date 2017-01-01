@@ -63,7 +63,6 @@ public class DockerHttpClient {
             response.protocol().setStatusCode("EXCEPTION");
             response.body().write(e.getMessage());
             e.printStackTrace();
-        } finally {
             httpClient.close();
         }
 
@@ -102,7 +101,6 @@ public class DockerHttpClient {
             response.protocol().setStatusCode("EXCEPTION");
             response.body().write(e.getMessage());
             e.printStackTrace();
-        } finally {
             httpClient.close();
         }
         return Result.newInstance(response);
@@ -130,9 +128,9 @@ public class DockerHttpClient {
             response.protocol().setStatusCode("EXCEPTION");
             response.body().write(e.getMessage());
             e.printStackTrace();
-        } finally {
             httpClient.close();
         }
+
         return Result.newInstance(response);
     }
 
