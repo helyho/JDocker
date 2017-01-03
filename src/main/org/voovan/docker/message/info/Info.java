@@ -1,6 +1,7 @@
 package org.voovan.docker.message.info;
 
 import org.voovan.docker.message.info.atom.Plugins;
+import org.voovan.docker.message.info.atom.RegistryConfig;
 import org.voovan.docker.message.info.atom.Swarm;
 import org.voovan.docker.message.swarm.SwarmInfo;
 import org.voovan.tools.json.JSON;
@@ -66,6 +67,7 @@ public class Info {
     private String clusterAdvertise;
     private String defaultRuntime;
     private boolean liveRestoreEnabled;
+    private RegistryConfig registryConfig;
     private List<String> securityOptions;
 
     private Plugins plugins;
@@ -75,12 +77,13 @@ public class Info {
         securityOptions = new ArrayList<String>();
         plugins = new Plugins();
         swarm = new Swarm();
+        registryConfig = new RegistryConfig();
     }
 
     public static Info load(String jsonStr) throws ParseException, ReflectiveOperationException {
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
 
-        Info info = JSON.toObject(jsonStr, Info.class, true);
+        Info info = jsonPath.value("/", Info.class, new Info());
         return info;
     }
 }
