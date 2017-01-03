@@ -1,5 +1,6 @@
-package org.voovan.docker.command;
+package org.voovan.docker.command.Info;
 
+import org.voovan.docker.command.Cmd;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
 import org.voovan.tools.json.JSON;
@@ -15,16 +16,16 @@ import java.util.Map;
  *         WebSite: https://github.com/helyho/JDocker
  *         Licence: Apache v2 License
  */
-public class CmdInfo extends Cmd {
+public class CmdDockerInfo extends Cmd {
 
     private String id;
 
-    public CmdInfo() {
+    public CmdDockerInfo() {
     }
 
 
-    public static CmdInfo newInstance(){
-        return new CmdInfo();
+    public static CmdDockerInfo newInstance(){
+        return new CmdDockerInfo();
     }
 
     @Override

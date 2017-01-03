@@ -2,8 +2,7 @@ package org.voovan.docker.test.command;
 
 import junit.framework.TestCase;
 import org.voovan.docker.DockerGlobal;
-import org.voovan.docker.command.Auth.CmdAuth;
-import org.voovan.docker.command.CmdInfo;
+import org.voovan.docker.command.Info.CmdDockerInfo;
 import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
 
@@ -29,7 +28,7 @@ public class InfoUtil  extends TestCase {
     }
 
     public void testInfo() throws Exception {
-        CmdInfo cmdInfo = CmdInfo.newInstance();
+        CmdDockerInfo cmdInfo = CmdDockerInfo.newInstance();
         Object data = cmdInfo.send();
         cmdInfo.close();
         Logger.info(formatJSON(data));
