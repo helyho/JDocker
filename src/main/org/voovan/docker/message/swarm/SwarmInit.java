@@ -1,6 +1,6 @@
 package org.voovan.docker.message.swarm;
 
-import org.voovan.docker.message.swarm.atom.Spec;
+import org.voovan.docker.message.swarm.atom.SwarmSpec;
 import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
 
@@ -16,12 +16,12 @@ public class SwarmInit {
     private String listenAddr;
     private String advertiseAddr;
     private Boolean forceNewCluster;
-    private Spec spec;
+    private SwarmSpec spec;
 
     public SwarmInit() {
         listenAddr = "0.0.0.0:2737";
         forceNewCluster = false;
-        spec = new Spec();
+        spec = new SwarmSpec();
     }
 
     public String getListenAddr() {
@@ -48,11 +48,11 @@ public class SwarmInit {
         this.forceNewCluster = forceNewCluster;
     }
 
-    public Spec getSpec() {
+    public SwarmSpec getSpec() {
         return spec;
     }
 
-    public void setSpec(Spec spec) {
+    public void setSpec(SwarmSpec spec) {
         this.spec = spec;
     }
 

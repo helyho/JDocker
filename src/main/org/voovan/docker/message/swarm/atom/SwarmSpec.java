@@ -8,14 +8,14 @@ package org.voovan.docker.message.swarm.atom;
  * WebSite: https://git.oschina.net/helyho/JDocker
  * Licence: Apache v2 License
  */
-public class Spec {
+public class SwarmSpec {
     private String name;
     private Orchestration orchestration;
     private Raft raft;
     private Dispatcher dispatcher;
     private CAConfig caConfig;
 
-    public Spec() {
+    public SwarmSpec() {
         name = "SwarmManager";
         orchestration = new Orchestration();
         raft = new Raft();

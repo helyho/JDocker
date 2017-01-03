@@ -16,11 +16,11 @@ public class Mount {
 
     private String target;
 
-    private String type; // bind/Volume
+    private String type; // bind/volume
 
     public Mount() {
         readOnly = true;
-        type = "Volume";
+        type = "volume";
     }
 
 
@@ -35,7 +35,7 @@ public class Mount {
         this.source = source;
         this.target = target;
         readOnly = readOnly;
-        type = "Volume";
+        type = "volume";
     }
 
     public void setReadOnly(Boolean readOnly) {

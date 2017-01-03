@@ -1,7 +1,7 @@
 package org.voovan.docker.test.network;
 
 import org.voovan.docker.network.DockerHttpClient;
-import org.voovan.docker.message.Volume.Volume;
+import org.voovan.docker.message.volume.Volume;
 import org.voovan.network.exception.ReadMessageException;
 import org.voovan.network.exception.SendMessageException;
 import org.voovan.tools.json.JSON;

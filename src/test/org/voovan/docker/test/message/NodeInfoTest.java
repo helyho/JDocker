@@ -57,7 +57,7 @@ public class NodeInfoTest {
             "            \"Name\": \"overlay\"\n" +
             "          },\n" +
             "          {\n" +
-            "            \"Type\": \"Volume\",\n" +
+            "            \"Type\": \"volume\",\n" +
             "            \"Name\": \"local\"\n" +
             "          }\n" +
             "        ]\n" +

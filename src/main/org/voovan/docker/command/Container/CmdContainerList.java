@@ -83,7 +83,7 @@ public class CmdContainerList extends Cmd {
     }
 
     public CmdContainerList volume(String ... volume){
-        filters.put("Volume", TObject.newList(volume));
+        filters.put("volume", TObject.newList(volume));
         return this;
     }
 

@@ -1,7 +1,7 @@
 package org.voovan.docker.message.swarm;
 
 import org.voovan.docker.message.swarm.atom.JoinTokens;
-import org.voovan.docker.message.swarm.atom.Spec;
+import org.voovan.docker.message.swarm.atom.SwarmSpec;
 import org.voovan.docker.message.swarm.atom.Version;
 import org.voovan.tools.json.JSONPath;
 
@@ -20,12 +20,12 @@ public class SwarmInfo {
     private Version version;
     private String CreatedAt;
     private String UpdatedAt;
-    private Spec spec;
+    private SwarmSpec spec;
     private JoinTokens joinTokens;
 
     public SwarmInfo() {
         version = new Version();
-        spec = new Spec();
+        spec = new SwarmSpec();
         joinTokens = new JoinTokens();
 
     }
@@ -62,11 +62,11 @@ public class SwarmInfo {
         UpdatedAt = updatedAt;
     }
 
-    public Spec getSpec() {
+    public SwarmSpec getSpec() {
         return spec;
     }
 
-    public void setSpec(Spec spec) {
+    public void setSpec(SwarmSpec spec) {
         this.spec = spec;
     }
 

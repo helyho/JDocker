@@ -36,7 +36,7 @@ public class ServiceInfoTest {
             "          ],\n" +
             "          \"Mounts\": [\n" +
             "            {\n" +
-            "              \"Type\": \"Volume\",\n" +
+            "              \"Type\": \"volume\",\n" +
             "              \"Source\": \"v_t1\",\n" +
             "              \"Target\": \"/v_t1\",\n" +
             "              \"ReadOnly\": true\n" +

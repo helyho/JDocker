@@ -1,6 +1,6 @@
 package org.voovan.docker.message.swarm;
 
-import org.voovan.docker.message.swarm.atom.Spec;
+import org.voovan.docker.message.swarm.atom.SwarmSpec;
 import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
 
@@ -12,7 +12,7 @@ import org.voovan.tools.log.Logger;
  * WebSite: https://git.oschina.net/helyho/JDocker
  * Licence: Apache v2 License
  */
-public class SwarmUpdate extends Spec {
+public class SwarmUpdate extends SwarmSpec {
 
     public SwarmUpdate() {
         super();
