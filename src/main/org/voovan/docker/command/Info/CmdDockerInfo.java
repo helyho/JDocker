@@ -1,6 +1,7 @@
 package org.voovan.docker.command.Info;
 
 import org.voovan.docker.command.Cmd;
+import org.voovan.docker.message.info.Info;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
 import org.voovan.tools.json.JSON;
@@ -29,12 +30,12 @@ public class CmdDockerInfo extends Cmd {
     }
 
     @Override
-    public Map<String,Object> send() throws Exception {
+    public Info send() throws Exception {
         Result result = getDockerHttpClient().get("/info",getParameters());
         if(result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
-            return (Map<String,Object>)JSON.parse(result.getMessage());
+            return Info.load(result.getMessage());
         }
 
     }

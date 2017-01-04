@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class Swarm {
 
-    private String nodeID;
+    private String nodeId;
     private String nodeAddr;
     private String nodeState;
     private boolean controlAvailable;
@@ -32,12 +32,12 @@ public class Swarm {
         cluster = new SwarmInfo();
     }
 
-    public String getNodeID() {
-        return nodeID;
+    public String getNodeId() {
+        return nodeId;
     }
 
-    public void setNodeID(String nodeID) {
-        this.nodeID = nodeID;
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
     }
 
     public String getNodeAddr() {
