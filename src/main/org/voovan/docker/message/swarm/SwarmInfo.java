@@ -18,8 +18,8 @@ import java.text.ParseException;
 public class SwarmInfo {
     private String id;
     private Version version;
-    private String CreatedAt;
-    private String UpdatedAt;
+    private String createdAt;
+    private String updatedAt;
     private SwarmSpec spec;
     private JoinTokens joinTokens;
 
@@ -47,19 +47,19 @@ public class SwarmInfo {
     }
 
     public String getCreatedAt() {
-        return CreatedAt;
+        return createdAt;
     }
 
     public void setCreatedAt(String createdAt) {
-        CreatedAt = createdAt;
+        this.createdAt = createdAt;
     }
 
     public String getUpdatedAt() {
-        return UpdatedAt;
+        return updatedAt;
     }
 
     public void setUpdatedAt(String updatedAt) {
-        UpdatedAt = updatedAt;
+        this.updatedAt = updatedAt;
     }
 
     public SwarmSpec getSpec() {

@@ -22,7 +22,7 @@ public class CmdNodeUpdate extends Cmd {
     private String id;
     private NodeUpdate nodeUpdate;
 
-    public CmdNodeUpdate(String id,int version) {
+    public CmdNodeUpdate(String id,Integer version) {
         this.id = id;
         addParameter("version",version);
         this.nodeUpdate = new NodeUpdate();
@@ -52,13 +52,13 @@ public class CmdNodeUpdate extends Cmd {
         return nodeUpdate;
     }
 
-    public static CmdNodeUpdate newInstance(String id, int version){
+    public static CmdNodeUpdate newInstance(String id, Integer version){
         return new CmdNodeUpdate(id,version);
     }
 
     @Override
     public List<TaskInfo> send() throws Exception {
-        Result result = getDockerHttpClient().delete("/nodes/"+id,getParameters());
+        Result result = getDockerHttpClient().post("/nodes/"+id+"/update",getParameters(),nodeUpdate);
         if(result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

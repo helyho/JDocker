@@ -22,6 +22,11 @@ public class CmdSwarmLeave extends Cmd {
         return new CmdSwarmLeave();
     }
 
+    public CmdSwarmLeave force(boolean isForce){
+        this.addParameter("force",isForce);
+        return this;
+    }
+
     @Override
     public String send() throws Exception {
         Result result = getDockerHttpClient().post("/swarm/leave",getParameters(),null);

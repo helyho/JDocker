@@ -41,7 +41,7 @@ public class CmdSwarmUpdate extends Cmd {
         return this;
     }
 
-    public CmdSwarmUpdate version(int version){
+    public CmdSwarmUpdate version(Integer version){
         addParameter("version",version);
         return this;
     }

@@ -16,7 +16,7 @@ public class SwarmSpec {
     private CAConfig caConfig;
 
     public SwarmSpec() {
-        name = "SwarmManager";
+        name = "default";
         orchestration = new Orchestration();
         raft = new Raft();
         dispatcher = new Dispatcher();
