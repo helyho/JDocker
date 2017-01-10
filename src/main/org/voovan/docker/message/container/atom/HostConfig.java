@@ -16,7 +16,6 @@ import java.util.Map;
  * Licence: Apache v2 License
  */
 public class HostConfig {
-    private Integer blkioWeight;
     private Integer cpuShares;
     private Integer cpuPeriod;
     private Integer cpuQuota;
@@ -35,22 +34,28 @@ public class HostConfig {
     private List<String> links;
     private List<Device> devices;
     private Map<String, List<Map<String, String>>> portBindings;
+    private ArrayList<ULimit> ulimits;
+    private Integer blkioWeight;
+    private ArrayList<BlockIORate> blkioWeightDevice;
+    private ArrayList<BlockIORate> blkioDeviceReadBps;
+    private ArrayList<BlockIORate> blkioDeviceWriteBps;
+    private ArrayList<BlockIORate> blkioDeviceReadIOps;
+    private ArrayList<BlockIORate> blkioDeviceWiiteIOps;
 
     public HostConfig() {
+        blkioWeight = null;
         dns = new ArrayList<String>();
         binds = new ArrayList<String>();
         links = new ArrayList<String>();
         devices = new ArrayList<Device>();
         volumesFrom =  new ArrayList<String>();
         portBindings = new HashMap<String, List<Map<String, String>>>();
-    }
-
-    public Integer getBlkioWeight() {
-        return blkioWeight;
-    }
-
-    public void setBlkioWeight(Integer blkioWeight) {
-        this.blkioWeight = blkioWeight;
+        ulimits = new ArrayList<ULimit>();
+        blkioWeightDevice = new ArrayList<BlockIORate>();
+        blkioDeviceReadBps = new ArrayList<BlockIORate>();
+        blkioDeviceWriteBps = new ArrayList<BlockIORate>();
+        blkioDeviceReadIOps = new ArrayList<BlockIORate>();
+        blkioDeviceWiiteIOps = new ArrayList<BlockIORate>();
     }
 
     public Integer getCpuShares() {
@@ -195,5 +200,69 @@ public class HostConfig {
 
     public void setPortBindings(Map<String, List<Map<String, String>>> portBindings) {
         this.portBindings = portBindings;
+    }
+
+    public Boolean getPublishAllPorts() {
+        return publishAllPorts;
+    }
+
+    public Boolean getPrivileged() {
+        return privileged;
+    }
+
+    public ArrayList<ULimit> getUlimits() {
+        return ulimits;
+    }
+
+    public void setUlimits(ArrayList<ULimit> ulimits) {
+        this.ulimits = ulimits;
+    }
+
+    public Integer getBlkioWeight() {
+        return blkioWeight;
+    }
+
+    public void setBlkioWeight(Integer blkioWeight) {
+        this.blkioWeight = blkioWeight;
+    }
+
+    public ArrayList<BlockIORate> getBlkioWeightDevice() {
+        return blkioWeightDevice;
+    }
+
+    public void setBlkioWeightDevice(ArrayList<BlockIORate> blkioWeightDevice) {
+        this.blkioWeightDevice = blkioWeightDevice;
+    }
+
+    public ArrayList<BlockIORate> getBlkioDeviceReadBps() {
+        return blkioDeviceReadBps;
+    }
+
+    public void setBlkioDeviceReadBps(ArrayList<BlockIORate> blkioDeviceReadBps) {
+        this.blkioDeviceReadBps = blkioDeviceReadBps;
+    }
+
+    public ArrayList<BlockIORate> getBlkioDeviceWriteBps() {
+        return blkioDeviceWriteBps;
+    }
+
+    public void setBlkioDeviceWriteBps(ArrayList<BlockIORate> blkioDeviceWriteBps) {
+        this.blkioDeviceWriteBps = blkioDeviceWriteBps;
+    }
+
+    public ArrayList<BlockIORate> getBlkioDeviceReadIOps() {
+        return blkioDeviceReadIOps;
+    }
+
+    public void setBlkioDeviceReadIOps(ArrayList<BlockIORate> blkioDeviceReadIOps) {
+        this.blkioDeviceReadIOps = blkioDeviceReadIOps;
+    }
+
+    public ArrayList<BlockIORate> getBlkioDeviceWiiteIOps() {
+        return blkioDeviceWiiteIOps;
+    }
+
+    public void setBlkioDeviceWiiteIOps(ArrayList<BlockIORate> blkioDeviceWiiteIOps) {
+        this.blkioDeviceWiiteIOps = blkioDeviceWiiteIOps;
     }
 }

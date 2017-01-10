@@ -3,7 +3,9 @@ package org.voovan.docker.command.Container;
 import org.voovan.docker.command.Cmd;
 import org.voovan.docker.message.auth.AuthRequest;
 import org.voovan.docker.message.container.ContainerCreate;
+import org.voovan.docker.message.container.atom.BlockIORate;
 import org.voovan.docker.message.container.atom.Device;
+import org.voovan.docker.message.container.atom.ULimit;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
 
@@ -38,10 +40,6 @@ public class CmdContainerCreate extends Cmd{
         return this;
     }
 
-    public CmdContainerCreate publishAllPorts(boolean publishAllPorts){
-        containerCreate.getHostConfig().setPublishAllPorts(publishAllPorts);
-        return this;
-    }
 
     public CmdContainerCreate privileged(boolean privileged){
         containerCreate.getHostConfig().setPrivileged(privileged);
@@ -85,6 +83,36 @@ public class CmdContainerCreate extends Cmd{
         return this;
     }
 
+    public CmdContainerCreate blkioWeight(int rate){
+        containerCreate.getHostConfig().setBlkioWeight(rate);
+        return this;
+    }
+
+    public CmdContainerCreate blkioWeightDevice(String path, int rate){
+        containerCreate.getHostConfig().getBlkioWeightDevice().add(new BlockIORate(path,rate));
+        return this;
+    }
+
+    public CmdContainerCreate blkioDeviceReadBps(String path, int rate){
+        containerCreate.getHostConfig().getBlkioWeightDevice().add(new BlockIORate(path,rate));
+        return this;
+    }
+
+    public CmdContainerCreate blkioDeviceWriteBps(String path, int rate){
+        containerCreate.getHostConfig().getBlkioWeightDevice().add(new BlockIORate(path,rate));
+        return this;
+    }
+
+    public CmdContainerCreate blkioDeviceReadIOps(String path, int rate){
+        containerCreate.getHostConfig().getBlkioWeightDevice().add(new BlockIORate(path,rate));
+        return this;
+    }
+
+    public CmdContainerCreate blkioDeviceWiiteIOps(String path, int rate){
+        containerCreate.getHostConfig().getBlkioWeightDevice().add(new BlockIORate(path,rate));
+        return this;
+    }
+
     public CmdContainerCreate network(String network){
         containerCreate.getHostConfig().setNetworkMode(network);
         return this;
@@ -122,6 +150,16 @@ public class CmdContainerCreate extends Cmd{
 
     public CmdContainerCreate exposePort(int containerPort, String protocol, String... hostPortStrs){
         containerCreate.addPortBind(containerPort,protocol,hostPortStrs);
+        return this;
+    }
+
+    public CmdContainerCreate publishAllPorts(boolean publishAllPorts){
+        containerCreate.getHostConfig().setPublishAllPorts(publishAllPorts);
+        return this;
+    }
+
+    public CmdContainerCreate uLimit(String name, int soft, int hard){
+        containerCreate.getHostConfig().getUlimits().add(new ULimit(name,soft,hard));
         return this;
     }
 

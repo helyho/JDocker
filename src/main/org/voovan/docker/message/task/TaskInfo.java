@@ -19,9 +19,9 @@ public class TaskInfo {
     private String id;
     private String createdAt;
     private String updatedAt;
-    private String serviceID;
+    private String serviceId;
     private String slot;
-    private String nodeID;
+    private String nodeId;
     private Status status;
     private String desiredState;
 
@@ -53,12 +53,12 @@ public class TaskInfo {
         this.updatedAt = updatedAt;
     }
 
-    public String getServiceID() {
-        return serviceID;
+    public String getServiceId() {
+        return serviceId;
     }
 
-    public void setServiceID(String serviceID) {
-        this.serviceID = serviceID;
+    public void setServiceId(String serviceId) {
+        this.serviceId = serviceId;
     }
 
     public String getSlot() {
@@ -69,12 +69,12 @@ public class TaskInfo {
         this.slot = slot;
     }
 
-    public String getNodeID() {
-        return nodeID;
+    public String getNodeId() {
+        return nodeId;
     }
 
-    public void setNodeID(String nodeID) {
-        this.nodeID = nodeID;
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
     }
 
     public Status getStatus() {

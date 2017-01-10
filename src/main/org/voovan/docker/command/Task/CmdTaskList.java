@@ -29,28 +29,33 @@ public class CmdTaskList extends Cmd {
     }
 
     public CmdTaskList id(String id){
-        addParameter("id",id);
+        filters.put("id",TObject.newList(id));
         return this;
     }
 
     public CmdTaskList name(String name){
-        addParameter("name",name);
+        filters.put("name",TObject.newList(name));
         return this;
     }
 
     public CmdTaskList service(String service){
-        addParameter("service",service);
+        filters.put("service",TObject.newList(service));
+        return this;
+    }
+
+    public CmdTaskList node(String node){
+        filters.put("node",TObject.newList(node));
         return this;
     }
 
     public CmdTaskList label(String key, String value){
-        addParameter("label", TObject.newList(key+"="+value));
+        filters.put("label",TObject.newList(key+"="+value));
         return this;
     }
 
 
     public CmdTaskList desiredState(String desiredState){
-        addParameter("desired-state",desiredState);
+        filters.put("desired-state",TObject.newList(desiredState));
         return this;
     }
 

@@ -9,15 +9,15 @@ package org.voovan.docker.message.task.atom;
  * Licence: Apache v2 License
  */
 public class ContainerStatus {
-    private String containerID;
+    private String containerId;
     private String pid;
 
-    public String getContainerID() {
-        return containerID;
+    public String getContainerId() {
+        return containerId;
     }
 
-    public void setContainerID(String containerID) {
-        this.containerID = containerID;
+    public void setContainerId(String containerID) {
+        this.containerId = containerID;
     }
 
     public String getPid() {
