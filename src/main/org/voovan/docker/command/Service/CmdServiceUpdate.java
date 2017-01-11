@@ -36,8 +36,6 @@ public class CmdServiceUpdate extends Cmd {
         addParameter("version",serviceInfo.getVersion().getIndex());
     }
 
-
-
     public CmdServiceUpdate name(String name){
         serviceSpec.setName(name);
         return this;
@@ -62,7 +60,6 @@ public class CmdServiceUpdate extends Cmd {
         serviceSpec.getTaskTemplate().getContainer().setStopGracePeriod(stopGracePeriod);
         return this;
     }
-
 
     public CmdServiceUpdate cpuLimit(int nanoCpu){
         serviceSpec.getTaskTemplate().getResource().getLimits().setNanoCPUs(nanoCpu);
