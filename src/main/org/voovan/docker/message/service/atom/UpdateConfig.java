@@ -16,7 +16,9 @@ public class UpdateConfig {
     private String failureAction; // continue/pause
 
     public UpdateConfig() {
-
+        parallelism = 2;
+        delay = 0L;
+        failureAction = "pause";
     }
 
     public void setParallelism(Integer parallelism) {

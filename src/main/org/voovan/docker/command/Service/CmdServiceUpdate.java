@@ -1,6 +1,7 @@
 package org.voovan.docker.command.Service;
 
 import org.voovan.docker.command.Cmd;
+import org.voovan.docker.message.service.ServiceInfo;
 import org.voovan.docker.message.service.ServiceSpec;
 import org.voovan.docker.message.service.atom.Mount;
 import org.voovan.docker.message.service.atom.Network;
@@ -27,6 +28,12 @@ public class CmdServiceUpdate extends Cmd {
         this.nameOrId = nameOrId;
         addParameter("version",version);
         serviceSpec = new ServiceSpec();
+    }
+
+    public CmdServiceUpdate(ServiceInfo serviceInfo) {
+        this.serviceSpec = serviceInfo.getSpec();
+        this.nameOrId = serviceInfo.getId();
+        addParameter("version",serviceInfo.getVersion().getIndex());
     }
 
 

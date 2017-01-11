@@ -27,15 +27,15 @@ public class Mount {
     public Mount(String source, String target, boolean readOnly, String type) {
         this.source = source;
         this.target = target;
-        readOnly = readOnly;
-        type = type;
+        this.readOnly = readOnly;
+        this.type = type;
     }
 
     public Mount(String source, String target, boolean readOnly) {
         this.source = source;
         this.target = target;
-        readOnly = readOnly;
-        type = "volume";
+        this.readOnly = readOnly;
+        this.type = "volume";
     }
 
     public void setReadOnly(Boolean readOnly) {

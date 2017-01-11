@@ -14,6 +14,8 @@ public class ResourcePolicy {
     private Long memoryBytes;
 
     public ResourcePolicy() {
+        nanoCPUs = 0;
+        memoryBytes = 0L;
 
     }
 

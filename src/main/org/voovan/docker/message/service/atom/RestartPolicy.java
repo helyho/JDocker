@@ -17,7 +17,9 @@ public class RestartPolicy {
     private Integer maxAttempts;
 
     public RestartPolicy() {
-
+        condition = "on-failure";
+        maxAttempts = 0;
+        delay = 0L;
     }
 
     public void setCondition(String condition) {

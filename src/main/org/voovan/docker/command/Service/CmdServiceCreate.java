@@ -80,12 +80,6 @@ public class CmdServiceCreate extends Cmd {
         return this;
     }
 
-    public CmdServiceCreate mode(String mode){
-        serviceSpec.getEndpoint().setMode(mode);
-        return this;
-    }
-
-
     public CmdServiceCreate  port(String protocol,int targetPort, int publishPort){
         serviceSpec.getEndpoint().getPorts().add(new Port(protocol,targetPort,publishPort));
         return this;
@@ -128,9 +122,9 @@ public class CmdServiceCreate extends Cmd {
         return this;
     }
 
-    public CmdServiceCreate restartPolicy(long delay, String ondition, int maxAttempts){
+    public CmdServiceCreate restartPolicy(long delay, String condition, int maxAttempts){
         serviceSpec.getTaskTemplate().getRestartPolicy().setDelay(delay);
-        serviceSpec.getTaskTemplate().getRestartPolicy().setCondition(ondition);
+        serviceSpec.getTaskTemplate().getRestartPolicy().setCondition(condition);
         serviceSpec.getTaskTemplate().getRestartPolicy().setMaxAttempts(maxAttempts);
         return this;
     }
