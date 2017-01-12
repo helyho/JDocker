@@ -19,7 +19,7 @@ public class RestartPolicy {
     public RestartPolicy() {
         condition = "on-failure";
         maxAttempts = 0;
-        delay = 0L;
+        delay = null;
     }
 
     public void setCondition(String condition) {

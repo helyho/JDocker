@@ -17,7 +17,7 @@ public class UpdateConfig {
 
     public UpdateConfig() {
         parallelism = 2;
-        delay = 0L;
+        delay = null;
         failureAction = "pause";
     }
 
