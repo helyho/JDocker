@@ -27,7 +27,7 @@ public class CmdContainerUpdate extends Cmd{
 
 
     public CmdContainerUpdate cpuQuota(int cpuQuota){
-        hostConfig.setCpuQuota(cpuQuota);
+        hostConfig.setCpuQuota((int)(cpuQuota * hostConfig.getCpuPeriod()));
         return this;
     }
 

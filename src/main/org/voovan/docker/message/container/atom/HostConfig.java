@@ -43,6 +43,7 @@ public class HostConfig {
     private ArrayList<BlockIORate> blkioDeviceWiiteIOps;
 
     public HostConfig() {
+        cpuPeriod = 100000;
         blkioWeight = null;
         dns = new ArrayList<String>();
         binds = new ArrayList<String>();

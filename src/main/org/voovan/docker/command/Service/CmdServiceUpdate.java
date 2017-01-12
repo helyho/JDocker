@@ -62,12 +62,12 @@ public class CmdServiceUpdate extends Cmd {
     }
 
     public CmdServiceUpdate cpuLimit(int nanoCpu){
-        serviceSpec.getTaskTemplate().getResource().getLimits().setNanoCPUs(nanoCpu);
+        serviceSpec.getTaskTemplate().getResource().getLimits().setNanoCPUs((int)(nanoCpu*1000000000));
         return this;
     }
 
     public CmdServiceUpdate memoryLimit(long memoryByte){
-        serviceSpec.getTaskTemplate().getResource().getLimits().setMemoryBytes(memoryByte);
+        serviceSpec.getTaskTemplate().getResource().getLimits().setMemoryBytes(memoryByte*1024*1024);
         return this;
     }
 

@@ -54,23 +54,23 @@ public class CmdServiceCreate extends Cmd {
     }
 
 
-    public CmdServiceCreate cpuLimit(int nanoCpu){
-        serviceSpec.getTaskTemplate().getResource().getLimits().setNanoCPUs(nanoCpu);
+    public CmdServiceCreate cpuLimit(float nanoCpu){
+        serviceSpec.getTaskTemplate().getResource().getLimits().setNanoCPUs((int)(nanoCpu*1000000000));
         return this;
     }
 
     public CmdServiceCreate memoryLimit(long memoryByte){
-        serviceSpec.getTaskTemplate().getResource().getLimits().setMemoryBytes(memoryByte);
+        serviceSpec.getTaskTemplate().getResource().getLimits().setMemoryBytes(memoryByte*1024*1024);
         return this;
     }
 
-    public CmdServiceCreate cpuReservation(int nanoCpu){
-        serviceSpec.getTaskTemplate().getResource().getReservations().setNanoCPUs(nanoCpu);
+    public CmdServiceCreate cpuReservation(float nanoCpu){
+        serviceSpec.getTaskTemplate().getResource().getReservations().setNanoCPUs((int)(nanoCpu*1000000000));
         return this;
     }
 
     public CmdServiceCreate memoryReservation(long memoryByte){
-        serviceSpec.getTaskTemplate().getResource().getReservations().setMemoryBytes(memoryByte);
+        serviceSpec.getTaskTemplate().getResource().getReservations().setMemoryBytes(memoryByte*1024*1024);
         return this;
     }
 

@@ -68,13 +68,8 @@ public class CmdContainerCreate extends Cmd{
         return this;
     }
 
-    public CmdContainerCreate cpuQuota(int cpuQuota){
-        containerCreate.getHostConfig().setCpuQuota(cpuQuota);
-        return this;
-    }
-
-    public CmdContainerCreate cpuPeriod(int cpuPeriod){
-        containerCreate.getHostConfig().setCpuPeriod(cpuPeriod);
+    public CmdContainerCreate cpu(float cpuQuota){
+        containerCreate.getHostConfig().setCpuQuota((int)(cpuQuota * containerCreate.getHostConfig().getCpuPeriod()));
         return this;
     }
 
