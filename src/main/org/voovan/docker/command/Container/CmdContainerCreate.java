@@ -118,7 +118,7 @@ public class CmdContainerCreate extends Cmd{
         return this;
     }
 
-    public CmdContainerCreate dns(String dnses){
+    public CmdContainerCreate dns(String ...dnses){
         containerCreate.getHostConfig().getDns().addAll(Arrays.asList(dnses));
         return this;
     }
