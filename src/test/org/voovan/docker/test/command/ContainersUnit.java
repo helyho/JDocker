@@ -36,7 +36,7 @@ public class ContainersUnit extends TestCase {
         Object data = createCmd.image("alpine").network("bridge")
                 .volume("v_tx:/v_tx").link("dockerfly:dockerfly")
                 .cmd("ping","127.0.0.1").env("author=helyho")
-                .exposePort(22,"tcp","2222").send();
+                .exposePort("tcp",22,"2222").send();
         createCmd.close();
         Logger.info(formatJSON(data));
     }

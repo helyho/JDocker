@@ -32,6 +32,11 @@ public class CmdVolumeCreate extends Cmd{
         return this;
     }
 
+    public CmdVolumeCreate driverOpts(String key, String value){
+        volume.getDriverOpts().put(key,value);
+        return this;
+    }
+
     public CmdVolumeCreate label(String key, String value){
         volume.getLabels().put(key,value);
         return this;

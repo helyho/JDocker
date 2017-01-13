@@ -143,7 +143,7 @@ public class CmdContainerCreate extends Cmd{
         return this;
     }
 
-    public CmdContainerCreate exposePort(int containerPort, String protocol, String... hostPortStrs){
+    public CmdContainerCreate exposePort(String protocol, int containerPort, String... hostPortStrs){
         containerCreate.addPortBind(containerPort,protocol,hostPortStrs);
         return this;
     }

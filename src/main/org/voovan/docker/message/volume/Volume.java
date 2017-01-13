@@ -19,6 +19,7 @@ import java.util.Map;
 public class Volume {
     private String name;
     private String driver;
+    private Map<String, Object> driverOpts;
     private String mountpoint;
     private Map<String, Object> labels;
     private String scope;
@@ -41,6 +42,14 @@ public class Volume {
 
     public void setDriver(String driver) {
         this.driver = driver;
+    }
+
+    public Map<String, Object> getDriverOpts() {
+        return driverOpts;
+    }
+
+    public void setDriverOpts(Map<String, Object> driverOpts) {
+        this.driverOpts = driverOpts;
     }
 
     public String getMountpoint() {

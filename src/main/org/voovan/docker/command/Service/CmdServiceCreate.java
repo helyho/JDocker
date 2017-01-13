@@ -80,18 +80,18 @@ public class CmdServiceCreate extends Cmd {
         return this;
     }
 
-    public CmdServiceCreate  port(String protocol,int targetPort, int publishPort){
-        serviceSpec.getEndpoint().getPorts().add(new Port(protocol,targetPort,publishPort));
+    public CmdServiceCreate  port(String protocol, int containerPort, int hostPort){
+        serviceSpec.getEndpoint().getPorts().add(new Port(protocol,containerPort,hostPort));
         return this;
     }
 
-    public CmdServiceCreate  portTcp(int targetPort, int publishPort){
-        serviceSpec.getEndpoint().getPorts().add(new Port("tcp",targetPort,publishPort));
+    public CmdServiceCreate  portTcp(int containerPort, int hostPort){
+        serviceSpec.getEndpoint().getPorts().add(new Port("tcp",containerPort,hostPort));
         return this;
     }
 
-    public CmdServiceCreate  portUdp(int targetPort, int publishPort){
-        serviceSpec.getEndpoint().getPorts().add(new Port("udp",targetPort,publishPort));
+    public CmdServiceCreate  portUdp(int containerPort, int hostPort){
+        serviceSpec.getEndpoint().getPorts().add(new Port("udp",containerPort,hostPort));
         return this;
     }
 

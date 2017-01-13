@@ -31,6 +31,13 @@ public class CmdNetworkCreate extends Cmd{
 
     public CmdNetworkCreate driver(String driver){
         networkCreate.setDriver(driver);
+        if("bridge".equals(driver)){
+            options("com.docker.network.bridge.default_bridge", "true");
+            options("com.docker.network.bridge.enable_icc", "true");
+            options("com.docker.network.bridge.enable_ip_masquerade", "true");
+            options("com.docker.network.bridge.host_binding_ipv4", "0.0.0.0");
+            options("com.docker.network.driver.mtu", "1500");
+        }
         return this;
     }
 
