@@ -40,9 +40,9 @@ public class ExecUtil extends TestCase {
     }
 
     public void testExecStart() throws Exception {
-        DockerGlobal.DOCKER_REST_TIMEOUT = 15;
+        DockerGlobal.DOCKER_REST_TIMEOUT = 5000;
         CmdExecCreate cmdExecCreate = CmdExecCreate.newInstance("dockerfly");
-        String idata = cmdExecCreate.cmd("ping","127.0.0.1").send();
+        String idata = cmdExecCreate.cmd("ifconfig").send();
         JSONPath jsonpath = new JSONPath(idata);
         String id = jsonpath.value("/Id").toString();
 
@@ -50,19 +50,21 @@ public class ExecUtil extends TestCase {
         CmdExecStart cmdExecStart = CmdExecStart
                 .newInstance(id);
         Object data = cmdExecStart.send();
-        Logger.info(formatJSON(data));
+        //Logger.info(formatJSON(data));
 
         String tmp = null;
         cmdExecStart.beginLoadStream();
-        System.out.println("------");
+        System.out.println("//------");
         for(tmp = cmdExecStart.loadStream(); tmp!=null ; tmp = cmdExecStart.loadStream()){
-            System.out.print(tmp.trim());
-            System.out.println("------");
+            if(tmp!=null && tmp.length()>10){
+                tmp = tmp.substring(8,tmp.length());
+                System.out.print(tmp.trim());
+            }
             TEnv.sleep(1000);//测试这个需要使用 ping 命令来测试
         }
+        System.out.println("\r\n//------");
         cmdExecStart.endLoadStream();
         cmdExecStart.close();
-
     }
 
     public void testExecInfo() throws Exception {

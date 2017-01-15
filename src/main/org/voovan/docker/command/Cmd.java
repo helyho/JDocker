@@ -56,7 +56,12 @@ public abstract class Cmd {
 
     public String loadStream() throws IOException {
         ByteBuffer byteBuffer = getDockerHttpClient().loadSteam();
-        return byteBuffer==null ? null : new String(byteBuffer.array());
+        byte[] tmpBytes = null;
+        if(byteBuffer!=null) {
+            tmpBytes = new byte[byteBuffer.limit()];
+            byteBuffer.get(tmpBytes);
+        }
+        return byteBuffer==null ? null : new String(tmpBytes);
     }
 
     public void endLoadStream(){
