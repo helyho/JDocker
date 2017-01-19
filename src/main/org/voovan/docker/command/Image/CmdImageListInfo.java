@@ -53,8 +53,8 @@ public class CmdImageListInfo extends Cmd {
         return this;
     }
 
-    public CmdImageListInfo filter(String ... filter){
-        addParameter("filter",TObject.newList(filter));
+    public CmdImageListInfo filter(String filter){
+        addParameter("filter",filter);
         return this;
     }
 
