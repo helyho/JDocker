@@ -29,14 +29,8 @@ public class CmdNodeList extends Cmd {
     }
 
 
-    public CmdNodeList id(String id){
+    public CmdNodeList id(String ...id){
        filters.put("id", TObject.newList(id));
-        return this;
-    }
-
-
-    public CmdNodeList name(String name){
-        filters.put("name", TObject.newList(name));
         return this;
     }
 

@@ -32,12 +32,12 @@ public class CmdContainerList extends Cmd {
         filters = new HashMap<String,List<String>>();
     }
 
-    public CmdContainerList name(String name){
+    public CmdContainerList name(String ...name){
         filters.put("name", TObject.newList(name));
         return this;
     }
 
-    public CmdContainerList id(String id){
+    public CmdContainerList id(String ...id){
         filters.put("id", TObject.newList(id));
         return this;
     }

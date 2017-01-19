@@ -27,12 +27,12 @@ public class CmdServiceList extends Cmd {
         filters = new HashMap<String,List<String>>();
     }
 
-    public CmdServiceList id(String id){
+    public CmdServiceList id(String ...id){
         filters.put("id", TObject.newList(id));
         return this;
     }
 
-    public CmdServiceList name(String name){
+    public CmdServiceList name(String ...name){
         filters.put("name", TObject.newList(name));
         return this;
     }

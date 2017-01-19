@@ -29,7 +29,7 @@ public class CmdVolumeList extends Cmd{
     }
 
 
-    public CmdVolumeList name(String name){
+    public CmdVolumeList name(String ...name){
         filters.put("name", TObject.newList(name));
         return this;
     }

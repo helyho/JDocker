@@ -28,13 +28,8 @@ public class CmdTaskList extends Cmd {
         filters = new HashMap<String,List<String>>();
     }
 
-    public CmdTaskList id(String id){
+    public CmdTaskList id(String ...id){
         filters.put("id",TObject.newList(id));
-        return this;
-    }
-
-    public CmdTaskList name(String name){
-        filters.put("name",TObject.newList(name));
         return this;
     }
 
