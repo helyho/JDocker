@@ -44,12 +44,17 @@ public class CmdImageListInfo extends Cmd {
     }
 
     public CmdImageListInfo before(String ... before){
-        addParameter("before",TObject.newList(before));
+        filters.put("before",TObject.newList(before));
         return this;
     }
 
     public CmdImageListInfo since(String ... since){
-        addParameter("since",TObject.newList(since));
+        filters.put("since",TObject.newList(since));
+        return this;
+    }
+
+    public CmdImageListInfo filter(String ... filter){
+        addParameter("filter",TObject.newList(filter));
         return this;
     }
 
