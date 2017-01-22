@@ -7,6 +7,12 @@
 
 ![](http://git.oschina.net/uploads/images/2016/0510/122514_7d971a34_116083.jpeg)
 
+------------------------
+####重要更新
+ - 2017-01-22 增加对 Docker Api 1.25 的支持。
+ - 2016-12-05 完成 Docker Api 1.24 的支持。
+------------------------
+
 对 Voovan 项目的Maven依赖:
 ```xml
 <dependency>
