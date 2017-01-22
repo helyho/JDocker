@@ -1,7 +1,9 @@
 package org.voovan.docker.message.service.atom;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -17,7 +19,14 @@ public class Container {
     private List<String> args;
     private List<String> env;
     private List<Mount> mounts;
+    private Map<String, Object> labels;
     private Long stopGracePeriod;
+
+    //v1.25
+    private Boolean tty;
+
+    //v1.25
+    private DNSConfig dnsConfig;
 
 
     public Container() {
@@ -25,7 +34,10 @@ public class Container {
         args = new ArrayList<String>();
         env = new ArrayList<String>();
         mounts = new ArrayList<Mount>();
+        labels = new HashMap<String, Object>();
+        tty = true;
 
+        dnsConfig = new DNSConfig();
     }
 
     public String getImage() {
@@ -76,6 +88,33 @@ public class Container {
         this.stopGracePeriod = stopGracePeriod;
     }
 
+    public Map<String, Object> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(Map<String, Object> labels) {
+        this.labels = labels;
+    }
+
+    //v1.25
+    public Boolean isTty() {
+        return tty;
+    }
+
+    //v1.25
+    public void setTty(Boolean tty) {
+        this.tty = tty;
+    }
+
+    //v1.25
+    public DNSConfig getDnsConfig() {
+        return dnsConfig;
+    }
+
+    //v1.25
+    public void setDnsConfig(DNSConfig dnsConfig) {
+        this.dnsConfig = dnsConfig;
+    }
 }
 
 

@@ -50,7 +50,7 @@ public class NetworkCreate {
         this.driver = driver;
     }
 
-    public Boolean getCheckDuplicate() {
+    public Boolean isCheckDuplicate() {
         return checkDuplicate;
     }
 
@@ -58,7 +58,7 @@ public class NetworkCreate {
         this.checkDuplicate = checkDuplicate;
     }
 
-    public Boolean getEnableIPv6() {
+    public Boolean isEnableIPv6() {
         return enableIPv6;
     }
 
@@ -66,7 +66,7 @@ public class NetworkCreate {
         this.enableIPv6 = enableIPv6;
     }
 
-    public Boolean getInternal() {
+    public Boolean isInternal() {
         return internal;
     }
 

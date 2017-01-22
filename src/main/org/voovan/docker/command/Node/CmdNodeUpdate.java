@@ -19,11 +19,11 @@ import java.util.List;
  */
 public class CmdNodeUpdate extends Cmd {
 
-    private String id;
+    private String nameOrId;
     private NodeUpdate nodeUpdate;
 
-    public CmdNodeUpdate(String id,Integer version) {
-        this.id = id;
+    public CmdNodeUpdate(String nameOrId,Integer version) {
+        this.nameOrId = nameOrId;
         addParameter("version",version);
         this.nodeUpdate = new NodeUpdate();
     }
@@ -58,7 +58,7 @@ public class CmdNodeUpdate extends Cmd {
 
     @Override
     public List<TaskInfo> send() throws Exception {
-        Result result = getDockerHttpClient().post("/nodes/"+id+"/update",getParameters(),nodeUpdate);
+        Result result = getDockerHttpClient().post("/nodes/"+nameOrId+"/update",getParameters(),nodeUpdate);
         if(result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

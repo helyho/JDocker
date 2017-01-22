@@ -21,7 +21,11 @@ public class ExecCreate {
     private Boolean attachStderr;
     private String detachKeys;
     private Boolean tty;
+    private Boolean privileged;
     private List<String> cmd;
+
+    //v1.25
+    private List<String> env;
 
     public ExecCreate() {
         attachStdin = false;
@@ -30,6 +34,7 @@ public class ExecCreate {
         detachKeys = "ctrl-p,ctrl-q";
         tty = true;
         cmd = new ArrayList<String>();
+        env = new ArrayList<String>();
     }
 
     public Boolean isAttachStdin() {
@@ -72,12 +77,28 @@ public class ExecCreate {
         this.tty = tty;
     }
 
+    public Boolean isPrivileged() {
+        return privileged;
+    }
+
+    public void setPrivileged(Boolean privileged) {
+        this.privileged = privileged;
+    }
+
     public List<String> getCmd() {
         return cmd;
     }
 
     public void setCmd(List<String> cmd) {
         this.cmd = cmd;
+    }
+
+    public List<String> getEnv() {
+        return env;
+    }
+
+    public void setEnv(List<String> env) {
+        this.env = env;
     }
 
     public static void main(String[] args) {

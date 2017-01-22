@@ -120,8 +120,8 @@ public class CmdServiceUpdate extends Cmd {
         return this;
     }
 
-    public CmdServiceUpdate mount(String source, String target, boolean readOnly, String type){
-        serviceSpec.getTaskTemplate().getContainer().getMounts().add(new Mount(source,target,readOnly, type));
+    public CmdServiceUpdate mount(String type, String source, String target, boolean readOnly){
+        serviceSpec.getTaskTemplate().getContainer().getMounts().add(new Mount(type, source,target,readOnly));
         return this;
     }
 
@@ -147,6 +147,39 @@ public class CmdServiceUpdate extends Cmd {
 
     public CmdServiceUpdate label(String key, Object value) {
         serviceSpec.getLabels().put(key, value);
+        return this;
+    }
+
+    //v1.25
+    public CmdServiceUpdate forceUpdate(Integer forceUpdate) {
+        serviceSpec.getTaskTemplate().setForceUpdate(forceUpdate);
+        return this;
+    }
+
+    //v1.25
+    public CmdServiceUpdate tty(boolean tty){
+        serviceSpec.getTaskTemplate().getContainer().setTty(tty);
+        return this;
+    }
+
+    //v1.25
+    public CmdServiceUpdate dnsNameservers(String  nameservers){
+        serviceSpec.getTaskTemplate().getContainer().getDnsConfig()
+                .getNameservers().addAll(TObject.newList(nameservers));
+        return this;
+    }
+
+    //v1.25
+    public CmdServiceUpdate dnsSearch(String  Search){
+        serviceSpec.getTaskTemplate().getContainer().getDnsConfig()
+                .getNameservers().addAll(TObject.newList(Search));
+        return this;
+    }
+
+    //v1.25
+    public CmdServiceUpdate dnsOptions(String  options){
+        serviceSpec.getTaskTemplate().getContainer().getDnsConfig()
+                .getNameservers().addAll(TObject.newList(options));
         return this;
     }
 

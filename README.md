@@ -1,5 +1,5 @@
 #JDocker
-基于 Docker1.12+ 开发出的开发包，通过封装 Docker API 使开发者可以快速的使用 Java 开发出控制和操作 Docker 的应用，使用流式操作,简单明了。
+基于 Docker1.12+ (Docker API 1.24+) 开发出的开发包，通过封装 Docker API 使开发者可以快速的使用 Java 开发出控制和操作 Docker 的应用，使用流式操作,简单明了。
 
 完善的测试用例覆盖率达87%。
 

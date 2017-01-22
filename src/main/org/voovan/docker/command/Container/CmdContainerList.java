@@ -92,6 +92,13 @@ public class CmdContainerList extends Cmd {
         return this;
     }
 
+    //v1.25
+    public CmdContainerList isTask(boolean isTask){
+        filters.put("is-task", TObject.newList(isTask));
+        return this;
+    }
+
+
     public static CmdContainerList newInstance(){
         return new CmdContainerList();
     }

@@ -20,46 +20,53 @@ import java.util.Map;
  *         WebSite: https://github.com/helyho/JDocker
  *         Licence: Apache v2 License
  */
-public class CmdImageListInfo extends Cmd {
+public class CmdImageList extends Cmd {
 
     private Map<String,List<String>> filters;
 
-    public CmdImageListInfo() {
+    public CmdImageList() {
         filters = new HashMap<String,List<String>>();
     }
 
-    public CmdImageListInfo all(Boolean all){
+    public CmdImageList all(Boolean all){
         addParameter("all",all);
         return this;
     }
 
-    public CmdImageListInfo dangling(Boolean dangling){
+    public CmdImageList dangling(Boolean dangling){
         filters.put("dangling",TObject.newList(dangling));
         return this;
     }
 
-    public CmdImageListInfo label(String key, Object value){
+    public CmdImageList label(String key, Object value){
         filters.put("label", TObject.newList(key+"="+value));
         return this;
     }
 
-    public CmdImageListInfo before(String ... before){
+    public CmdImageList before(String ... before){
         filters.put("before",TObject.newList(before));
         return this;
     }
 
-    public CmdImageListInfo since(String ... since){
+    public CmdImageList since(String ... since){
         filters.put("since",TObject.newList(since));
         return this;
     }
 
-    public CmdImageListInfo filter(String filter){
+    public CmdImageList filter(String filter){
         addParameter("filter",filter);
         return this;
     }
 
-    public static CmdImageListInfo newInstance() {
-        return new CmdImageListInfo();
+    //v1.25
+    public CmdImageList reference(String reference){
+        addParameter("reference",reference);
+        return this;
+    }
+
+
+    public static CmdImageList newInstance() {
+        return new CmdImageList();
     }
 
     @Override

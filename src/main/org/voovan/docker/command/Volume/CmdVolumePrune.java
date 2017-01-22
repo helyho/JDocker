@@ -1,9 +1,12 @@
 package org.voovan.docker.command.Volume;
 
 import org.voovan.docker.command.Cmd;
-import org.voovan.docker.command.Container.CmdContainerRemove;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 类文字命名
@@ -14,32 +17,24 @@ import org.voovan.docker.network.Result;
  *         WebSite: https://github.com/helyho/JDocker
  *         Licence: Apache v2 License
  */
-public class CmdVolumeRemove extends Cmd{
+public class CmdVolumePrune extends Cmd {
+    private Map<String,List<String>> filters;
 
-    private String nameOrId;
-
-    public CmdVolumeRemove(String nameOrId) {
-        this.nameOrId = nameOrId;
+    public CmdVolumePrune() {
+        filters = new HashMap<String,List<String>>();
     }
 
-    public static CmdVolumeRemove newInstance(String nameOrId){
-        return new CmdVolumeRemove(nameOrId);
+    public static CmdVolumePrune newInstance(String nameOrId){
+        return new CmdVolumePrune();
     }
-
-    public CmdVolumeRemove force(boolean force){
-        addParameter("force",force);
-        return this;
-    }
-
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().delete("/volumes/"+nameOrId,getParameters());
+        Result result = getDockerHttpClient().post("/containers/prune", getParameters(),null);
         if(result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
             return result.getMessage();
         }
-
     }
 }

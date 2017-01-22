@@ -13,6 +13,9 @@ public class TaskTemplate {
     private Resource resources;
     private RestartPolicy restartPolicy;
 
+    //v1.25
+    private Integer forceUpdate;
+
 
     public TaskTemplate() {
         containerSpec = new Container();
@@ -38,6 +41,16 @@ public class TaskTemplate {
 
     public RestartPolicy getRestartPolicy() {
         return restartPolicy;
+    }
+
+    //v1.25
+    public Integer getForceUpdate() {
+        return forceUpdate;
+    }
+
+    //v1.25
+    public void setForceUpdate(Integer forceUpdate) {
+        this.forceUpdate = forceUpdate;
     }
 
     public void setRestartPolicy(RestartPolicy restartPolicy) {

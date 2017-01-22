@@ -33,6 +33,16 @@ public class CmdExecCreate extends Cmd{
         return this;
     }
 
+    public CmdExecCreate env(String ... env){
+        execCreate.getCmd().addAll(Arrays.asList(env));
+        return this;
+    }
+
+    public CmdExecCreate privileged(boolean privileged){
+        execCreate.setPrivileged(privileged);
+        return this;
+    }
+
     public ExecCreate getEntity(){
         return execCreate;
     }

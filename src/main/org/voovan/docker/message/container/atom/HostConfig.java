@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.voovan.docker.message.service.atom.Mount;
 
 /**
  *
@@ -42,11 +43,21 @@ public class HostConfig {
     private ArrayList<BlockIORate> blkioDeviceReadIOps;
     private ArrayList<BlockIORate> blkioDeviceWiiteIOps;
 
+    //v1.25
+    private Long nanoCPUs;
+
+    //v1.25
+    private List<Mount> mounts;
+
+    //1.25
+    private Boolean autoRemove;
+
     public HostConfig() {
         cpuPeriod = 100000;
         blkioWeight = null;
         dns = new ArrayList<String>();
         binds = new ArrayList<String>();
+
         links = new ArrayList<String>();
         devices = new ArrayList<Device>();
         volumesFrom =  new ArrayList<String>();
@@ -57,6 +68,11 @@ public class HostConfig {
         blkioDeviceWriteBps = new ArrayList<BlockIORate>();
         blkioDeviceReadIOps = new ArrayList<BlockIORate>();
         blkioDeviceWiiteIOps = new ArrayList<BlockIORate>();
+
+        //1.25
+        mounts = new ArrayList<Mount>();
+        //1.25
+        autoRemove = false;
     }
 
     public Integer getCpuShares() {
@@ -203,14 +219,6 @@ public class HostConfig {
         this.portBindings = portBindings;
     }
 
-    public Boolean getPublishAllPorts() {
-        return publishAllPorts;
-    }
-
-    public Boolean getPrivileged() {
-        return privileged;
-    }
-
     public ArrayList<ULimit> getUlimits() {
         return ulimits;
     }
@@ -265,5 +273,40 @@ public class HostConfig {
 
     public void setBlkioDeviceWiiteIOps(ArrayList<BlockIORate> blkioDeviceWiiteIOps) {
         this.blkioDeviceWiiteIOps = blkioDeviceWiiteIOps;
+    }
+
+    //v1.25
+    public Long getNanoCPUs() {
+        return nanoCPUs;
+    }
+
+    //v1.25
+    public void setNanoCPUs(Long nanoCPUs) {
+        this.nanoCPUs = nanoCPUs;
+    }
+
+    //1.25
+    public List<Mount> getMounts() {
+        return mounts;
+    }
+
+    //1.25
+    public void setMounts(List<Mount> mounts) {
+        this.mounts = mounts;
+    }
+
+    //v1.25
+    public Boolean isAutoRemove() {
+        return autoRemove;
+    }
+
+    //v1.25
+    public void setAutoRemove(Boolean autoRemove) {
+        this.autoRemove = autoRemove;
+    }
+
+    //v1.25
+    public void setAutoRemove(boolean autoRemove) {
+        this.autoRemove = autoRemove;
     }
 }

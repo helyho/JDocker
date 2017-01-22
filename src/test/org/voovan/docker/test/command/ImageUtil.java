@@ -49,7 +49,7 @@ public class ImageUtil extends TestCase {
     }
 
     public void testImageInfo() throws Exception {
-        CmdImageListInfo cmdImageInfo =  CmdImageListInfo.newInstance();
+        CmdImageList cmdImageInfo =  CmdImageList.newInstance();
         Object data = cmdImageInfo.send();
         cmdImageInfo.close();
         Logger.info(formatJSON(data));

@@ -15,10 +15,20 @@ public class UpdateConfig {
 
     private String failureAction; // continue/pause
 
+    private Long monitor;
+
+    private Float maxFailureRatio;
+
     public UpdateConfig() {
         parallelism = 2;
         delay = null;
         failureAction = "pause";
+
+        //v1.25
+        monitor = 15000000000L;
+
+        //v1.25
+        maxFailureRatio = 0.15F;
     }
 
     public void setParallelism(Integer parallelism) {
@@ -43,5 +53,25 @@ public class UpdateConfig {
 
     public String getFailureAction() {
         return this.failureAction;
+    }
+
+    //v1.25
+    public Long getMonitor() {
+        return monitor;
+    }
+
+    //v1.25
+    public void setMonitor(Long monitor) {
+        this.monitor = monitor;
+    }
+
+    //v1.25
+    public Float getMaxFailureRatio() {
+        return maxFailureRatio;
+    }
+
+    //v1.25
+    public void setMaxFailureRatio(Float maxFailureRatio) {
+        this.maxFailureRatio = maxFailureRatio;
     }
 }

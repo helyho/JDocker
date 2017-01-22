@@ -106,8 +106,8 @@ public class CmdServiceCreate extends Cmd {
         return this;
     }
 
-    public CmdServiceCreate mount(String source, String target, boolean readOnly, String type){
-        serviceSpec.getTaskTemplate().getContainer().getMounts().add(new Mount(source,target,readOnly, type));
+    public CmdServiceCreate mount(String type, String source, String target, boolean readOnly){
+        serviceSpec.getTaskTemplate().getContainer().getMounts().add(new Mount(type, source,target,readOnly));
         return this;
     }
 
@@ -119,6 +119,7 @@ public class CmdServiceCreate extends Cmd {
 
     public CmdServiceCreate label(String key, Object value) {
         serviceSpec.getLabels().put(key, value);
+        serviceSpec.getTaskTemplate().getContainer().getLabels().put(key, value);
         return this;
     }
 
@@ -135,6 +136,34 @@ public class CmdServiceCreate extends Cmd {
         serviceSpec.getUpdateConfig().setParallelism(parallelism);
         return this;
     }
+
+    //v1.25
+    public CmdServiceCreate tty(boolean tty){
+        serviceSpec.getTaskTemplate().getContainer().setTty(tty);
+        return this;
+    }
+
+    //v1.25
+    public CmdServiceCreate dnsNameservers(String  nameservers){
+        serviceSpec.getTaskTemplate().getContainer().getDnsConfig()
+                .getNameservers().addAll(TObject.newList(nameservers));
+        return this;
+    }
+
+    //v1.25
+    public CmdServiceCreate dnsSearch(String  Search){
+        serviceSpec.getTaskTemplate().getContainer().getDnsConfig()
+                .getNameservers().addAll(TObject.newList(Search));
+        return this;
+    }
+
+    //v1.25
+    public CmdServiceCreate dnsOptions(String  options){
+        serviceSpec.getTaskTemplate().getContainer().getDnsConfig()
+                .getNameservers().addAll(TObject.newList(options));
+        return this;
+    }
+
 
     public ServiceSpec getEntity(){
         return serviceSpec;

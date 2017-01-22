@@ -1,11 +1,11 @@
 package org.voovan.docker.command.Container;
 
 import org.voovan.docker.command.Cmd;
-import org.voovan.docker.message.auth.AuthRequest;
 import org.voovan.docker.message.container.ContainerCreate;
 import org.voovan.docker.message.container.atom.BlockIORate;
 import org.voovan.docker.message.container.atom.Device;
 import org.voovan.docker.message.container.atom.ULimit;
+import org.voovan.docker.message.service.atom.Mount;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
 
@@ -128,7 +128,7 @@ public class CmdContainerCreate extends Cmd{
         return this;
     }
 
-    public CmdContainerCreate volume(String ... bind){
+    public CmdContainerCreate bind(String ... bind){
         containerCreate.getHostConfig().getBinds().addAll(Arrays.asList(bind));
         return this;
     }
@@ -155,6 +155,42 @@ public class CmdContainerCreate extends Cmd{
 
     public CmdContainerCreate uLimit(String name, int soft, int hard){
         containerCreate.getHostConfig().getUlimits().add(new ULimit(name,soft,hard));
+        return this;
+    }
+
+    //v1.25
+    public CmdContainerCreate mountRead(String source, String target){
+        containerCreate.getHostConfig().getMounts().add(new Mount(source,target,true));
+        return this;
+    }
+
+    //v1.25
+    public CmdContainerCreate mountReadWrite(String source, String target){
+        containerCreate.getHostConfig().getMounts().add(new Mount(source,target,false));
+        return this;
+    }
+
+    //v1.25
+    public CmdContainerCreate mount(String type, String source, String target, boolean readOnly){
+        containerCreate.getHostConfig().getMounts().add(new Mount(type, source,target,readOnly));
+        return this;
+    }
+
+    //v1.25
+    public CmdContainerCreate autoRemove(boolean autoRemove){
+        containerCreate.getHostConfig().setAutoRemove(autoRemove);
+        return this;
+    }
+
+    //v1.25
+    public CmdContainerCreate nanoCpus(long nanoCpus){
+        containerCreate.getHostConfig().setNanoCPUs(nanoCpus);
+        return this;
+    }
+
+    //v1.25
+    public CmdContainerCreate stopTimeout(int stopTimeout){
+        containerCreate.setStopTimeout(stopTimeout);
         return this;
     }
 

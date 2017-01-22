@@ -36,6 +36,9 @@ public class ContainerCreate {
     private Map<String, Map<String, String>> exposedPorts;
     private HostConfig hostConfig;
 
+    //1.25
+    private Integer stopTimeout;
+
     public ContainerCreate() {
         attachStdin = false;
         attachStdout = true;
@@ -168,6 +171,16 @@ public class ContainerCreate {
 
     public void setHostConfig(HostConfig hostConfig) {
         this.hostConfig = hostConfig;
+    }
+
+    //v1.25
+    public Integer getStopTimeout() {
+        return stopTimeout;
+    }
+
+    //v1.25
+    public void setStopTimeout(Integer stopTimeout) {
+        this.stopTimeout = stopTimeout;
     }
 
     /**

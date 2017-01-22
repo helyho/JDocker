@@ -16,7 +16,7 @@ public class Mount {
 
     private String target;
 
-    private String type; // bind/volume
+    private String type; // bind/volume/tmpfs
 
     public Mount() {
         readOnly = true;
@@ -24,7 +24,7 @@ public class Mount {
     }
 
 
-    public Mount(String source, String target, boolean readOnly, String type) {
+    public Mount( String type, String source, String target, boolean readOnly) {
         this.source = source;
         this.target = target;
         this.readOnly = readOnly;
@@ -42,7 +42,7 @@ public class Mount {
         this.readOnly = readOnly;
     }
 
-    public Boolean getReadOnly() {
+    public Boolean isReadOnly() {
         return this.readOnly;
     }
 
