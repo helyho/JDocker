@@ -33,7 +33,7 @@ public class CmdContainerLogs extends Cmd {
         return this;
     }
 
-    public CmdContainerLogs tail(int tail){
+    public CmdContainerLogs tail(String tail){
         addParameter("tail",tail);
         return this;
     }
@@ -53,7 +53,7 @@ public class CmdContainerLogs extends Cmd {
         if(result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
-            return result.getMessage();
+            return result.getMessage().replaceAll("\0+=","");
         }
     }
 }
