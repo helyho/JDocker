@@ -21,7 +21,7 @@
 <dependency>
     <groupId>org.voovan</groupId>
     <artifactId>voovan-framework</artifactId>
-    <version>1.0-beta-*</version>
+    <version>1.0-*</version>
 </dependency>
 ```
 
@@ -60,7 +60,7 @@
 
 ####如何开启 Docker 的 Remote API?
 
-由于Docker 默认是使用 unixsock 提供服务,我们可以使用以下两种方式打开端口:  
+由于 Docker 默认是使用 unixsock 提供服务,我们可以使用以下两种方式打开端口:  
  - **通过 socat 将 unixsocket 转换成 TCP 的 Socket 监听**
     `socat tcp4-listen:2735,reuseaddr,fork unix-connect:/var/run/docker.sock`
 
