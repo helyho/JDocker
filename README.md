@@ -60,7 +60,7 @@
 
 ####如何开启 Docker 的 Remote API?
 
-由于Docker 默认是使用 unixsock 提供服务,我们可以使用一下两种方式打开端口:  
+由于Docker 默认是使用 unixsock 提供服务,我们可以使用以下两种方式打开端口:  
  - socat tcp4-listen:2735,reuseaddr,fork unix-connect:/var/run/docker.sock
  - 开启 Docker TCP/IP 监听端口:    
 
