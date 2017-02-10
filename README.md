@@ -62,17 +62,13 @@
 
 由于Docker 默认是使用 unixsock 提供服务,我们可以使用以下两种方式打开端口:  
  - 通过 socat 将 unixsocket 转换成 TCP 的 Socket 监听
-
     `socat tcp4-listen:2735,reuseaddr,fork unix-connect:/var/run/docker.sock`
 
+
  - 开启 Docker TCP 监听端口:    
-
     修改 Docker 服务启动参数，添加一个没有被占用的端口号：
-
     ` # vim /etc/default/docker`
-
     ` DOCKER_OPTS='-H 127.0.0.1:2735'`
-
     重启 Docker 服务生效.
 
 第二种方法我从网上找来,我自己没有实验成功,我一直使用第一种方法,很简单而且有效.
