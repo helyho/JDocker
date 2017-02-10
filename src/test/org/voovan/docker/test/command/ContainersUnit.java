@@ -98,7 +98,7 @@ public class ContainersUnit extends TestCase {
     }
 
     public void testStats() throws Exception {
-        CmdContainerStats cmdContainerStats = CmdContainerStats.newInstance("d_test");
+        CmdContainerStats cmdContainerStats = CmdContainerStats.newInstance("Voovan");
         Object data = cmdContainerStats.send();
         cmdContainerStats.close();
         Logger.info(formatJSON(data));

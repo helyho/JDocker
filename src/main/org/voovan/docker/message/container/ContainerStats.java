@@ -20,8 +20,8 @@ public class ContainerStats {
     private Long cpuUsage;
     private List<Long> perCpuUsage;
     private Long memoryUsage;
-    private Long memoryMasUsage;
-    private Long memoryMasLimit;
+    private Long memoryMaxUsage;
+    private Long memoryMaxLimit;
     private Integer memoryFailCnt;
     private Long ioRead;
     private Long ioWrite;
@@ -73,20 +73,20 @@ public class ContainerStats {
         this.memoryUsage = memoryUsage;
     }
 
-    public Long getMemoryMasUsage() {
-        return memoryMasUsage;
+    public Long getMemoryMaxUsage() {
+        return memoryMaxUsage;
     }
 
-    public void setMemoryMasUsage(Long memoryMasUsage) {
-        this.memoryMasUsage = memoryMasUsage;
+    public void setMemoryMaxUsage(Long memoryMaxUsage) {
+        this.memoryMaxUsage = memoryMaxUsage;
     }
 
-    public Long getMemoryMasLimit() {
-        return memoryMasLimit;
+    public Long getMemoryMaxLimit() {
+        return memoryMaxLimit;
     }
 
-    public void setMemoryMasLimit(Long memoryMasLimit) {
-        this.memoryMasLimit = memoryMasLimit;
+    public void setMemoryMaxLimit(Long memoryMaxLimit) {
+        this.memoryMaxLimit = memoryMaxLimit;
     }
 
     public Integer getMemoryFailCnt() {
@@ -213,8 +213,8 @@ public class ContainerStats {
         }
 
         containerStats.setMemoryUsage(new Long(jsonPath.value("/memory_stats/usage", "-1").toString()));
-        containerStats.setMemoryMasUsage(new Long(jsonPath.value("/memory_stats/max_usage", "-1").toString()));
-        containerStats.setMemoryMasLimit(new Long(jsonPath.value("/memory_stats/limit", "-1").toString()));
+        containerStats.setMemoryMaxUsage(new Long(jsonPath.value("/memory_stats/max_usage", "-1").toString()));
+        containerStats.setMemoryMaxLimit(new Long(jsonPath.value("/memory_stats/limit", "-1").toString()));
         containerStats.setMemoryFailCnt(jsonPath.value("/memory_stats/failcnt", int.class,-1));
 
 
