@@ -5,6 +5,7 @@ import org.voovan.docker.message.container.atom.HostConfig;
 import org.voovan.docker.message.exec.ExecCreate;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
+import org.voovan.tools.json.JSONPath;
 
 import java.util.Arrays;
 
@@ -57,7 +58,8 @@ public class CmdExecCreate extends Cmd{
         if(result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
-            return result.getMessage();
+            JSONPath jsonpath = new JSONPath(result.getMessage());
+            return jsonpath.value("/Id").toString();
         }
     }
 

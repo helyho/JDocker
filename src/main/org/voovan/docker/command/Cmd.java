@@ -2,6 +2,7 @@ package org.voovan.docker.command;
 
 import org.voovan.docker.DockerGlobal;
 import org.voovan.docker.network.DockerHttpClient;
+import org.voovan.tools.TByteBuffer;
 import org.voovan.tools.json.annotation.NotJSON;
 
 import java.io.IOException;
@@ -56,12 +57,8 @@ public abstract class Cmd {
 
     public String loadStream() throws IOException {
         ByteBuffer byteBuffer = getDockerHttpClient().loadSteam();
-        byte[] tmpBytes = null;
-        if(byteBuffer!=null) {
-            tmpBytes = new byte[byteBuffer.limit()];
-            byteBuffer.get(tmpBytes);
-        }
-        return byteBuffer==null ? null : new String(tmpBytes);
+
+        return byteBuffer==null ? null : TByteBuffer.toString(byteBuffer).replaceAll("[\u0000-\u000f]+.","");
     }
 
     public void endLoadStream(){
