@@ -127,7 +127,7 @@ public class ContainersUnit extends TestCase {
 
 
     public void testLogs() throws Exception {
-        CmdContainerLogs cmdContainerLogs = CmdContainerLogs.newInstance("d_test");
+        CmdContainerLogs cmdContainerLogs = CmdContainerLogs.newInstance("Voovan");
         Object data = cmdContainerLogs.send();
         cmdContainerLogs.close();
         Logger.info(formatJSON(data));

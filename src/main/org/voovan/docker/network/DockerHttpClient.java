@@ -85,7 +85,7 @@ public class DockerHttpClient {
 
     public Result post(String url, Map<String, Object> queryParams)  {
         String queryString = HttpClient.buildQueryString(queryParams, charset);
-        return post(url, queryString, null);
+        return post(url, queryString, "".getBytes());
     }
 
     //=================== GET ===================
