@@ -53,7 +53,7 @@ public class CmdContainerLogs extends Cmd {
         if(result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
-            return result.getMessage().replaceAll("\0+=","");
+            return result.getMessage().replaceAll("\\u0001\\u0000{6}.","");
         }
     }
 }
