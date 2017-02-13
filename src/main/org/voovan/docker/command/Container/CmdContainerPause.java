@@ -26,7 +26,7 @@ public class CmdContainerPause extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().post("/containers/"+nameOrId+"/pause", getParameters(),null);
+        Result result = getDockerHttpClient().post("/containers/"+nameOrId+"/pause", getParameters());
         if(result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

@@ -52,7 +52,7 @@ public class CmdContainerCommit extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().post("/commit", getParameters(),null);
+        Result result = getDockerHttpClient().post("/commit", getParameters());
         if(result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

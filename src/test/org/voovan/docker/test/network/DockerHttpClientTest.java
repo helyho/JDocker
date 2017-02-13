@@ -26,7 +26,7 @@ public class DockerHttpClientTest {
         Volume volume = new Volume();
         volume.setDriver("local");
         volume.setName("v_tx");
-        Logger.info(httpClient.post("/volumes/create", "", JSON.toJSON(volume)).getMessage());
+        Logger.info(httpClient.post("/volumes/create", null, JSON.toJSON(volume)).getMessage());
         httpClient.close();
     }
 }
