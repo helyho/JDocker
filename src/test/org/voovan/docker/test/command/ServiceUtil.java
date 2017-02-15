@@ -1,11 +1,11 @@
 package org.voovan.docker.test.command;
 
 import junit.framework.TestCase;
+import org.voovan.docker.DockerGlobal;
 import org.voovan.docker.command.Service.CmdServiceCreate;
 import org.voovan.docker.command.Service.CmdServiceList;
 import org.voovan.docker.command.Service.CmdServiceRemove;
 import org.voovan.docker.command.Service.CmdServiceUpdate;
-import org.voovan.docker.DockerGlobal;
 import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
 

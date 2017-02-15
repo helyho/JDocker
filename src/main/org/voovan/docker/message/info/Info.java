@@ -3,8 +3,6 @@ package org.voovan.docker.message.info;
 import org.voovan.docker.message.info.atom.Plugins;
 import org.voovan.docker.message.info.atom.RegistryConfig;
 import org.voovan.docker.message.info.atom.Swarm;
-import org.voovan.docker.message.swarm.SwarmInfo;
-import org.voovan.tools.json.JSON;
 import org.voovan.tools.json.JSONPath;
 
 import java.text.ParseException;

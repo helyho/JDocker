@@ -1,6 +1,5 @@
 package org.voovan.docker.message.network;
 
-import org.voovan.docker.message.network.atom.ConnectIPAMConfig;
 import org.voovan.docker.message.network.atom.EndpointConfig;
 
 /**

@@ -3,6 +3,7 @@ package org.voovan.docker.command;
 import org.voovan.docker.DockerGlobal;
 import org.voovan.docker.network.DockerHttpClient;
 import org.voovan.tools.TByteBuffer;
+import org.voovan.tools.TString;
 import org.voovan.tools.json.annotation.NotJSON;
 
 import java.io.IOException;
@@ -66,6 +67,7 @@ public abstract class Cmd {
     }
 
     public int send(String data) throws IOException {
+        data =  TString.fromUnicode(data);
         return dockerHttpClient.send(data.getBytes());
     }
 

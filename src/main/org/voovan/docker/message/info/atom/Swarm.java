@@ -1,7 +1,6 @@
 package org.voovan.docker.message.info.atom;
 
 import org.voovan.docker.message.swarm.SwarmInfo;
-import org.voovan.docker.message.swarm.atom.SwarmSpec;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,8 @@
 package org.voovan.docker.test.command;
 
 import junit.framework.TestCase;
-import org.voovan.docker.command.Image.*;
 import org.voovan.docker.DockerGlobal;
+import org.voovan.docker.command.Image.*;
 import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
 
