@@ -17,6 +17,15 @@ public class CmdContainerLogs extends Cmd {
     private String nameOrId;
 
     public CmdContainerLogs(String nameOrId) {
+        super();
+        this.nameOrId = nameOrId;
+        addParameter("stderr",1);
+        addParameter("stdout",1);
+        addParameter("tail",100);
+    }
+
+    public CmdContainerLogs(String nameOrId, int timeOut) {
+        super(timeOut);
         this.nameOrId = nameOrId;
         addParameter("stderr",1);
         addParameter("stdout",1);
@@ -50,6 +59,10 @@ public class CmdContainerLogs extends Cmd {
 
     public static CmdContainerLogs newInstance(String nameOrId){
         return new CmdContainerLogs(nameOrId);
+    }
+
+    public static CmdContainerLogs newInstance(String nameOrId, int timeOut){
+        return new CmdContainerLogs(nameOrId, timeOut);
     }
 
     @Override

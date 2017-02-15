@@ -26,9 +26,22 @@ public class CmdDockerFlyConfig {
         DockerGlobal.DOCKER_REST_PORT = port;
     }
 
+    public static void config(String host, int port, int timeout){
+        DockerGlobal.DOCKER_REST_HOST = host;
+        DockerGlobal.DOCKER_REST_PORT = port;
+        DockerGlobal.DOCKER_REST_TIMEOUT = timeout;
+    }
+
     public static void config(String host, int port, boolean isDebug){
         DockerGlobal.DOCKER_REST_HOST = host;
         DockerGlobal.DOCKER_REST_PORT = port;
         DockerGlobal.DEBUG = isDebug;
+    }
+
+    public static void config(String host, int port, int timeout, boolean isDebug){
+        DockerGlobal.DOCKER_REST_HOST = host;
+        DockerGlobal.DOCKER_REST_PORT = port;
+        DockerGlobal.DEBUG = isDebug;
+        DockerGlobal.DOCKER_REST_TIMEOUT = timeout;
     }
 }

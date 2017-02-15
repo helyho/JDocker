@@ -24,6 +24,12 @@ public class CmdExecStart extends Cmd{
         execStart = new ExecStart();
     }
 
+    public CmdExecStart(String execId, int timeOut) {
+        super(timeOut);
+        this.execId = execId;
+        execStart = new ExecStart();
+    }
+
     public CmdExecStart tty(boolean tty){
         execStart.setTty(tty);
         return this;
@@ -35,6 +41,10 @@ public class CmdExecStart extends Cmd{
 
     public static CmdExecStart newInstance(String nameOrId){
         return new CmdExecStart(nameOrId);
+    }
+
+    public static CmdExecStart newInstance(String nameOrId, int timeOut){
+        return new CmdExecStart(nameOrId, timeOut);
     }
 
     @Override
