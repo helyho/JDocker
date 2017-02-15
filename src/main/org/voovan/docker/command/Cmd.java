@@ -58,11 +58,16 @@ public abstract class Cmd {
     public String loadStream() throws IOException {
         ByteBuffer byteBuffer = getDockerHttpClient().loadSteam();
 
-        return byteBuffer==null ? null : TByteBuffer.toString(byteBuffer).replaceAll("[\u0000-\u0009]+.","");
+        return byteBuffer==null ? null : TByteBuffer.toString(byteBuffer).replaceAll("\\u0001[\\u0000-\\uffff]{7}","");
     }
 
     public void endLoadStream(){
         getDockerHttpClient().endLoadStream();
+    }
+
+    public int send(String data) throws IOException {
+        return dockerHttpClient.send(data.getBytes());
+
     }
 
     public abstract  <T> T send() throws Exception;

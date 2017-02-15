@@ -25,6 +25,11 @@ public class CmdExecStart extends Cmd{
         execStart = new ExecStart();
     }
 
+    public CmdExecStart tty(boolean tty){
+        execStart.setTty(tty);
+        return this;
+    }
+
     public ExecStart getEntity(){
         return execStart;
     }
@@ -36,7 +41,7 @@ public class CmdExecStart extends Cmd{
     @Override
     public String send() throws Exception {
         Result result = getDockerHttpClient().post("/exec/"+execId+"/start", getParameters(), execStart);
-        if(result.getStatus()>=300){
+        if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
             return result.getMessage();

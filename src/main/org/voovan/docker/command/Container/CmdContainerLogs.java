@@ -43,6 +43,11 @@ public class CmdContainerLogs extends Cmd {
         return this;
     }
 
+    public CmdContainerLogs follow(boolean follow){
+        addParameter("follow",follow);
+        return this;
+    }
+
     public static CmdContainerLogs newInstance(String nameOrId){
         return new CmdContainerLogs(nameOrId);
     }
@@ -50,10 +55,10 @@ public class CmdContainerLogs extends Cmd {
     @Override
     public String send() throws Exception {
         Result result = getDockerHttpClient().get("/containers/"+nameOrId+"/logs", getParameters());
-        if(result.getStatus()>=300){
+        if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
-            return result.getMessage().replaceAll("[\u0000-\u0009]+.","");
+            return result.getMessage().replaceAll("\\u0001[\\u0000-\\uffff]{7}","");
         }
     }
 }

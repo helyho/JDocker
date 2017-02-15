@@ -46,7 +46,7 @@ import org.voovan.docker.network.Result;
     @Override
     public String send() throws Exception {
         Result result = getDockerHttpClient().post("/images/create",getParameters());
-        if(result.getStatus()>=300){
+        if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
             return result.getMessage();

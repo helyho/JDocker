@@ -37,7 +37,7 @@ public class CmdContainerTop extends Cmd {
     @Override
     public List<Process> send() throws Exception {
         Result result = getDockerHttpClient().get("/containers/"+nameOrId+"/top", getParameters());
-        if(result.getStatus()>=300){
+        if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
             return ContainerProcess.load(result.getMessage());

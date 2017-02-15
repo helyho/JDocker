@@ -10,17 +10,17 @@ package org.voovan.docker.message.container.atom;
  */
 public class Port {
 
-    private String iP;
+    private String ip;
     private String privatePort;
     private String publicPort;
     private String type;
 
-    public String getiP() {
-        return iP;
+    public String getIp() {
+        return ip;
     }
 
-    public void setiP(String iP) {
-        this.iP = iP;
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 
     public String getPrivatePort() {

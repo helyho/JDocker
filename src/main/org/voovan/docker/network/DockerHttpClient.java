@@ -187,4 +187,8 @@ public class DockerHttpClient {
         httpClient.close();
     }
 
+    public int send(byte[] data) throws IOException{
+        return httpClient.send(ByteBuffer.wrap(data));
+    }
+
 }

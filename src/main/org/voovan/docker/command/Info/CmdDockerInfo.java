@@ -32,7 +32,7 @@ public class CmdDockerInfo extends Cmd {
     @Override
     public Info send() throws Exception {
         Result result = getDockerHttpClient().get("/info",getParameters());
-        if(result.getStatus()>=300){
+        if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
             return Info.load(result.getMessage());

@@ -58,7 +58,7 @@ public class CmdNetworkList extends Cmd{
     public List<NetworkInfo> send() throws Exception {
         addParameter("filters", JSON.toJSON(filters));
         Result result = getDockerHttpClient().get("/networks",getParameters());
-        if(result.getStatus()>=300){
+        if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
             return NetworkInfo.load(result.getMessage());

@@ -53,7 +53,7 @@ public class CmdVolumeList extends Cmd{
         addParameter("filters", JSON.toJSON(filters));
 
         Result result = getDockerHttpClient().get("/volumes",getParameters());
-        if(result.getStatus()>=300){
+        if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
             return Volume.load(result.getMessage());

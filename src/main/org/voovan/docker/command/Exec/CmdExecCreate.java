@@ -28,7 +28,6 @@ public class CmdExecCreate extends Cmd{
         execCreate = new ExecCreate();
     }
 
-
     public CmdExecCreate cmd(String ... cmd){
         execCreate.getCmd().addAll(Arrays.asList(cmd));
         return this;
@@ -44,6 +43,31 @@ public class CmdExecCreate extends Cmd{
         return this;
     }
 
+    public CmdExecCreate attachStdin(boolean attachStdin){
+        execCreate.setAttachStdin(attachStdin);
+        return this;
+    }
+
+    public CmdExecCreate attachStdout(boolean attachStdout){
+        execCreate.setAttachStdout(attachStdout);
+        return this;
+    }
+
+    public CmdExecCreate attachStderr(boolean attachStderr){
+        execCreate.setAttachStderr(attachStderr);
+        return this;
+    }
+
+    public CmdExecCreate detachKeys(String detachKeys){
+        execCreate.setDetachKeys(detachKeys);
+        return this;
+    }
+
+    public CmdExecCreate tty(boolean tty){
+        execCreate.setTty(tty);
+        return this;
+    }
+
     public ExecCreate getEntity(){
         return execCreate;
     }
@@ -55,11 +79,10 @@ public class CmdExecCreate extends Cmd{
     @Override
     public String send() throws Exception {
         Result result = getDockerHttpClient().post("/containers/"+nameOrId+"/exec", getParameters(), execCreate);
-        if(result.getStatus()>=300){
+        if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
-            JSONPath jsonpath = new JSONPath(result.getMessage());
-            return jsonpath.value("/Id").toString();
+            return result.getMessage();
         }
     }
 
