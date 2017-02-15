@@ -67,7 +67,6 @@ public abstract class Cmd {
 
     public int send(String data) throws IOException {
         return dockerHttpClient.send(data.getBytes());
-
     }
 
     public abstract  <T> T send() throws Exception;
