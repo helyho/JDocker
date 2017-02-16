@@ -3,6 +3,7 @@ package org.voovan.docker.network;
 import org.voovan.http.message.Response;
 import org.voovan.tools.json.JSON;
 
+import java.nio.ByteBuffer;
 import java.util.Map;
 
 /**
@@ -14,42 +15,34 @@ import java.util.Map;
  * Licence: Apache v2 License
  */
 public class Result {
-    private int status;
-    private String statusCode;
     private String message;
+    private Response response;
 
-    public Result(int status, String statusCode, String message) {
-        this.status = status;
-        this.statusCode = statusCode;
+    public Result(Response response) {
+        this.response = response;
 
-        Map<String, String> dockerErrMsg = null;
-        try {
-            dockerErrMsg = JSON.toObject(message, Map.class);
-        }catch(Exception e){
-            dockerErrMsg = null;
+        if(!response.header().get("Content-Type").contains("application/octet-stream")){
+            message = response.body().getBodyString();
+            Map<String, String> dockerErrMsg = null;
+            try {
+                dockerErrMsg = JSON.toObject(message, Map.class);
+            } catch (Exception e) {
+                dockerErrMsg = null;
+            }
+            if (dockerErrMsg != null && dockerErrMsg.containsKey("message")) {
+                this.message = dockerErrMsg.get("message");
+            } else {
+                this.message = message;
+            }
         }
-        if(dockerErrMsg!=null && dockerErrMsg.containsKey("message")){
-            this.message = dockerErrMsg.get("message");
-        }else{
-            this.message = message;
-        }
-
     }
 
     public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
+        return response.protocol().getStatus();
     }
 
     public String getStatusCode() {
-        return statusCode;
-    }
-
-    public void setStatusCode(String statusCode) {
-        this.statusCode = statusCode;
+        return  response.protocol().getStatusCode();
     }
 
     public String getMessage() {
@@ -60,8 +53,12 @@ public class Result {
         this.message = message;
     }
 
+    public ByteBuffer getBufferData(){
+        return ByteBuffer.wrap(response.body().getBodyBytes());
+    }
+
     public static Result newInstance(Response response) {
-        return new Result(response.protocol().getStatus(), response.protocol().getStatusCode(), response.body().getBodyString());
+        return new Result(response);
     }
 
     @Override

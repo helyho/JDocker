@@ -17,7 +17,6 @@ public class CmdContainerLogs extends Cmd {
     private String nameOrId;
 
     public CmdContainerLogs(String nameOrId) {
-        super();
         this.nameOrId = nameOrId;
         addParameter("stderr",1);
         addParameter("stdout",1);

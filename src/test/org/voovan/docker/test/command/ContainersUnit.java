@@ -3,8 +3,11 @@ package org.voovan.docker.test.command;
 import junit.framework.TestCase;
 import org.voovan.docker.DockerGlobal;
 import org.voovan.docker.command.Container.*;
+import org.voovan.tools.TFile;
 import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
+
+import java.nio.ByteBuffer;
 
 /**
  * 类文字命名
@@ -32,7 +35,7 @@ public class ContainersUnit extends TestCase {
     }
 
     public void testCreate() throws Exception {
-        CmdContainerCreate createCmd =  CmdContainerCreate.newInstance("d_test");
+        CmdContainerCreate createCmd =  CmdContainerCreate.newInstance("Voovan");
         Object data = createCmd.image("alpine").network("bridge")
                 .bind("v_tx:/v_tx").link("dockerfly:dockerfly")
                 .cmd("ping","127.0.0.1").env("author=helyho")
@@ -43,7 +46,7 @@ public class ContainersUnit extends TestCase {
 
     public void testInfo() throws Exception {
         CmdContainerList cmdContainersList = CmdContainerList.newInstance();
-        Object data = cmdContainersList.name("d_test").all(true).send();
+        Object data = cmdContainersList.name("Voovan").all(true).send();
         cmdContainersList.close();
         Logger.info(formatJSON(data));
     }
@@ -56,35 +59,35 @@ public class ContainersUnit extends TestCase {
     }
 
     public void testUpdate() throws Exception {
-        CmdContainerUpdate updateCmd =  CmdContainerUpdate.newInstance("d_test");
+        CmdContainerUpdate updateCmd =  CmdContainerUpdate.newInstance("Voovan");
         Object data = updateCmd.cpuPeriod(1000000).memory(250).send();
         updateCmd.close();
         Logger.info(formatJSON(data));
     }
 
     public void testRemove() throws Exception {
-        CmdContainerRemove cmdContainerRemove = CmdContainerRemove.newInstance("d_test");
+        CmdContainerRemove cmdContainerRemove = CmdContainerRemove.newInstance("Voovan");
         Object data = cmdContainerRemove.send();
         cmdContainerRemove.close();
         Logger.info(formatJSON(data));
     }
 
     public void testStart() throws Exception {
-        CmdContainerStart cmdContainerStart = CmdContainerStart.newInstance("d_test");
+        CmdContainerStart cmdContainerStart = CmdContainerStart.newInstance("Voovan");
         Object data = cmdContainerStart.send();
         cmdContainerStart.close();
         Logger.info(formatJSON(data));
     }
 
     public void testStop() throws Exception {
-        CmdContainerStop cmdContainerStop = CmdContainerStop.newInstance("d_test");
+        CmdContainerStop cmdContainerStop = CmdContainerStop.newInstance("Voovan");
         Object data = cmdContainerStop.send();
         cmdContainerStop.close();
         Logger.info(formatJSON(data));
     }
 
     public void testChange() throws Exception {
-        CmdContainerChange cmdContainerChange = CmdContainerChange.newInstance("d_test");
+        CmdContainerChange cmdContainerChange = CmdContainerChange.newInstance("Voovan");
         Object data = cmdContainerChange.send();
         cmdContainerChange.close();
         Logger.info(formatJSON(data));
@@ -105,21 +108,21 @@ public class ContainersUnit extends TestCase {
     }
 
     public void testPause() throws Exception {
-        CmdContainerPause cmdContainerPause = CmdContainerPause.newInstance("d_test");
+        CmdContainerPause cmdContainerPause = CmdContainerPause.newInstance("Voovan");
         Object data = cmdContainerPause.send();
         cmdContainerPause.close();
         Logger.info(formatJSON(data));
     }
 
     public void testUnPause() throws Exception {
-        CmdContainerUnPause cmdContainerUnPause = CmdContainerUnPause.newInstance("d_test");
+        CmdContainerUnPause cmdContainerUnPause = CmdContainerUnPause.newInstance("Voovan");
         Object data = cmdContainerUnPause.send();
         cmdContainerUnPause.close();
         Logger.info(formatJSON(data));
     }
 
     public void testReStart() throws Exception {
-        CmdContainerReStart cmdContainerReStart = CmdContainerReStart.newInstance("d_test");
+        CmdContainerReStart cmdContainerReStart = CmdContainerReStart.newInstance("Voovan");
         Object data = cmdContainerReStart.send();
         cmdContainerReStart.close();
         Logger.info(formatJSON(data));
@@ -134,10 +137,17 @@ public class ContainersUnit extends TestCase {
     }
 
     public void testCommit() throws Exception {
-        CmdContainerCommit cmdContainerCommit = CmdContainerCommit.newInstance("d_test");
+        CmdContainerCommit cmdContainerCommit = CmdContainerCommit.newInstance("Voovan");
         Object data = cmdContainerCommit.repo("helyhotest").tag("latest").pause(true).send();
         cmdContainerCommit.close();
         Logger.info(formatJSON(data));
+    }
+
+    public void testExport() throws Exception {
+        CmdContainerExport cmdContainerExport = CmdContainerExport.newInstance("Voovan");
+        ByteBuffer data = cmdContainerExport.send();
+        cmdContainerExport.close();
+        TFile.writeFile("/Users/helyho/x.tar",data.array());
     }
 }
 
