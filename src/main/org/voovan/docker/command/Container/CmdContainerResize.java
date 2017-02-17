@@ -31,8 +31,6 @@ public class CmdContainerResize extends Cmd {
         return this;
     }
 
-
-
     public static CmdContainerResize newInstance(String nameOrId){
         return new CmdContainerResize(nameOrId);
     }

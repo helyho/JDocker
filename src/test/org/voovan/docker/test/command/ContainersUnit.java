@@ -135,6 +135,13 @@ public class ContainersUnit extends TestCase {
         Logger.info(formatJSON(data));
     }
 
+    public void testAttach() throws Exception {
+        CmdContainerAttach cmdContainerAttach = CmdContainerAttach.newInstance("Voovan");
+        Object data = cmdContainerAttach.logs(true).stream(true).stdin(true)
+                .stdout(true).stderr(true).send();
+        cmdContainerAttach.close();
+        Logger.info(formatJSON(data));
+    }
 
     public void testLogs() throws Exception {
         CmdContainerLogs cmdContainerLogs = CmdContainerLogs.newInstance("Voovan");
