@@ -21,6 +21,13 @@ public class Result {
     public Result(Response response) {
         this.response = response;
 
+        if(response==null){
+            this.response = new Response();
+            response.protocol().setStatus(506);
+            response.protocol().setStatusCode("NULLERROR");
+            response.body().write("The HTTP response is null, may hava some error.");
+        }
+
         if(!response.header().get("Content-Type").contains("application/octet-stream")){
             message = response.body().getBodyString();
             Map<String, String> dockerErrMsg = null;
