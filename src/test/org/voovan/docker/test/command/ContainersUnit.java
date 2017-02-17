@@ -149,5 +149,19 @@ public class ContainersUnit extends TestCase {
         cmdContainerExport.close();
         TFile.writeFile("/Users/helyho/x.tar",data.array());
     }
+
+    public void testArchiveGet() throws Exception {
+        CmdContainerArchiveGet cmdContainerArchiveGet = CmdContainerArchiveGet.newInstance("Voovan");
+        ByteBuffer data = cmdContainerArchiveGet.path("/etc/hosts").send();
+        cmdContainerArchiveGet.close();
+        TFile.writeFile("/Users/helyho/x.tar",data.array());
+    }
+
+    public void testArchivePut() throws Exception {
+        CmdContainerArchivePut cmdContainerArchivePut = CmdContainerArchivePut.newInstance("Voovan","/Users/helyho/x.tar");
+        ByteBuffer data = cmdContainerArchivePut.path("/root").send();
+        cmdContainerArchivePut.close();
+        Logger.info(formatJSON(data));
+    }
 }
 
