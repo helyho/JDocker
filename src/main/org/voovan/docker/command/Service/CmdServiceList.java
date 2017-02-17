@@ -44,7 +44,7 @@ public class CmdServiceList extends Cmd {
     @Override
     public List<ServiceInfo> send() throws Exception {
         addParameter("filters", JSON.toJSON(filters));
-        Result result = getDockerHttpClient().get("/services",getParameters());
+        Result result = getDockerHttpClient().run("GET","/services",getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

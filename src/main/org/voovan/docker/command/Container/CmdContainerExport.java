@@ -31,7 +31,7 @@ public class CmdContainerExport extends Cmd{
 
     @Override
     public ByteBuffer send() throws Exception {
-        Result result = getDockerHttpClient().get("/containers/"+nameOrId+"/export", getParameters());
+        Result result = getDockerHttpClient().run("GET","/containers/"+nameOrId+"/export", getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

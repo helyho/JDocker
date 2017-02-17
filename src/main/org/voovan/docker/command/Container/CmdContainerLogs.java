@@ -66,7 +66,7 @@ public class CmdContainerLogs extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().get("/containers/"+nameOrId+"/logs", getParameters());
+        Result result = getDockerHttpClient().run("GET","/containers/"+nameOrId+"/logs", getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

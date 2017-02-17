@@ -37,7 +37,7 @@ public class CmdImageRemove extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().delete("/images/"+nameOrId,getParameters());
+        Result result = getDockerHttpClient().run("DELETE","/images/"+nameOrId,getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

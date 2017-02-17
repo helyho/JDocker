@@ -55,7 +55,7 @@ public class CmdHubImageInfo extends Cmd {
 
     @Override
     public List<HubImageInfo> send() throws Exception {
-        Result result = getDockerHttpClient().get("/images/search",getParameters());
+        Result result = getDockerHttpClient().run("GET","/images/search",getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

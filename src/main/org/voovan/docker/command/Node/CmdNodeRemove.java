@@ -36,7 +36,7 @@ public class CmdNodeRemove extends Cmd {
 
     @Override
     public List<TaskInfo> send() throws Exception {
-        Result result = getDockerHttpClient().delete("/nodes/"+id,getParameters());
+        Result result = getDockerHttpClient().run("DELETE","/nodes/"+id,getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

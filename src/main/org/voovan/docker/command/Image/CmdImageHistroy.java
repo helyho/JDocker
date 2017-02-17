@@ -31,7 +31,7 @@ public class CmdImageHistroy extends Cmd {
 
     @Override
     public List<ImageHistory> send() throws Exception {
-        Result result = getDockerHttpClient().get("/images/"+nameOrId+"/history",getParameters());
+        Result result = getDockerHttpClient().run("GET","/images/"+nameOrId+"/history",getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

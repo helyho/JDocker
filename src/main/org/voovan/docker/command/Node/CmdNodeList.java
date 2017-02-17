@@ -52,7 +52,7 @@ public class CmdNodeList extends Cmd {
     @Override
     public List<NodeInfo> send() throws Exception {
         addParameter("filters", JSON.toJSON(filters));
-        Result result = getDockerHttpClient().get("/nodes",getParameters());
+        Result result = getDockerHttpClient().run("GET","/nodes",getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

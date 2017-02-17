@@ -31,7 +31,7 @@ public class CmdContainerReStart extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().post("/containers/"+nameOrId+"/restart", getParameters());
+        Result result = getDockerHttpClient().run("POST","/containers/"+nameOrId+"/restart", getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

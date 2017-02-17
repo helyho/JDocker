@@ -61,7 +61,7 @@ public class CmdTaskList extends Cmd {
     @Override
     public List<TaskInfo> send() throws Exception {
         addParameter("filters", JSON.toJSON(filters));
-        Result result = getDockerHttpClient().get("/tasks",getParameters());
+        Result result = getDockerHttpClient().run("GET","/tasks",getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

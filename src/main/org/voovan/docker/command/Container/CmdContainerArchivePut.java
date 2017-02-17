@@ -43,7 +43,7 @@ public class CmdContainerArchivePut extends Cmd{
     @Override
     public ByteBuffer send() throws Exception {
         byte[] tarBytes = TFile.loadFileFromSysPath(targetFile);
-        Result result = getDockerHttpClient().put("/containers/"+nameOrId+"/archive", getParameters(), tarBytes);
+        Result result = getDockerHttpClient().run("PUT","/containers/"+nameOrId+"/archive", getParameters(), tarBytes);
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

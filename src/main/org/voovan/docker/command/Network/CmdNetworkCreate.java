@@ -83,7 +83,7 @@ public class CmdNetworkCreate extends Cmd{
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().post("/networks/create",getParameters(),networkCreate);
+        Result result = getDockerHttpClient().run("POST","/networks/create",getParameters(),networkCreate);
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

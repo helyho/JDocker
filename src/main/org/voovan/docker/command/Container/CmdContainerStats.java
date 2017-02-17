@@ -29,7 +29,7 @@ public class CmdContainerStats extends Cmd {
 
     @Override
     public ContainerStats send() throws Exception {
-        Result result = getDockerHttpClient().get("/containers/"+nameOrId+"/stats", getParameters());
+        Result result = getDockerHttpClient().run("GET","/containers/"+nameOrId+"/stats", getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

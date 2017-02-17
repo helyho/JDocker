@@ -53,7 +53,7 @@ public class CmdSwarmJoin extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().post("/swarm/join",getParameters(),swarmJoin);
+        Result result = getDockerHttpClient().run("POST","/swarm/join",getParameters(),swarmJoin);
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

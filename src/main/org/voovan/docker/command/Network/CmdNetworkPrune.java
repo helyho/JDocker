@@ -30,7 +30,7 @@ public class CmdNetworkPrune extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().post("/containers/prune", getParameters());
+        Result result = getDockerHttpClient().run("POST","/containers/prune", getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

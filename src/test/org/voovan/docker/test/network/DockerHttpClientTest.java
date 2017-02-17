@@ -18,15 +18,15 @@ import org.voovan.tools.log.Logger;
  */
 public class DockerHttpClientTest {
     public static void main(String[] args) throws SendMessageException, ReadMessageException {
-        DockerHttpClient httpClient = new DockerHttpClient("network://127.0.0.1:2735", "UTF-8", 500);
-        Logger.info(httpClient.get("/images/json", "all=0").getMessage());
-        Logger.info(httpClient.get("/images/dockerfly/history", "").getMessage());
-        Logger.info(httpClient.delete("/containers/sleepy_austin", "").getMessage());
+        DockerHttpClient httpClient = new DockerHttpClient("http://127.0.0.1:2735", "UTF-8", 500);
+        Logger.info(httpClient.run("GET","/images/json", null).getMessage());
+        Logger.info(httpClient.run("GET","/images/dockerfly/history", null).getMessage());
+        Logger.info(httpClient.run("DELETE","/containers/sleepy_austin", null).getMessage());
 
         Volume volume = new Volume();
         volume.setDriver("local");
         volume.setName("v_tx");
-        Logger.info(httpClient.post("/volumes/create", null, JSON.toJSON(volume)).getMessage());
+        Logger.info(httpClient.run("POST","/volumes/create", null, JSON.toJSON(volume)).getMessage());
         httpClient.close();
     }
 }

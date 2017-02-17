@@ -72,7 +72,7 @@ public class CmdImageList extends Cmd {
     @Override
     public List<ImageListInfo> send() throws Exception {
         addParameter("filters", JSON.toJSON(filters));
-        Result result = getDockerHttpClient().get("/images/json",getParameters());
+        Result result = getDockerHttpClient().run("GET","/images/json",getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

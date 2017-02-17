@@ -34,7 +34,7 @@ public class CmdContainerArchiveGet extends Cmd{
 
     @Override
     public ByteBuffer send() throws Exception {
-        Result result = getDockerHttpClient().get("/containers/"+nameOrId+"/archive", getParameters());
+        Result result = getDockerHttpClient().run("GET","/containers/"+nameOrId+"/archive", getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

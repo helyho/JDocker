@@ -37,7 +37,7 @@ public class CmdImageTag extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().post("/images/"+nameOrId+"/tag",getParameters());
+        Result result = getDockerHttpClient().run("POST","/images/"+nameOrId+"/tag",getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

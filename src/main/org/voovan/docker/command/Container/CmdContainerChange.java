@@ -31,7 +31,7 @@ public class CmdContainerChange extends Cmd{
 
     @Override
     public List<ChangeItem> send() throws Exception {
-        Result result = getDockerHttpClient().get("/containers/"+nameOrId+"/changes", getParameters());
+        Result result = getDockerHttpClient().run("GET","/containers/"+nameOrId+"/changes", getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

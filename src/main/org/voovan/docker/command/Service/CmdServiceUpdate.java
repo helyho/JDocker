@@ -193,7 +193,7 @@ public class CmdServiceUpdate extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().post("/services/"+nameOrId+"/update",getParameters(),serviceSpec);
+        Result result = getDockerHttpClient().run("POST","/services/"+nameOrId+"/update",getParameters(),serviceSpec);
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

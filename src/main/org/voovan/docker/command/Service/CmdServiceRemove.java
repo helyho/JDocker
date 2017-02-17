@@ -28,7 +28,7 @@ public class CmdServiceRemove extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().delete("/services/"+nameOrId,getParameters());
+        Result result = getDockerHttpClient().run("DELETE","/services/"+nameOrId,getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

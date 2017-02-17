@@ -81,7 +81,7 @@ public class CmdSwarmInit extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().post("/swarm/init",getParameters(),swarmInit);
+        Result result = getDockerHttpClient().run("POST","/swarm/init",getParameters(),swarmInit);
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

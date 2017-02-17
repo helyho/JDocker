@@ -52,7 +52,7 @@ public class CmdVolumeList extends Cmd{
     public List<Volume> send() throws Exception {
         addParameter("filters", JSON.toJSON(filters));
 
-        Result result = getDockerHttpClient().get("/volumes",getParameters());
+        Result result = getDockerHttpClient().run("GET","/volumes",getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

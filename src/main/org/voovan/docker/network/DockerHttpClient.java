@@ -40,7 +40,7 @@ public class DockerHttpClient {
 
     //=================== POST ===================
 
-    public Result post(String url, String queryString, byte[] data)  {
+    public Result run(String method, String url, String queryString, byte[] data)  {
         if (queryString != null && !queryString.isEmpty()) {
             url = url + "?" + queryString;
         }
@@ -50,7 +50,11 @@ public class DockerHttpClient {
             if(DockerGlobal.DEBUG) {
                 Logger.simple("[DEBUG INFO] SubURL: " + url + ", Method:POST, Data: " + data);
             }
-            response = httpClient.setMethod("POST").setData(data).send(url);
+            httpClient.setMethod(method);
+            if(data != null) {
+                httpClient.setData(data);
+            }
+            response = httpClient.send(url);
         } catch (SendMessageException|ReadMessageException e) {
             if(response==null){
                 response = new Response();
@@ -65,113 +69,20 @@ public class DockerHttpClient {
         return Result.newInstance(response);
     }
 
-    public Result post(String url, Map<String, Object> queryParams, String data)  {
-        String queryString = HttpClient.buildQueryString(queryParams, charset);
-        return post(url, queryString, data.getBytes());
-    }
-
-    public Result post(String url, Map<String, Object> queryParams, Object data)  {
-        return post(url, queryParams, JSON.removeNullNode(JSON.toJSON(data)));
-    }
-
-    public Result post(String url, Map<String, Object> queryParams)  {
-        String queryString = HttpClient.buildQueryString(queryParams, charset);
-        return post(url, queryString, "".getBytes());
-    }
-
-    //=================== GET ===================
-
-    public Result put(String url, String queryString, byte[] data)  {
-        if (queryString != null && !queryString.isEmpty()) {
-            url = url + "?" + queryString;
+    public Result run(String method, String url, Map<String, Object> queryParams, String data)  {
+        String queryString = "";
+        if(queryParams!=null) {
+            queryString = HttpClient.buildQueryString(queryParams, charset);
         }
-        httpClient.getHeader().put("Content-Type", "application/json");
-        Response response = null;
-        try {
-            if(DockerGlobal.DEBUG) {
-                Logger.simple("[DEBUG INFO] SubURL: " + url + ", Method:POST, Data: " + data);
-            }
-            response = httpClient.setMethod("PUT").setData(data).send(url);
-        } catch (SendMessageException|ReadMessageException e) {
-            if(response==null){
-                response = new Response();
-            }
-            response.protocol().setStatus(555);
-            response.protocol().setStatusCode("EXCEPTION");
-            response.body().write(e.getMessage());
-            e.printStackTrace();
-            httpClient.close();
-        }
-
-        return Result.newInstance(response);
+        return run(method, url, queryString, (data==null? null :data.getBytes()) );
     }
 
-    public Result put(String url, Map<String, Object> queryParams, byte[] data)  {
-        String queryString = HttpClient.buildQueryString(queryParams, charset);
-        return put(url, queryString, data);
+    public Result run(String method, String url, Map<String, Object> queryParams, Object data)  {
+        return run(method, url, queryParams, JSON.removeNullNode(JSON.toJSON(data)));
     }
 
-    //=================== GET ===================
-
-    public Result get(String url, String queryString)  {
-        if (queryString != null && !queryString.isEmpty()) {
-            url = url + "?" + queryString;
-        }
-        httpClient.getHeader().put("Content-Type", "application/json");
-        Response response = null;
-        try {
-            if(DockerGlobal.DEBUG){
-                Logger.simple("[DEBUG INFO] SubURL: "+url+", Method: GET");
-            }
-            response = httpClient.setMethod("GET").send(url);
-        } catch (SendMessageException|ReadMessageException e) {
-            if(response==null){
-                response = new Response();
-            }
-            response.protocol().setStatus(555);
-            response.protocol().setStatusCode("EXCEPTION");
-            response.body().write(e.getMessage());
-            e.printStackTrace();
-            httpClient.close();
-        }
-        return Result.newInstance(response);
-    }
-
-    public Result get(String url, Map<String, Object> queryParams)  {
-        String queryString = HttpClient.buildQueryString(queryParams, charset);
-        return get(url, queryString);
-    }
-
-    //=================== DELETE ===================
-
-    public Result delete(String url, String queryString)  {
-        if (queryString != null && !queryString.isEmpty()) {
-            url = url + "?" + queryString;
-        }
-        httpClient.getHeader().put("Content-Type", "application/json");
-        Response response = null;
-        try {
-            if(DockerGlobal.DEBUG) {
-                Logger.simple("[DEBUG INFO] SubURL: " + url + ", Method: DELETE");
-            }
-            response = httpClient.setMethod("DELETE").send(url);
-        } catch (SendMessageException|ReadMessageException e) {
-            if(response==null){
-                response = new Response();
-            }
-            response.protocol().setStatus(555);
-            response.protocol().setStatusCode("EXCEPTION");
-            response.body().write(e.getMessage());
-            e.printStackTrace();
-            httpClient.close();
-        }
-
-        return Result.newInstance(response);
-    }
-
-    public Result delete(String url, Map<String, Object> queryParams)  {
-        String queryString = HttpClient.buildQueryString(queryParams, charset);
-        return delete(url, queryString);
+    public Result run(String method, String url, Map<String, Object> queryParams)  {
+        return run(method, url, queryParams, null);
     }
 
     public void close() {

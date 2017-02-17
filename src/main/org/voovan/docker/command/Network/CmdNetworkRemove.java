@@ -27,7 +27,7 @@ public class CmdNetworkRemove extends Cmd{
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().delete("/networks/"+nameOrId,getParameters());
+        Result result = getDockerHttpClient().run("DELETE","/networks/"+nameOrId,getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

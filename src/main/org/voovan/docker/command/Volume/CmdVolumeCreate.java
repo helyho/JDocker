@@ -53,7 +53,7 @@ public class CmdVolumeCreate extends Cmd{
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().post("/volumes/create",getParameters(),volume);
+        Result result = getDockerHttpClient().run("POST","/volumes/create",getParameters(),volume);
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

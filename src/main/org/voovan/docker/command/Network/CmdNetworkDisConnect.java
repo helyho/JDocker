@@ -43,7 +43,7 @@ public class CmdNetworkDisConnect extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().post("/networks/"+nameOrId+"/disconnect",getParameters(),networkDisconnect);
+        Result result = getDockerHttpClient().run("POST","/networks/"+nameOrId+"/disconnect",getParameters(),networkDisconnect);
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

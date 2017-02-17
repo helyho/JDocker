@@ -37,7 +37,7 @@ public class CmdContainerResize extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().post("/containers/"+nameOrId+"/resize", getParameters());
+        Result result = getDockerHttpClient().run("POST","/containers/"+nameOrId+"/resize", getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

@@ -58,7 +58,7 @@ public class CmdNodeUpdate extends Cmd {
 
     @Override
     public List<TaskInfo> send() throws Exception {
-        Result result = getDockerHttpClient().post("/nodes/"+nameOrId+"/update",getParameters(),nodeUpdate);
+        Result result = getDockerHttpClient().run("POST","/nodes/"+nameOrId+"/update",getParameters(),nodeUpdate);
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

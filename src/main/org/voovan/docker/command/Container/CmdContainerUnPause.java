@@ -26,7 +26,7 @@ public class CmdContainerUnPause extends Cmd {
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().post("/containers/"+nameOrId+"/unpause", getParameters());
+        Result result = getDockerHttpClient().run ("POST","/containers/"+nameOrId+"/unpause", getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{

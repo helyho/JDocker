@@ -36,7 +36,7 @@ public class CmdContainerRemove extends Cmd{
 
     @Override
     public String send() throws Exception {
-        Result result = getDockerHttpClient().delete("/containers/"+nameOrId, getParameters());
+        Result result = getDockerHttpClient().run("DELETE","/containers/"+nameOrId, getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
