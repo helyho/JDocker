@@ -34,17 +34,9 @@ public class DockerHttpClient {
         }
     }
 
-    public void beginLoadStream(){
-        httpClient.beginLoadStream();
-    }
-
     public ByteBuffer loadSteam( ) throws IOException {
         return httpClient.loadStream();
     }
-    public void endLoadStream(){
-        httpClient.endLoadStream();
-    }
-
 
     //=================== POST ===================
 
@@ -189,5 +181,4 @@ public class DockerHttpClient {
     public int send(byte[] data) throws IOException{
         return httpClient.send(ByteBuffer.wrap(data));
     }
-
 }

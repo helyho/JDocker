@@ -28,7 +28,7 @@ public class Result {
             response.body().write("The HTTP response is null, may hava some error.");
         }
 
-        if(!response.header().get("Content-Type").contains("application/octet-stream")){
+        if(response.header().contain("Content-Type") && !response.header().get("Content-Type").contains("application/octet-stream")){
             message = response.body().getBodyString();
             Map<String, String> dockerErrMsg = null;
             try {

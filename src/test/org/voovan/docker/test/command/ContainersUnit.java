@@ -128,6 +128,13 @@ public class ContainersUnit extends TestCase {
         Logger.info(formatJSON(data));
     }
 
+    public void testResize() throws Exception {
+        CmdContainerResize cmdContainerResize = CmdContainerResize.newInstance("Voovan");
+        Object data = cmdContainerResize.height(30).width(20).send();
+        cmdContainerResize.close();
+        Logger.info(formatJSON(data));
+    }
+
 
     public void testLogs() throws Exception {
         CmdContainerLogs cmdContainerLogs = CmdContainerLogs.newInstance("Voovan");
