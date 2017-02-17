@@ -143,6 +143,13 @@ public class ContainersUnit extends TestCase {
         Logger.info(formatJSON(data));
     }
 
+    public void testKill() throws Exception {
+        CmdContainerKill cmdContainerKill = CmdContainerKill.newInstance("Voovan");
+        String data = cmdContainerKill.send();
+        cmdContainerKill.close();
+        Logger.info(formatJSON(data));
+    }
+
     public void testExport() throws Exception {
         CmdContainerExport cmdContainerExport = CmdContainerExport.newInstance("Voovan");
         ByteBuffer data = cmdContainerExport.send();
