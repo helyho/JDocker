@@ -1,6 +1,9 @@
 package org.voovan.docker.command;
 
 import org.voovan.docker.DockerGlobal;
+import org.voovan.tools.TObject;
+
+import java.util.Map;
 
 /**
  * 类文字命名
@@ -43,5 +46,13 @@ public class CmdDockerFlyConfig {
         DockerGlobal.DOCKER_REST_PORT = port;
         DockerGlobal.DEBUG = isDebug;
         DockerGlobal.DOCKER_REST_TIMEOUT = timeout;
+    }
+
+    public static Map<String,Object> config(){
+        return (Map<String,Object>)TObject.newMap("host", DockerGlobal.DOCKER_REST_HOST,
+                "port", DockerGlobal.DOCKER_REST_PORT,
+                "timeout", DockerGlobal.DOCKER_REST_TIMEOUT,
+                "isDebug", DockerGlobal.DEBUG
+        );
     }
 }
