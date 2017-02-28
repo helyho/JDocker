@@ -55,7 +55,7 @@ public class CmdServiceCreate extends Cmd {
 
 
     public CmdServiceCreate cpuLimit(float nanoCpu){
-        serviceSpec.getTaskTemplate().getResource().getLimits().setNanoCPUs((int)(nanoCpu*1000000000));
+        serviceSpec.getTaskTemplate().getResource().getLimits().setNanoCPUs((long)(nanoCpu*1000000000L));
         return this;
     }
 
@@ -65,7 +65,7 @@ public class CmdServiceCreate extends Cmd {
     }
 
     public CmdServiceCreate cpuReservation(float nanoCpu){
-        serviceSpec.getTaskTemplate().getResource().getReservations().setNanoCPUs((int)(nanoCpu*1000000000));
+        serviceSpec.getTaskTemplate().getResource().getReservations().setNanoCPUs((long)(nanoCpu*1000000000L));
         return this;
     }
 

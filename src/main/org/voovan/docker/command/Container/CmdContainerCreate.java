@@ -183,8 +183,8 @@ public class CmdContainerCreate extends Cmd{
     }
 
     //v1.25
-    public CmdContainerCreate nanoCpus(long nanoCpus){
-        containerCreate.getHostConfig().setNanoCPUs(nanoCpus);
+    public CmdContainerCreate nanoCpus(float nanoCpus){
+        containerCreate.getHostConfig().setNanoCPUs((long)(nanoCpus*1000000000L));
         return this;
     }
 

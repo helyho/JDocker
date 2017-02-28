@@ -9,21 +9,21 @@ package org.voovan.docker.message.service.atom;
  * Licence: Apache v2 License
  */
 public class ResourcePolicy {
-    private Integer nanoCPUs;
+    private Long nanoCPUs;
 
     private Long memoryBytes;
 
     public ResourcePolicy() {
-        nanoCPUs = 0;
+        nanoCPUs = 0L;
         memoryBytes = 0L;
 
     }
 
-    public void setNanoCPUs(Integer nanoCPUs) {
+    public void setNanoCPUs(Long nanoCPUs) {
         this.nanoCPUs = nanoCPUs;
     }
 
-    public Integer getNanoCPUs() {
+    public Long getNanoCPUs() {
         return this.nanoCPUs;
     }
 

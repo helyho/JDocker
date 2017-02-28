@@ -61,8 +61,8 @@ public class CmdServiceUpdate extends Cmd {
         return this;
     }
 
-    public CmdServiceUpdate cpuLimit(int nanoCpu){
-        serviceSpec.getTaskTemplate().getResource().getLimits().setNanoCPUs((int)(nanoCpu*1000000000));
+    public CmdServiceUpdate cpuLimit(float nanoCpu){
+        serviceSpec.getTaskTemplate().getResource().getLimits().setNanoCPUs((long)(nanoCpu*1000000000L));
         return this;
     }
 
@@ -71,8 +71,8 @@ public class CmdServiceUpdate extends Cmd {
         return this;
     }
 
-    public CmdServiceUpdate cpuReservation(int nanoCpu){
-        serviceSpec.getTaskTemplate().getResource().getReservations().setNanoCPUs(nanoCpu);
+    public CmdServiceUpdate cpuReservation(float nanoCpu){
+        serviceSpec.getTaskTemplate().getResource().getReservations().setNanoCPUs((long)(nanoCpu*1000000000L));
         return this;
     }
 
