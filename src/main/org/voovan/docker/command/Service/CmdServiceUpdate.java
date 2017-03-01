@@ -6,6 +6,7 @@ import org.voovan.docker.message.service.ServiceSpec;
 import org.voovan.docker.message.service.atom.Mount;
 import org.voovan.docker.message.service.atom.Network;
 import org.voovan.docker.message.service.atom.Port;
+import org.voovan.docker.message.service.atom.mode.Replicated;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
 import org.voovan.tools.TObject;
@@ -127,7 +128,10 @@ public class CmdServiceUpdate extends Cmd {
 
 
     public CmdServiceUpdate replicate(int replicas){
-        serviceSpec.getMode().getReplicated().setReplicas(replicas);
+        if(serviceSpec.getMode() instanceof Replicated) {
+            Replicated replicated =  (Replicated)serviceSpec.getMode();
+            replicated.setReplicas(replicas);
+        }
         return this;
     }
 
