@@ -126,10 +126,9 @@ public class CmdServiceUpdate extends Cmd {
         return this;
     }
 
-
     public CmdServiceUpdate replicate(int replicas){
-        if(serviceSpec.getMode() instanceof Replicated) {
-            Replicated replicated =  (Replicated)serviceSpec.getMode();
+        if(serviceSpec.getMode().getReplicated()!=null) {
+            Replicated replicated = serviceSpec.getMode().getReplicated();
             replicated.setReplicas(replicas);
         }
         return this;

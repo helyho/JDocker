@@ -52,17 +52,13 @@ public class CmdServiceCreate extends Cmd {
 
     //[global,replicated]
     public CmdServiceCreate mode(String mode){
-        if(mode.equals("Global")) {
-            serviceSpec.setMode(new Global());
-        }else{
-            serviceSpec.setMode(new Replicated());
-        }
+        serviceSpec.getMode().setType(mode);
         return this;
     }
 
     public CmdServiceCreate replicate(int replicas){
-        if(serviceSpec.getMode() instanceof Replicated) {
-            Replicated replicated =  (Replicated)serviceSpec.getMode();
+        if(serviceSpec.getMode().getReplicated()!=null) {
+            Replicated replicated = serviceSpec.getMode().getReplicated();
             replicated.setReplicas(replicas);
         }
         return this;

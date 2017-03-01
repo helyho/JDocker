@@ -8,6 +8,6 @@ package org.voovan.docker.message.service.atom.mode;
  * WebSite: https://git.oschina.net/helyho/JDocker
  * Licence: Apache v2 License
  */
-public class Global extends Mode{
+public class Global {
 
 }
