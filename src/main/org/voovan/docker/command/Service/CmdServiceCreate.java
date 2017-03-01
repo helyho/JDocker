@@ -5,6 +5,8 @@ import org.voovan.docker.message.service.ServiceSpec;
 import org.voovan.docker.message.service.atom.Mount;
 import org.voovan.docker.message.service.atom.Network;
 import org.voovan.docker.message.service.atom.Port;
+import org.voovan.docker.message.service.atom.mode.Global;
+import org.voovan.docker.message.service.atom.mode.Replicated;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
 import org.voovan.tools.TObject;
@@ -45,6 +47,24 @@ public class CmdServiceCreate extends Cmd {
 
     public CmdServiceCreate env(String ... env){
         serviceSpec.getTaskTemplate().getContainer().getEnv().addAll(TObject.newList(env));
+        return this;
+    }
+
+    //[global,replicated]
+    public CmdServiceCreate mode(String mode){
+        if(mode.equals("Global")) {
+            serviceSpec.setMode(new Global());
+        }else{
+            serviceSpec.setMode(new Replicated());
+        }
+        return this;
+    }
+
+    public CmdServiceCreate replicate(int replicas){
+        if(serviceSpec.getMode() instanceof Replicated) {
+            Replicated replicated =  (Replicated)serviceSpec.getMode();
+            replicated.setReplicas(replicas);
+        }
         return this;
     }
 
@@ -108,12 +128,6 @@ public class CmdServiceCreate extends Cmd {
 
     public CmdServiceCreate mount(String type, String source, String target, boolean readOnly){
         serviceSpec.getTaskTemplate().getContainer().getMounts().add(new Mount(type, source,target,readOnly));
-        return this;
-    }
-
-
-    public CmdServiceCreate replicate(int replicas){
-        serviceSpec.getMode().getReplicated().setReplicas(replicas);
         return this;
     }
 

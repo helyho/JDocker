@@ -1,4 +1,4 @@
-package org.voovan.docker.message.service.atom;
+package org.voovan.docker.message.service.atom.mode;
 
 /**
  *
@@ -8,7 +8,7 @@ package org.voovan.docker.message.service.atom;
  * WebSite: https://git.oschina.net/helyho/JDocker
  * Licence: Apache v2 License
  */
-public class Replicated {
+public class Replicated extends Mode{
     private Integer replicas;
 
     public Replicated() {
