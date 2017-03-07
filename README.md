@@ -13,7 +13,17 @@
  
  - 2017-01-22 增加对 Docker Api 1.25 的支持。
  - 2016-12-05 完成 Docker Api 1.24 的支持。
- 
+------------------------
+
+####Maven 支持:
+```xml
+<dependency>
+    <groupId>org.voovan</groupId>
+    <artifactId>JDocker</artifactId>
+    <version>1.0-beta-1</version>
+</dependency>
+```
+
 ------------------------
 
 ####对 Voovan 项目的Maven依赖:
@@ -24,6 +34,10 @@
     <version>1.0-*</version>
 </dependency>
 ```
+
+------------------------
+
+Voovan 所有 Maven 支持请访问:[Voovan on maven](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.voovan%22)
 
 ------------------------
 
