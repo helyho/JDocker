@@ -4,11 +4,17 @@
 
     <groupId>org.voovan</groupId>
     <artifactId>git remote set-url --add origin https://github.com/helyho/Vestful.git  </artifactId>
-    <version>1.0-beta-1</version>
+    <version>1.0-beta-2</version>
     <packaging>jar</packaging>
     <name>JDocker</name>
     <url>https://git.oschina.net/helyho/JDocker</url>
     <description>By encapsulating the Docker API enables developers to use Java can quickly developed the control and operation of the Docker application, using streaming operation, simple and clear.</description>
+
+    <dependency>
+        <groupId>org.voovan</groupId>
+        <artifactId>voovan-framework</artifactId>
+        <version>1.0</version>
+    </dependency>
 
     <licenses>
         <license>

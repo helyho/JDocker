@@ -33,6 +33,7 @@ public class ExecUtil extends TestCase {
 
     public void testExecCreate() throws Exception {
         CmdExecCreate cmdExecCreate = CmdExecCreate.newInstance("d_test");
+        cmdExecCreate.connect();
         Object data = cmdExecCreate.cmd("echo","127.0.0.1").send();
         cmdExecCreate.close();
         Logger.info(formatJSON(data));
@@ -41,6 +42,7 @@ public class ExecUtil extends TestCase {
     public void testExecStart() throws Exception {
         DockerGlobal.DOCKER_REST_TIMEOUT = 5000;
         CmdExecCreate cmdExecCreate = CmdExecCreate.newInstance("dockerfly");
+        cmdExecCreate.connect();
         String idata = cmdExecCreate.cmd("ifconfig").send();
         JSONPath jsonpath = new JSONPath(idata);
         String id = jsonpath.value("/Id").toString();
@@ -48,6 +50,7 @@ public class ExecUtil extends TestCase {
 
         CmdExecStart cmdExecStart = CmdExecStart
                 .newInstance(id);
+        cmdExecCreate.connect();
         Object data = cmdExecStart.send();
         //Logger.info(formatJSON(data));
 
@@ -65,6 +68,7 @@ public class ExecUtil extends TestCase {
 
     public void testExecInfo() throws Exception {
         CmdExecInfo cmdExecInfo = CmdExecInfo.newInstance("3842c2559fadd60a7426d4744ee3f81765a07ccdb6a6d63125ee9b5ce3ae5f17");
+        cmdExecInfo.connect();
         Object data = cmdExecInfo.send();
         cmdExecInfo.close();
         Logger.info(formatJSON(data));

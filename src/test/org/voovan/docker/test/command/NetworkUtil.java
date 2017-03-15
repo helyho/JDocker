@@ -29,6 +29,7 @@ public class NetworkUtil extends TestCase {
 
     public void testNetworkList() throws Exception {
         CmdNetworkList cmdNetworkList = CmdNetworkList.newInstance();
+        cmdNetworkList.connect();
         Object data = cmdNetworkList.name("bridge").send();
         cmdNetworkList.close();
         Logger.info(formatJSON(data));
@@ -36,6 +37,7 @@ public class NetworkUtil extends TestCase {
 
     public void testNetworkCreate() throws Exception {
         CmdNetworkCreate cmdNetworkCreate = CmdNetworkCreate.newInstance();
+        cmdNetworkCreate.connect();
         Object data = cmdNetworkCreate.name("voovan_p").driver("overlay").label("adfadf","dfadfadf").ipamConfig().send();
         cmdNetworkCreate.close();
         Logger.info(formatJSON(data));
@@ -43,6 +45,7 @@ public class NetworkUtil extends TestCase {
 
     public void testNetworkRemove() throws Exception {
         CmdNetworkRemove cmdNetworkRemove = CmdNetworkRemove.newInstance("50berova8jjttexezcfgofg17");
+        cmdNetworkRemove.connect();
         Object data = cmdNetworkRemove.send();
         cmdNetworkRemove.close();
         Logger.info(formatJSON(data));
@@ -50,6 +53,7 @@ public class NetworkUtil extends TestCase {
 
     public void testNetworkConnect() throws Exception {
         CmdNetworkConnect cmdNetworkConnect = CmdNetworkConnect.newInstance("voovan_bridge");
+        cmdNetworkConnect.connect();
         cmdNetworkConnect.container("voovan");
         cmdNetworkConnect.ipv4Address("10.1.1.39");
         Object data = cmdNetworkConnect.send();
@@ -59,6 +63,7 @@ public class NetworkUtil extends TestCase {
 
     public void testNetworkDisConnect() throws Exception {
         CmdNetworkDisConnect cmdNetworkDisConnect = CmdNetworkDisConnect.newInstance("voovan_bridge");
+        cmdNetworkDisConnect.connect();
         cmdNetworkDisConnect.container("voovan");
         Object data = cmdNetworkDisConnect.send();
         cmdNetworkDisConnect.close();

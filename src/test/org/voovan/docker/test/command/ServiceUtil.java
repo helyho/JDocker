@@ -32,6 +32,7 @@ public class ServiceUtil extends TestCase {
 
     public void testServiceCreate() throws Exception {
         CmdServiceCreate cmdServiceCreate = CmdServiceCreate.newInstance();
+        cmdServiceCreate.connect();
         Object data = cmdServiceCreate.name("helyho").image("alpine").cmd("ping","127.0.0.1")
                 .network("voovan_p").mountReadWrite("v_t1","/v_t1").replicate(2).portTcp(223,22233).send();
         cmdServiceCreate.close();
@@ -40,6 +41,7 @@ public class ServiceUtil extends TestCase {
 
     public void testServiceList() throws Exception {
         CmdServiceList cmdServiceList = CmdServiceList.newInstance();
+        cmdServiceList.connect();
         Object data = cmdServiceList.name("helyho").send();
         cmdServiceList.close();
         Logger.info(formatJSON(data));
@@ -47,6 +49,7 @@ public class ServiceUtil extends TestCase {
 
     public void testServiceUpdate() throws Exception {
         CmdServiceUpdate cmdServiceUpdate = new CmdServiceUpdate("9xeuzu5ibba1vnuhwbxfoz6x8",16);
+        cmdServiceUpdate.connect();
         Object data = cmdServiceUpdate.name("helyho1111").image("alpine").cmd("ping","127.0.0.1")
                 .network("voovan_p").mountReadWrite("v_tx","/v_tx").replicate(1).portTcp(223,22233).send();
         cmdServiceUpdate.close();
@@ -55,6 +58,7 @@ public class ServiceUtil extends TestCase {
 
     public void testServiceRemove() throws Exception {
         CmdServiceRemove cmdServiceRemove = new CmdServiceRemove("9xeuzu5ibba1vnuhwbxfoz6x8");
+        cmdServiceRemove.connect();
         Object data = cmdServiceRemove.send();
         cmdServiceRemove.close();
         Logger.info(formatJSON(data));

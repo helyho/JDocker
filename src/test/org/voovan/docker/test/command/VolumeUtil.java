@@ -31,6 +31,7 @@ public class VolumeUtil extends TestCase {
 
     public void testVolumeCreate() throws Exception {
         CmdVolumeCreate cmdVolumeCreate = CmdVolumeCreate.newInstance();
+        cmdVolumeCreate.connect();
         Object data = cmdVolumeCreate.name("v_helyho").driver("local").label("adfad","1111")
                 .label("1212","122233443").send();
         cmdVolumeCreate.close();
@@ -39,6 +40,7 @@ public class VolumeUtil extends TestCase {
 
     public void testVolumeList() throws Exception {
         CmdVolumeList cmdVolumeList = CmdVolumeList.newInstance();
+        cmdVolumeList.connect();
         Object data = cmdVolumeList.send();
         cmdVolumeList.close();
         Logger.info(formatJSON(data));
@@ -47,6 +49,7 @@ public class VolumeUtil extends TestCase {
 
     public void testVolumeRemove() throws Exception {
         CmdVolumeRemove cmdVolumeRemove = CmdVolumeRemove.newInstance("v_helyho");
+        cmdVolumeRemove.connect();
         Object data = cmdVolumeRemove.send();
         cmdVolumeRemove.close();
         Logger.info(formatJSON(data));

@@ -32,6 +32,7 @@ public class NodeUtil extends TestCase {
 
     public void testCmdTaskList() throws Exception {
         CmdTaskList cmdTaskList = CmdTaskList.newInstance();
+        cmdTaskList.connect();
         Object data = cmdTaskList.send();
         cmdTaskList.close();
         Logger.info(formatJSON(data));
@@ -39,6 +40,7 @@ public class NodeUtil extends TestCase {
 
     public void testCmdNodeList() throws Exception {
         CmdNodeList cmdNodeList = CmdNodeList.newInstance();
+        cmdNodeList.connect();
         Object data = cmdNodeList.id("71zei032twfrgy5053wfzmtz3").send();
         cmdNodeList.close();
         Logger.info(formatJSON(data));
@@ -46,6 +48,7 @@ public class NodeUtil extends TestCase {
 
     public void testCmdNodeRemove() throws Exception {
         CmdNodeRemove cmdNodeRemoved = CmdNodeRemove.newInstance("3vyegqfzjfhdmmclc0hluhnpi");
+        cmdNodeRemoved.connect();
         Object data = cmdNodeRemoved.send();
         cmdNodeRemoved.close();
         Logger.info(formatJSON(data));
@@ -53,6 +56,7 @@ public class NodeUtil extends TestCase {
 
     public void testCmdNodeUpdate() throws Exception {
         CmdNodeUpdate cmdNodeUpdate = CmdNodeUpdate.newInstance("71zei032twfrgy5053wfzmtz3",10);
+        cmdNodeUpdate.connect();
         Object data = cmdNodeUpdate.name("helyho_kkkk").role("manager").label("adfadf","ppppp").send();
         cmdNodeUpdate.close();
         Logger.info(formatJSON(data));

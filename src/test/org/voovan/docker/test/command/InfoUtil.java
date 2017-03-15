@@ -29,6 +29,7 @@ public class InfoUtil  extends TestCase {
 
     public void testInfo() throws Exception {
         CmdDockerInfo cmdInfo = CmdDockerInfo.newInstance();
+        cmdInfo.connect();
         Object data = cmdInfo.send();
         cmdInfo.close();
         Logger.info(formatJSON(data));
