@@ -41,7 +41,7 @@ public class NodeUtil extends TestCase {
     public void testCmdNodeList() throws Exception {
         CmdNodeList cmdNodeList = CmdNodeList.newInstance();
         cmdNodeList.connect();
-        Object data = cmdNodeList.id("71zei032twfrgy5053wfzmtz3").send();
+        Object data = cmdNodeList.send();
         cmdNodeList.close();
         Logger.info(formatJSON(data));
     }

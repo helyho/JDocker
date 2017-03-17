@@ -10,6 +10,7 @@ package org.voovan.docker.message.node.atom;
  */
 public class Status {
     private String state;
+    private String addr;
 
     public String getState() {
         return state;
@@ -17,5 +18,13 @@ public class Status {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
     }
 }
