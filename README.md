@@ -10,9 +10,16 @@
 ------------------------
 
 ####重要更新
- 
- - 2017-01-22 增加对 Docker Api 1.25 的支持。
+ - 2017-03-16 [1.0-beta-2] Cmd类增加了 Connect 的三个重载函数,现在构造完 Cmd 后需要 connet 来连接 Docker.
+   - public void connect()
+     > `DockerGlobal 中配置的默认连接方式`
+   - public void connect(int timeOut)
+     > `DockerGlobal 中配置的默认连接方式,指定超时事件`
+   - public void connect(String host, int port, int timeOut)
+     > `指定 Docker 主机连接`
+ - 2017-01-22 [1.0-beta-1] 增加对 Docker Api 1.25 的支持。
  - 2016-12-05 完成 Docker Api 1.24 的支持。
+
 -----------------------
 
 ####Maven 支持:
