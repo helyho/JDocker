@@ -109,7 +109,7 @@ public class ContainersUnit extends TestCase {
     }
 
     public void testStats() throws Exception {
-        CmdContainerStats cmdContainerStats = CmdContainerStats.newInstance("Voovan");
+        CmdContainerStats cmdContainerStats = CmdContainerStats.newInstance("dockerfly");
         cmdContainerStats.connect();
         Object data = cmdContainerStats.send();
         cmdContainerStats.close();

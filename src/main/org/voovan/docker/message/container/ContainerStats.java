@@ -1,9 +1,11 @@
 package org.voovan.docker.message.container;
 
+import org.voovan.docker.message.container.atom.NetStats;
 import org.voovan.tools.json.JSONPath;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,17 +30,12 @@ public class ContainerStats {
     private Long ioSync;
     private Long ioAsync;
     private Long ioTotal;
-    private Long netRxBytes;
-    private Long netRxPackets;
-    private Long netRxErros;
-    private Long netRxDrops;
-    private Long netTxBytes;
-    private Long netTxPackets;
-    private Long netTxErros;
-    private Long netTxDrops;
+    private Map<String, NetStats> network;
+
 
     public ContainerStats() {
         perCpuUsage = new ArrayList<Long>();
+        network = new HashMap<String,NetStats>();
     }
 
     public Long getCpuTotal() {
@@ -137,96 +134,46 @@ public class ContainerStats {
         this.ioTotal = ioTotal;
     }
 
-    public Long getNetRxBytes() {
-        return netRxBytes;
+    public Map<String, NetStats> getNetwork() {
+        return network;
     }
 
-    public void setNetRxBytes(Long netRxBytes) {
-        this.netRxBytes = netRxBytes;
-    }
-
-    public Long getNetRxPackets() {
-        return netRxPackets;
-    }
-
-    public void setNetRxPackets(Long netRxPackets) {
-        this.netRxPackets = netRxPackets;
-    }
-
-    public Long getNetRxErros() {
-        return netRxErros;
-    }
-
-    public void setNetRxErros(Long netRxErros) {
-        this.netRxErros = netRxErros;
-    }
-
-    public Long getNetRxDrops() {
-        return netRxDrops;
-    }
-
-    public void setNetRxDrops(Long netRxDrops) {
-        this.netRxDrops = netRxDrops;
-    }
-
-    public Long getNetTxBytes() {
-        return netTxBytes;
-    }
-
-    public void setNetTxBytes(Long netTxBytes) {
-        this.netTxBytes = netTxBytes;
-    }
-
-    public Long getNetTxPackets() {
-        return netTxPackets;
-    }
-
-    public void setNetTxPackets(Long netTxPackets) {
-        this.netTxPackets = netTxPackets;
-    }
-
-    public Long getNetTxErros() {
-        return netTxErros;
-    }
-
-    public void setNetTxErros(Long netTxErros) {
-        this.netTxErros = netTxErros;
-    }
-
-    public Long getNetTxDrops() {
-        return netTxDrops;
-    }
-
-    public void setNetTxDrops(Long netTxDrops) {
-        this.netTxDrops = netTxDrops;
+    public void setNetwork(Map<String, NetStats> network) {
+        this.network = network;
     }
 
     public static ContainerStats load(String jsonStr) throws ParseException, ReflectiveOperationException {
         ContainerStats containerStats = new ContainerStats();
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
-        containerStats.setCpuTotal(new Long(jsonPath.value("/cpu_stats/system_cpu_usage", "-1").toString()));
-        containerStats.setCpuUsage(new Long(jsonPath.value("/cpu_stats/cpu_usage/total_usage", "-1").toString()));
+        containerStats.setCpuTotal(new Long(jsonPath.value("/cpu_stats/system_cpu_usage").toString()));
+        containerStats.setCpuUsage(new Long(jsonPath.value("/cpu_stats/cpu_usage/total_usage").toString()));
 
         List<Object> perCpuInfos = jsonPath.value("/cpu_stats/cpu_usage/percpu_usage", List.class,new ArrayList<Object>());
         for (Object perCpuInfo : perCpuInfos) {
             containerStats.perCpuUsage.add(new Long(perCpuInfo.toString()));
         }
 
-        containerStats.setMemoryUsage(new Long(jsonPath.value("/memory_stats/usage", "-1").toString()));
-        containerStats.setMemoryMaxUsage(new Long(jsonPath.value("/memory_stats/max_usage", "-1").toString()));
-        containerStats.setMemoryMaxLimit(new Long(jsonPath.value("/memory_stats/limit", "-1").toString()));
+        containerStats.setMemoryUsage(new Long(jsonPath.value("/memory_stats/usage").toString()));
+        containerStats.setMemoryMaxUsage(new Long(jsonPath.value("/memory_stats/max_usage").toString()));
+        containerStats.setMemoryMaxLimit(new Long(jsonPath.value("/memory_stats/limit").toString()));
         containerStats.setMemoryFailCnt(jsonPath.value("/memory_stats/failcnt", int.class,-1));
 
+        Map<String, Map<String,Integer>> networkInfoMap = jsonPath.value("/networks", Map.class);
 
-        containerStats.setNetRxBytes(new Long(jsonPath.value("/networks/eth0/rx_bytes", "-1").toString()));
-        containerStats.setNetRxPackets(new Long(jsonPath.value("/networks/eth0/rx_packets", "-1").toString()));
-        containerStats.setNetRxErros(new Long(jsonPath.value("/networks/eth0/rx_errors", "-1").toString()));
-        containerStats.setNetRxDrops(new Long(jsonPath.value("/networks/eth0/rx_dropped", "-1").toString()));
+        for(Map.Entry<String, Map<String,Integer>> networkInfo : networkInfoMap.entrySet()){
+            NetStats netStats = new NetStats();
+            netStats.setNetRxBytes(new Long(networkInfo.getValue().get("rx_bytes")));
+            netStats.setNetRxPackets(new Long(networkInfo.getValue().get("rx_packets")));
+            netStats.setNetRxErros(new Long(networkInfo.getValue().get("rx_errors")));
+            netStats.setNetRxDrops(new Long(networkInfo.getValue().get("rx_dropped")));
 
-        containerStats.setNetTxBytes(new Long(jsonPath.value("/networks/eth0/tx_bytes", "-1").toString()));
-        containerStats.setNetTxPackets(new Long(jsonPath.value("/networks/eth0/tx_packets", "-1").toString()));
-        containerStats.setNetTxErros(new Long(jsonPath.value("/networks/eth0/tx_errors", "-1").toString()));
-        containerStats.setNetTxDrops(new Long(jsonPath.value("/networks/eth0/tx_dropped", "-1").toString()));
+            netStats.setNetTxBytes(new Long(networkInfo.getValue().get("tx_bytes")));
+            netStats.setNetTxPackets(new Long(networkInfo.getValue().get("tx_packets")));
+            netStats.setNetTxErros(new Long(networkInfo.getValue().get("tx_errors")));
+            netStats.setNetTxDrops(new Long(networkInfo.getValue().get("tx_dropped")));
+            containerStats.getNetwork().put(networkInfo.getKey(), netStats);
+        }
+        networkInfoMap.clear();
 
         List<Map<String, Object>> ioInfos = jsonPath.value("/blkio_stats/io_service_bytes_recursive", List.class);
         for (Map<String, Object> ioInfo : ioInfos) {
