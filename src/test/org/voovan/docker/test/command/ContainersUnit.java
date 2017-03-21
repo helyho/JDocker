@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 import org.voovan.docker.DockerGlobal;
 import org.voovan.docker.command.Container.*;
 import org.voovan.tools.TFile;
+import org.voovan.tools.TString;
 import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
 
@@ -158,11 +159,11 @@ public class ContainersUnit extends TestCase {
     }
 
     public void testLogs() throws Exception {
-        CmdContainerLogs cmdContainerLogs = CmdContainerLogs.newInstance("Voovan");
+        CmdContainerLogs cmdContainerLogs = CmdContainerLogs.newInstance("dockerfly");
         cmdContainerLogs.connect();
         Object data = cmdContainerLogs.send();
         cmdContainerLogs.close();
-        Logger.info(formatJSON(data));
+        Logger.info(TString.unConvertEscapeChar((String)data));
     }
 
     public void testCommit() throws Exception {

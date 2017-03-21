@@ -50,7 +50,7 @@ public class ExecUtil extends TestCase {
 
         CmdExecStart cmdExecStart = CmdExecStart
                 .newInstance(id);
-        cmdExecCreate.connect();
+        cmdExecStart.connect();
         Object data = cmdExecStart.send();
         //Logger.info(formatJSON(data));
 
