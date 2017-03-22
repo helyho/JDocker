@@ -158,7 +158,8 @@ public class ContainerStats {
         containerStats.setMemoryMaxLimit(new Long(jsonPath.value("/memory_stats/limit").toString()));
         containerStats.setMemoryFailCnt(jsonPath.value("/memory_stats/failcnt", int.class,-1));
 
-        Map<String, Map<String,Integer>> networkInfoMap = jsonPath.value("/networks", Map.class);
+        Map<String, Map<String,Integer>> networkInfoMap = jsonPath.value("/networks", Map.class,
+                new HashMap<String, Map<String,Integer>>());
 
         for(Map.Entry<String, Map<String,Integer>> networkInfo : networkInfoMap.entrySet()){
             NetStats netStats = new NetStats();
