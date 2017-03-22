@@ -5,6 +5,8 @@
 
 ####JDocker 是 Voovan 开源项目的一个子项目,自然是依赖于 voovan开源项目的。
 
+**交流QQ群：**454201740
+
 ![](http://git.oschina.net/uploads/images/2016/0510/122514_7d971a34_116083.jpeg)
 
 ------------------------
