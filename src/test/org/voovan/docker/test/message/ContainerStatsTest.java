@@ -169,8 +169,8 @@ public class ContainerStatsTest {
             "  },\n" +
             "  \"networks\": {\n" +
             "    \"eth0\": {\n" +
-            "      \"rx_bytes\": 157144,\n" +
-            "      \"rx_packets\": 973,\n" +
+            "      \"rx_bytes\": 15714411111,\n" +
+            "      \"rx_packets\": 97311111111,\n" +
             "      \"rx_errors\": 0,\n" +
             "      \"rx_dropped\": 0,\n" +
             "      \"tx_bytes\": 197594,\n" +

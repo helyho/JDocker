@@ -8,6 +8,7 @@ import org.voovan.tools.TString;
 import org.voovan.tools.json.JSON;
 import org.voovan.tools.log.Logger;
 
+import java.io.File;
 import java.nio.ByteBuffer;
 
 /**
@@ -187,7 +188,7 @@ public class ContainersUnit extends TestCase {
         cmdContainerExport.connect();
         ByteBuffer data = cmdContainerExport.send();
         cmdContainerExport.close();
-        TFile.writeFile("/Users/helyho/x.tar",data.array());
+        TFile.writeFile(new File("/Users/helyho/x.tar"),data.array());
     }
 
     public void testArchiveGet() throws Exception {
@@ -195,7 +196,7 @@ public class ContainersUnit extends TestCase {
         cmdContainerArchiveGet.connect();
         ByteBuffer data = cmdContainerArchiveGet.path("/etc/hosts").send();
         cmdContainerArchiveGet.close();
-        TFile.writeFile("/Users/helyho/x.tar",data.array());
+        TFile.writeFile(new File("/Users/helyho/x.tar"),data.array());
     }
 
     public void testArchivePut() throws Exception {

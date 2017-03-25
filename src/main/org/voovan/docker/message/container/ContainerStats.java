@@ -158,20 +158,20 @@ public class ContainerStats {
         containerStats.setMemoryMaxLimit(new Long(jsonPath.value("/memory_stats/limit").toString()));
         containerStats.setMemoryFailCnt(jsonPath.value("/memory_stats/failcnt", int.class,-1));
 
-        Map<String, Map<String,Integer>> networkInfoMap = jsonPath.value("/networks", Map.class,
-                new HashMap<String, Map<String,Integer>>());
+        Map<String, Map<String,Object>> networkInfoMap = jsonPath.value("/networks", Map.class,
+                new HashMap<String, Map<String,Object>>());
 
-        for(Map.Entry<String, Map<String,Integer>> networkInfo : networkInfoMap.entrySet()){
+        for(Map.Entry<String, Map<String,Object>> networkInfo : networkInfoMap.entrySet()){
             NetStats netStats = new NetStats();
-            netStats.setNetRxBytes(new Long(networkInfo.getValue().get("rx_bytes")));
-            netStats.setNetRxPackets(new Long(networkInfo.getValue().get("rx_packets")));
-            netStats.setNetRxErros(new Long(networkInfo.getValue().get("rx_errors")));
-            netStats.setNetRxDrops(new Long(networkInfo.getValue().get("rx_dropped")));
+            netStats.setNetRxBytes(Long.valueOf(networkInfo.getValue().get("rx_bytes").toString()));
+            netStats.setNetRxPackets(Long.valueOf(networkInfo.getValue().get("rx_packets").toString()));
+            netStats.setNetRxErros(Long.valueOf(networkInfo.getValue().get("rx_errors").toString()));
+            netStats.setNetRxDrops(Long.valueOf(networkInfo.getValue().get("rx_dropped").toString()));
 
-            netStats.setNetTxBytes(new Long(networkInfo.getValue().get("tx_bytes")));
-            netStats.setNetTxPackets(new Long(networkInfo.getValue().get("tx_packets")));
-            netStats.setNetTxErros(new Long(networkInfo.getValue().get("tx_errors")));
-            netStats.setNetTxDrops(new Long(networkInfo.getValue().get("tx_dropped")));
+            netStats.setNetTxBytes(Long.valueOf(networkInfo.getValue().get("tx_bytes").toString()));
+            netStats.setNetTxPackets(Long.valueOf(networkInfo.getValue().get("tx_packets").toString()));
+            netStats.setNetTxErros(Long.valueOf(networkInfo.getValue().get("tx_errors").toString()));
+            netStats.setNetTxDrops(Long.valueOf(networkInfo.getValue().get("tx_dropped").toString()));
             containerStats.getNetwork().put(networkInfo.getKey(), netStats);
         }
         networkInfoMap.clear();
