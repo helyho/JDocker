@@ -28,10 +28,10 @@ public class Mode {
 
     public void setType(String type){
         this.type = type;
-        if("Global".equals(type)){
+        if("replicated".equals(type)){
             replicated = new Replicated();
             global = null;
-        }else if("replicated".equals(type)){
+        }else if("Global".equals(type)){
             replicated = null;
             global = new Global();
         }
