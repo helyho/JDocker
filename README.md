@@ -29,7 +29,7 @@
 <dependency>
     <groupId>org.voovan</groupId>
     <artifactId>JDocker</artifactId>
-    <version>1.0-beta-2</version>
+    <version>1.0-rc-1</version>
 </dependency>
 ```
 
