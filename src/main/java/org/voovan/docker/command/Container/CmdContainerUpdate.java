@@ -1,6 +1,7 @@
 package org.voovan.docker.command.Container;
 
 import org.voovan.docker.command.Cmd;
+import org.voovan.docker.message.container.ContainerInfo;
 import org.voovan.docker.message.container.atom.HostConfig;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
@@ -22,6 +23,12 @@ public class CmdContainerUpdate extends Cmd{
         super();
         this.nameOrId = nameOrId;
         hostConfig = new HostConfig();
+    }
+
+    public CmdContainerUpdate(ContainerInfo containerInfo) {
+        super();
+        this.nameOrId = containerInfo.getId();
+        this.hostConfig = containerInfo.getHostConfig();
     }
 
 
