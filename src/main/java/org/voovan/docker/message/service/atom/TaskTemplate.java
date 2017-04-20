@@ -12,6 +12,8 @@ public class TaskTemplate {
     private Container containerSpec;
     private Resource resources;
     private RestartPolicy restartPolicy;
+    private Placement placement;
+
 
     //v1.25
     private Integer forceUpdate;
@@ -21,6 +23,8 @@ public class TaskTemplate {
         containerSpec = new Container();
         resources = new Resource();
         restartPolicy = new RestartPolicy();
+        placement = new Placement();
+        forceUpdate = 0;
     }
 
     public Container getContainer() {
@@ -55,5 +59,13 @@ public class TaskTemplate {
 
     public void setRestartPolicy(RestartPolicy restartPolicy) {
         this.restartPolicy = restartPolicy;
+    }
+
+    public Placement getPlacement() {
+        return placement;
+    }
+
+    public void setPlacement(Placement placement) {
+        this.placement = placement;
     }
 }
