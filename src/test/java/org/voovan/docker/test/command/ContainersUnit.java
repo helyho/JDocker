@@ -3,6 +3,7 @@ package org.voovan.docker.test.command;
 import junit.framework.TestCase;
 import org.voovan.docker.DockerGlobal;
 import org.voovan.docker.command.Container.*;
+import org.voovan.tools.TEnv;
 import org.voovan.tools.TFile;
 import org.voovan.tools.TString;
 import org.voovan.tools.json.JSON;
@@ -151,12 +152,36 @@ public class ContainersUnit extends TestCase {
     }
 
     public void testAttach() throws Exception {
-        CmdContainerAttach cmdContainerAttach = CmdContainerAttach.newInstance("Voovan");
+        CmdContainerAttach cmdContainerAttach = CmdContainerAttach.newInstance("voovan");
         cmdContainerAttach.connect();
         Object data = cmdContainerAttach.logs(true).stream(true).stdin(true)
                 .stdout(true).stderr(true).send();
         cmdContainerAttach.close();
         Logger.info(formatJSON(data));
+    }
+
+    public void testAttachStream() throws Exception {
+        CmdContainerAttach cmdContainerAttach = CmdContainerAttach.newInstance("voovan");
+        cmdContainerAttach.stream(true);
+        cmdContainerAttach.stdout(true);
+        cmdContainerAttach.connect();
+        cmdContainerAttach.send();
+
+        int count = 0;
+        while(true){
+            String data = cmdContainerAttach.loadStream();
+            if(data!=null) {
+                Logger.simple(data);
+            }
+            TEnv.sleep(1000);
+            count ++;
+
+            if(count > 10){
+                break;
+            }
+        }
+
+        cmdContainerAttach.close();
     }
 
     public void testLogs() throws Exception {
