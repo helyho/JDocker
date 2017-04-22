@@ -18,7 +18,7 @@ import org.voovan.tools.log.Logger;
 public class NetworkUtil extends TestCase {
 
     public void setUp() {
-        DockerGlobal.DOCKER_REST_HOST = "127.0.0.1";
+        DockerGlobal.DOCKER_REST_HOST = "192.168.99.103";
         DockerGlobal.DOCKER_REST_PORT = 2735;
         DockerGlobal.DEBUG = true;
     }
@@ -32,6 +32,14 @@ public class NetworkUtil extends TestCase {
         cmdNetworkList.connect();
         Object data = cmdNetworkList.name("bridge").send();
         cmdNetworkList.close();
+        Logger.info(formatJSON(data));
+    }
+
+    public void testNetworkInfo() throws Exception {
+        CmdNetworkInfo cmdNetworkInfo = CmdNetworkInfo.newInstance("bridge");
+        cmdNetworkInfo.connect();
+        Object data = cmdNetworkInfo.send();
+        cmdNetworkInfo.close();
         Logger.info(formatJSON(data));
     }
 

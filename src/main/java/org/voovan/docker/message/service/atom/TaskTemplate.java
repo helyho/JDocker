@@ -13,7 +13,7 @@ public class TaskTemplate {
     private Resource resources;
     private RestartPolicy restartPolicy;
     private Placement placement;
-
+    private LogDriver logDriver;
 
     //v1.25
     private Integer forceUpdate;
@@ -25,6 +25,7 @@ public class TaskTemplate {
         restartPolicy = new RestartPolicy();
         placement = new Placement();
         forceUpdate = 0;
+        logDriver = new LogDriver();
     }
 
     public Container getContainer() {

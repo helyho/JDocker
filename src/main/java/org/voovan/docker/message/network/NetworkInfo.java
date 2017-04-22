@@ -28,12 +28,15 @@ public class NetworkInfo extends NetworkCreate {
 
     private HashMap<String,Container> containers;
 
+    private HashMap<String,Container> options;
+
     //v1.25
     private String created;
 
     public NetworkInfo() {
         super();
         containers = new HashMap<String,Container>();
+        options = new HashMap<String,Container>();
     }
 
     public String getId() {

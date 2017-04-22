@@ -49,7 +49,7 @@ public class HostConfig {
     //v1.25
     private List<Mount> mounts;
 
-    //1.25
+    //v1.25
     private Boolean autoRemove;
 
     public HostConfig() {

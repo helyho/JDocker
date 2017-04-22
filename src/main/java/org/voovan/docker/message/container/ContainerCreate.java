@@ -1,5 +1,6 @@
 package org.voovan.docker.message.container;
 
+import org.voovan.docker.message.container.atom.Healthcheck;
 import org.voovan.docker.message.container.atom.HostConfig;
 import org.voovan.tools.TObject;
 import org.voovan.tools.json.JSON;
@@ -24,6 +25,7 @@ public class ContainerCreate {
     private String domainName;
     private String user;
     private String image;
+    private List<String> env;
     private List<String> cmd;
     private Map<String, Object> labels;
     private Boolean attachStdin;
@@ -32,9 +34,16 @@ public class ContainerCreate {
     private Boolean tty;
     private Boolean openStdin;
     private Boolean stdinOnce;
-    private List<String> env;
+    private Healthcheck healthcheck;
     private Map<String, Map<String, String>> exposedPorts;
     private HostConfig hostConfig;
+    private String workingDir;
+    private List<String> entrypoint;
+    private Boolean networkDisabled;
+    private String macAddress;
+    private List<String> onBuild;
+    private String stopSignal;
+    private String shell;
 
     //1.25
     private Integer stopTimeout;
@@ -51,6 +60,10 @@ public class ContainerCreate {
         labels = new HashMap<String, Object>();
         exposedPorts = new HashMap<String, Map<String, String>>();
         hostConfig = new HostConfig();
+        healthcheck = new Healthcheck();
+        entrypoint = new ArrayList<String>();
+        onBuild = new ArrayList<String>();
+        stopSignal = "SIGTERM";
     }
 
     public String getHostName() {
@@ -149,6 +162,14 @@ public class ContainerCreate {
         this.stdinOnce = stdinOnce;
     }
 
+    public Healthcheck getHealthcheck() {
+        return healthcheck;
+    }
+
+    public void setHealthcheck(Healthcheck healthcheck) {
+        this.healthcheck = healthcheck;
+    }
+
     public List<String> getEnv() {
         return env;
     }
@@ -171,6 +192,62 @@ public class ContainerCreate {
 
     public void setHostConfig(HostConfig hostConfig) {
         this.hostConfig = hostConfig;
+    }
+
+    public String getWorkingDir() {
+        return workingDir;
+    }
+
+    public void setWorkingDir(String workingDir) {
+        this.workingDir = workingDir;
+    }
+
+    public List<String> getEntrypoint() {
+        return entrypoint;
+    }
+
+    public void setEntrypoint(List<String> entrypoint) {
+        this.entrypoint = entrypoint;
+    }
+
+    public Boolean getNetworkDisabled() {
+        return networkDisabled;
+    }
+
+    public void setNetworkDisabled(Boolean networkDisabled) {
+        this.networkDisabled = networkDisabled;
+    }
+
+    public String getMacAddress() {
+        return macAddress;
+    }
+
+    public void setMacAddress(String macAddress) {
+        this.macAddress = macAddress;
+    }
+
+    public List<String> getOnBuild() {
+        return onBuild;
+    }
+
+    public void setOnBuild(List<String> onBuild) {
+        this.onBuild = onBuild;
+    }
+
+    public String getStopSignal() {
+        return stopSignal;
+    }
+
+    public void setStopSignal(String stopSignal) {
+        this.stopSignal = stopSignal;
+    }
+
+    public String getShell() {
+        return shell;
+    }
+
+    public void setShell(String shell) {
+        this.shell = shell;
     }
 
     //v1.25

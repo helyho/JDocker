@@ -12,6 +12,7 @@ public class Mount {
     private String name;
     private String source;
     private String destination;
+    private String type;
     private String driver;
     private String mode;
     private Boolean rw;
@@ -40,6 +41,14 @@ public class Mount {
 
     public void setDestination(String destination) {
         this.destination = destination;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getDriver() {

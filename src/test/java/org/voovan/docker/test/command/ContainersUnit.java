@@ -51,7 +51,7 @@ public class ContainersUnit extends TestCase {
     public void testInfo() throws Exception {
         CmdContainerList cmdContainersList = CmdContainerList.newInstance();
         cmdContainersList.connect();
-        Object data = cmdContainersList.name("Voovan").all(true).send();
+        Object data = cmdContainersList.name("dockerfly").all(true).send();
         cmdContainersList.close();
         Logger.info(formatJSON(data));
     }
