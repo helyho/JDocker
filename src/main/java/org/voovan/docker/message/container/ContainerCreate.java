@@ -1,5 +1,6 @@
 package org.voovan.docker.message.container;
 
+import org.voovan.docker.message.container.atom.Config;
 import org.voovan.docker.message.container.atom.Healthcheck;
 import org.voovan.docker.message.container.atom.HostConfig;
 import org.voovan.tools.TObject;
@@ -19,171 +20,31 @@ import java.util.Map;
  * WebSite: https://git.oschina.net/helyho/JDocker
  * Licence: Apache v2 License
  */
-public class ContainerCreate {
+public class ContainerCreate extends Config {
 
-    private String hostName;
-    private String domainName;
-    private String user;
-    private String image;
-    private List<String> env;
-    private List<String> cmd;
-    private Map<String, Object> labels;
-    private Boolean attachStdin;
-    private Boolean attachStdout;
-    private Boolean attachStderr;
-    private Boolean tty;
-    private Boolean openStdin;
-    private Boolean stdinOnce;
-    private Healthcheck healthcheck;
-    private Map<String, Map<String, String>> exposedPorts;
     private HostConfig hostConfig;
-    private String workingDir;
-    private List<String> entrypoint;
     private Boolean networkDisabled;
-    private String macAddress;
-    private List<String> onBuild;
-    private String stopSignal;
     private String shell;
 
     //1.25
     private Integer stopTimeout;
 
     public ContainerCreate() {
-        attachStdin = false;
-        attachStdout = true;
-        attachStderr = true;
-        tty = false;
-        openStdin = false;
-        stdinOnce = false;
-        cmd = new ArrayList<String>();
-        env = new ArrayList<String>();
-        labels = new HashMap<String, Object>();
-        exposedPorts = new HashMap<String, Map<String, String>>();
-        hostConfig = new HostConfig();
-        healthcheck = new Healthcheck();
-        entrypoint = new ArrayList<String>();
-        onBuild = new ArrayList<String>();
-        stopSignal = "SIGTERM";
-    }
-
-    public String getHostName() {
-        return hostName;
-    }
-
-    public void setHostName(String hostName) {
-        this.hostName = hostName;
-    }
-
-    public String getDomainName() {
-        return domainName;
-    }
-
-    public void setDomainName(String domainName) {
-        this.domainName = domainName;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public List<String> getCmd() {
-        return cmd;
-    }
-
-    public void setCmd(List<String> cmd) {
-        this.cmd = cmd;
-    }
-
-    public Map<String, Object> getLabels() {
-        return labels;
-    }
-
-    public void setLabels(Map<String, Object> labels) {
-        this.labels = labels;
-    }
-
-    public Boolean isAttachStdin() {
-        return attachStdin;
-    }
-
-    public void setAttachStdin(Boolean attachStdin) {
-        this.attachStdin = attachStdin;
-    }
-
-    public Boolean isAttachStdout() {
-        return attachStdout;
-    }
-
-    public void setAttachStdout(Boolean attachStdout) {
-        this.attachStdout = attachStdout;
-    }
-
-    public Boolean isAttachStderr() {
-        return attachStderr;
-    }
-
-    public void setAttachStderr(Boolean attachStderr) {
-        this.attachStderr = attachStderr;
-    }
-
-    public Boolean isTty() {
-        return tty;
-    }
-
-    public void setTty(Boolean tty) {
-        this.tty = tty;
-    }
-
-    public Boolean isOpenStdin() {
-        return openStdin;
-    }
-
-    public void setOpenStdin(Boolean openStdin) {
-        this.openStdin = openStdin;
-    }
-
-    public Boolean isStdinOnce() {
-        return stdinOnce;
-    }
-
-    public void setStdinOnce(Boolean stdinOnce) {
-        this.stdinOnce = stdinOnce;
-    }
-
-    public Healthcheck getHealthcheck() {
-        return healthcheck;
-    }
-
-    public void setHealthcheck(Healthcheck healthcheck) {
-        this.healthcheck = healthcheck;
-    }
-
-    public List<String> getEnv() {
-        return env;
-    }
-
-    public void setEnv(List<String> env) {
-        this.env = env;
-    }
-
-    public Map<String, Map<String, String>> getExposedPorts() {
-        return exposedPorts;
-    }
-
-    public void setExposedPorts(Map<String, Map<String, String>> exposedPorts) {
-        this.exposedPorts = exposedPorts;
+        this.setAttachStdin(false);
+        this.setAttachStdout(true);
+        this.setAttachStderr(true);
+        this.setTty(false);
+        this.setOpenStdin(false);
+        this.setStdinOnce(false);
+        this.setCmd(new ArrayList<String>());
+        this.setEnv(new ArrayList<String>());
+        this.setLabels(new HashMap<String, Object>());
+        this.setExposedPorts(new HashMap<String, Map<String, String>>());
+        this.setHostConfig(new HostConfig());
+        this.setHealthcheck(new Healthcheck());
+        this.setEntrypoint(new ArrayList<String>());
+        this.setOnBuild(new ArrayList<String>());
+        this.setStopSignal("SIGTERM");
     }
 
     public HostConfig getHostConfig() {
@@ -194,21 +55,6 @@ public class ContainerCreate {
         this.hostConfig = hostConfig;
     }
 
-    public String getWorkingDir() {
-        return workingDir;
-    }
-
-    public void setWorkingDir(String workingDir) {
-        this.workingDir = workingDir;
-    }
-
-    public List<String> getEntrypoint() {
-        return entrypoint;
-    }
-
-    public void setEntrypoint(List<String> entrypoint) {
-        this.entrypoint = entrypoint;
-    }
 
     public Boolean getNetworkDisabled() {
         return networkDisabled;
@@ -218,29 +64,6 @@ public class ContainerCreate {
         this.networkDisabled = networkDisabled;
     }
 
-    public String getMacAddress() {
-        return macAddress;
-    }
-
-    public void setMacAddress(String macAddress) {
-        this.macAddress = macAddress;
-    }
-
-    public List<String> getOnBuild() {
-        return onBuild;
-    }
-
-    public void setOnBuild(List<String> onBuild) {
-        this.onBuild = onBuild;
-    }
-
-    public String getStopSignal() {
-        return stopSignal;
-    }
-
-    public void setStopSignal(String stopSignal) {
-        this.stopSignal = stopSignal;
-    }
 
     public String getShell() {
         return shell;
@@ -272,7 +95,7 @@ public class ContainerCreate {
 
         //端口绑定需要设置两个节点,并且要对应
         //1.设置 ExposedPorts 节点
-        exposedPorts.put(containerPortAndProtcol, new HashMap<String, String>());
+        this.getExposedPorts().put(containerPortAndProtcol, new HashMap<String, String>());
 
         //2.设置HostConfig.PortBindings 节点
         List<Map<String, String>> hostPortList = new ArrayList<Map<String, String>>();
@@ -303,10 +126,10 @@ public class ContainerCreate {
         containerCreate.setImage("alpine");
 
         //指令
-        containerCreate.cmd.addAll(TObject.newList("ping", "www.baidu.com"));
+        containerCreate.getCmd().addAll(TObject.newList("ping", "www.baidu.com"));
 
         //环境变量
-        containerCreate.env.add("test=helyho");
+        containerCreate.getEnv().add("test=helyho");
 
         containerCreate.getHostConfig().setCpuQuota(50000);
         containerCreate.getHostConfig().setCpuPeriod(100000);

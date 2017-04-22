@@ -1,7 +1,8 @@
-package org.voovan.docker.command.Network;
+package org.voovan.docker.command.Container;
 
 import org.voovan.docker.command.Cmd;
-import org.voovan.docker.message.network.NetworkInfo;
+import org.voovan.docker.message.container.ContainerDetial;
+import org.voovan.docker.message.container.ContainerInfo;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
 import org.voovan.tools.TObject;
@@ -20,26 +21,26 @@ import java.util.Map;
  *         WebSite: https://github.com/helyho/JDocker
  *         Licence: Apache v2 License
  */
-public class CmdNetworkInfo extends Cmd{
+public class CmdContainerDetail extends Cmd {
     private String nameOrId;
 
-    public CmdNetworkInfo(String nameOrId) {
+    public CmdContainerDetail(String nameOrId) {
         this.nameOrId = nameOrId;
     }
 
-
-    public static CmdNetworkInfo newInstance(String nameOrId){
-        return new CmdNetworkInfo(nameOrId);
+    public static CmdContainerDetail newInstance(String nameOrId){
+        return new CmdContainerDetail(nameOrId);
     }
 
     @Override
-    public List<NetworkInfo> send() throws Exception {
-        Result result = getDockerHttpClient().run("GET","/networks/"+nameOrId,getParameters());
+    public ContainerDetial send() throws Exception {
+
+        Result result = getDockerHttpClient().run("GET","/containers/"+nameOrId+"/json", getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
-            return NetworkInfo.load(result.getMessage());
+            return ContainerDetial.load(result.getMessage());
         }
-
     }
+
 }

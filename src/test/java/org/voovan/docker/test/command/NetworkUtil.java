@@ -35,11 +35,11 @@ public class NetworkUtil extends TestCase {
         Logger.info(formatJSON(data));
     }
 
-    public void testNetworkInfo() throws Exception {
-        CmdNetworkInfo cmdNetworkInfo = CmdNetworkInfo.newInstance("bridge");
-        cmdNetworkInfo.connect();
-        Object data = cmdNetworkInfo.send();
-        cmdNetworkInfo.close();
+    public void testNetworkDetail() throws Exception {
+        CmdNetworkDetail cmdNetworkDetail = CmdNetworkDetail.newInstance("ingress");
+        cmdNetworkDetail.connect();
+        Object data = cmdNetworkDetail.send();
+        cmdNetworkDetail.close();
         Logger.info(formatJSON(data));
     }
 
