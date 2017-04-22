@@ -20,6 +20,7 @@ import java.util.Map;
 public class ContainerStats {
     private Long cpuTotal;
     private Long cpuUsage;
+    private Integer onlineCpus;
     private List<Long> perCpuUsage;
     private Long memoryUsage;
     private Long memoryMaxUsage;
@@ -60,6 +61,14 @@ public class ContainerStats {
 
     public void setPerCpuUsage(List<Long> perCpuUsage) {
         this.perCpuUsage = perCpuUsage;
+    }
+
+    public Integer getOnlineCpus() {
+        return onlineCpus;
+    }
+
+    public void setOnlineCpus(Integer onlineCpus) {
+        this.onlineCpus = onlineCpus;
     }
 
     public Long getMemoryUsage() {
@@ -147,6 +156,7 @@ public class ContainerStats {
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
         containerStats.setCpuTotal(new Long(jsonPath.value("/cpu_stats/system_cpu_usage").toString()));
         containerStats.setCpuUsage(new Long(jsonPath.value("/cpu_stats/cpu_usage/total_usage").toString()));
+        containerStats.setOnlineCpus(new Integer(jsonPath.value("/cpu_stats/online_cpus","").toString()));
 
         List<Object> perCpuInfos = jsonPath.value("/cpu_stats/cpu_usage/percpu_usage", List.class,new ArrayList<Object>());
         for (Object perCpuInfo : perCpuInfos) {
