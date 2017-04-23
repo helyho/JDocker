@@ -26,14 +26,36 @@ public class ContainerProcess {
         List<List> processArrList = jsonPath.listObject("/Processes", List.class);
         for (int i = 0; i < processArrList.size(); i++) {
             Process process = new Process();
-            process.setUser(processArrList.get(i).get(titles.indexOf("UID")).toString());
-            process.setPid(processArrList.get(i).get(titles.indexOf("PID")).toString());
-            process.setPpid(processArrList.get(i).get(titles.indexOf("PPID")).toString());
-            process.setC(processArrList.get(i).get(titles.indexOf("C")).toString());
-            process.setStime(processArrList.get(i).get(titles.indexOf("STIME")).toString());
-            process.setTty(processArrList.get(i).get(titles.indexOf("TTY")).toString());
-            process.setTime(processArrList.get(i).get(titles.indexOf("TIME")).toString());
-            process.setCommand(processArrList.get(i).get(titles.indexOf("CMD")).toString());
+            if(titles.contains("UID")) {
+                process.setUser(processArrList.get(i).get(titles.indexOf("UID")).toString());
+            }
+            if(titles.contains("USER")) {
+                process.setUser(processArrList.get(i).get(titles.indexOf("USER")).toString());
+            }
+            if(titles.contains("PID")) {
+                process.setPid(processArrList.get(i).get(titles.indexOf("PID")).toString());
+            }
+            if(titles.contains("PPID")) {
+                process.setPpid(processArrList.get(i).get(titles.indexOf("PPID")).toString());
+            }
+            if(titles.contains("C")) {
+                process.setC(processArrList.get(i).get(titles.indexOf("C")).toString());
+            }
+            if(titles.contains("STIME")) {
+                process.setStime(processArrList.get(i).get(titles.indexOf("STIME")).toString());
+            }
+            if(titles.contains("TTY")) {
+                process.setTty(processArrList.get(i).get(titles.indexOf("TTY")).toString());
+            }
+            if(titles.contains("TIME")) {
+                process.setTime(processArrList.get(i).get(titles.indexOf("TIME")).toString());
+            }
+            if(titles.contains("CMD")) {
+                process.setCommand(processArrList.get(i).get(titles.indexOf("CMD")).toString());
+            }
+            if(titles.contains("COMMAND")) {
+                process.setCommand(processArrList.get(i).get(titles.indexOf("COMMAND")).toString());
+            }
             processes.add(process);
         }
         return processes;

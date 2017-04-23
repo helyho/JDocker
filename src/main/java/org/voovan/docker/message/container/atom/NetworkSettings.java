@@ -1,5 +1,6 @@
 package org.voovan.docker.message.container.atom;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,7 +18,7 @@ public class NetworkSettings {
     private Boolean hairpinMode;
     private String linkLocalIPv6Address;
     private Integer linkLocalIPv6PrefixLen;
-    private String ports;
+    private Map<String,List<Map<String,String>>> ports;
     private String sandboxKey;
     private String secondaryIPAddresses;
     private String secondaryIPv6Addresses;
@@ -91,11 +92,11 @@ public class NetworkSettings {
         this.linkLocalIPv6PrefixLen = linkLocalIPv6PrefixLen;
     }
 
-    public String getPorts() {
+    public Map<String,List<Map<String,String>>> getPorts() {
         return ports;
     }
 
-    public void setPorts(String ports) {
+    public void setPorts(Map<String,List<Map<String,String>>> ports) {
         this.ports = ports;
     }
 
