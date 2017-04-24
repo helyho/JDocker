@@ -1,6 +1,6 @@
 package org.voovan.docker.test.message;
 
-import org.voovan.docker.message.volume.Volume;
+import org.voovan.docker.message.volume.VolumeInfo;
 import org.voovan.tools.log.Logger;
 
 import java.text.ParseException;
@@ -48,7 +48,7 @@ public class VolumeTest {
             "}";
 
     public static void main(String[] args) throws ParseException, ReflectiveOperationException {
-        List<Volume> volumes = Volume.load(tmp);
+        List<VolumeInfo> volumes = VolumeInfo.load(tmp);
 
         Logger.simple("----");
 

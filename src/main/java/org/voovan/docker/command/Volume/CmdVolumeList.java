@@ -1,7 +1,7 @@
 package org.voovan.docker.command.Volume;
 
 import org.voovan.docker.command.Cmd;
-import org.voovan.docker.message.volume.Volume;
+import org.voovan.docker.message.volume.VolumeInfo;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
 import org.voovan.tools.TObject;
@@ -49,14 +49,14 @@ public class CmdVolumeList extends Cmd{
     }
 
     @Override
-    public List<Volume> send() throws Exception {
+    public List<VolumeInfo> send() throws Exception {
         addParameter("filters", JSON.toJSON(filters));
 
         Result result = getDockerHttpClient().run("GET","/volumes",getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
         }else{
-            return Volume.load(result.getMessage());
+            return VolumeInfo.load(result.getMessage());
         }
 
     }

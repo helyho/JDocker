@@ -3,6 +3,7 @@ package org.voovan.docker.test.command;
 import junit.framework.TestCase;
 import org.voovan.docker.DockerGlobal;
 import org.voovan.docker.command.Volume.CmdVolumeCreate;
+import org.voovan.docker.command.Volume.CmdVolumeDetail;
 import org.voovan.docker.command.Volume.CmdVolumeList;
 import org.voovan.docker.command.Volume.CmdVolumeRemove;
 import org.voovan.tools.json.JSON;
@@ -45,6 +46,15 @@ public class VolumeUtil extends TestCase {
         cmdVolumeList.close();
         Logger.info(formatJSON(data));
     }
+
+    public void testVolumeDetail() throws Exception {
+        CmdVolumeDetail cmdVolumeDetail = CmdVolumeDetail.newInstance("c237f33a758a8f56f0fad06eaae2eb260f7ae51b1e4ef33a96e331d260b34441");
+        cmdVolumeDetail.connect();
+        Object data = cmdVolumeDetail.send();
+        cmdVolumeDetail.close();
+        Logger.info(formatJSON(data));
+    }
+
 
 
     public void testVolumeRemove() throws Exception {

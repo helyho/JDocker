@@ -1,7 +1,7 @@
 package org.voovan.docker.command.Volume;
 
 import org.voovan.docker.command.Cmd;
-import org.voovan.docker.message.volume.Volume;
+import org.voovan.docker.message.volume.VolumeInfo;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
 
@@ -16,10 +16,10 @@ import org.voovan.docker.network.Result;
  */
 public class CmdVolumeCreate extends Cmd{
 
-    private Volume volume;
+    private VolumeInfo volume;
 
     public CmdVolumeCreate() {
-        volume = new Volume();
+        volume = new VolumeInfo();
     }
 
     public CmdVolumeCreate name(String name){
@@ -43,7 +43,7 @@ public class CmdVolumeCreate extends Cmd{
     }
 
 
-    public Volume getEntity(){
+    public VolumeInfo getEntity(){
         return volume;
     }
 

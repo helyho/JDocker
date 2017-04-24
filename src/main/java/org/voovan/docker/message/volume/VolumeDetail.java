@@ -16,7 +16,7 @@ import java.util.Map;
  * WebSite: https://git.oschina.net/helyho/JDocker
  * Licence: Apache v2 License
  */
-public class Volume {
+public class VolumeDetail {
     private String name;
     private String driver;
     private Map<String, Object> driverOpts;
@@ -24,7 +24,7 @@ public class Volume {
     private Map<String, Object> labels;
     private String scope;
 
-    public Volume() {
+    public VolumeDetail() {
         labels = new HashMap<String, Object>();
     }
 
@@ -76,12 +76,12 @@ public class Volume {
         this.scope = scope;
     }
 
-    public static List<Volume> load(String jsonStr) throws ParseException, ReflectiveOperationException {
+    public static VolumeDetail load(String jsonStr) throws ParseException, ReflectiveOperationException {
 
         JSONPath jsonPath = JSONPath.newInstance(jsonStr);
-        List<Volume> volumes = jsonPath.listObject("/Volumes", Volume.class, new ArrayList<Volume>());
+        VolumeDetail volumeDetail = jsonPath.value("/", VolumeDetail.class, new VolumeDetail());
 
-        return volumes;
+        return volumeDetail;
     }
 
 

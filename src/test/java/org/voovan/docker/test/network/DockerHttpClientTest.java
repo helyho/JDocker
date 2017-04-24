@@ -1,6 +1,6 @@
 package org.voovan.docker.test.network;
 
-import org.voovan.docker.message.volume.Volume;
+import org.voovan.docker.message.volume.VolumeInfo;
 import org.voovan.docker.network.DockerHttpClient;
 import org.voovan.network.exception.ReadMessageException;
 import org.voovan.network.exception.SendMessageException;
@@ -23,7 +23,7 @@ public class DockerHttpClientTest {
         Logger.info(httpClient.run("GET","/images/dockerfly/history", null).getMessage());
         Logger.info(httpClient.run("DELETE","/containers/sleepy_austin", null).getMessage());
 
-        Volume volume = new Volume();
+        VolumeInfo volume = new VolumeInfo();
         volume.setDriver("local");
         volume.setName("v_tx");
         Logger.info(httpClient.run("POST","/volumes/create", null, JSON.toJSON(volume)).getMessage());

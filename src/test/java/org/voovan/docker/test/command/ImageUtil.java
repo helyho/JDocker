@@ -59,6 +59,14 @@ public class ImageUtil extends TestCase {
         Logger.info(formatJSON(data));
     }
 
+    public void testImageDetail() throws Exception {
+        CmdImageDetail cmdImageDetail =  CmdImageDetail.newInstance("dockerfly");
+        cmdImageDetail.connect();
+        Object data = cmdImageDetail.send();
+        cmdImageDetail.close();
+        Logger.info(formatJSON(data));
+    }
+
     public void testImageRemove() throws Exception {
         CmdImageRemove cmdImageRemove =  CmdImageRemove.newInstance("prog:1031");
         cmdImageRemove.connect();
