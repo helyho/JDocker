@@ -32,7 +32,7 @@ public class ContainersUnit extends TestCase {
     }
 
     public void setUp(){
-        DockerGlobal.DOCKER_REST_HOST = "192.168.99.103";
+        DockerGlobal.DOCKER_REST_HOST = "127.0.0.1";
         DockerGlobal.DOCKER_REST_PORT = 2735;
         DockerGlobal.DEBUG = true;
     }
@@ -57,7 +57,7 @@ public class ContainersUnit extends TestCase {
     }
 
     public void testDetail() throws Exception {
-        CmdContainerDetail cmdContainerDetail = CmdContainerDetail.newInstance("voovan");
+        CmdContainerDetail cmdContainerDetail = CmdContainerDetail.newInstance("dockerfly");
         cmdContainerDetail.connect();
         Object data = cmdContainerDetail.send();
         cmdContainerDetail.close();

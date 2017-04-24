@@ -21,15 +21,9 @@ import java.util.List;
 public class NetworkDetail extends NetworkCreate {
     private String id;
     private String scope;
-    private String driver;
-    private Boolean internal;
-    private Boolean enableIPv6;
     private Boolean attachable;
-    private IPAM ipam;
 
     private HashMap<String,Container> containers;
-
-    private HashMap<String,Container> options;
 
     private List<Peers> peers;
 
@@ -39,7 +33,6 @@ public class NetworkDetail extends NetworkCreate {
     public NetworkDetail() {
         super();
         containers = new HashMap<String,Container>();
-        options = new HashMap<String,Container>();
         peers = new ArrayList<Peers>();
     }
 
@@ -59,50 +52,12 @@ public class NetworkDetail extends NetworkCreate {
         this.scope = scope;
     }
 
-    @Override
-    public String getDriver() {
-        return driver;
-    }
-
-    @Override
-    public void setDriver(String driver) {
-        this.driver = driver;
-    }
-
-    public Boolean isInternal() {
-        return internal;
-    }
-
-    public void setInternal(Boolean internal) {
-        this.internal = internal;
-    }
-
-    @Override
-    public Boolean isEnableIPv6() {
-        return enableIPv6;
-    }
-
-    @Override
-    public void setEnableIPv6(Boolean enableIPv6) {
-        this.enableIPv6 = enableIPv6;
-    }
-
     public Boolean isAttachable() {
         return attachable;
     }
 
     public void setAttachable(Boolean attachable) {
         this.attachable = attachable;
-    }
-
-    @Override
-    public IPAM getIpam() {
-        return ipam;
-    }
-
-    @Override
-    public void setIpam(IPAM ipam) {
-        this.ipam = ipam;
     }
 
     public HashMap<String,Container> getContainers() {

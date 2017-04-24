@@ -18,7 +18,7 @@ import org.voovan.tools.log.Logger;
 public class NetworkUtil extends TestCase {
 
     public void setUp() {
-        DockerGlobal.DOCKER_REST_HOST = "192.168.99.103";
+        DockerGlobal.DOCKER_REST_HOST = "127.0.0.1";
         DockerGlobal.DOCKER_REST_PORT = 2735;
         DockerGlobal.DEBUG = true;
     }
