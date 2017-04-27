@@ -49,7 +49,7 @@ public class CmdTaskList extends Cmd {
     }
 
 
-    public CmdTaskList desiredState(String desiredState){
+    public CmdTaskList desiredState(String ...desiredState){
         filters.put("desired-state",TObject.newList(desiredState));
         return this;
     }

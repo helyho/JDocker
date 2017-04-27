@@ -76,9 +76,9 @@ public abstract class Cmd {
         return byteBuffer==null ? null : TByteBuffer.toString(byteBuffer).replaceAll("\\u0001[\\u0000-\\uffff]{7}","");
     }
 
-    public int send(String data) throws IOException {
+    public int sendData(String data) throws IOException {
         data =  TString.fromUnicode(data);
-        return dockerHttpClient.send(data.getBytes());
+        return dockerHttpClient.sendData(data.getBytes());
     }
 
     public abstract  <T> T send() throws Exception;

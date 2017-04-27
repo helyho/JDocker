@@ -21,15 +21,16 @@ public class Result {
     public Result(Response response) {
         this.response = response;
 
-        if(response==null){
+        if(this.response==null){
             this.response = new Response();
-            response.protocol().setStatus(506);
-            response.protocol().setStatusCode("NULLERROR");
-            response.body().write("The HTTP response is null, may hava some error.");
+            this.response.protocol().setStatus(506);
+            this.response.protocol().setStatusCode("NULLERROR");
+            this.response.body().write("The HTTP response is null, may hava some error.");
         }
 
-        if(response.header().contain("Content-Type") && !response.header().get("Content-Type").contains("application/octet-stream")){
-            message = response.body().getBodyString();
+        if(this.response.header().contain("Content-Type")
+                && !this.response.header().get("Content-Type").contains("application/octet-stream")){
+            message = this.response.body().getBodyString();
             Map<String, String> dockerErrMsg = null;
             try {
                 dockerErrMsg = JSON.toObject(message, Map.class);
