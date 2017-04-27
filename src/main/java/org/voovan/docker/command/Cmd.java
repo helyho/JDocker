@@ -52,8 +52,6 @@ public abstract class Cmd {
         dockerHttpClient = new DockerHttpClient(rootURL, DockerGlobal.DOCKER_REST_CHARSET, DockerGlobal.DOCKER_REST_TIMEOUT);
     }
 
-
-
     protected DockerHttpClient getDockerHttpClient() {
         return dockerHttpClient;
     }
