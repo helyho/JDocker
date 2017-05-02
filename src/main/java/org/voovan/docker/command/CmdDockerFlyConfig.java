@@ -49,7 +49,7 @@ public class CmdDockerFlyConfig {
     }
 
     public static Map<String,Object> config(){
-        return (Map<String,Object>)TObject.newMap("host", DockerGlobal.DOCKER_REST_HOST,
+        return (Map<String,Object>)TObject.asMap("host", DockerGlobal.DOCKER_REST_HOST,
                 "port", DockerGlobal.DOCKER_REST_PORT,
                 "timeout", DockerGlobal.DOCKER_REST_TIMEOUT,
                 "isDebug", DockerGlobal.DEBUG

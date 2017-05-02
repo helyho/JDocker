@@ -34,22 +34,22 @@ public class CmdImageList extends Cmd {
     }
 
     public CmdImageList dangling(Boolean dangling){
-        filters.put("dangling",TObject.newList(dangling));
+        filters.put("dangling",TObject.asList(dangling));
         return this;
     }
 
     public CmdImageList label(String key, Object value){
-        filters.put("label", TObject.newList(key+"="+value));
+        filters.put("label", TObject.asList(key+"="+value));
         return this;
     }
 
     public CmdImageList before(String ... before){
-        filters.put("before",TObject.newList(before));
+        filters.put("before",TObject.asList(before));
         return this;
     }
 
     public CmdImageList since(String ... since){
-        filters.put("since",TObject.newList(since));
+        filters.put("since",TObject.asList(since));
         return this;
     }
 

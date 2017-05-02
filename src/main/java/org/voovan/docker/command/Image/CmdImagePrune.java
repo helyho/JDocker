@@ -31,7 +31,7 @@ public class CmdImagePrune extends Cmd {
     }
 
     public CmdImagePrune dangling(Boolean dangling){
-        filters.put("dangling", TObject.newList(dangling));
+        filters.put("dangling", TObject.asList(dangling));
         return this;
     }
 

@@ -104,7 +104,7 @@ public class ExecCreate {
     public static void main(String[] args) {
         ExecCreate execCreate = new ExecCreate();
 
-        execCreate.getCmd().addAll(TObject.newList("ls", "-lh"));
+        execCreate.getCmd().addAll(TObject.asList("ls", "-lh"));
 
         Logger.simple(JSON.formatJson(JSON.toJSON(execCreate)));
     }

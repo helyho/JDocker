@@ -30,17 +30,17 @@ public class CmdVolumeList extends Cmd{
 
 
     public CmdVolumeList name(String ...name){
-        filters.put("name", TObject.newList(name));
+        filters.put("name", TObject.asList(name));
         return this;
     }
 
     public CmdVolumeList dangling(boolean dangling){
-        filters.put("dangling", TObject.newList(dangling));
+        filters.put("dangling", TObject.asList(dangling));
         return this;
     }
 
     public CmdVolumeList driver(String driver){
-        filters.put("driver", TObject.newList(driver));
+        filters.put("driver", TObject.asList(driver));
         return this;
     }
 

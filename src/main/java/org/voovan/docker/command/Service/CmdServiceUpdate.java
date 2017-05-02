@@ -48,12 +48,12 @@ public class CmdServiceUpdate extends Cmd {
     }
 
     public CmdServiceUpdate cmd(String ... cmd){
-        serviceSpec.getTaskTemplate().getContainer().getArgs().addAll(TObject.newList(cmd));
+        serviceSpec.getTaskTemplate().getContainer().getArgs().addAll(TObject.asList(cmd));
         return this;
     }
 
     public CmdServiceUpdate env(String ... env){
-        serviceSpec.getTaskTemplate().getContainer().getEnv().addAll(TObject.newList(env));
+        serviceSpec.getTaskTemplate().getContainer().getEnv().addAll(TObject.asList(env));
         return this;
     }
 
@@ -168,21 +168,21 @@ public class CmdServiceUpdate extends Cmd {
     //v1.25
     public CmdServiceUpdate dnsNameservers(String  nameservers){
         serviceSpec.getTaskTemplate().getContainer().getDnsConfig()
-                .getNameservers().addAll(TObject.newList(nameservers));
+                .getNameservers().addAll(TObject.asList(nameservers));
         return this;
     }
 
     //v1.25
     public CmdServiceUpdate dnsSearch(String  Search){
         serviceSpec.getTaskTemplate().getContainer().getDnsConfig()
-                .getNameservers().addAll(TObject.newList(Search));
+                .getNameservers().addAll(TObject.asList(Search));
         return this;
     }
 
     //v1.25
     public CmdServiceUpdate dnsOptions(String  options){
         serviceSpec.getTaskTemplate().getContainer().getDnsConfig()
-                .getNameservers().addAll(TObject.newList(options));
+                .getNameservers().addAll(TObject.asList(options));
         return this;
     }
 

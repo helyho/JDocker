@@ -30,17 +30,17 @@ public class CmdNodeList extends Cmd {
 
 
     public CmdNodeList id(String ...id){
-       filters.put("id", TObject.newList(id));
+       filters.put("id", TObject.asList(id));
         return this;
     }
 
     public CmdNodeList membership(String ... membership){
-        filters.put("membership", TObject.newList(membership));
+        filters.put("membership", TObject.asList(membership));
         return this;
     }
 
     public CmdNodeList role(String role){
-        filters.put("role", TObject.newList(role));
+        filters.put("role", TObject.asList(role));
         return this;
     }
 

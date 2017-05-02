@@ -29,24 +29,24 @@ public class CmdNetworkList extends Cmd{
 
 
     public CmdNetworkList name(String ...name){
-        filters.put("name", TObject.newList(name));
+        filters.put("name", TObject.asList(name));
         return this;
     }
     public CmdNetworkList id(String ...id){
-        filters.put("id", TObject.newList(id));
+        filters.put("id", TObject.asList(id));
         return this;
     }
     public CmdNetworkList driver(String driver){
-        filters.put("driver", TObject.newList(driver));
+        filters.put("driver", TObject.asList(driver));
         return this;
     }
     public CmdNetworkList label(String key, Object value){
-        filters.put("label", TObject.newList(key+"="+value));
+        filters.put("label", TObject.asList(key+"="+value));
         return this;
     }
 
     public CmdNetworkList type(String type){
-        filters.put("type", TObject.newList(type));
+        filters.put("type", TObject.asList(type));
         return this;
     }
 

@@ -62,6 +62,15 @@ public class CmdContainerCreate extends Cmd{
         return this;
     }
 
+    public CmdContainerCreate entrypoint(String ... cmds){
+        containerCreate.getEntrypoint().addAll(Arrays.asList(cmds));
+        return this;
+    }
+
+    public CmdContainerCreate workDir(String workDir){
+        containerCreate.setWorkingDir(workDir);
+        return this;
+    }
 
     public CmdContainerCreate env(String ... envs){
         containerCreate.getEnv().addAll(Arrays.asList(envs));
@@ -105,6 +114,11 @@ public class CmdContainerCreate extends Cmd{
 
     public CmdContainerCreate blkioDeviceWiiteIOps(String path, int rate){
         containerCreate.getHostConfig().getBlkioWeightDevice().add(new BlockIORate(path,rate));
+        return this;
+    }
+
+    public CmdContainerCreate networkDisable(boolean disable){
+        containerCreate.setNetworkDisabled(disable);
         return this;
     }
 

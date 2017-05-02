@@ -18,6 +18,8 @@ public class Container {
     private List<String> command;
     private List<String> args;
     private List<String> env;
+    private String dir;
+    private String user;
     private List<Mount> mounts;
     private Map<String, Object> labels;
     private Long stopGracePeriod;
@@ -70,6 +72,22 @@ public class Container {
 
     public void setEnv(List<String> env) {
         this.env = env;
+    }
+
+    public String getDir() {
+        return dir;
+    }
+
+    public void setDir(String dir) {
+        this.dir = dir;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public List<Mount> getMounts() {

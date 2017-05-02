@@ -126,7 +126,7 @@ public class ContainerCreate extends Config {
         containerCreate.setImage("alpine");
 
         //指令
-        containerCreate.getCmd().addAll(TObject.newList("ping", "www.baidu.com"));
+        containerCreate.getCmd().addAll(TObject.asList("ping", "www.baidu.com"));
 
         //环境变量
         containerCreate.getEnv().add("test=helyho");

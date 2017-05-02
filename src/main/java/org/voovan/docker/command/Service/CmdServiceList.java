@@ -28,12 +28,12 @@ public class CmdServiceList extends Cmd {
     }
 
     public CmdServiceList id(String ...id){
-        filters.put("id", TObject.newList(id));
+        filters.put("id", TObject.asList(id));
         return this;
     }
 
     public CmdServiceList name(String ...name){
-        filters.put("name", TObject.newList(name));
+        filters.put("name", TObject.asList(name));
         return this;
     }
 

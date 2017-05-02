@@ -33,12 +33,12 @@ public class CmdContainerList extends Cmd {
     }
 
     public CmdContainerList name(String ...name){
-        filters.put("name", TObject.newList(name));
+        filters.put("name", TObject.asList(name));
         return this;
     }
 
     public CmdContainerList id(String ...id){
-        filters.put("id", TObject.newList(id));
+        filters.put("id", TObject.asList(id));
         return this;
     }
 
@@ -68,33 +68,33 @@ public class CmdContainerList extends Cmd {
     }
 
     public CmdContainerList status(String ... status){
-        filters.put("status", TObject.newList(status));
+        filters.put("status", TObject.asList(status));
         return this;
     }
 
     public CmdContainerList label(String key, Object value){
-        filters.put("label", TObject.newList(key+"="+value));
+        filters.put("label", TObject.asList(key+"="+value));
         return this;
     }
 
     public CmdContainerList image(String ... imagename){
-        filters.put("image", TObject.newList(imagename));
+        filters.put("image", TObject.asList(imagename));
         return this;
     }
 
     public CmdContainerList volume(String ... volume){
-        filters.put("volume", TObject.newList(volume));
+        filters.put("volume", TObject.asList(volume));
         return this;
     }
 
     public CmdContainerList network(String ... network){
-        filters.put("network", TObject.newList(network));
+        filters.put("network", TObject.asList(network));
         return this;
     }
 
     //v1.25
     public CmdContainerList isTask(boolean isTask){
-        filters.put("is-task", TObject.newList(isTask));
+        filters.put("is-task", TObject.asList(isTask));
         return this;
     }
 

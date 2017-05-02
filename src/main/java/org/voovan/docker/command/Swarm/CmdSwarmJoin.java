@@ -39,7 +39,7 @@ public class CmdSwarmJoin extends Cmd {
     }
 
     public CmdSwarmJoin remoteAddrs(String ... remoteAddrs){
-        swarmJoin.getRemoteAddrs().addAll(TObject.newList(remoteAddrs));
+        swarmJoin.getRemoteAddrs().addAll(TObject.asList(remoteAddrs));
         return this;
     }
 
