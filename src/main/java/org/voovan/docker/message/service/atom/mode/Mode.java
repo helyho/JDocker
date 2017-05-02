@@ -1,5 +1,7 @@
 package org.voovan.docker.message.service.atom.mode;
 
+import org.voovan.tools.json.annotation.NotJSON;
+
 /**
  *
  * @author helyho
@@ -9,6 +11,7 @@ package org.voovan.docker.message.service.atom.mode;
  * Licence: Apache v2 License
  */
 public class Mode {
+    @NotJSON
     private String type;
     private Replicated replicated;
     private Global global;
@@ -31,7 +34,7 @@ public class Mode {
         if("replicated".equals(type)){
             replicated = new Replicated();
             global = null;
-        }else if("Global".equals(type)){
+        }else if("global".equals(type)){
             replicated = null;
             global = new Global();
         }

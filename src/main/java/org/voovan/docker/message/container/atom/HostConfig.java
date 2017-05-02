@@ -1,7 +1,6 @@
 package org.voovan.docker.message.container.atom;
 
 import org.voovan.docker.message.service.atom.Mount;
-import org.voovan.docker.message.service.atom.RestartPolicy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,6 +67,8 @@ public class HostConfig {
         blkioDeviceWriteBps = new ArrayList<BlockIORate>();
         blkioDeviceReadIOps = new ArrayList<BlockIORate>();
         blkioDeviceWiiteIOps = new ArrayList<BlockIORate>();
+
+        restartPolicy = new RestartPolicy();
 
         //1.25
         mounts = new ArrayList<Mount>();

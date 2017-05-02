@@ -40,7 +40,6 @@ public class CmdContainerCreate extends Cmd{
         return this;
     }
 
-
     public CmdContainerCreate privileged(boolean privileged){
         containerCreate.getHostConfig().setPrivileged(privileged);
         return this;
@@ -56,6 +55,10 @@ public class CmdContainerCreate extends Cmd{
         return this;
     }
 
+    public CmdContainerCreate shell(String shell){
+        containerCreate.setShell(shell);
+        return this;
+    }
 
     public CmdContainerCreate cmd(String ... cmds){
         containerCreate.getCmd().addAll(Arrays.asList(cmds));
@@ -129,6 +132,12 @@ public class CmdContainerCreate extends Cmd{
 
     public CmdContainerCreate label(String key, Object value) {
         containerCreate.getLabels().put(key, value);
+        return this;
+    }
+
+    public CmdContainerCreate restartPolicy(String name, int maximumRetryCount){
+        containerCreate.getHostConfig().getRestartPolicy().setName(name);
+        containerCreate.getHostConfig().getRestartPolicy().setMaximumRetryCount(maximumRetryCount);
         return this;
     }
 

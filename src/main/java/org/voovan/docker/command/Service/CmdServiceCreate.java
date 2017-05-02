@@ -5,7 +5,6 @@ import org.voovan.docker.message.service.ServiceSpec;
 import org.voovan.docker.message.service.atom.Mount;
 import org.voovan.docker.message.service.atom.Network;
 import org.voovan.docker.message.service.atom.Port;
-import org.voovan.docker.message.service.atom.mode.Global;
 import org.voovan.docker.message.service.atom.mode.Replicated;
 import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.Result;
