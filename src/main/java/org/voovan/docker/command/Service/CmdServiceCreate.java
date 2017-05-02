@@ -100,8 +100,10 @@ public class CmdServiceCreate extends Cmd {
     }
 
 
-    public CmdServiceCreate network(String network){
-        serviceSpec.getNetworks().add(new Network(network));
+    public CmdServiceCreate network(String ... networks){
+        for(String network : networks) {
+            serviceSpec.getNetworks().add(new Network(network));
+        }
         return this;
     }
 
