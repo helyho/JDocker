@@ -4,7 +4,7 @@
 
     <groupId>org.voovan</groupId>
     <artifactId>JDocker</artifactId>
-    <version>1.0-rc-1</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
     <name>JDocker</name>
     <url>https://git.oschina.net/helyho/JDocker</url>
