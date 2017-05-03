@@ -11,6 +11,8 @@
 
 [![](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 [![](https://maven-badges.herokuapp.com/maven-central/org.voovan/JDocker/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.voovan/JDocker)
+![JDK 1.8](https://img.shields.io/badge/JDK-1.8-green.svg "JDK 1.8")
+[![jar size 196K](https://img.shields.io/badge/size-196K-green.svg "size 196K")](https://git.oschina.net/helyho/Voovan/raw/master/voovan-framework.jar)
 ------------------------
 
 ####重要更新
