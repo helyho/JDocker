@@ -32,7 +32,7 @@ public class ContainerDetial {
     private String path;
 
     private List<String> args;
-    private List<String> execIDs;
+    private List<String> execIds;
 
     private State state;
 
@@ -162,12 +162,12 @@ public class ContainerDetial {
         this.args = args;
     }
 
-    public List<String> getExecIDs() {
-        return execIDs;
+    public List<String> getExecIds() {
+        return execIds;
     }
 
-    public void setExecIDs(List<String> execIDs) {
-        this.execIDs = execIDs;
+    public void setExecIds(List<String> execIds) {
+        this.execIds = execIds;
     }
 
     public State getState() {

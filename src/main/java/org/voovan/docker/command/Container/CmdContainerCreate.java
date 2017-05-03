@@ -60,6 +60,16 @@ public class CmdContainerCreate extends Cmd{
         return this;
     }
 
+    public CmdContainerCreate tty(boolean tty){
+        containerCreate.setTty(tty);
+        return this;
+    }
+
+    public CmdContainerCreate openStdin(boolean openStdin){
+        containerCreate.setOpenStdin(openStdin);
+        return this;
+    }
+
     public CmdContainerCreate cmd(String ... cmds){
         containerCreate.getCmd().addAll(Arrays.asList(cmds));
         return this;

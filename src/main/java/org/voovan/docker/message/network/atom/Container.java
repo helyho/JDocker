@@ -11,7 +11,7 @@ package org.voovan.docker.message.network.atom;
 public class Container {
     private String containerId;
     private String name;
-    private String endpointID;
+    private String endpointId;
     private String macAddress;
     private String ipv4Address;
     private String ipv6Address;
@@ -32,12 +32,12 @@ public class Container {
         this.name = name;
     }
 
-    public String getEndpointID() {
-        return endpointID;
+    public String getEndpointId() {
+        return endpointId;
     }
 
-    public void setEndpointID(String endpointID) {
-        this.endpointID = endpointID;
+    public void setEndpointId(String endpointId) {
+        this.endpointId = endpointId;
     }
 
     public String getMacAddress() {

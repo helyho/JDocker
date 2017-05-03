@@ -13,8 +13,8 @@ public class Network {
     private String ipamConfig;
     private String links;
     private String aliases;
-    private String networkID;
-    private String endpointID;
+    private String networkId;
+    private String endpointId;
     private String gateway;
     private String ipAddress;
     private Integer ipPrefixLen;
@@ -55,20 +55,20 @@ public class Network {
         this.aliases = aliases;
     }
 
-    public String getNetworkID() {
-        return networkID;
+    public String getNetworkId() {
+        return networkId;
     }
 
-    public void setNetworkID(String networkID) {
-        this.networkID = networkID;
+    public void setNetworkId(String networkId) {
+        this.networkId = networkId;
     }
 
-    public String getEndpointID() {
-        return endpointID;
+    public String getEndpointId() {
+        return endpointId;
     }
 
-    public void setEndpointID(String endpointID) {
-        this.endpointID = endpointID;
+    public void setEndpointId(String endpointId) {
+        this.endpointId = endpointId;
     }
 
     public String getGateway() {

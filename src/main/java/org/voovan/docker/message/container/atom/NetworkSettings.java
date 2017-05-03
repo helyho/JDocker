@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class NetworkSettings {
     private String bridge;
-    private String sandboxID;
+    private String sandboxId;
     private Boolean hairpinMode;
     private String linkLocalIPv6Address;
     private Integer linkLocalIPv6PrefixLen;
@@ -22,7 +22,7 @@ public class NetworkSettings {
     private String sandboxKey;
     private String secondaryIPAddresses;
     private String secondaryIPv6Addresses;
-    private String endpointID;
+    private String endpointId;
     private String gateway;
     private String globalIPv6Address;
     private Integer globalIPv6PrefixLen;
@@ -34,7 +34,7 @@ public class NetworkSettings {
 
     public NetworkSettings() {
         bridge = null;
-        sandboxID = null;
+        sandboxId = null;
         hairpinMode = null;
         linkLocalIPv6Address = null;
         linkLocalIPv6PrefixLen = null;
@@ -42,7 +42,7 @@ public class NetworkSettings {
         sandboxKey = null;
         secondaryIPAddresses = null;
         secondaryIPv6Addresses = null;
-        endpointID = null;
+        endpointId = null;
         gateway = null;
         globalIPv6Address = null;
         globalIPv6PrefixLen = null;
@@ -60,12 +60,12 @@ public class NetworkSettings {
         this.bridge = bridge;
     }
 
-    public String getSandboxID() {
-        return sandboxID;
+    public String getSandboxId() {
+        return sandboxId;
     }
 
-    public void setSandboxID(String sandboxID) {
-        this.sandboxID = sandboxID;
+    public void setSandboxId(String sandboxId) {
+        this.sandboxId = sandboxId;
     }
 
     public Boolean getHairpinMode() {
@@ -124,12 +124,12 @@ public class NetworkSettings {
         this.secondaryIPv6Addresses = secondaryIPv6Addresses;
     }
 
-    public String getEndpointID() {
-        return endpointID;
+    public String getEndpointId() {
+        return endpointId;
     }
 
-    public void setEndpointID(String endpointID) {
-        this.endpointID = endpointID;
+    public void setEndpointId(String endpointId) {
+        this.endpointId = endpointId;
     }
 
     public String getGateway() {

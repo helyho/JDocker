@@ -9,15 +9,15 @@ package org.voovan.docker.message.service.atom;
  * Licence: Apache v2 License
  */
 public class VirtualIP {
-    private String networkID;
+    private String networkId;
     private String addr;
 
-    public String getNetworkID() {
-        return networkID;
+    public String getNetworkId() {
+        return networkId;
     }
 
-    public void setNetworkID(String networkID) {
-        this.networkID = networkID;
+    public void setNetworkId(String networkId) {
+        this.networkId = networkId;
     }
 
     public String getAddr() {

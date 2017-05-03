@@ -22,7 +22,7 @@ public class ExecInfo {
     private Boolean openStderr;
     private Boolean openStdout;
     private Boolean canRemove;
-    private String containerID;
+    private String containerId;
     private String detachKeys;
     private ProcessConfig processConfig;
 
@@ -86,12 +86,12 @@ public class ExecInfo {
         this.canRemove = canRemove;
     }
 
-    public String getContainerID() {
-        return containerID;
+    public String getContainerId() {
+        return containerId;
     }
 
-    public void setContainerID(String containerID) {
-        this.containerID = containerID;
+    public void setContainerId(String containerId) {
+        this.containerId = containerId;
     }
 
     public String getDetachKeys() {

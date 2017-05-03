@@ -16,8 +16,8 @@ public class ContainerStatus {
         return containerId;
     }
 
-    public void setContainerId(String containerID) {
-        this.containerId = containerID;
+    public void setContainerId(String containerId) {
+        this.containerId = containerId;
     }
 
     public String getPid() {

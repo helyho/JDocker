@@ -20,7 +20,7 @@ public class CmdContainerKill extends Cmd {
         this.nameOrId = nameOrId;
     }
 
-    public CmdContainerKill signal(boolean signal){
+    public CmdContainerKill signal(String signal){
         addParameter("signal", signal);
         return this;
     }

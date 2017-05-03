@@ -26,7 +26,7 @@ public class ContainerInfo {
     private String image;
     private Long sizeRootFs;
 
-    private String imageID;
+    private String imageId;
     private String command;
     private Long created;
     private List<Port> ports;
@@ -74,12 +74,12 @@ public class ContainerInfo {
         this.sizeRootFs = sizeRootFs;
     }
 
-    public String getImageID() {
-        return imageID;
+    public String getImageId() {
+        return imageId;
     }
 
-    public void setImageID(String imageID) {
-        this.imageID = imageID;
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
 
     public String getCommand() {

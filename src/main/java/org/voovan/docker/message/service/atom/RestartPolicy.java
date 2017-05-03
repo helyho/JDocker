@@ -16,6 +16,8 @@ public class RestartPolicy {
 
     private Integer maxAttempts;
 
+    private Integer window;
+
     public RestartPolicy() {
         condition = "on-failure";
         maxAttempts = 0;
@@ -31,11 +33,11 @@ public class RestartPolicy {
     }
 
     public void setDelay(Long delay) {
-        this.delay = delay * 1000000000L;
+        this.delay = delay;
     }
 
     public Long getDelay() {
-        return this.delay / 1000000000L;
+        return this.delay;
     }
 
     public void setMaxAttempts(Integer maxAttempts) {
@@ -44,5 +46,13 @@ public class RestartPolicy {
 
     public Integer getMaxAttempts() {
         return this.maxAttempts;
+    }
+
+    public Integer getWindow() {
+        return window;
+    }
+
+    public void setWindow(Integer window) {
+        this.window = window;
     }
 }

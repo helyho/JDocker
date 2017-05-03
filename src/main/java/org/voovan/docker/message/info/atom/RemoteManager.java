@@ -10,15 +10,15 @@ package org.voovan.docker.message.info.atom;
  *         Licence: Apache v2 License
  */
 public class RemoteManager {
-    private String nodeID;
+    private String nodeId;
     private String addr;
 
-    public String getNodeID() {
-        return nodeID;
+    public String getNodeId() {
+        return nodeId;
     }
 
-    public void setNodeID(String nodeID) {
-        this.nodeID = nodeID;
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
     }
 
     public String getAddr() {

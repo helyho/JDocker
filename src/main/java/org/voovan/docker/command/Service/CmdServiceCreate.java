@@ -144,10 +144,11 @@ public class CmdServiceCreate extends Cmd {
         return this;
     }
 
-    public CmdServiceCreate restartPolicy(long delay, String condition, int maxAttempts){
+    public CmdServiceCreate restartPolicy(String condition, long delay, int maxAttempts, int window){
         serviceSpec.getTaskTemplate().getRestartPolicy().setDelay(delay);
         serviceSpec.getTaskTemplate().getRestartPolicy().setCondition(condition);
         serviceSpec.getTaskTemplate().getRestartPolicy().setMaxAttempts(maxAttempts);
+        serviceSpec.getTaskTemplate().getRestartPolicy().setWindow(window);
         return this;
     }
 

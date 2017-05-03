@@ -42,6 +42,10 @@ public class HostConfig {
     private ArrayList<BlockIORate> blkioDeviceReadIOps;
     private ArrayList<BlockIORate> blkioDeviceWiiteIOps;
 
+    private Integer diskQuota;
+
+    private LogConfig logConfig;
+
     //v1.25
     private Long nanoCPUs;
 
@@ -274,6 +278,22 @@ public class HostConfig {
 
     public void setBlkioDeviceWiiteIOps(ArrayList<BlockIORate> blkioDeviceWiiteIOps) {
         this.blkioDeviceWiiteIOps = blkioDeviceWiiteIOps;
+    }
+
+    public Integer getDiskQuota() {
+        return diskQuota;
+    }
+
+    public void setDiskQuota(Integer diskQuota) {
+        this.diskQuota = diskQuota;
+    }
+
+    public LogConfig getLogConfig() {
+        return logConfig;
+    }
+
+    public void setLogConfig(LogConfig logConfig) {
+        this.logConfig = logConfig;
     }
 
     //v1.25
