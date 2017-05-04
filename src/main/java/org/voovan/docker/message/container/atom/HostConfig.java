@@ -23,12 +23,16 @@ public class HostConfig {
     private Long memory;
     private Integer memorySwap;
     private Integer memoryReservation;
+    private Integer memorySwappiness;
     private Integer kernelMemory;
     private RestartPolicy restartPolicy;
     private String networkMode;
     private Boolean publishAllPorts;
     private Boolean privileged;
     private List<String> dns;
+    private List<String> dnsOptions;
+    private List<String> dnsSearch;
+    private List<String> extraHosts;
     private List<String> binds;
     private List<String> volumesFrom;
     private List<String> links;
@@ -45,6 +49,12 @@ public class HostConfig {
     private Integer diskQuota;
 
     private LogConfig logConfig;
+
+    private Integer shmSize;
+    private Boolean readonlyRootfs;
+    private String pidMode;
+    private Map<String, String> storageOpt;
+    private Map<String, String> sysctls ;
 
     //v1.25
     private Long nanoCPUs;
@@ -294,6 +304,78 @@ public class HostConfig {
 
     public void setLogConfig(LogConfig logConfig) {
         this.logConfig = logConfig;
+    }
+
+    public Integer getMemorySwappiness() {
+        return memorySwappiness;
+    }
+
+    public void setMemorySwappiness(Integer memorySwappiness) {
+        this.memorySwappiness = memorySwappiness;
+    }
+
+    public List<String> getDnsOptions() {
+        return dnsOptions;
+    }
+
+    public void setDnsOptions(List<String> dnsOptions) {
+        this.dnsOptions = dnsOptions;
+    }
+
+    public List<String> getDnsSearch() {
+        return dnsSearch;
+    }
+
+    public void setDnsSearch(List<String> dnsSearch) {
+        this.dnsSearch = dnsSearch;
+    }
+
+    public List<String> getExtraHosts() {
+        return extraHosts;
+    }
+
+    public void setExtraHosts(List<String> extraHosts) {
+        this.extraHosts = extraHosts;
+    }
+
+    public String getPidMode() {
+        return pidMode;
+    }
+
+    public void setPidMode(String pidMode) {
+        this.pidMode = pidMode;
+    }
+
+    public Map<String, String> getStorageOpt() {
+        return storageOpt;
+    }
+
+    public void setStorageOpt(Map<String, String> storageOpt) {
+        this.storageOpt = storageOpt;
+    }
+
+    public Map<String, String> getSysctls() {
+        return sysctls;
+    }
+
+    public void setSysctls(Map<String, String> sysctls) {
+        this.sysctls = sysctls;
+    }
+
+    public Integer getShmSize() {
+        return shmSize;
+    }
+
+    public void setShmSize(Integer shmSize) {
+        this.shmSize = shmSize;
+    }
+
+    public Boolean isReadonlyRootfs() {
+        return readonlyRootfs;
+    }
+
+    public void setReadonlyRootfs(Boolean readonlyRootfs) {
+        this.readonlyRootfs = readonlyRootfs;
     }
 
     //v1.25
