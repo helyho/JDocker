@@ -58,7 +58,7 @@ public class Info {
     private String httpsProxy;
     private String noProxy;
     private String name;
-    private Map<String, Object> labels;
+    private List<String> labels;
     private boolean experimentalBuild;
     private String serverVersion;
     private String clusterStore;
@@ -384,11 +384,11 @@ public class Info {
         this.name = name;
     }
 
-    public Map<String, Object> getLabels() {
+    public List<String> getLabels() {
         return labels;
     }
 
-    public void setLabels(Map<String, Object> labels) {
+    public void setLabels(List<String> labels) {
         this.labels = labels;
     }
 

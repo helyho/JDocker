@@ -1,6 +1,7 @@
 package org.voovan.docker.command;
 
 import org.voovan.docker.DockerGlobal;
+import org.voovan.docker.network.DockerClientException;
 import org.voovan.docker.network.DockerHttpClient;
 import org.voovan.tools.TByteBuffer;
 import org.voovan.tools.TString;
@@ -52,7 +53,10 @@ public abstract class Cmd {
         dockerHttpClient = new DockerHttpClient(rootURL, DockerGlobal.DOCKER_REST_CHARSET, DockerGlobal.DOCKER_REST_TIMEOUT);
     }
 
-    protected DockerHttpClient getDockerHttpClient() {
+    protected DockerHttpClient getDockerHttpClient() throws DockerClientException {
+        if(dockerHttpClient==null){
+            throw new DockerClientException("when you must invoke the connect method before invoke the send method");
+        }
         return dockerHttpClient;
     }
 
@@ -68,7 +72,7 @@ public abstract class Cmd {
         dockerHttpClient.close();
     }
 
-    public String loadStream() throws IOException {
+    public String loadStream() throws IOException, DockerClientException {
         ByteBuffer byteBuffer = getDockerHttpClient().loadSteam();
 
         return byteBuffer==null ? null : TByteBuffer.toString(byteBuffer).replaceAll("\\u0001[\\u0000-\\uffff]{7}","");
