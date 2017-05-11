@@ -48,7 +48,7 @@ public class DockerHttpClient {
         Response response = null;
         try {
             if(DockerGlobal.DEBUG) {
-                Logger.simple("[DEBUG INFO] SubURL: " + url + ", Method:POST, Data: " + data);
+                Logger.simple("[DEBUG INFO] SubURL: " + url + ", Method:"+method+", Data: " + data);
             }
             httpClient.setMethod(method);
             if(data != null) {
