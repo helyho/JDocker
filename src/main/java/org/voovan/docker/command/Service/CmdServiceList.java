@@ -37,6 +37,11 @@ public class CmdServiceList extends Cmd {
         return this;
     }
 
+    public CmdServiceList label(String key, Object value){
+        filters.put("label", TObject.asList(key+"="+value));
+        return this;
+    }
+
     public static CmdServiceList newInstance(){
         return new CmdServiceList();
     }

@@ -44,6 +44,11 @@ public class CmdVolumeList extends Cmd{
         return this;
     }
 
+    public CmdVolumeList label(String key, Object value){
+        filters.put("label", TObject.asList(key+"="+value));
+        return this;
+    }
+
     public static CmdVolumeList newInstance(){
         return new CmdVolumeList();
     }

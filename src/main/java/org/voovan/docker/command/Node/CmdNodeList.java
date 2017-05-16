@@ -44,6 +44,11 @@ public class CmdNodeList extends Cmd {
         return this;
     }
 
+    public CmdNodeList label(String key, Object value){
+        filters.put("label", TObject.asList(key+"="+value));
+        return this;
+    }
+
     public static CmdNodeList newInstance(){
         return new CmdNodeList();
     }
