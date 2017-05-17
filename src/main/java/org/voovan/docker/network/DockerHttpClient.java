@@ -24,12 +24,24 @@ public class DockerHttpClient {
 
     private HttpClient httpClient;
     private String charset;
+    private boolean debug;
 
     public DockerHttpClient(String rootURL, String charset, int timeOut) {
         this.charset = charset;
         httpClient = new HttpClient(rootURL, charset, timeOut);
         httpClient.getHeader().remove("Connection");
-        if(DockerGlobal.DEBUG){
+        this.debug =DockerGlobal.DEBUG;
+        if(debug){
+            Logger.simple("[DEBUG INFO] RootURL: "+rootURL+", Charset: "+charset+", TimeOut: "+timeOut);
+        }
+    }
+
+    public DockerHttpClient(String rootURL, String charset, int timeOut, boolean debug) {
+        this.charset = charset;
+        httpClient = new HttpClient(rootURL, charset, timeOut);
+        httpClient.getHeader().remove("Connection");
+        this.debug = debug;
+        if(debug){
             Logger.simple("[DEBUG INFO] RootURL: "+rootURL+", Charset: "+charset+", TimeOut: "+timeOut);
         }
     }
@@ -47,7 +59,7 @@ public class DockerHttpClient {
         httpClient.getHeader().put("Content-Type", "application/json");
         Response response = null;
         try {
-            if(DockerGlobal.DEBUG) {
+            if(debug) {
                 Logger.simple("[DEBUG INFO] SubURL: " + url + ", Method:"+method+", Data: " + data);
             }
             httpClient.setMethod(method);

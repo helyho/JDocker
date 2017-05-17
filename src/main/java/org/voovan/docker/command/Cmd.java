@@ -38,6 +38,11 @@ public abstract class Cmd {
         dockerHttpClient = new DockerHttpClient(rootURL, DockerGlobal.DOCKER_REST_CHARSET, timeOut);
     }
 
+    public void connect(String host, int port, int timeOut, boolean debug) {
+        String rootURL = "http://"+ host+":"+ port;
+        dockerHttpClient = new DockerHttpClient(rootURL, DockerGlobal.DOCKER_REST_CHARSET, timeOut, debug);
+    }
+
     public void connect(String host, int port) {
         String rootURL = "http://"+ host+":"+ port;
         dockerHttpClient = new DockerHttpClient(rootURL, DockerGlobal.DOCKER_REST_CHARSET, DockerGlobal.DOCKER_REST_TIMEOUT);
@@ -69,7 +74,9 @@ public abstract class Cmd {
     }
 
     public void close(){
-        dockerHttpClient.close();
+        if(dockerHttpClient!=null) {
+            dockerHttpClient.close();
+        }
     }
 
     public String loadStream() throws IOException, DockerClientException {
