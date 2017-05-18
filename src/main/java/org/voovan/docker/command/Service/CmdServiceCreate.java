@@ -138,7 +138,7 @@ public class CmdServiceCreate extends Cmd {
         return this;
     }
 
-    public CmdServiceCreate label(String key, Object value) {
+    public CmdServiceCreate label(String key, String value) {
         serviceSpec.getLabels().put(key, value);
         serviceSpec.getTaskTemplate().getContainer().getLabels().put(key, value);
         return this;

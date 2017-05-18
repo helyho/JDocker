@@ -38,7 +38,7 @@ public class CmdImageList extends Cmd {
         return this;
     }
 
-    public CmdImageList label(String key, Object value){
+    public CmdImageList label(String key, String value){
         filters.put("label", TObject.asList(key+"="+value));
         return this;
     }

@@ -21,10 +21,10 @@ public class ImageListInfo {
     private Long created;
     private Long size;
     private Long virtualSize;
-    private Map<String, Object> labels;
+    private Map<String, String> labels;
 
     public ImageListInfo() {
-        labels = new HashMap<String, Object>();
+        labels = new HashMap<String, String>();
     }
 
     public String getId() {
@@ -83,11 +83,11 @@ public class ImageListInfo {
         this.virtualSize = virtualSize;
     }
 
-    public Map<String, Object> getLabels() {
+    public Map<String, String> getLabels() {
         return labels;
     }
 
-    public void setLabels(Map<String, Object> labels) {
+    public void setLabels(Map<String, String> labels) {
         this.labels = labels;
     }
 

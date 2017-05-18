@@ -25,7 +25,7 @@ public class ServiceSpec {
     private UpdateConfig updateConfig;
     private List<Network> networks;
     private Endpoint endpointSpec;
-    private Map<String, Object> labels;
+    private Map<String, String> labels;
 
     public ServiceSpec() {
         taskTemplate = new TaskTemplate();
@@ -33,7 +33,7 @@ public class ServiceSpec {
         updateConfig = new UpdateConfig();
         endpointSpec = new Endpoint();
         networks = new ArrayList<Network>();
-        labels = new HashMap<String, Object>();
+        labels = new HashMap<String, String>();
     }
 
     public String getName() {
@@ -92,11 +92,11 @@ public class ServiceSpec {
         this.endpointSpec = endpointSpec;
     }
 
-    public Map<String, Object> getLabels() {
+    public Map<String, String> getLabels() {
         return labels;
     }
 
-    public void setLabels(Map<String, Object> labels) {
+    public void setLabels(Map<String, String> labels) {
         this.labels = labels;
     }
 

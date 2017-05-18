@@ -72,7 +72,7 @@ public class CmdContainerList extends Cmd {
         return this;
     }
 
-    public CmdContainerList label(String key, Object value){
+    public CmdContainerList label(String key, String value){
         filters.put("label", TObject.asList(key+"="+value));
         return this;
     }

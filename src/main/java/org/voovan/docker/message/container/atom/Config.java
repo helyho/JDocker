@@ -21,7 +21,7 @@ public class Config {
     private String image;
     private List<String> env;
     private List<String> cmd;
-    private Map<String, Object> labels;
+    private Map<String, String> labels;
     private Boolean attachStdin;
     private Boolean attachStdout;
     private Boolean attachStderr;
@@ -76,11 +76,11 @@ public class Config {
         this.cmd = cmd;
     }
 
-    public Map<String, Object> getLabels() {
+    public Map<String, String> getLabels() {
         return labels;
     }
 
-    public void setLabels(Map<String, Object> labels) {
+    public void setLabels(Map<String, String> labels) {
         this.labels = labels;
     }
 

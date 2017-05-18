@@ -80,6 +80,7 @@ public class ImageUtil extends TestCase {
         CmdImageCreate cmdImageCreate = CmdImageCreate.newInstance();
         cmdImageCreate.connect();
         Object data = cmdImageCreate.fromImage("alpine:3.2").send();
+//        Object data = cmdImageCreate.fromImage("10.0.0.102:5000/alpine").send();
         cmdImageCreate.close();
         Logger.info(formatJSON(data));
     }

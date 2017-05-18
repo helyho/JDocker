@@ -148,7 +148,7 @@ public class CmdServiceUpdate extends Cmd {
         return this;
     }
 
-    public CmdServiceUpdate label(String key, Object value) {
+    public CmdServiceUpdate label(String key, String value) {
         serviceSpec.getLabels().put(key, value);
         return this;
     }

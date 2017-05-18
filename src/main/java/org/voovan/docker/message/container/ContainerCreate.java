@@ -38,7 +38,7 @@ public class ContainerCreate extends Config {
         this.setStdinOnce(false);
         this.setCmd(new ArrayList<String>());
         this.setEnv(new ArrayList<String>());
-        this.setLabels(new HashMap<String, Object>());
+        this.setLabels(new HashMap<String, String>());
         this.setExposedPorts(new HashMap<String, Map<String, String>>());
         this.setHostConfig(new HostConfig());
         this.setHealthcheck(new Healthcheck());

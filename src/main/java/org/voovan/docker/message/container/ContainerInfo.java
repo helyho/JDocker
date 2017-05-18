@@ -36,10 +36,10 @@ public class ContainerInfo {
     private NetworkSettings networkSettings;
     private List<Mount> mounts;
 
-    private Map<String, Object> labels;
+    private Map<String, String> labels;
 
     public ContainerInfo() {
-        labels = new HashMap<String, Object>();
+        labels = new HashMap<String, String>();
     }
 
     public String getId() {
@@ -106,11 +106,11 @@ public class ContainerInfo {
         this.ports = ports;
     }
 
-    public Map<String, Object> getLabels() {
+    public Map<String, String> getLabels() {
         return labels;
     }
 
-    public void setLabels(Map<String, Object> labels) {
+    public void setLabels(Map<String, String> labels) {
         this.labels = labels;
     }
 

@@ -18,10 +18,10 @@ public class NodeUpdate {
     private String availability;
     private String name;
     private String role;
-    private Map<String, Object> labels;
+    private Map<String, String> labels;
 
     public NodeUpdate() {
-        labels = new HashMap<String, Object>();
+        labels = new HashMap<String, String>();
         availability = "active";
         role = "manager";
     }
@@ -50,11 +50,11 @@ public class NodeUpdate {
         this.role = role;
     }
 
-    public Map<String, Object> getLabels() {
+    public Map<String, String> getLabels() {
         return labels;
     }
 
-    public void setLabels(Map<String, Object> labels) {
+    public void setLabels(Map<String, String> labels) {
         this.labels = labels;
     }
 

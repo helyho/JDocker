@@ -21,7 +21,7 @@ public class Container {
     private String dir;
     private String user;
     private List<Mount> mounts;
-    private Map<String, Object> labels;
+    private Map<String, String> labels;
     private Long stopGracePeriod;
 
     //v1.25
@@ -36,7 +36,7 @@ public class Container {
         args = new ArrayList<String>();
         env = new ArrayList<String>();
         mounts = new ArrayList<Mount>();
-        labels = new HashMap<String, Object>();
+        labels = new HashMap<String, String>();
         tty = true;
 
         dnsConfig = new DNSConfig();
@@ -106,11 +106,11 @@ public class Container {
         this.stopGracePeriod = stopGracePeriod;
     }
 
-    public Map<String, Object> getLabels() {
+    public Map<String, String> getLabels() {
         return labels;
     }
 
-    public void setLabels(Map<String, Object> labels) {
+    public void setLabels(Map<String, String> labels) {
         this.labels = labels;
     }
 

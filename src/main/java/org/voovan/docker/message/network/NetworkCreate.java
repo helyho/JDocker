@@ -23,11 +23,11 @@ public class NetworkCreate {
     private Boolean internal;
     private IPAM ipam;
     private Map<String, Object> options;
-    private Map<String, Object> labels;
+    private Map<String, String> labels;
 
     public NetworkCreate() {
         options = new HashMap<String, Object>();
-        labels = new HashMap<String, Object>();
+        labels = new HashMap<String, String>();
         ipam = new IPAM();
         enableIPv6 = false;
         internal = true;
@@ -90,11 +90,11 @@ public class NetworkCreate {
         this.ipam = ipam;
     }
 
-    public Map<String, Object> getLabels() {
+    public Map<String, String> getLabels() {
         return labels;
     }
 
-    public void setLabels(Map<String, Object> labels) {
+    public void setLabels(Map<String, String> labels) {
         this.labels = labels;
     }
 

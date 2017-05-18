@@ -140,7 +140,7 @@ public class CmdContainerCreate extends Cmd{
         return this;
     }
 
-    public CmdContainerCreate label(String key, Object value) {
+    public CmdContainerCreate label(String key, String value) {
         containerCreate.getLabels().put(key, value);
         return this;
     }

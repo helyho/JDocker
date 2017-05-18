@@ -21,11 +21,11 @@ public class VolumeDetail {
     private String driver;
     private Map<String, Object> driverOpts;
     private String mountpoint;
-    private Map<String, Object> labels;
+    private Map<String, String> labels;
     private String scope;
 
     public VolumeDetail() {
-        labels = new HashMap<String, Object>();
+        labels = new HashMap<String, String>();
     }
 
     public String getName() {
@@ -60,11 +60,11 @@ public class VolumeDetail {
         this.mountpoint = mountpoint;
     }
 
-    public Map<String, Object> getLabels() {
+    public Map<String, String> getLabels() {
         return labels;
     }
 
-    public void setLabels(Map<String, Object> labels) {
+    public void setLabels(Map<String, String> labels) {
         this.labels = labels;
     }
 

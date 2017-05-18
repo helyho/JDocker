@@ -43,7 +43,7 @@ public class CmdNetworkCreate extends Cmd{
         return this;
     }
 
-    public CmdNetworkCreate label(String key, Object value){
+    public CmdNetworkCreate label(String key, String value){
         networkCreate.getLabels().put(key,value);
         return this;
     }

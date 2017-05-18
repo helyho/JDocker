@@ -30,7 +30,7 @@ public class Config {
     private List<String> onBuild;
     private Map<String, Map> exposedPorts;
     private Map<String, Map> volumes;
-    private Map<String, Object> labels;
+    private Map<String, String> labels;
 
     public String getHostname() {
         return hostname;
@@ -176,11 +176,11 @@ public class Config {
         this.volumes = volumes;
     }
 
-    public Map<String, Object> getLabels() {
+    public Map<String, String> getLabels() {
         return labels;
     }
 
-    public void setLabels(Map<String, Object> labels) {
+    public void setLabels(Map<String, String> labels) {
         this.labels = labels;
     }
 }

@@ -44,7 +44,7 @@ public class CmdNodeList extends Cmd {
         return this;
     }
 
-    public CmdNodeList label(String key, Object value){
+    public CmdNodeList label(String key, String value){
         filters.put("label", TObject.asList(key+"="+value));
         return this;
     }

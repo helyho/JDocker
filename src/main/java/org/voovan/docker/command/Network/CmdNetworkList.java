@@ -40,7 +40,7 @@ public class CmdNetworkList extends Cmd{
         filters.put("driver", TObject.asList(driver));
         return this;
     }
-    public CmdNetworkList label(String key, Object value){
+    public CmdNetworkList label(String key, String value){
         filters.put("label", TObject.asList(key+"="+value));
         return this;
     }

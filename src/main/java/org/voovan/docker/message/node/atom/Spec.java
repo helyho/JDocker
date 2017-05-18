@@ -15,10 +15,10 @@ public class Spec {
     private String name;
     private String role;
     private String availability;
-    private Map<String, Object> labels;
+    private Map<String, String> labels;
 
     public Spec() {
-        labels = new HashMap<String, Object>();
+        labels = new HashMap<String, String>();
     }
 
     public String getRole() {
@@ -45,11 +45,11 @@ public class Spec {
         this.availability = availability;
     }
 
-    public Map<String, Object> getLabels() {
+    public Map<String, String> getLabels() {
         return labels;
     }
 
-    public void setLabels(Map<String, Object> labels) {
+    public void setLabels(Map<String, String> labels) {
         this.labels = labels;
     }
 }
