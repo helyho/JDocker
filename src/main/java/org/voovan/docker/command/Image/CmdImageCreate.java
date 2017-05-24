@@ -48,7 +48,9 @@ import org.voovan.docker.network.Result;
         Result result = getDockerHttpClient().run("POST","/images/create",getParameters());
         if(result!=null && result.getStatus()>=300){
             throw new DockerClientException(result.getMessage());
-        }else{
+        } if(result.getMessage().contains("\"errorDetail\"") ) {
+            throw new DockerClientException("Pull image error.");
+        } else{
             return result.getMessage();
         }
 

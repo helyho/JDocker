@@ -33,22 +33,22 @@ public abstract class Cmd {
         parameters = new HashMap<String,Object>();
     }
 
-    public void connect(String host, int port, int timeOut, boolean debug) {
+    public void connect4(String host, int port, int timeOut, boolean debug) {
         String rootURL = "http://"+ host+":"+ port;
         dockerHttpClient = new DockerHttpClient(rootURL, DockerGlobal.DOCKER_REST_CHARSET, timeOut, debug);
     }
 
-    public void connect(String host, int port, int timeOut) {
+    public void connect3(String host, int port, int timeOut) {
         String rootURL = "http://"+ host+":"+ port;
         dockerHttpClient = new DockerHttpClient(rootURL, DockerGlobal.DOCKER_REST_CHARSET, timeOut);
     }
 
-    public void connect(String host, int port) {
+    public void connect2(String host, int port) {
         String rootURL = "http://"+ host+":"+ port;
         dockerHttpClient = new DockerHttpClient(rootURL, DockerGlobal.DOCKER_REST_CHARSET, DockerGlobal.DOCKER_REST_TIMEOUT);
     }
 
-    public void connect(int timeOut) {
+    public void connect1(int timeOut) {
         String rootURL = "http://"+ DockerGlobal.DOCKER_REST_HOST+":"+ DockerGlobal.DOCKER_REST_PORT;
         dockerHttpClient = new DockerHttpClient(rootURL, DockerGlobal.DOCKER_REST_CHARSET, timeOut);
     }
