@@ -29,6 +29,11 @@ public class CmdAuth extends Cmd{
         return this;
     }
 
+    public CmdAuth email(String email){
+        authRequest.setEmail(email);
+        return this;
+    }
+
     public CmdAuth username(String username){
         authRequest.setUsername(username);
         return this;
