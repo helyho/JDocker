@@ -33,7 +33,7 @@
 <dependency>
     <groupId>org.voovan</groupId>
     <artifactId>JDocker</artifactId>
-    <version>1.5.1</version>
+    <version>1.5.3</version>
 </dependency>
 ```
 
