@@ -21,6 +21,7 @@ public class NetworkCreate {
     private Boolean checkDuplicate;
     private Boolean enableIPv6;
     private Boolean internal;
+    private Boolean attachable;
     private IPAM ipam;
     private Map<String, Object> options;
     private Map<String, String> labels;
@@ -68,6 +69,14 @@ public class NetworkCreate {
 
     public Boolean isInternal() {
         return internal;
+    }
+
+    public Boolean getAttachable() {
+        return attachable;
+    }
+
+    public void setAttachable(Boolean attachable) {
+        this.attachable = attachable;
     }
 
     public void setInternal(Boolean internal) {
