@@ -63,6 +63,11 @@ public class CmdNetworkCreate extends Cmd{
         return this;
     }
 
+    public CmdNetworkCreate attachable(boolean attachable){
+        networkCreate.setAttachable(attachable);
+        return this;
+    }
+
     public CmdNetworkCreate ipamConfig(){
         networkCreate.getIpam().getConfig().add(new IPAMConfig());
         return this;
