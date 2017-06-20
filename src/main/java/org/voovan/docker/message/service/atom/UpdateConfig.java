@@ -20,15 +20,15 @@ public class UpdateConfig {
     private Float maxFailureRatio;
 
     public UpdateConfig() {
-        parallelism = 2;
+        parallelism = 1;
         delay = null;
         failureAction = "pause";
 
         //v1.25
-        monitor = 15000000000L;
+        monitor = null;
 
         //v1.25
-        maxFailureRatio = 0.15F;
+        maxFailureRatio = 0F;
     }
 
     public void setParallelism(Integer parallelism) {

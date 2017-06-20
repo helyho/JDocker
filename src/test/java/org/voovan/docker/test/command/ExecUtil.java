@@ -41,9 +41,9 @@ public class ExecUtil extends TestCase {
 
     public void testExecStart() throws Exception {
         DockerGlobal.DOCKER_REST_TIMEOUT = 5000;
-        CmdExecCreate cmdExecCreate = CmdExecCreate.newInstance("dockerfly");
+        CmdExecCreate cmdExecCreate = CmdExecCreate.newInstance("Voovan");
         cmdExecCreate.connect();
-        String idata = cmdExecCreate.cmd("ifconfig").send();
+        String idata = cmdExecCreate.cmd("ping","127.0.0.1").send();
         JSONPath jsonpath = new JSONPath(idata);
         String id = jsonpath.value("/Id").toString();
 
