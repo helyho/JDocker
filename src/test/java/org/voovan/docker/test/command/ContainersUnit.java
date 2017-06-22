@@ -54,6 +54,13 @@ public class ContainersUnit extends TestCase {
         Object data = cmdContainersList.name("dockerfly").all(true).send();
         cmdContainersList.close();
         Logger.info(formatJSON(data));
+        while(true){
+            cmdContainersList.connect();
+            data = cmdContainersList.name("dockerfly").all(true).send();
+            cmdContainersList.close();
+            Logger.info(formatJSON(data));
+            TEnv.sleep(1);
+        }
     }
 
     public void testDetail() throws Exception {

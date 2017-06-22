@@ -59,8 +59,6 @@ public class CmdContainerLogs extends Cmd {
             throw new DockerClientException(result.getMessage());
         }else{
             return result.getMessage();
-//                    .replaceAll("^[\\u0000-\\uffff]{8}","")
-//                    .replaceAll("\\n[\\u0000-\\uffff]{8}","\n");
         }
     }
 }
